@@ -1,0 +1,46 @@
+/* Solarized palette */
+/* I won't use completely */
+.deck-menu .slide {
+  background: none; }
+
+.deck-menu > .slide {
+  border: solid 5px #657b83; }
+
+.deck-menu .deck-current,
+.no-touch .deck-menu .slide:hover {
+  background: #073642; }
+
+.deck-container {
+  font-size: 2em;
+  color: #839496;
+  background-color: #002b36; }
+  .deck-container h1 {
+    font-size: 3em; }
+  .deck-container h2 {
+    font-size: 2em; }
+  .deck-container h3, .deck-container h4 {
+    font-size: 1.5em; }
+  .deck-container select,
+  .deck-container input,
+  .deck-container textarea {
+    font-size: 2em;
+    color: #839496; }
+  .deck-container .deck-status {
+    color: #839496; }
+  .deck-container .deck-prev-link,
+  .deck-container .deck-next-link {
+    background-color: #073642;
+    color: #586e75; }
+    .deck-container .deck-prev-link:visited,
+    .deck-container .deck-next-link:visited {
+      color: #586e75; }
+    .deck-container .deck-prev-link:hover,
+    .deck-container .deck-next-link:hover {
+      color: #93a1a1;
+      text-shadow: none; }
+    .deck-container .deck-prev-link a, .deck-container .deck-prev-link a:visited,
+    .deck-container .deck-next-link a,
+    .deck-container .deck-next-link a:visited {
+      color: #586e75; }
+  .deck-container pre, .deck-container code, .deck-container a.cut {
+    font-family: "cmuntt", Incosolata, Monaco, monospace; }
