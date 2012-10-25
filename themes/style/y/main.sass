@@ -16,39 +16,6 @@ $blue   : #268bd2
 $cyan   : #2aa198
 $green  : #859900
 /* I won't use completely */
-.base03
-  color: $base03
-.base02
-  color: $base02
-.base01
-  color: $base01
-.base00
-  color: $base00
-.base0
-  color: $base0
-.base1
-  color: $base1
-.base2
-  color: $base2
-.base3
-  color: $base3
-.yellow
-  color: $yellow
-.orange
-  color: $orange
-.red
-  color: $red
-.magenta
-  color: $magenta
-.violet
-  color: $violet
-.blue
-  color: $blue
-.cyan
-  color: $cyan
-.green
-  color: $green
-
 $behindColor: $base0
 $mainTextColor: $base0
 $mainBackgroundColor: $base03
@@ -58,7 +25,7 @@ $revealColor: $base1
 $secondRevealColor: $revealColor
 $lighterRevealColor: $revealColor + #666
 $imageBackgroundColor: $mainBackgroundColor
-$borderColor: #ccccd0
+$borderColor: $base01
 $imageBorderColor: $borderColor
 $mainLinkColor: $mainTextColor
 $textLinkColor: $base1
@@ -96,6 +63,47 @@ $secondTextColor: $base1
   src: local('☺'), url('fonts/cmunrm.svg') format('svg'), url('fonts/cmunrm.ttf') format('truetype')
   font-weight: normal
   font-style: normal
+
+=selected
+  background: $base01
+  color: $base2
+
+=darkselected
+  background: $base01
+  color: $base2
+
+=sc
+  text-transform: uppercase
+  font-size: 0.8em
+
+=insetbox
+  background: rgba(#000,.05)
+  box-shadow: 0 0 2px #FFF, 0 0 3px #CCC inset
+  border: 1px solid rgba(#000,.1)
+  border-radius: 3px
+  &:hover
+    background: rgba(#000,.1)
+    box-shadow: 0 0 6px #555 inset
+
+=clearbutton
+  display: block
+  width: 25%
+  cursor: pointer
+  margin: 1em 0
+  padding: 1em
+  font-size: 16px
+  line-height: 1.4em
+  border: 1px solid $mainBackgroundColor
+  color: $lighterText
+  &:hover
+    +innerblock
+    color: $highlightRevealColor
+    text-shadow: 0 0 2px #FAA
+  &:active
+    +innerblock
+    color: $highlightRevealColor
+    text-shadow: 0 0 2px #FAA
+    background: $mainBackgroundColor - #060606
 
 =italic
   font-style: italic
@@ -166,8 +174,40 @@ $secondTextColor: $base1
     color: $base02
   color: $base0
 
-
 .deck-container
+  .base03
+    color: $base03
+  .base02
+    color: $base02
+  .base01
+    color: $base01
+  .base00
+    color: $base00
+  .base0
+    color: $base0
+  .base1
+    color: $base1
+  .base2
+    color: $base2
+  .base3
+    color: $base3
+  .yellow
+    color: $yellow
+  .orange
+    color: $orange
+  .red
+    color: $red
+  .magenta
+    color: $magenta
+  .violet
+    color: $violet
+  .blue
+    color: $blue
+  .cyan
+    color: $cyan
+  .green
+    color: $green
+
   font-family: "ComputerModern",Georgia,serif
   div
     font-family: "ComputerModern",Georgia,serif
@@ -190,18 +230,10 @@ $secondTextColor: $base1
   body
     +mainColor
 
-  =selected
-    background: $base01
-    color: $base2
-
   ::selection
     +selected
   ::-moz-selection
     +selected
-
-  =darkselected
-    background: $base01
-    color: $base2
 
   pre, code, a.cut
     font-family: "cmuntt",Incosolata, Monaco, monospace
@@ -256,6 +288,7 @@ $secondTextColor: $base1
   body, h1, h2, h3, h4, #entete, .tagname
     text-rendering: optimizelegibility
     line-height: 1.5em
+    border-color: $base01
 
   body
     font-family: "ComputerModern", Georgia, Palatino, "Century Schoolbook L", "Times New Roman", Times, serif
@@ -297,10 +330,6 @@ $secondTextColor: $base1
     ul
       padding-left: 1.5em
 
-  =sc
-    text-transform: uppercase
-    font-size: 0.8em
-
   abbr,
   acronym
     +sc
@@ -320,35 +349,6 @@ $secondTextColor: $base1
 
   #liens .active, #sousliens
     +secondColor
-
-  =insetbox
-    background: rgba(#000,.05)
-    box-shadow: 0 0 2px #FFF, 0 0 3px #CCC inset
-    border: 1px solid rgba(#000,.1)
-    border-radius: 3px
-    &:hover
-      background: rgba(#000,.1)
-      box-shadow: 0 0 6px #555 inset
-
-  =clearbutton
-    display: block
-    width: 25%
-    cursor: pointer
-    margin: 1em 0
-    padding: 1em
-    font-size: 16px
-    line-height: 1.4em
-    border: 1px solid $mainBackgroundColor
-    color: $lighterText
-    &:hover
-      +innerblock
-      color: $highlightRevealColor
-      text-shadow: 0 0 2px #FAA
-    &:active
-      +innerblock
-      color: $highlightRevealColor
-      text-shadow: 0 0 2px #FAA
-      background: $mainBackgroundColor - #060606
 
   #liens a
     border: 1px solid #EEE
@@ -1039,6 +1039,7 @@ $secondTextColor: $base1
 
   table
     border: 1px solid $borderColor
+    width: 100%
   table tr td
     padding: 2px .5em
   table tr
@@ -1115,7 +1116,7 @@ $secondTextColor: $base1
   background: $base02
 
 .deck-container
-  font-size: 2em
+  font-size: 3em
   color: $base0
   background-color: $base03
   h1
