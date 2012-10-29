@@ -277,6 +277,7 @@ $secondTextColor: $base1
 
   ol,ul
     padding-left: 0
+    margin-left: 0
   .toc
     ol li, ul li
       margin: .5em 0
@@ -1115,8 +1116,23 @@ $secondTextColor: $base1
 .no-touch .deck-menu .slide:hover
   background: $base02
 
+@media only screen and (max-width: 1920px)
+  .deck-container
+    font-size: 3em
+@media only screen and (max-width: 1380px)
+  .deck-container
+    font-size: 2em
+@media only screen and (max-width: 960px)
+  .deck-container
+    font-size: 1.5em
+@media only screen and (max-width: 800px)
+  .deck-container
+    font-size: 1em
+@media only screen and (max-width: 640px)
+  .deck-container
+    font-size: 1.5em
+
 .deck-container
-  font-size: 3em
   color: $base0
   background-color: $base03
   h1

@@ -120,7 +120,8 @@
   .deck-container .corps ul li:before {
     content: "- "; }
   .deck-container ol, .deck-container ul {
-    padding-left: 0; }
+    padding-left: 0;
+    margin-left: 0; }
   .deck-container .toc ol li, .deck-container .toc ul li {
     margin: 0.5em 0; }
   .deck-container ol li ul, .deck-container ol li ol, .deck-container ul li ol, .deck-container ul li ul {
@@ -868,7 +869,7 @@
     .deck-container #social:hover {
       opacity: 1; }
   .deck-container .popularblock {
-    width: 30.333%;
+    width: 30.3333%;
     margin: 0 1.5%;
     float: left; }
     .deck-container .popularblock figure {
@@ -888,8 +889,22 @@
 .no-touch .deck-menu .slide:hover {
   background: #073642; }
 
+@media only screen and (max-width: 1920px) {
+  .deck-container {
+    font-size: 3em; } }
+@media only screen and (max-width: 1380px) {
+  .deck-container {
+    font-size: 2em; } }
+@media only screen and (max-width: 960px) {
+  .deck-container {
+    font-size: 1.5em; } }
+@media only screen and (max-width: 800px) {
+  .deck-container {
+    font-size: 1em; } }
+@media only screen and (max-width: 640px) {
+  .deck-container {
+    font-size: 1.5em; } }
 .deck-container {
-  font-size: 3em;
   color: #839496;
   background-color: #002b36; }
   .deck-container h1 {
