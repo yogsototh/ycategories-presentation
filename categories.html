@@ -65,9 +65,18 @@
     <p>Something you see very often but in different instances.</p>
     <div class="slide">
         <p>Numbers: 1,2,3,...  <em class="small">3400 BC, real numbers 760 BC</em></p>
-        <img src="img/tally-count.png" style="max-width: 40%; max-heiht: 30%; float:left; margin-right: 5%; vertical-align: center;" alt="Aboriginal Tally System"/>
-        <img src="img/first-real-numbers.png" style="max-width: 40%; max-heiht: 30%; float:left; margin-right: 5%; vertical-align: center;" alt="Mesopotamian Numbers"/>
-        <em style="font-size: 5em;vertical-align: center;">0</em>
+        <figure class="left">
+            <img src="img/tally-count.png" style="height:3.8em" alt="Aboriginal Tally System"/>
+            <figcaption>Aboriginal Tally System</figcaption>
+        </figure>
+        <figure class="left">
+            <img src="img/first-real-numbers.png" style="height:3.8em" alt="Mesopotamian Numbers"/>
+            <figcaption>Mesopotamian base 60 system</figcaption>
+        </figure>
+        <figure class="left">
+        <div class="likeimg" style="height:3.8em;margin-bottom: 1em"><span style="font-size: 3em">&nbsp;0&nbsp;</span></div>
+            <figcaption>Zero</figcaption>
+        </figure>
         <div class="flush"></div>
 </section>
 
@@ -120,11 +129,11 @@
 </section>
 
 <section class="slide">
-	<h2>Numbers ⇒ Set Theory (∞)</h2>
+	<h2>Numbers ⇒ Sets</h2>
     <table>
     <tr>
         <th>Numbers</th>
-        <th>Set Theory/Abstract Algebra</th>
+        <th>Set Theory (∞)/Abstract Algebra/Topology</th>
     </tr>
     <tr>
         <td>\(\mathbb{N}\): \((+,0)\)</td>
@@ -153,12 +162,12 @@
 </section>
 
 <section class="slide">
-    <h2>Set Theory ⇒? <span class="yellow">Category Theory</span></h2>
+    <h2>Sets ⇒? <span class="yellow">Categories</span></h2>
     <table>
     <tr>
         <th>Numbers</th>
-        <th>Set Theory (∞)</th>
-        <th>Category Theory (relations)</th>
+        <th>Sets</th>
+        <th>Categories</th>
     </tr>
     <tr>
         <td>\(\mathbb{N}\): \((+,0)\)</td>
@@ -240,6 +249,44 @@
         <img src="img/mp/associativecomposition.png" alt="associative composition"/>
         </li>
     </ul>
+</section>
+
+<section class="slide">
+<h2>Can this be a category? <span style="font-size: .5em">(\(id_X\) implicit)</span></h2>
+    <figure class="left">
+        <img src="img/mp/cat-example1.png" alt="Category example 1"/>
+        <figcaption class="slide">
+            <span class="green">OK</span>
+        </figcaption>
+    </figure>
+
+    <figure class="left">
+        <img src="img/mp/cat-example2.png" alt="Category example 2"/>
+        <figcaption class="slide">
+            no candidate for \(g\circ f\)
+            <span class="red">NO</span>
+        </figcaption>
+    </figure>
+    <figure class="left">
+        <img src="img/mp/cat-example3.png" alt="Category example 3"/>
+        <figcaption class="slide">
+        <span class="green">YES</span>
+        </figcaption>
+    </figure>
+    <figure class="left">
+        <img src="img/mp/cat-example4.png" alt="Category example 4"/>
+        <figcaption class="slide">
+            no candidate for \(f:C\to B\)
+            <span class="red">NO</span>
+        </figcaption>
+    </figure>
+    <figure class="left">
+        <img src="img/mp/cat-example5.png" alt="Category example 5"/>
+        <figcaption class="slide">
+            \((h∘g)∘f=idB∘f=f≠h=h∘idA=h∘(g∘f)\)
+            <span class="red">NO</span>
+        </figcaption>
+    </figure>
 </section>
 
 <!-- End slides. -->

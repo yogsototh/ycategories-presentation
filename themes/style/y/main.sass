@@ -24,7 +24,7 @@ $secondBackgroundColor: $base02
 $revealColor: $base1
 $secondRevealColor: $revealColor
 $lighterRevealColor: $revealColor + #666
-$imageBackgroundColor: $mainBackgroundColor
+$imageBackgroundColor: $base02
 $borderColor: $base01
 $imageBorderColor: $borderColor
 $mainLinkColor: $mainTextColor
@@ -550,22 +550,15 @@ $secondTextColor: $base1
 
   $contentMargin: 0em
 
-  .encadre, .black, .red, .intro, .resume, .shadow
+  .encadre, .intro, .resume, .shadow
     padding: 2em
     margin:
       top: 2em
       bottom: 2em
 
 
-  .encadre, .black, .red, .shadow
+  .encadre
     +secondColor
-
-  pre .red
-    background: none
-    padding: 0
-    margin: auto
-    border: none
-    box-shadow: none
 
   .intro, .resume
     font-size: 0.9em
@@ -617,23 +610,25 @@ $secondTextColor: $base1
   $corps_width: ($content_width - 2 * $contentMargin) / $fontcorps
   $hpadding: 1
 
-  .corps img
+  img,.likeimg
     max-width: 80%
-    border: 1px solid $imageBorderColor
+    border: 2px solid $borderColor
     background-color: $imageBackgroundColor
     padding: 0.5em
-    box-shadow: 0 10px 15px #CCC
-    border-radius: 3px
-  .corps a:hover img
-    background-color: $revealColor + #100 - #011
+    box-shadow: 0 0 10px $base03 inset
+    border-radius: 0.5em
+    text-align: center
+  a:hover img
+    background-color: $revealColor
 
   figure
-    margin: 3em 0
-    img
-      box-shadow: 0 10px 15px #CCC inset
     figcaption
       text-align: center
       margin: .5em 0
+      font-size: .7em
+  figure.left
+    max-width: 30%
+    float: left
 
   img.clean
     border: none
@@ -746,18 +741,12 @@ $secondTextColor: $base1
   ul.long li
     margin-bottom: 1em
 
-  img
-    display: block
-    margin: 1.2em auto
-    background: none
-    border: none
-
   img.left
     float: left
-    max-width: 30%
+    max-width: 20%
     margin:
       top: .6em
-      right: 2em
+      right: 1em
 
   img.inside
     display: inline

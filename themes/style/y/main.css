@@ -395,33 +395,27 @@
     position: relative;
     clear: both;
     width: 52em; }
-  .deck-container .encadre, .deck-container .black, .deck-container .red, .deck-container .intro, .deck-container .resume, .deck-container .shadow {
+  .deck-container .encadre, .deck-container .intro, .deck-container .resume, .deck-container .shadow {
     padding: 2em;
     margin-top: 2em;
     margin-bottom: 2em; }
-  .deck-container .encadre, .deck-container .black, .deck-container .red, .deck-container .shadow {
+  .deck-container .encadre {
     color: #839496;
     border: #586e75 solid 1px;
     border-radius: 5px;
     box-shadow: 0 0 2px #586e75 inset;
     background-color: #fdf6e3; }
-    .deck-container .encadre a, .deck-container .black a, .deck-container .red a, .deck-container .shadow a {
+    .deck-container .encadre a {
       color: #93a1a1; }
-    .deck-container .encadre a:hover, .deck-container .black a:hover, .deck-container .red a:hover, .deck-container .shadow a:hover {
+    .deck-container .encadre a:hover {
       color: #93a1a1; }
-      .deck-container .encadre a:hover strong, .deck-container .encadre a:hover b, .deck-container .encadre a:hover i, .deck-container .encadre a:hover em, .deck-container .encadre a:hover .nicer, .deck-container .black a:hover strong, .deck-container .black a:hover b, .deck-container .black a:hover i, .deck-container .black a:hover em, .deck-container .black a:hover .nicer, .deck-container .red a:hover strong, .deck-container .red a:hover b, .deck-container .red a:hover i, .deck-container .red a:hover em, .deck-container .red a:hover .nicer, .deck-container .shadow a:hover strong, .deck-container .shadow a:hover b, .deck-container .shadow a:hover i, .deck-container .shadow a:hover em, .deck-container .shadow a:hover .nicer {
+      .deck-container .encadre a:hover strong, .deck-container .encadre a:hover b, .deck-container .encadre a:hover i, .deck-container .encadre a:hover em, .deck-container .encadre a:hover .nicer {
         color: #f9ffff; }
-    .deck-container .encadre hr, .deck-container .black hr, .deck-container .red hr, .deck-container .shadow hr {
+    .deck-container .encadre hr {
       color: #93a1a1;
       border-top: 1px solid #93a1a1; }
-    .deck-container .encadre strong, .deck-container .encadre b, .deck-container .encadre i, .deck-container .encadre em, .deck-container .black strong, .deck-container .black b, .deck-container .black i, .deck-container .black em, .deck-container .red strong, .deck-container .red b, .deck-container .red i, .deck-container .red em, .deck-container .shadow strong, .deck-container .shadow b, .deck-container .shadow i, .deck-container .shadow em {
+    .deck-container .encadre strong, .deck-container .encadre b, .deck-container .encadre i, .deck-container .encadre em {
       color: #839496; }
-  .deck-container pre .red {
-    background: none;
-    padding: 0;
-    margin: auto;
-    border: none;
-    box-shadow: none; }
   .deck-container .intro, .deck-container .resume {
     font-size: 0.9em;
     font-style: italic;
@@ -471,22 +465,23 @@
     .deck-container .corps ul li ul, .deck-container .corps ol li ul, .deck-container .corps ul li ol, .deck-container .corps ol li ol {
       margin-top: 0;
       margin-bottom: 0; }
-  .deck-container .corps img {
+  .deck-container img, .deck-container .likeimg {
     max-width: 80%;
-    border: 1px solid #586e75;
-    background-color: #002b36;
+    border: 2px solid #586e75;
+    background-color: #073642;
     padding: 0.5em;
-    box-shadow: 0 10px 15px #cccccc;
-    border-radius: 3px; }
-  .deck-container .corps a:hover img {
-    background-color: #a49090; }
-  .deck-container figure {
-    margin: 3em 0; }
-    .deck-container figure img {
-      box-shadow: 0 10px 15px #cccccc inset; }
-    .deck-container figure figcaption {
-      text-align: center;
-      margin: 0.5em 0; }
+    box-shadow: 0 0 10px #002b36 inset;
+    border-radius: 0.5em;
+    text-align: center; }
+  .deck-container a:hover img {
+    background-color: #93a1a1; }
+  .deck-container figure figcaption {
+    text-align: center;
+    margin: 0.5em 0;
+    font-size: 0.7em; }
+  .deck-container figure.left {
+    max-width: 30%;
+    float: left; }
   .deck-container img.clean {
     border: none;
     background-color: none;
@@ -581,16 +576,11 @@
     margin-right: 5px; }
   .deck-container ul.long li {
     margin-bottom: 1em; }
-  .deck-container img {
-    display: block;
-    margin: 1.2em auto;
-    background: none;
-    border: none; }
   .deck-container img.left {
     float: left;
-    max-width: 30%;
+    max-width: 20%;
     margin-top: 0.6em;
-    margin-right: 2em; }
+    margin-right: 1em; }
   .deck-container img.inside {
     display: inline;
     vertical-align: middle; }
