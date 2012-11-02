@@ -34,259 +34,269 @@
 </head>
 <body class="deck-container">
 
+<div style="display:none">
+\(\newcommand{\F}{\mathbf{F}}\)
+\(\newcommand{\C}{\mathcal{C}}\)
+\(\newcommand{\D}{\mathcal{D}}\)
+\(\newcommand{\id}{\mathrm{id}}\)
+\(\newcommand{\ob}[1]{\mathrm{ob}(#1)}\)
+\(\newcommand{\hom}[1]{\mathrm{hom}(#1)}\)
+</div>
+
+
 <!-- Begin slides. Just make elements with a class of slide. -->
 
 <section class="slide">
-    <h1>Category Theory <span class="and">&amp;</span> Programming
-        <div><author style="font-size: .4em"><em class="base01">by</em> Yann Esposito
-            <div>
-                <twitter style="font-size: .5em">
-                    <a href="http://twitter.com/yogsototh">@yogsototh</a>,
-                </twitter>
-                <googleplus style="font-size: .5em">
-                    <a href="https://plus.google.com/117858550730178181663">+yogsototh</a>
-                </googleplus>
-            </div>
-        </author></div>
-    </h1>
+<h1>Category Theory <span class="and"><span class="and">&amp;</span></span> Programming
+    <div><author style="font-size: .4em"><em class="base01">by</em> Yann Esposito
+        <div>
+            <twitter style="font-size: .5em">
+                <a href="http://twitter.com/yogsototh">@yogsototh</a>,
+            </twitter>
+            <googleplus style="font-size: .5em">
+                <a href="https://plus.google.com/117858550730178181663">+yogsototh</a>
+            </googleplus>
+        </div>
+    </author></div>
+</h1>
 </section>
-
 <section class="slide">
-	<h2>Plan</h2>
-    <ul style="font-size: 2em">
-        <li class="yellow">Why?</li>
-        <li>What?</li>
-        <li>How?</li>
-    </ul>
+<h2>Plan</h2>
+<ul style="font-size: 2em">
+    <li class="yellow">Why?</li>
+    <li>What?</li>
+    <li>How?</li>
+</ul>
 </section>
-
 <section class="slide">
-    <h2>Abstraction Example</h2>
-    <p>Something you see very often but in different instances.</p>
-    <div class="slide">
-        <p>Numbers: 1,2,3,...  <em class="small">3400 BC, real numbers 760 BC</em></p>
-        <figure class="left">
-            <img src="img/tally-count.png" style="height:3.8em" alt="Aboriginal Tally System"/>
-            <figcaption>Aboriginal Tally System</figcaption>
-        </figure>
-        <figure class="left">
-            <img src="img/first-real-numbers.png" style="height:3.8em" alt="Mesopotamian Numbers"/>
-            <figcaption>Mesopotamian base 60 system</figcaption>
-        </figure>
-        <figure class="left">
-        <div class="likeimg" style="height:3.8em;margin-bottom: 1em"><span style="font-size: 3em">&nbsp;0&nbsp;</span></div>
-            <figcaption>Zero</figcaption>
-        </figure>
-        <div class="flush"></div>
+<h2>Abstraction Example</h2>
+<p>Something you see very often but in different instances.</p>
+<div class="slide">
+    <p>Numbers: 1,2,3,...  <em class="small">3400 BC, real numbers 760 BC</em></p>
+    <figure class="left">
+        <img src="img/tally-count.png" style="height:3.8em" alt="Aboriginal Tally System"/>
+        <figcaption>Aboriginal Tally System</figcaption>
+    </figure>
+    <figure class="left">
+        <img src="img/first-real-numbers.png" style="height:3.8em" alt="Mesopotamian Numbers"/>
+        <figcaption>Mesopotamian base 60 system</figcaption>
+    </figure>
+    <figure class="left">
+    <div class="likeimg" style="height:3.8em;margin-bottom: 1em"><span style="font-size: 3em">&nbsp;0&nbsp;</span></div>
+        <figcaption>Zero</figcaption>
+    </figure>
+    <div class="flush"></div>
 </section>
-
 <section class="slide">
-    <h2>Abstraction Example: Numbers</h2>
-    <p>Many different things can be understood with numbers</p>
-    <ul>
-        <li>How many apple, goats?</li>
-        <li>Distance</li>
-        <li>Time</li>
-        <li>...</li>
-    </ul>
-    <p>Manipulated with operators: 
-        <span class="yellow">=</span>,
-        <span class="yellow">&lt;</span>,
-        <span class="yellow">&gt;</span>,
-        <span class="yellow">+</span>,
-        <span class="yellow">×</span>, ...</p>
+<h2>Abstraction Example: Numbers</h2>
+<p>Many different things can be understood with numbers</p>
+<ul>
+    <li>How many apple, goats?</li>
+    <li>Distance</li>
+    <li>Time</li>
+    <li>...</li>
+</ul>
+<p>Manipulated with operators: 
+    <span class="yellow">=</span>,
+    <span class="yellow">&lt;</span>,
+    <span class="yellow">&gt;</span>,
+    <span class="yellow">+</span>,
+    <span class="yellow">×</span>, ...</p>
 </section>
-
 <section class="slide">
-    <h2>Abstraction Example: Numbers</h2>
-    <h3>Generalization: rational numbers</h3>
-    <p>Rational numbers: \(\frac{p}{q}\) (concept is prehistoric): more precise.</p>
-    <img src="img/egyptian-hieroglyphics.jpg" alt="Egyptian Fractions"/>
-    </div>
+<h2>Abstraction Example: Numbers</h2>
+<h3>Generalization: rational numbers</h3>
+<p>Rational numbers: \(\frac{p}{q}\) (concept is prehistoric): more precise.</p>
+<img src="img/egyptian-hieroglyphics.jpg" alt="Egyptian Fractions"/>
+</div>
 </section>
-
 <section class="slide">
-    <h2>Abstraction Example: Numbers</h2>
-    <h3>Generalization: negative numbers</h3>
-    <p>Negative numbers: ..., -3, -2, -1, 0, 1, 2, ... (100-50 BC): Debts, temperature</p>
-    <img src="img/negative-numbers.jpg" alt="Negative Numbers (Chinese)"/>
+<h2>Abstraction Example: Numbers</h2>
+<h3>Generalization: negative numbers</h3>
+<p>Negative numbers: ..., -3, -2, -1, 0, 1, 2, ... (100-50 BC): Debts, temperature</p>
+<img src="img/negative-numbers.jpg" alt="Negative Numbers (Chinese)"/>
 </section>
-
 <section class="slide">
-    <h2>Abstraction Example: Numbers</h2>
-    <h3>Generalization: Irrational Numbers</h3>
-    <p>Irrational numbers: \(\mathbb{A}\), \(\mathbb{R}\) (500 BC → Pythogoras killed Hippasus because of \(\sqrt{2}\)!)</p>
-    <p>Complex numbers: \(\mathbb{C}\) (100 AD, then 16th century)</p>
+<h2>Abstraction Example: Numbers</h2>
+<h3>Generalization: Irrational Numbers</h3>
+<p>Irrational numbers: \(\mathbb{A}\), \(\mathbb{R}\) (500 BC → Pythogoras killed Hippasus because of \(\sqrt{2}\)!)</p>
+<p>Complex numbers: \(\mathbb{C}\) (100 AD, then 16th century)</p>
 </section>
-
 <section class="slide">
-    <h2>Abstraction Example: Numbers</h2>
-    <h3>Generalization</h3>
-    <ul>
-    <li>More things enter into the notion</li>
-    <li>More operator to manipulate the notion</li>
-    </ul>
+<h2>Abstraction Example: Numbers</h2>
+<h3>Generalization</h3>
+<ul>
+<li>More things enter into the notion</li>
+<li>More operator to manipulate the notion</li>
+</ul>
 </section>
-
 <section class="slide">
 	<h2>Numbers ⇒ Sets</h2>
-    <table>
-    <tr>
-        <th>Numbers</th>
-        <th>Set Theory (∞)/Abstract Algebra/Topology</th>
-    </tr>
-    <tr>
-        <td>\(\mathbb{N}\): \((+,0)\)</td>
-        <td>Semigroups</td>
-    </tr>
-    <tr>
-        <td>\(\mathbb{Z}\): \((+,0,\times,1)\)</td>
-        <td>Rings</td>
-    </tr>
-    <tr>
-        <td>\(\mathbb{Q}\)</td>
-        <td>Fields</td>
-    </tr>
-    <tr>
-        <td>\(\mathbb{R}\)</td>
-        <td>Complete Fields (<em class="base01">topology</em>)</td>
-    </tr>
-    <tr>
-        <td>\(\mathbb{C}\)</td>
-        <td>Algebræ</td>
-    </tr>
-    <tr><td></td><td>Modules,Vector Spaces, Monoids, ...</td></tr>
-    </table>
-    <p><span class="and" style="visibility:hidden">&amp;</span> More <strong>general</strong>: more things are sets.<br/>
-        <span class="and">&amp;</span> More <strong>precise</strong>: clear distinction between concepts.</p>
+<table>
+<tr>
+    <th>Numbers</th>
+    <th>Set Theory (∞)/Abstract Algebra/Topology</th>
+</tr>
+<tr>
+    <td>\(\mathbb{N}\): \((+,0)\)</td>
+    <td>Semigroups</td>
+</tr>
+<tr>
+    <td>\(\mathbb{Z}\): \((+,0,\times,1)\)</td>
+    <td>Rings</td>
+</tr>
+<tr>
+    <td>\(\mathbb{Q}\)</td>
+    <td>Fields</td>
+</tr>
+<tr>
+    <td>\(\mathbb{R}\)</td>
+    <td>Complete Fields (<em class="base01">topology</em>)</td>
+</tr>
+<tr>
+    <td>\(\mathbb{C}\)</td>
+    <td>Algebræ</td>
+</tr>
+<tr><td></td><td>Modules,Vector Spaces, Monoids, ...</td></tr>
+</table>
+<p><span class="and" style="visibility:hidden"><span class="and">&amp;</span></span> More <strong>general</strong>: more things are sets.<br/>
+    <span class="and"><span class="and">&amp;</span></span> More <strong>precise</strong>: clear distinction between concepts.</p>
 </section>
-
 <section class="slide">
-    <h2>Sets ⇒? <span class="yellow">Categories</span></h2>
-    <table>
-    <tr>
-        <th>Numbers</th>
-        <th>Sets</th>
-        <th>Categories</th>
-    </tr>
-    <tr>
-        <td>\(\mathbb{N}\): \((+,0)\)</td>
-        <td>Semigroups</td>
-        <td>?</td>
-    </tr>
-    <tr>
-        <td>\(\mathbb{Z}\): \((+,0,\times,1)\)</td>
-        <td>Rings</td>
-        <td>?</td>
-    </tr>
-    <tr>
-        <td>\(\mathbb{Q}\)</td>
-        <td>Fields</td>
-        <td>?</td>
-    </tr>
-    <tr>
-        <td>\(\mathbb{R}\)</td>
-        <td>Complete Fields (<em class="base01">topology</em>)</td>
-        <td>?</td>
-    </tr>
-    <tr>
-        <td>\(\mathbb{C}\)</td>
-        <td>Algebræ</td>
-        <td>?</td>
-    </tr>
-    <tr><td></td><td>Modules,Vector Spaces, Monoids, ...</td><td>?</td></tr>
-    </table>
+<h2>Sets ⇒? <span class="yellow">Categories</span></h2>
+<table>
+<tr>
+    <th>Numbers</th>
+    <th>Sets</th>
+    <th>Categories</th>
+</tr>
+<tr>
+    <td>\(\mathbb{N}\): \((+,0)\)</td>
+    <td>Semigroups</td>
+    <td>?</td>
+</tr>
+<tr>
+    <td>\(\mathbb{Z}\): \((+,0,\times,1)\)</td>
+    <td>Rings</td>
+    <td>?</td>
+</tr>
+<tr>
+    <td>\(\mathbb{Q}\)</td>
+    <td>Fields</td>
+    <td>?</td>
+</tr>
+<tr>
+    <td>\(\mathbb{R}\)</td>
+    <td>Complete Fields (<em class="base01">topology</em>)</td>
+    <td>?</td>
+</tr>
+<tr>
+    <td>\(\mathbb{C}\)</td>
+    <td>Algebræ</td>
+    <td>?</td>
+</tr>
+<tr><td></td><td>Modules,Vector Spaces, Monoids, ...</td><td>?</td></tr>
+</table>
 </section>
-
 <section class="slide">
-    <h2><span class="yellow">/.*/</span> ⇒? Category Theory</h2>
-    <p>Extend <span class="and">&amp;</span> Merge different scientific fields</p>
-    <ul>
-    <li>Topology</li>
-    <li>Quantum Physics</li>
-    <li>Logic</li>
-    <li><b>Programming</b></li>
-    </ul>
-    <p><span class="and" style="visibility:hidden">&amp;</span> More <strong>general</strong>: more things are Categories.<br/>
-        <span class="and">&amp;</span> More <strong>precise</strong>: better distinction between concepts.</p>
-    <p>Young field: <b>1942–45</b>, Samuel Eilenberg <span class="and">&amp;</span> Saunders Mac Lane
+<h2><span class="yellow">/.*/</span> ⇒? Category Theory</h2>
+<p>Extend <span class="and"><span class="and">&amp;</span></span> Merge different scientific fields</p>
+<ul>
+<li>Topology</li>
+<li>Quantum Physics</li>
+<li>Logic</li>
+<li><b>Programming</b></li>
+</ul>
+<p><span class="and" style="visibility:hidden"><span class="and">&amp;</span></span> More <strong>general</strong>: more things are Categories.<br/>
+    <span class="and"><span class="and">&amp;</span></span> More <strong>precise</strong>: better distinction between concepts.</p>
+<p>Young field: <b>1942–45</b>, Samuel Eilenberg <span class="and"><span class="and">&amp;</span></span> Saunders Mac Lane
 </section>
-
 <section class="slide">
-	<h2>Plan</h2>
-    <ul style="font-size: 2em">
-        <li>Why?</li>
-        <li class="yellow">What?</li>
-        <li>How?</li>
-    </ul>
+<h2>Plan</h2>
+<ul style="font-size: 2em">
+    <li>Why?</li>
+    <li class="yellow">What?</li>
+    <li>How?</li>
+</ul>
 </section>
-
 <section class="slide">
 	<h2>Definition: Category [Objects]</h2>
-    <img src="img/mp/objects.png" alt="objects"/>
+<img src="img/mp/objects.png" alt="objects"/>
 </section>
-
 <section class="slide">
 	<h2>Definition: Category [Morphisms]</h2>
-    <img src="img/mp/morphisms.png" alt="morphisms"/>
+<img src="img/mp/morphisms.png" alt="morphisms"/>
 </section>
-
 <section class="slide">
 	<h2>Definition: Category [Composition]</h2>
-    <p>Composition (∘): \(f:A\rightarrow B, g:B\rightarrow C\)
-        $$g\circ f:A\rightarrow C$$
-    </p>
-    <img src="img/mp/composition.png" alt="composition"/>
+<p>Composition (∘): \(f:A\rightarrow B, g:B\rightarrow C\)
+    $$g\circ f:A\rightarrow C$$
+</p>
+<img src="img/mp/composition.png" alt="composition"/>
 </section>
-
 <section class="slide">
 	<h2>Definition: Category [Laws]</h2>
-    <ul>
-        <li>for all \(X\), there is an \(id_X\), s.t. for all \(f:A\to B\)
-            <img src="img/mp/identity.png" alt="identity"/>
-        </li>
-        <li> Composition is associative:
-        <img src="img/mp/associativecomposition.png" alt="associative composition"/>
-        </li>
-    </ul>
+<ul>
+    <li>for all \(X\), there is an \(\id_X\), s.t. for all \(f:A\to B\)
+        <img src="img/mp/identity.png" alt="identity"/>
+    </li>
+    <li> Composition is associative:
+    <img src="img/mp/associativecomposition.png" alt="associative composition"/>
+    </li>
+</ul>
 </section>
-
 <section class="slide">
-<h2>Can this be a category? <span style="font-size: .5em">(\(id_X\) implicit)</span></h2>
-    <figure class="left">
-        <img src="img/mp/cat-example1.png" alt="Category example 1"/>
-        <figcaption class="slide">
-            <span class="green">OK</span>
-        </figcaption>
-    </figure>
+<h2>Can this be a category? <span style="font-size: .5em">(\(\id_X\) implicit)</span></h2>
+<figure class="left">
+    <img src="img/mp/cat-example1.png" alt="Category example 1"/>
+    <figcaption class="slide">
+        <span class="green">OK</span>
+    </figcaption>
+</figure>
+<figure class="left">
+    <img src="img/mp/cat-example2.png" alt="Category example 2"/>
+    <figcaption class="slide">
+        no candidate for \(g\circ f\)
+        <span class="red">NO</span>
+    </figcaption>
+</figure>
+<figure class="left">
+    <img src="img/mp/cat-example3.png" alt="Category example 3"/>
+    <figcaption class="slide">
+    <span class="green">YES</span>
+    </figcaption>
+</figure>
+<figure class="left">
+    <img src="img/mp/cat-example4.png" alt="Category example 4"/>
+    <figcaption class="slide">
+        no candidate for \(f:C\to B\)
+        <span class="red">NO</span>
+    </figcaption>
+</figure>
+<figure class="left">
+    <img src="img/mp/cat-example5.png" alt="Category example 5"/>
+    <figcaption class="slide">
+        \((h∘g)∘f=\id_B∘f=f≠h=h∘\id_A=h∘(g∘f)\)
+        <span class="red">NO</span>
+    </figcaption>
+</figure>
+</section>
+<section class="slide">
+<h2>Definition: Functor</h2>
 
-    <figure class="left">
-        <img src="img/mp/cat-example2.png" alt="Category example 2"/>
-        <figcaption class="slide">
-            no candidate for \(g\circ f\)
-            <span class="red">NO</span>
-        </figcaption>
-    </figure>
-    <figure class="left">
-        <img src="img/mp/cat-example3.png" alt="Category example 3"/>
-        <figcaption class="slide">
-        <span class="green">YES</span>
-        </figcaption>
-    </figure>
-    <figure class="left">
-        <img src="img/mp/cat-example4.png" alt="Category example 4"/>
-        <figcaption class="slide">
-            no candidate for \(f:C\to B\)
-            <span class="red">NO</span>
-        </figcaption>
-    </figure>
-    <figure class="left">
-        <img src="img/mp/cat-example5.png" alt="Category example 5"/>
-        <figcaption class="slide">
-            \((h∘g)∘f=idB∘f=f≠h=h∘idA=h∘(g∘f)\)
-            <span class="red">NO</span>
-        </figcaption>
-    </figure>
+<p> A functor is a mapping between two categories.
+Let \(\C\) and \(\D\) be two categories.
+A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
+<ul>
+    <li> Associate objects: \(A\in\ob{\C}\) to \(\F A \in\ob{\D}\) </li>
+    <li> Associate morphisms: \(f:A\to B\) to \(\F f : \F A \to \F B\)
+        such that
+        <ul>
+            <li>\( \F \id_X = \id_{\F X} \),</li>
+            <li>\( \F (g \circ_\C f) = \F g \circ_\D \F f \)</li>
+        </ul>
+    </li>
+</ul>
 </section>
 <!-- End slides. -->
 
