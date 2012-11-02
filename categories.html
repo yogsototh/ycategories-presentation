@@ -20,7 +20,7 @@
 
 	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
 
-	<link rel="stylesheet" href="themes/transition/horizontal-slide.css">
+	<link rel="stylesheet" href="themes/transition/fade.css">
 	<!-- Style theme. More available in /themes/style/ or create your own. -->
     <!-- <link rel="stylesheet" href="themes/style/web-2.0.css"> -->
     <link rel="stylesheet" href="themes/style/y/main.css" />
@@ -288,15 +288,35 @@
 Let \(\C\) and \(\D\) be two categories.
 A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 <ul>
-    <li> Associate objects: \(A\in\ob{\C}\) to \(\F A \in\ob{\D}\) </li>
-    <li> Associate morphisms: \(f:A\to B\) to \(\F f : \F A \to \F B\)
+    <li> Associate objects: \(A\in\ob{\C}\) to \(\F(A) \in\ob{\D}\) </li>
+    <li> Associate morphisms: \(f:A\to B\) to \(\F(f) : \F(A) \to \F(B)\)
         such that
         <ul>
-            <li>\( \F \id_X = \id_{\F X} \),</li>
-            <li>\( \F (g \circ_\C f) = \F g \circ_\D \F f \)</li>
+            <li>\( \F (\id_X) = \id_{\F(X)} \),</li>
+            <li>\( \F (g \circ_\C f) = \F(g) \circ_\D \F(f) \)</li>
         </ul>
     </li>
 </ul>
+</section>
+<section class="slide">
+<h2>Definition: Functor</h2>
+
+<img src="img/mp/functor.png" alt="Functor"/>
+</section>
+<section class="slide">
+<h2>Definition: Functor</h2>
+
+<img src="img/mp/functor-morphism.png" alt="Functor Morphisms"/>
+</section>
+<section class="slide">
+<h2>Definition: Functor</h2>
+
+<img src="img/mp/functor-morphism2.png" alt="Functor Morphisms"/>
+</section>
+<section class="slide">
+<h2>Definition: Functor</h2>
+
+<img src="img/mp/functor-morphism-color.png" alt="Functor Morphisms"/>
 </section>
 <!-- End slides. -->
 

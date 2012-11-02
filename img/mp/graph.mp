@@ -20,6 +20,21 @@ cyan           :=(0.164705882352941 ,0.631372549019608,0.596078431372549);
 green        :=(0.52156862745098  ,0.6              ,0.0);
 
 
+%%%%%%%%%%%%%%%%%%%%
+% Automata drawing %
+%%%%%%%%%%%%%%%%%%%%
+u:=.5cm; % unity
+gu:=5u;  % distance between states
+nodesize := 1.2u; %size of a node
+
+% return the middle of a path
+vardef midpoint(expr p)=
+    pair r;
+    r:=point 1/2length(p) of p;
+    r
+enddef;
+
+% shorten a path of length d at the beginning and the end
 vardef shorten(expr p,d) =
     path q,bcirc,ecirc;
     bcirc := fullcircle scaled d shifted point 0 of p;
@@ -28,11 +43,6 @@ vardef shorten(expr p,d) =
     q
 enddef;
 
-%%%%%%%%%%%%%%%%%%%%
-% Automata drawing %
-%%%%%%%%%%%%%%%%%%%%
-u:=.5cm; % unity
-gu:=5u;  % distance between states
 
 % -- Generic private functions
 
@@ -43,20 +53,10 @@ gu:=5u;  % distance between states
 vardef _edgeFullParam(expr posA,posB,inan,outan,nodesize) =
     path sub;
     if (posA = posB):
-        pair ba,ea,b;
-        path circ,p;
-        b :=posA shifted (0,nodesize);
-        p:=posA{1,1}..b..{1,-1}cycle;
-        circ:= fullcircle scaled nodesize shifted posA;
-        ba = circ intersectionpoint (subpath (0,1) of p);
-        ea = circ intersectionpoint (subpath (1,2) of p);
-        sub:= ba{1,1}..b..{1,-1}ea;
+        sub := loop(posA);
     else:
         path s; s := posA {dir inan} .. {dir outan} posB ;
-        pair bA;
-        pair bA; bA = (fullcircle scaled nodesize shifted posA) intersectionpoint s;
-        pair eB; eB = (fullcircle scaled nodesize shifted posB) intersectionpoint s;
-        sub := bA {dir inan} .. {dir outan} eB ;
+        sub := shorten(s,nodesize);
     fi
     sub
 enddef;
@@ -65,7 +65,7 @@ enddef;
 vardef _edgelabel(expr e,l) =
     picture ret;
     pair mid;
-    mid := point 1/2length(e) of e;
+    mid := midpoint(e);
     numeric an;
     an := angle (direction 1/2length(e) of e);
     picture lab;
@@ -102,15 +102,41 @@ enddef;
 % out angle from A is inan
 vardef edgeAngle(expr posA,posB,an) =
     path sub;
-    sub := _edgeFullParam(posA,posB,an,-an,1.2u);
+    sub := _edgeFullParam(posA,posB,an,-an,nodesize);
     sub
 enddef;
+
+% return the edge between points A and B.
+% out angle from A is an in angle to B is bn
+vardef edgeTwoAngles(expr posA,posB,an,bn) =
+    path sub;
+    sub := _edgeFullParam(posA,posB,an,bn,nodesize);
+    sub
+enddef;
+
+% return a loop
+vardef loop(expr a) =
+    pair b; b:=a shifted (0,u);
+    pair ba,ea;
+    path circ,p,s;
+    p:=a{1,1}..b..{1,-1}cycle;
+    circ:= fullcircle scaled nodesize shifted a;
+    ba = circ intersectionpoint (subpath (0,1) of p);
+    ea = circ intersectionpoint (subpath (1,2) of p);
+    s:= ba{1,1}..b..{1,-1}ea;
+    s
+enddef;
+
 % return the direct edge between A and B
 vardef edge(expr posA,posB) =
-    numeric an;
-    an := angle(posB-posA);
-    path sub;
-    sub := _edgeFullParam(posA,posB,an,an,1.2u);
+    if (posA = posB):
+        sub := loop(posA);
+    else:
+        numeric an;
+        an := angle(posB-posA);
+        path sub;
+        sub := _edgeFullParam(posA,posB,an,an,nodesize);
+    fi
     sub
 enddef;
 
@@ -131,6 +157,7 @@ vardef nl_edge(expr posA,posB) =
     sub
 enddef;
 
+
 def drawloop(expr a,b,l) =
     pair ba,ea;
     path circ,p,s;
@@ -144,17 +171,12 @@ def drawloop(expr a,b,l) =
 enddef;
 
 def drawLoop(expr a,l) =
-    pair b; b:=a shifted (0,u);
-    pair ba,ea;
-    path circ,p,s;
-    p:=a{1,1}..b..{1,-1}cycle;
-    circ:= fullcircle scaled 1.2u shifted a;
-    ba = circ intersectionpoint (subpath (0,1) of p);
-    ea = circ intersectionpoint (subpath (1,2) of p);
-    s:= ba{1,1}..b..{1,-1}ea;
+    path s;
+    s:=loop(a);
     drawarrow s;
-    label.top(l,b);
+    label.top(l,midpoint(s));
 enddef;
+
 def drawstate(expr pos) =
     draw pos withpen pencircle scaled 4bp;
 enddef;
@@ -177,7 +199,7 @@ def drawState(expr pos,l) =
 enddef;
 
 def drawEdgeWithDoubleAngle(expr posA,posB,l,inan,outan) =
-    _drawEdgeFullParam(posA,posB,l,inan,outan,1.2u);
+    _drawEdgeFullParam(posA,posB,l,inan,outan,nodesize);
 enddef;
 def drawEdgeWithAngle(expr posA,posB,l,an) =
     drawEdgeWithDoubleAngle(posA,posB,l,an,-an);
