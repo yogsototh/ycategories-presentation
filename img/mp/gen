@@ -59,7 +59,7 @@ for fpfic in $listfic; do
 
     print -- "[$PWD]: mpost $tmp && convert -density 300 $tmp.1 $png"
     mpost $tmp && \
-        convert -colorspace rgb -density 300 $eps $png && \
+        convert -colorspace rgb -density 600 $eps $png && \
         \cp -f $png $scriptdir && \
         \cp -f $tmp $old && \
         echo "updated"

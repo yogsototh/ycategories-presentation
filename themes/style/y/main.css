@@ -859,7 +859,7 @@
     .deck-container #social:hover {
       opacity: 1; }
   .deck-container .popularblock {
-    width: 30.3333%;
+    width: 30.333%;
     margin: 0 1.5%;
     float: left; }
     .deck-container .popularblock figure {
@@ -879,6 +879,9 @@
 .no-touch .deck-menu .slide:hover {
   background: #073642; }
 
+@media only screen and (max-width: 3400px) {
+  .deck-container {
+    font-size: 4em; } }
 @media only screen and (max-width: 1920px) {
   .deck-container {
     font-size: 3em; } }
