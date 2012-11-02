@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+if [[ ${0[0]} = '/' ]]; then
+    scriptdir="${0:h}"
+else
+    scriptdir="$PWD/${0:h}"
+fi
+
+{
+cat head.html
+cat slide-*.html
+cat tail.html
+} > $scriptdir/../categories.html
