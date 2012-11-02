@@ -8,6 +8,10 @@ fi
 
 {
 cat head.html
-cat slide-*.html
+for slide in slide-*.html; do
+    print -- '<section class="slide">'
+    cat $slide
+    print -- '</section>'
+done
 cat tail.html
 } > $scriptdir/../categories.html
