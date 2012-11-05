@@ -4,9 +4,8 @@ z2=(.5gu,-.75gu);
 z3=z0 shifted (2gu,0);
 z4=z3 shifted (0,-.75gu);
 
-drawblock(z0,(xpart z1,ypart z2),btex $\mathbf{C}$ etex);
-drawblock(z3,z4,btex $\mathbf{D}$ etex);
-
+drawblock(z0,(xpart z1,ypart z2),btex $\mathcal{C}$ etex);
+drawblock(z3,z4,btex $\mathcal{D}=\mathbf{F}(\mathcal{C})$ etex);
 
 drawEdge(z0,z0,btex $id_A$ etex);
 drawEdge(z1,z1,btex $id_B$ etex);
