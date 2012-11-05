@@ -43,6 +43,35 @@ vardef shorten(expr p,d) =
     q
 enddef;
 
+vardef block(expr tl,br) =
+    path p;
+    numeric d,shift;
+    d := 1/3u;
+    shift := 1.2u;
+    pair topleft,bottomright;
+    topleft := tl shifted (-shift,2shift);
+    bottomright := br shifted (shift,-.5shift);
+    pair tll,tlt,trt,trr,brr,brb,blb,bll;
+    tll := topleft shifted (-d,0);
+    tlt := topleft shifted (0,d);
+    trt := (xpart bottomright, ypart topleft) shifted (0,d);
+    trr := (xpart bottomright, ypart topleft) shifted (d,0);
+    brr := bottomright shifted (d,0);
+    brb := bottomright shifted (0,-d);
+    blb := (xpart topleft, ypart bottomright) shifted (0,-d);
+    bll := (xpart topleft, ypart bottomright) shifted (-d,0);
+    p:=tlt---trt..trr---brr..brb---blb..bll---tll..cycle;
+    p
+enddef;
+
+def drawblock(expr topleftpoint, bottomrightpoint, l)=
+    path b;
+    b:=block(topleftpoint,bottomrightpoint);
+    pair pos;
+    pos := point 0.5 of b;
+    draw b withcolor base01;
+    label.top(l,pos);
+enddef;
 
 % -- Generic private functions
 
@@ -180,6 +209,7 @@ enddef;
 def drawstate(expr pos) =
     draw pos withpen pencircle scaled 4bp;
 enddef;
+
 def drawedgeWithDoubleAngle(expr posA,posB,l,inan,outan) =
     _drawEdgeFullParam(posA,posB,l,inan,outan,6);
 enddef;
@@ -215,4 +245,9 @@ def drawEdge(expr posA,posB,l) =
 enddef;
 
 prologues:=3;
+verbatimtex
+%&latex
+\documentclass{minimal}
+\begin{document}
+etex
 

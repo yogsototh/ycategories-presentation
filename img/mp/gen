@@ -9,7 +9,14 @@ fi
 tmpdir=/tmp/mp
 [[ ! -d $tmpdir ]] && mkdir $tmpdir
 
-fics=( $scriptdir/*.mp(N) )
+typeset -a fics
+if (($#<1)); then
+    fics=( $scriptdir/*.mp(N) )
+else
+    for f in $@; do
+        fics=( $fics $scriptdir/$f )
+    done
+fi
 
 (( ${#fics} == 0 )) && {
     print -- "No .mp files indo $scriptdir"
@@ -55,7 +62,7 @@ for fpfic in $listfic; do
       | sed 's/red/s_red/g' \
       | sed 's/blue/s_blue/g' \
       | sed 's/green/s_green/g' > $tmp
-    [[ -e $old ]] && diff $tmp $old && { echo " identical"; continue }
+    [[ -e $old ]] && diff $tmp $old >/dev/null && { echo " identical"; continue }
 
     print -- "[$PWD]: mpost $tmp && convert -density 300 $tmp.1 $png"
     mpost $tmp && \

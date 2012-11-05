@@ -1,4 +1,12 @@
-z0=(0,0); z1=(gu,0); z2=(.5gu,-.75gu);
+z0=(0,0);
+z1=(gu,0);
+z2=(.5gu,-.75gu);
+z3=z0 shifted (2gu,0);
+z4=z3 shifted (0,-.75gu);
+
+drawblock(z0,(xpart z1,ypart z2),btex $\mathbf{C}$ etex);
+drawblock(z3,z4,btex $\mathbf{D}$ etex);
+
 drawState(z0,btex $A$ etex);
 drawState(z1,btex $B$ etex);
 drawState(z2,btex $C$ etex);
@@ -14,8 +22,6 @@ drawarrow edgeTwoAngles(z0,z2,-90,0);
 
 drawoptions(withcolor blue);
 
-z3=z0 shifted (2gu,0);
-z4=z3 shifted (0,-.75gu);
 drawState(z3,btex $X$ etex);
 drawState(z4,btex $Y$ etex);
 drawEdge(z3,z3,btex $id_X$ etex);
@@ -43,7 +49,7 @@ ix := midpoint( lx );
 iy := midpoint( ly );
 
 nodesize:= .5u;
-drawoptions(withcolor yellow withpen pencircle scaled 1.3bp dashed evenly);
+drawoptions(withcolor blue dashed evenly);
 
 drawarrow edgeAngle(ia,ix,35);
 drawarrow edgeAngle(ib,ix,20);

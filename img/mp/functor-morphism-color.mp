@@ -3,6 +3,10 @@ z1=(gu,0);
 z2=(.5gu,-.75gu);
 z3=z0 shifted (2gu,0);
 z4=z3 shifted (0,-.75gu);
+z5=.5[z1,z4] shifted (0,1gu);
+z6=z5 shifted (0,-1.8gu);
+
+draw z5--z6 withpen pencircle scaled 1.3bp dashed evenly;
 
 drawoptions(withcolor yellow);
 drawState(z0,btex $A$ etex);
