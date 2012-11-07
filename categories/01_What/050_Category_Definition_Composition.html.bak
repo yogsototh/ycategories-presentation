@@ -1,5 +1,0 @@
-<h2>Category Definition: Composition</h2>
-<p>Composition (∘): \(f:A\rightarrow B, g:B\rightarrow C\)
-    $$g\circ f:A\rightarrow C$$
-</p>
-<img src="img/mp/composition.png" alt="composition"/>
