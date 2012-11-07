@@ -117,7 +117,7 @@
     border-right: none; }
   .deck-container ul {
     list-style: none; }
-  .deck-container .corps ul li:before {
+  .deck-container ul li:before {
     content: "- "; }
   .deck-container ol, .deck-container ul {
     padding-left: 0;

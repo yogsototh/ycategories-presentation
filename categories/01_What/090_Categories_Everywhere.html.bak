@@ -1,0 +1,14 @@
+<h2>Categories Everywhere?</h2>
+
+<h3>\(\Set\)</h3>
+<ul>
+    <li> \(\ob{\Set}\) are sets</li>
+    <li> \(\hom{\Set}\) are functions</li>
+    <li> ∘ is functions composition </li>
+</ul>
+
+<ul class="slide">
+    <li>\(\ob{\Set}\) is a proper class ; not a set</li>
+    <li>\(\hom{E,F}\) is a set</li>
+    <li>\(\Set\) is a <em>locally small category</em></li>
+</ul>

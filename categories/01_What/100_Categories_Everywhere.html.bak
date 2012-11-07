@@ -1,0 +1,12 @@
+<h2>Categories Everywhere?</h2>
+
+<h3>Strings</h3>
+<ul>
+    <li> \(\ob{Str}\) is a singleton </li>
+    <li> \(\hom{Str}\) each string </li>
+    <li> ∘ is concatenation <code>(++)</code> </li>
+</ul>
+<ul>
+    <li> <code>"" ++ u = u = u ++ ""</code> </li>
+    <li> <code>(u ++ v) ++ w = u ++ (v ++ w)</code> </li>
+</ul>

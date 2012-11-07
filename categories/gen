@@ -10,13 +10,16 @@ fi
 cd $scriptdir
 
 # Convert all slides from markdown
-for slide in slide-*.md(.N); do
+for slide in **/*.md(.N); do
     pandoc -f markdown -t html $slide > ${slide:r}.html
 done
 
 {
 cat head.html
-for slide in slide-*.html(.N); do
+for slide in **/*.html(.N); do
+    case $slide in
+        head.html|tail.html) continue
+    esac
     print -- '<section class="slide">'
     cat $slide | sed 's#&amp;#<span class="and">&</span>#g'
     print -- '</section>'

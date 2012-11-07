@@ -41,6 +41,7 @@
 \(\newcommand{\id}{\mathrm{id}}\)
 \(\newcommand{\ob}[1]{\mathrm{ob}(#1)}\)
 \(\newcommand{\hom}[1]{\mathrm{hom}(#1)}\)
+\(\newcommand{\Set}{\mathbf{Set}}\)
 </div>
 
 
@@ -212,15 +213,22 @@
 <p>Young field: <b>1942–45</b>, Samuel Eilenberg <span class="and"><span class="and">&amp;</span></span> Saunders Mac Lane
 </section>
 <section class="slide">
-<h2>Plan</h2>
-<ul style="font-size: 2em">
-    <li>Why?</li>
-    <li class="yellow">What?</li>
-    <li>How?</li>
+<h2>Type Theory ⇒ Categories</h2>
+
+<ul>
+    <li>Type theory helped to remove paradoxes in Set Theory.</li>
+    <li>Prevent relations between different kind of objects.</li>
+    <li>Used in computer science</li>
+</ul>
+
+<ul>
+    <li>typed λ-calculus ⇒ cartesian closed categories</li>
+    <li>untyped λ-calculus ⇒ C-monoids (subclass of categories)</li>
+    <li>Martin-Löf type theories ⇒ locally cartesian closed categories</li>
 </ul>
 </section>
 <section class="slide">
-<h2>Definition: Category</h2>
+<h2>Category Definition</h2>
 
 <p> A Category \(\mathcal{C}\) is defined by:</p>
 <ul>
@@ -231,30 +239,43 @@
 </ul>
 </section>
 <section class="slide">
-<h2>Definition: Category</h2>
-
-<div style="position:relative">
-    <img               src="img/mp/objects.png"   alt="objects"   style="position:absolute;top:0;"/>
-    <img class="slide" src="img/mp/morphisms.png" alt="morphisms" style="position:absolute;top:0;"/>
-</div>
+<h2>Plan</h2>
+<ul style="font-size: 2em">
+    <li>Why?</li>
+    <li class="yellow">What?</li>
+    <li>How?</li>
+</ul>
 </section>
 <section class="slide">
-	<h2>Definition: Category [Composition]</h2>
+<h2>Category Definition: Objects</h2>
+
+<img src="img/mp/objects.png" alt="objects" />
+
+<p>\(\ob{\mathcal{C}}\) is a collection</p>
+</section>
+<section class="slide">
+<h2>Category Definition: Morphisms</h2>
+
+<img src="img/mp/morphisms.png" alt="morphisms"/>
+
+<p>\(\hom{A,B}\) is a collection</p>
+</section>
+<section class="slide">
+<h2>Category Definition: Composition</h2>
 <p>Composition (∘): \(f:A\rightarrow B, g:B\rightarrow C\)
     $$g\circ f:A\rightarrow C$$
 </p>
 <img src="img/mp/composition.png" alt="composition"/>
 </section>
 <section class="slide">
-	<h2>Definition: Category [Laws]</h2>
-<ul>
-    <li>for all \(X\), there is an \(\id_X\), s.t. for all \(f:A\to B\)
-        <img src="img/mp/identity.png" alt="identity"/>
-    </li>
-    <li> Composition is associative:
-    <img src="img/mp/associativecomposition.png" alt="associative composition"/>
-    </li>
-</ul>
+<h2>Category laws: neutral element</h2>
+<p>for all \(X\), there is an \(\id_X\), s.t. for all \(f:A\to B\):</p>
+<img src="img/mp/identity.png" alt="identity"/>
+</section>
+<section class="slide">
+<h2>Category laws: Associativity</h2>
+<p> Composition is associative:</p>
+<img src="img/mp/associativecomposition.png" alt="associative composition"/>
 </section>
 <section class="slide">
 <h2>Can this be a category? <span style="font-size: .5em">(\(\id_X\) implicit)</span></h2>
@@ -293,6 +314,36 @@
 </figure>
 </section>
 <section class="slide">
+<h2>Categories Everywhere?</h2>
+
+<h3>\(\Set\)</h3>
+<ul>
+    <li> \(\ob{\Set}\) are sets</li>
+    <li> \(\hom{\Set}\) are functions</li>
+    <li> ∘ is functions composition </li>
+</ul>
+
+<ul class="slide">
+    <li>\(\ob{\Set}\) is a proper class ; not a set</li>
+    <li>\(\hom{E,F}\) is a set</li>
+    <li>\(\Set\) is a <em>locally small category</em></li>
+</ul>
+</section>
+<section class="slide">
+<h2>Categories Everywhere?</h2>
+
+<h3>Strings</h3>
+<ul>
+    <li> \(\ob{Str}\) is a singleton </li>
+    <li> \(\hom{Str}\) each string </li>
+    <li> ∘ is concatenation <code>(++)</code> </li>
+</ul>
+<ul>
+    <li> <code>"" ++ u = u = u ++ ""</code> </li>
+    <li> <code>(u ++ v) ++ w = u ++ (v ++ w)</code> </li>
+</ul>
+</section>
+<section class="slide">
 <h2>Definition: Functor</h2>
 
 <p> A functor is a mapping between two categories.
@@ -317,12 +368,12 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 <section class="slide">
 <h2>Functor: Example</h2>
 
-<img src="img/mp/functor-morphism.png" alt="Functor Morphisms"/>
+<img src="img/mp/functor-morphism.png" alt="Functor"/>
 </section>
 <section class="slide">
 <h2>Functor: Example</h2>
 
-<img src="img/mp/functor-morphism-color.png" alt="Functor Morphisms"/>
+<img src="img/mp/functor-morphism-color.png" alt="Functor"/>
 </section>
 <!-- End slides. -->
 

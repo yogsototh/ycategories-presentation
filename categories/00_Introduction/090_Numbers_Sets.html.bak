@@ -1,0 +1,30 @@
+	<h2>Numbers ⇒ Sets</h2>
+<table>
+<tr>
+    <th>Numbers</th>
+    <th>Set Theory (∞)/Abstract Algebra/Topology</th>
+</tr>
+<tr>
+    <td>\(\mathbb{N}\): \((+,0)\)</td>
+    <td>Semigroups</td>
+</tr>
+<tr>
+    <td>\(\mathbb{Z}\): \((+,0,\times,1)\)</td>
+    <td>Rings</td>
+</tr>
+<tr>
+    <td>\(\mathbb{Q}\)</td>
+    <td>Fields</td>
+</tr>
+<tr>
+    <td>\(\mathbb{R}\)</td>
+    <td>Complete Fields (<em class="base01">topology</em>)</td>
+</tr>
+<tr>
+    <td>\(\mathbb{C}\)</td>
+    <td>Algebræ</td>
+</tr>
+<tr><td></td><td>Modules,Vector Spaces, Monoids, ...</td></tr>
+</table>
+<p><span class="and" style="visibility:hidden">&amp;</span> More <strong>general</strong>: more things are sets.<br/>
+    <span class="and">&amp;</span> More <strong>precise</strong>: clear distinction between concepts.</p>
