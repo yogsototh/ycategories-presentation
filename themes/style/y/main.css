@@ -8,26 +8,33 @@
   font-style: normal; }
 
 @font-face {
-  font-family: "ComputerModern";
-  src: url("fonts/cmunrb.eot");
-  src: local("☺"), url("fonts/cmunrb.svg") format("svg"), url("fonts/cmunrb.ttf") format("truetype");
+  font-family: "ComputerModernSansSerif";
+  src: url("fonts/cmunso.eot");
+  src: local("☺"), url("fonts/cmunso.svg") format("svg"), url("fonts/cmunso.ttf") format("truetype");
+  font-style: italic, oblique;
   font-weight: bold; }
 
 @font-face {
-  font-family: "ComputerModern";
-  src: url("fonts/cmunsl.eot");
-  src: local("☺"), url("fonts/cmunsl.svg") format("svg"), url("fonts/cmunsl.ttf") format("truetype");
+  font-family: "ComputerModernSansSerif";
+  src: url("fonts/cmunsx.eot");
+  src: local("☺"), url("fonts/cmunsx.svg") format("svg"), url("fonts/cmunsx.ttf") format("truetype");
+  font-weight: bold; }
+
+@font-face {
+  font-family: "ComputerModernSansSerif";
+  src: url("fonts/cmunsi.eot");
+  src: local("☺"), url("fonts/cmunsi.svg") format("svg"), url("fonts/cmunsi.ttf") format("truetype");
   font-style: italic, oblique; }
 
 @font-face {
-  font-family: "ComputerModern";
-  src: url("fonts/cmunrm.eot");
-  src: local("☺"), url("fonts/cmunrm.svg") format("svg"), url("fonts/cmunrm.ttf") format("truetype");
+  font-family: "ComputerModernSansSerif";
+  src: url("fonts/cmunss.eot");
+  src: local("☺"), url("fonts/cmunss.svg") format("svg"), url("fonts/cmunss.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
 .deck-container {
-  font-family: "ComputerModern", Georgia, serif;
+  font-family: "ComputerModernSansSerif", Helvetica, sans-serif;
   /* Header Numbering */ }
   .deck-container .base03 {
     color: #002b36; }
@@ -62,7 +69,7 @@
   .deck-container .green {
     color: #859900; }
   .deck-container div {
-    font-family: "ComputerModern", Georgia, serif; }
+    font-family: "ComputerModernSansSerif", Helvetica, sans-serif; }
   .deck-container .and {
     font-family: "Hoefler Text";
     font-style: italic;
@@ -132,7 +139,7 @@
     line-height: 1.5em;
     border-color: #586e75; }
   .deck-container body {
-    font-family: "ComputerModern", Georgia, Palatino, "Century Schoolbook L", "Times New Roman", Times, serif; }
+    font-family: "ComputerModernSansSerif", Helvetica, sans-serif; }
   .deck-container .article #afterheader {
     counter-reset: niv02; }
     .deck-container .article #afterheader h2 {
@@ -881,19 +888,13 @@
 
 @media only screen and (max-width: 3400px) {
   .deck-container {
-    font-size: 4em; } }
+    font-size: 5em; } }
 @media only screen and (max-width: 1920px) {
   .deck-container {
-    font-size: 3em; } }
+    font-size: 4em; } }
 @media only screen and (max-width: 1380px) {
   .deck-container {
     font-size: 2em; } }
-@media only screen and (max-width: 960px) {
-  .deck-container {
-    font-size: 1.5em; } }
-@media only screen and (max-width: 800px) {
-  .deck-container {
-    font-size: 1em; } }
 @media only screen and (max-width: 640px) {
   .deck-container {
     font-size: 1.5em; } }
