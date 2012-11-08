@@ -221,9 +221,9 @@
 </ul>
 </section>
 <section class="slide">
-<h2>Category Definition</h2>
+<h2>Category</h2>
 
-<p>A way of representing <em>things</em> and <em>ways to go between things</em>.</p>
+<p>A way of representing <strong><em>things</em></strong> and <strong><em>ways to go between things</em></strong>.</p>
 
 <p> A Category \(\mathcal{C}\) is defined by:</p>
 <ul>
@@ -234,21 +234,21 @@
 </ul>
 </section>
 <section class="slide">
-<h2>Category Definition: Objects</h2>
+<h2>Category: Objects</h2>
 
 <img src="categories/img/mp/objects.png" alt="objects" />
 
 <p>\(\ob{\mathcal{C}}\) is a collection</p>
 </section>
 <section class="slide">
-<h2>Category Definition: Morphisms</h2>
+<h2>Category: Morphisms</h2>
 
 <img src="categories/img/mp/morphisms.png" alt="morphisms"/>
 
 <p>\(\hom{A,B}\) is a collection</p>
 </section>
 <section class="slide">
-<h2>Category Definition: Composition</h2>
+<h2>Category: Composition</h2>
 <p>Composition (∘): \(f:A\rightarrow B, g:B\rightarrow C\)
     $$g\circ f:A\rightarrow C$$
 </p>
@@ -290,14 +290,14 @@
 <figure class="left">
     <img src="categories/img/mp/cat-example1.png" alt="Category example 1"/>
     <figcaption class="slide">
-        <span class="green">OK</span>
+        <span class="green">YES</span>
     </figcaption>
 </figure>
 <figure class="left">
     <img src="categories/img/mp/cat-example2.png" alt="Category example 2"/>
     <figcaption class="slide">
         no candidate for \(g\circ f\)
-        <span class="red">NO</span>
+        <br/><span class="red">NO</span>
     </figcaption>
 </figure>
 <figure class="left">
@@ -306,18 +306,23 @@
     <span class="green">YES</span>
     </figcaption>
 </figure>
+</section>
+<section class="slide">
+<h2>Can this be a category? <span style="font-size: .5em">(\(\id_X\) explicit)</span></h2>
 <figure class="left">
     <img src="categories/img/mp/cat-example4.png" alt="Category example 4"/>
     <figcaption class="slide">
         no candidate for \(f:C\to B\)
-        <span class="red">NO</span>
+        <br/><span class="red">NO</span>
     </figcaption>
 </figure>
-<figure class="left">
+<figure class="right" style="min-width: 59%">
     <img src="categories/img/mp/cat-example5.png" alt="Category example 5"/>
     <figcaption class="slide">
-        \((h∘g)∘f=\id_B∘f=f≠h=h∘\id_A=h∘(g∘f)\)
-        <span class="red">NO</span>
+    \((h∘g)∘f=\id_B∘f=f\)<br/>
+    \(h∘(g∘f)=h∘\id_A=h\)<br/>
+    but \(h \neq f\)<br/>
+    <span class="red">NO</span>
     </figcaption>
 </figure>
 </section>
@@ -374,13 +379,42 @@
 </ul>
 </section>
 <section class="slide">
+<h2>Degenerated Categories</h2>
+
+<img class="right" src="categories/img/mp/monoid.png" alt="Monoids are one object categories"/>
+<h3>Monoids</h3>
+<p>each Monoid \((M,e,◎): \ob{M}=\{∙\},\hom{M}=M,\circ = ◎\)</p>
+<p>one object</p>
+</section>
+<section class="slide">
 <h2>Number construction</h2>
 
 <h3>Each Numbers as a whole category</h3>
 <img src="categories/img/mp/numbers.png" alt="Each number as a category"/>
 </section>
 <section class="slide">
-<h2>Definition: Functor</h2>
+<h2>Degenerated Categories</h2>
+
+<h3>Preorders</h3>
+<p>each preorder \((P,≤): \ob{P}={P},\hom{x,y}=\{f_{x,y}\} ⇔ x≤y,f_{y,z} \circ f_{x,y} = f_{x,z} \)</p>
+<em>At most one morphism between two objects.</em>
+<img src="categories/img/mp/preorder.png" alt="preorder category"/>
+</section>
+<section class="slide">
+<h2>Degenerated Categories</h2>
+
+<img class="right" src="categories/img/mp/set.png" alt="Any set can be a category"/>
+<h3>Any Set</h3>
+<p>Any set \(E: \ob{E}=E, \hom{x,y}=\{x\} ⇔  x=y \)</p>
+<p><em>Only identities ; not so interesting</em></p>
+</section>
+<section class="slide">
+<h2>Functor: Example</h2>
+
+<img src="categories/img/mp/functor.png" alt="Functor"/>
+</section>
+<section class="slide">
+<h2>Functor</h2>
 
 <p> A functor is a mapping between two categories.
 Let \(\C\) and \(\D\) be two categories.
@@ -395,11 +429,6 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
         </ul>
     </li>
 </ul>
-</section>
-<section class="slide">
-<h2>Functor: Example</h2>
-
-<img src="categories/img/mp/functor.png" alt="Functor"/>
 </section>
 <section class="slide">
 <h2>Functor: Example</h2>

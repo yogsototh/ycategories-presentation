@@ -486,9 +486,8 @@
     text-align: center;
     margin: 0.5em 0;
     font-size: 0.7em; }
-  .deck-container figure.left {
-    max-width: 30%;
-    float: left; }
+  .deck-container figure.left, .deck-container figure.right {
+    max-width: 30%; }
   .deck-container img.clean {
     border: none;
     background-color: none;
@@ -584,10 +583,13 @@
   .deck-container ul.long li {
     margin-bottom: 1em; }
   .deck-container img.left {
-    float: left;
-    max-width: 20%;
+    max-width: 30%;
     margin-top: 0.6em;
     margin-right: 1em; }
+  .deck-container img.right {
+    max-width: 30%;
+    margin-top: 0.6em;
+    margin-left: 1em; }
   .deck-container img.inside {
     display: inline;
     vertical-align: middle; }
