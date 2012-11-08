@@ -204,6 +204,15 @@
 </ul>
 </section>
 <section class="slide">
+<h2>Category Theory in programming?</h2>
+
+<ul>
+    <li>Refactoring ⇔ Generalization</li>
+    <li>Identify pattern</li>
+    <li>New way of looking at your code</li>
+</ul>
+</section>
+<section class="slide">
 <h2>Plan</h2>
 <ul style="font-size: 2em">
     <li>Why?</li>
@@ -213,6 +222,8 @@
 </section>
 <section class="slide">
 <h2>Category Definition</h2>
+
+<p>A way of representing <em>things</em> and <em>ways to go between things</em>.</p>
 
 <p> A Category \(\mathcal{C}\) is defined by:</p>
 <ul>
@@ -252,6 +263,27 @@
 <h2>Category laws: Associativity</h2>
 <p> Composition is associative:</p>
 <img src="categories/img/mp/associativecomposition.png" alt="associative composition"/>
+</section>
+<section class="slide">
+<h2>Commutative diagrams</h2>
+
+<p>Two path with the same source and destination are equal.</p>
+<figure class="left" style="max-width: 40%;margin-left: 10%;">
+    <img
+      src="categories/img/mp/commutative-diagram-assoc.png"
+      alt="Commutative Diagram (Associativity)"/>
+    <figcaption>
+    \((h\circ g) \circ f = h \circ (g \circ f) \)
+    </figcaption>
+</figure>
+<figure class="right" style="max-width:31%;margin-right: 10%;">
+    <img
+      src="categories/img/mp/commutative-diagram-id.png"
+      alt="Commutative Diagram (Identity law)"/>
+    <figcaption>
+    \(id_B \circ f = f = f \circ id_A \)
+    </figcaption>
+</figure>
 </section>
 <section class="slide">
 <h2>Can this be a category? <span style="font-size: .5em">(\(\id_X\) implicit)</span></h2>
@@ -308,6 +340,18 @@
 <section class="slide">
 <h2>Categories Everywhere?</h2>
 
+<ul>
+    <li>\(\mathbf{Mon}: (monoids, monoid morphisms,\circ) \)</li>
+    <li>\(\mathbf{Vec}: (Vectorial spaces, linear functions,\circ) \)</li>
+    <li>\(\mathbf{Grp}: (groups, group morphisms,\circ) \)</li>
+    <li>\(\mathbf{Rng}: (rings, ring morphisms,\circ) \)</li>
+    <li>\(\mathbf{ML}: (types, terms, λg. λf. λx. g f x) \)</li>
+    <li>...</li>
+</ul>
+</section>
+<section class="slide">
+<h2>Smaller Examples</h2>
+
 <h3>Strings</h3>
 <ul>
     <li> \(\ob{Str}\) is a singleton </li>
@@ -318,6 +362,22 @@
     <li> <code>"" ++ u = u = u ++ ""</code> </li>
     <li> <code>(u ++ v) ++ w = u ++ (v ++ w)</code> </li>
 </ul>
+</section>
+<section class="slide">
+<h2>Finite Example?</h2>
+
+<h3>Graph</h3>
+<ul>
+    <li> \(\ob{Str}\) are vertices</li>
+    <li> \(\hom{Str}\) each path</li>
+    <li> ∘ is path concatenation</li>
+</ul>
+</section>
+<section class="slide">
+<h2>Number construction</h2>
+
+<h3>Each Numbers as a whole category</h3>
+<img src="categories/img/mp/numbers.png" alt="Each number as a category"/>
 </section>
 <section class="slide">
 <h2>Definition: Functor</h2>
