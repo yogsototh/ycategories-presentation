@@ -40,6 +40,11 @@
 \(\newcommand{\ob}[1]{\mathrm{ob}(#1)}\)
 \(\newcommand{\hom}[1]{\mathrm{hom}(#1)}\)
 \(\newcommand{\Set}{\mathbf{Set}}\)
+\(\newcommand{\Mon}{\mathbf{Mon}}\)
+\(newcommand{\Vec}{\mathbf{Vec}}\)
+\(newcommand{\Grp}{\mathbf{Grp}}\)
+\(newcommand{\Rng}{\mathbf{Rng}}\)
+\(newcommand{\ML}{\mathbf{ML}}\)
 </div>
 
 
@@ -48,22 +53,25 @@
 <section class="slide">
 <h1>Category Theory <span class="and"><span class="and">&amp;</span></span> Programming
     <div><author style="font-size: .4em"><em class="base01">by</em> Yann Esposito
-        <div>
-            <twitter style="font-size: .5em">
+        <div style="font-size=.5em">
+            <twitter>
                 <a href="http://twitter.com/yogsototh">@yogsototh</a>,
             </twitter>
-            <googleplus style="font-size: .5em">
+            <googleplus>
                 <a href="https://plus.google.com/117858550730178181663">+yogsototh</a>
             </googleplus>
         </div>
     </author></div>
+    <div class="base01" style="font-size: .25em; font-weight: 400; font-variant:italic">
+        HTML presentation: use arrows, space to navigate.
+    </div>
 </h1>
 </section>
 <section class="slide">
 <h2>Plan</h2>
 <ul style="font-size: 2em; font-weight:bold">
     <li><span class="yellow">Why?
-<ul class="base01" style="border-left: 2px solid; padding-left: 2em; font-size: .6em; float: right; width: 60%; font-weight: bold">
+<ul class="base01" style="border-left: 2px solid; padding-left: 1em; font-size: .6em; float: right; font-weight: bold; margin: 0 0 0 1em">
     <li>Math <span class="and"><span class="and">&amp;</span></span> Abstraction</li>
     <li>Programming <span class="and"><span class="and">&amp;</span></span> Abstraction</li>
     <li>Categories <span class="and"><span class="and">&amp;</span></span> Abstraction</li>
@@ -191,19 +199,26 @@
 <section class="slide">
 <h2>Programming <span class="and"><span class="and">&amp;</span></span> Abstraction</h2>
 
-<h3>Polymorphism on <code>* -> *</code> types <code>(>>=)</code></h3>
+<p>Polymorphism on type of kind <code>* -> *</code></p>
+<p>Example: <span class="red"><code>(>>=)</code></span> with <code>[a]</code> and <code>Maybe a</code></p>
+<pre class="haskell"><code>data Maybe a = Just a | Nothing</code></pre>
 
-<pre class="haskell"><code>data Maybe a = Just a | Nothing
-(Just 1) >>= \x -> (Just 2) >>= \y -> Just (x+y) = Just 3
-(Just 1) >>= \x ->  Nothing >>= \y -> Just (x+y) = Nothing
--- Lists [a]
-[1,2] >>= (\x -> [10,20] >>= (\y -> return (x+y))) = [11,21,12,22]
-[1,2] >>= (\x ->      [] >>= (\y -> return (x+y))) = []
--- More abstract
-(Just 2) >>= \x -> (Just (\z->z*z)) >>= \f -> Just (f x) = Just 4
-Just 2         :: Maybe Integer  -- in fact: Num a => Maybe a
-Just (\z->z*z) :: Maybe (a -> a) -- in fact: Num a => Maybe (a -> a)
-</code></pre>
+<pre class="haskell"><code>-- Maybe : Maybe Int >>= Int -> Maybe (Int -> Int) >>= (Int -> Int) -> Maybe Int
+(Just 2) <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Just 4
+ Nothing <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Nothing
+
+-- Lists: [a] : [Int] >>= Int -> [Int -> Int] >>= (Int -> Int) -> [Int]
+[1,2] <span class="red">&gt;&gt;=</span> \x -> [(+10),(+20)] <span class="red">&gt;&gt;=</span> \f -> [f x] = [11,21,12,22]
+   [] <span class="red">&gt;&gt;=</span> \x -> [(+10),(+20)] <span class="red">&gt;&gt;=</span> \f -> [f x] = []</code></pre>
+</section>
+<section class="slide">
+<h2>Programming Paradigms</h2>
+<table>
+    <tr><td>Impure</td><td>Choose the data structure, find an algorithm.</td></tr>
+    <tr><td>Untyped Pure</td><td>Choose the data structure, find an equation.</td></tr>
+    <tr><td>Typed Pure</td><td>Choose the Types and their laws, find the right operator</td></tr>
+</table>
+
 </section>
 <section class="slide">
 <h2>Sets ⇒? <span class="yellow">Categories</span></h2>
@@ -274,7 +289,7 @@ Just (\z->z*z) :: Maybe (a -> a) -- in fact: Num a => Maybe (a -> a)
 <ul style="font-size: 2em; font-weight: bold">
     <li>Why?</li>
     <li> <span class="yellow">What?</span>
-<ul class="base01" style="border-left: 2px solid; padding-left: 2em; font-size: .4em; float: right; width: 63%; font-weight: bold">
+<ul class="base01" style="border-left: 2px solid; padding-left: 1em; font-size: .6em; float: right; font-weight: bold; margin: 0 0 0 1em">
     <li>Category</li>
     <li>Intuition</li>
     <li>Examples</li>
@@ -314,14 +329,14 @@ Just (\z->z*z) :: Maybe (a -> a) -- in fact: Num a => Maybe (a -> a)
 </section>
 <section class="slide">
 <h2>Category: Composition</h2>
-<p>Composition (∘): \(f:A\rightarrow B, g:B\rightarrow C\)
-    $$g\circ f:A\rightarrow C$$
+<p>Composition (∘): \(f:A→B, g:B→C\)
+    $$g∘f:A\rightarrow C$$
 </p>
 <img src="categories/img/mp/composition.png" alt="composition"/>
 </section>
 <section class="slide">
 <h2>Category laws: neutral element</h2>
-<p>for all \(X\), there is an \(\id_X\), s.t. for all \(f:A\to B\):</p>
+<p>for all \(X\), there is an \(\id_X\), s.t. for all \(f:A→B\):</p>
 <img src="categories/img/mp/identity.png" alt="identity"/>
 </section>
 <section class="slide">
@@ -338,7 +353,7 @@ Just (\z->z*z) :: Maybe (a -> a) -- in fact: Num a => Maybe (a -> a)
       src="categories/img/mp/commutative-diagram-assoc.png"
       alt="Commutative Diagram (Associativity)"/>
     <figcaption>
-    \((h\circ g) \circ f = h \circ (g \circ f) \)
+    \((h∘g)∘f = h∘(g∘f) \)
     </figcaption>
 </figure>
 <figure class="right" style="max-width:31%;margin-right: 10%;">
@@ -346,12 +361,12 @@ Just (\z->z*z) :: Maybe (a -> a) -- in fact: Num a => Maybe (a -> a)
       src="categories/img/mp/commutative-diagram-id.png"
       alt="Commutative Diagram (Identity law)"/>
     <figcaption>
-    \(id_B \circ f = f = f \circ id_A \)
+    \(id_B∘f = f = f∘id_A \)
     </figcaption>
 </figure>
 </section>
 <section class="slide">
-<h2>Can this be a category? <span style="font-size: .5em">(\(\id_X\) implicit)</span></h2>
+<h2>Can this be a category?</h2>
 <figure class="left">
     <img src="categories/img/mp/cat-example1.png" alt="Category example 1"/>
     <figcaption class="slide">
@@ -361,7 +376,7 @@ Just (\z->z*z) :: Maybe (a -> a) -- in fact: Num a => Maybe (a -> a)
 <figure class="left">
     <img src="categories/img/mp/cat-example2.png" alt="Category example 2"/>
     <figcaption class="slide">
-        no candidate for \(g\circ f\)
+        no candidate for \(g∘f\)
         <br/><span class="red">NO</span>
     </figcaption>
 </figure>
@@ -373,11 +388,11 @@ Just (\z->z*z) :: Maybe (a -> a) -- in fact: Num a => Maybe (a -> a)
 </figure>
 </section>
 <section class="slide">
-<h2>Can this be a category? <span style="font-size: .5em">(\(\id_X\) explicit)</span></h2>
+<h2>Can this be a category?</h2>
 <figure class="left">
     <img src="categories/img/mp/cat-example4.png" alt="Category example 4"/>
     <figcaption class="slide">
-        no candidate for \(f:C\to B\)
+        no candidate for \(f:C→B\)
         <br/><span class="red">NO</span>
     </figcaption>
 </figure>
@@ -386,7 +401,7 @@ Just (\z->z*z) :: Maybe (a -> a) -- in fact: Num a => Maybe (a -> a)
     <figcaption class="slide">
     \((h∘g)∘f=\id_B∘f=f\)<br/>
     \(h∘(g∘f)=h∘\id_A=h\)<br/>
-    but \(h \neq f\)<br/>
+    but \(h≠f\)<br/>
     <span class="red">NO</span>
     </figcaption>
 </figure>
@@ -411,11 +426,11 @@ Just (\z->z*z) :: Maybe (a -> a) -- in fact: Num a => Maybe (a -> a)
 <h2>Categories Everywhere?</h2>
 
 <ul>
-    <li>\(\mathbf{Mon}: (monoids, monoid morphisms,\circ) \)</li>
-    <li>\(\mathbf{Vec}: (Vectorial spaces, linear functions,\circ) \)</li>
-    <li>\(\mathbf{Grp}: (groups, group morphisms,\circ) \)</li>
-    <li>\(\mathbf{Rng}: (rings, ring morphisms,\circ) \)</li>
-    <li>\(\mathbf{ML}: (types, terms, λg. λf. λx. g f x) \)</li>
+    <li>\(\Mon: (monoids, monoid morphisms,∘) \)</li>
+    <li>\(\Vec: (Vectorial spaces, linear functions,∘) \)</li>
+    <li>\(\Grp: (groups, group morphisms,∘) \)</li>
+    <li>\(\Rng: (rings, ring morphisms,∘) \)</li>
+    <li>\( \ML: (types, terms, λg. λf. λx. g f x) \)</li>
     <li>...</li>
 </ul>
 </section>
@@ -446,10 +461,11 @@ Just (\z->z*z) :: Maybe (a -> a) -- in fact: Num a => Maybe (a -> a)
 <section class="slide">
 <h2>Degenerated Categories</h2>
 
-<img class="right" src="categories/img/mp/monoid.png" alt="Monoids are one object categories"/>
+<img class="right" style="max-width:17%" src="categories/img/mp/monoid.png" alt="Monoids are one object categories"/>
 <h3>Monoids</h3>
 <p>each Monoid \((M,e,◎): \ob{M}=\{∙\},\hom{M}=M,\circ = ◎\)</p>
 <p>one object</p>
+<p>Examples: <code>(Integer,0,+)</code>, <code>(Integer,1,*)</code>, <code>(Strings,"",++)</code>, <code>(Lists,[],++)</code>, ...
 </section>
 <section class="slide">
 <h2>Number construction</h2>
@@ -474,11 +490,6 @@ Just (\z->z*z) :: Maybe (a -> a) -- in fact: Num a => Maybe (a -> a)
 <p><em>Only identities ; not so interesting</em></p>
 </section>
 <section class="slide">
-<h2>Functor: Example</h2>
-
-<img src="categories/img/mp/functor.png" alt="Functor"/>
-</section>
-<section class="slide">
 <h2>Functor</h2>
 
 <p> A functor is a mapping between two categories.
@@ -496,12 +507,17 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 </ul>
 </section>
 <section class="slide">
-<h2>Functor: Example</h2>
+<h2>Functor Example (ob → ob)</h2>
+
+<img src="categories/img/mp/functor.png" alt="Functor"/>
+</section>
+<section class="slide">
+<h2>Functor Example (hom → hom)</h2>
 
 <img src="categories/img/mp/functor-morphism.png" alt="Functor"/>
 </section>
 <section class="slide">
-<h2>Functor: Example</h2>
+<h2>Functor Example</h2>
 
 <img src="categories/img/mp/functor-morphism-color.png" alt="Functor"/>
 </section>

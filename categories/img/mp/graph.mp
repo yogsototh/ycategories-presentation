@@ -145,7 +145,7 @@ enddef;
 
 % return a loop
 vardef loop(expr a) =
-    pair b; b:=a shifted (0,u);
+    pair b; b:=a shifted (0,nodesize);
     pair ba,ea;
     path circ,p,s;
     p:=a{1,1}..b..{1,-1}cycle;

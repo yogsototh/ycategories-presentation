@@ -1,15 +1,13 @@
 <h2>Programming <span class="and">&amp;</span> Abstraction</h2>
 
-<h3>Polymorphism on <code>* -> *</code> types <code>(>>=)</code></h3>
+<p>Polymorphism on type of kind <code>* -> *</code></p>
+<p>Example: <span class="red"><code>(>>=)</code></span> with <code>[a]</code> and <code>Maybe a</code></p>
+<pre class="haskell"><code>data Maybe a = Just a | Nothing</code></pre>
 
-<pre class="haskell"><code>data Maybe a = Just a | Nothing
-(Just 1) >>= \x -> (Just 2) >>= \y -> Just (x+y) = Just 3
-(Just 1) >>= \x ->  Nothing >>= \y -> Just (x+y) = Nothing
--- Lists [a]
-[1,2] >>= (\x -> [10,20] >>= (\y -> return (x+y))) = [11,21,12,22]
-[1,2] >>= (\x ->      [] >>= (\y -> return (x+y))) = []
--- More abstract
-(Just 2) >>= \x -> (Just (\z->z*z)) >>= \f -> Just (f x) = Just 4
-Just 2         :: Maybe Integer  -- in fact: Num a => Maybe a
-Just (\z->z*z) :: Maybe (a -> a) -- in fact: Num a => Maybe (a -> a)
-</code></pre>
+<pre class="haskell"><code>-- Maybe : Maybe Int >>= Int -> Maybe (Int -> Int) >>= (Int -> Int) -> Maybe Int
+(Just 2) <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Just 4
+ Nothing <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Nothing
+
+-- Lists: [a] : [Int] >>= Int -> [Int -> Int] >>= (Int -> Int) -> [Int]
+[1,2] <span class="red">&gt;&gt;=</span> \x -> [(+10),(+20)] <span class="red">&gt;&gt;=</span> \f -> [f x] = [11,21,12,22]
+   [] <span class="red">&gt;&gt;=</span> \x -> [(+10),(+20)] <span class="red">&gt;&gt;=</span> \f -> [f x] = []</code></pre>
