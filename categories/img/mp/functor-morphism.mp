@@ -77,12 +77,6 @@ mh := midpoint(h);
 mi := midpoint(i);
 mk := midpoint(k);
 
-path lx,ly;
-lx := edge(z3,z3);
-ly := edge(z4,z4);
-pair ix,iy;
-ix := midpoint( lx );
-
 nodesize:= .5u;
 
 drawoptions(withcolor blue dashed evenly withpen pencircle scaled 1);
