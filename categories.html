@@ -45,6 +45,7 @@
 \(\newcommand{\Grp}{\mathbf{Grp}}\)
 \(\newcommand{\Rng}{\mathbf{Rng}}\)
 \(\newcommand{\ML}{\mathbf{ML}}\)
+\(\newcommand{\Hask}{\mathbf{Hask}}\)
 </div>
 
 
@@ -84,27 +85,26 @@
 <section class="slide">
 <h2>Abstraction</h2>
 <p>A common concept you see often in multiple instances.</p>
-<div class="slide">
+<div>
     <p>Numbers: 1,2,3,...  <em class="small">3400 BC, real numbers 760 BC</em></p>
     <figure class="left">
         <img src="categories/img/tally-count.png" style="height:5em" alt="Aboriginal Tally System"/>
         <figcaption>Aboriginal Tally System</figcaption>
     </figure>
-    <div class="slide">
-        <div class="left">amelioration ⇒</div>
+    <div>
+        <div class="left" style="left-margin: 1em">amelioration ⇒</div>
         <figure class="left">
             <img src="categories/img/first-real-numbers.png" style="height:5em" alt="Mesopotamian Numbers"/>
             <figcaption>Mesopotamian base 60 system</figcaption>
         </figure>
     </div>
     <div class="flush"></div>
-    <div class="slide">
+    <div>
         Operators: <b>=, &lt;, &gt;, +, ×, ...</b>
     </div>
 </section>
 <section class="slide">
-<h2>Abstraction</h2>
-<h3>Generalizations</h3>
+<h2>Generalization</h2>
 <div class="right">
 <img src="categories/img/egyptian-hieroglyphics.jpg" alt="Egyptian Fractions"/>
 <img src="categories/img/negative-numbers.jpg" alt="Negative Numbers (Chinese)"/>
@@ -122,7 +122,7 @@
 <p><b>More "operator" to manipulate numbers</b></p>
 </section>
 <section class="slide">
-	<h2>Numbers ⇒ Sets</h2>
+<h2>Numbers ⇒ Sets</h2>
 <table>
 <tr>
     <th>Numbers</th>
@@ -164,42 +164,39 @@
     </li><li>Falling dominos: synchronization is a challenge.
     </li>
 </ul>
-<p>Natural Abstraction: Objects, Classes...</p>
+<p>Natural Abstraction: pointers, variables, loop, Objects, Classes...</p>
 </section>
 <section class="slide">
-<h2>Programming <span class="and"><span class="and">&amp;</span></span> Abstraction</h2>
+<h2>Untyped Pure Programming</h2>
 
-<h3>Untyped Pure Programming</h3>
-<ul>
-         <li>Time is irrelevant by default.
-    </li><li>Mostly static pipe-like construction.
-    </li><li>All pipes are round:
-    </li><li>λf.(λx.f (x x)) (λx.f (x x))
-    </li>
-</ul>
-<p>Natural abstraction: higher level functions</p>
+  <ul><li>  Time is irrelevant by default.
+ </li><li> Mostly static pipe-like construction.
+ </li><li> All pipes are round:
+     <ul><li> Y = λf.(λx.f (x x)) (λx.f (x x))
+    </li><li> Y g = g (Y g)
+   </li></ul>
+</li></ul>
+
+<p>Natural abstraction: higher level functions <span class="and"><span class="and">&amp;</span></span> equations</p>
 </section>
 <section class="slide">
-<h2>Programming <span class="and"><span class="and">&amp;</span></span> Abstraction</h2>
-
-<h3>Strongly Typed Pure Programming</h3>
+<h2>Strongly Typed Pure Programming</h2>
 <ul>
 <li>Add specific forms on pipes.</li>
 <li>Pipe can contains other pipes.</li>
 </ul>
-<p>Natural abstraction: higher level functions depending on type:</p>
+<p>Natural abstraction: Polymorphic higher level functions.</p>
 </section>
 <section class="slide">
-<h2>Programming <span class="and"><span class="and">&amp;</span></span> Abstraction</h2>
+<h2>Polymorphism: <code>mappend</code></h2>
 
-<h3>Polymorphism of <code>(<>)</code></h3>
+<h3><code>(<>) = `mappend`</code></h3>
 <pre class="haskell"><code>"abc" <>  "def" = "abcdef"
 ("abc","xyz") <> ("ABC","XYZ") = ("abcABC","xyzXYZ")</code></pre>
 </section>
 <section class="slide">
-<h2>Programming <span class="and"><span class="and">&amp;</span></span> Abstraction</h2>
+<h2>Polymorphism: <code>(>>=)</code></h2>
 
-<p>Polymorphism on type of kind <code>* -> *</code></p>
 <p>Example: <span class="red"><code>(>>=)</code></span> with <code>[a]</code> and <code>Maybe a</code></p>
 <pre class="haskell"><code>data Maybe a = Just a | Nothing</code></pre>
 
@@ -477,7 +474,7 @@
 <h2>Degenerated Categories</h2>
 
 <h3>Preorders</h3>
-<p>each preorder \((P,≤): \ob{P}={P},\hom{x,y}=\{f_{x,y}\} ⇔ x≤y,f_{y,z} \circ f_{x,y} = f_{x,z} \)</p>
+<p>each preorder \((P,≤): \ob{P}={P},\hom{x,y}=\{{x≤y}\} ⇔ x≤y,f_{y,z} \circ f_{x,y} = f_{x,z} \)</p>
 <em>At most one morphism between two objects.</em>
 <img src="categories/img/mp/preorder.png" alt="preorder category"/>
 </section>
@@ -520,6 +517,76 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 <h2>Functor Example</h2>
 
 <img src="categories/img/mp/functor-morphism-color.png" alt="Functor"/>
+</section>
+<section class="slide">
+<h2>Plan</h2>
+<ul style="font-size: 2em; font-weight:bold">
+    <li>Why?</li>
+    <li>What?</li>
+    <li><span class="yellow">How?
+        <ul class="base01" style="border-left: 2px solid; padding-left: 1em; font-size: .6em; float: right; font-weight: bold; margin: -2em 0 0 1em">
+            <li>\(\Hask\) category
+            </li><li> Functors
+            </li><li> Monads
+            </li><li> Arrows
+            </li><li> κατα-morphisms
+            </li></ul>
+    </li>
+</ul>
+</section>
+<section class="slide">
+<h2>Hask</h2>
+
+<p>Category \(\Hask\):</p>
+
+<ul><li>
+\(ob(\Hask) = \) Haskell types
+</li><li>
+\(hom(\Hask) = \) Haskell functions
+</li><li>
+∘ = <code>(.)</code> Haskell function composition
+</li></ul>
+
+<p>Forget glitches because of <code>undefined</code>.</p>
+</section>
+<section class="slide">
+<h2>Haskell Endofunctors</h2>
+
+In \(\Hask\) a functor should transform Haskell types and functions.
+
+<pre class="nohighlight"><code>
+       F
+Hask =====> F Hask
+</code></pre>
+
+If F Hask included in Hask. F is said to be an endofunctor.
+
+<pre class="nohighlight"><code>
+Hask loop F Hask
+
+Int ===> F Int
+a -> b ====> F (a -> b)
+...
+</code></pre>
+
+In Haskell type of type * -> * works naturally on types.
+
+<pre class="haskell"><code>
+data Maybe a = Just a | Nothing -- For example
+x :: Maybe Int
+x = Just 10
+y :: Maybe Int
+y = Nothing
+z :: Maybe ([a] -> a)
+z = Just head
+
+data F a = Cons Char a | Nil -- For example
+toto,titi,tata :: F Int
+toto = Cons 'c' 10
+titi = Nil
+tata :: F ([a] -> a)
+tata = Cons 'a' head
+</code></pre>
 </section>
 <!-- End slides. -->
 
