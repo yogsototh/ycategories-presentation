@@ -4,17 +4,17 @@ B=A shifted (-1.5gu,0);
 C=A shifted (1.5gu,0);
 D=C shifted (1.5gu,0);
 
-drawState(A, btex $A$ etex);
-drawState(B, btex $B$ etex);
-drawState(C, btex $C$ etex);
-drawState(D, btex $D$ etex);
+drawState(A, "A");
+drawState(B, "B");
+drawState(C, "C");
+drawState(D, "D");
 
-drawEdge(B,A,btex $A \leq B$ etex);
-drawEdge(C,A,btex $A \leq C$ etex);
-drawEdge(D,C,btex $C \leq D$ etex);
-drawEdgeWithAngle(D,A,btex $A \leq D$ etex, -135);
+drawEdge(B,A,"A \leq B");
+drawEdge(C,A,"A \leq C");
+drawEdge(D,C,"C \leq D");
+drawEdgeAngle(D,A,"A \leq D", -135);
 
-drawEdge(A,A,btex $A \leq A$ etex);
-drawEdge(B,B,btex $B \leq B$ etex);
-drawEdge(C,C,btex $C \leq C$ etex);
-drawEdge(D,D,btex $D \leq D$ etex);
+drawEdge(A,A,"A \leq A");
+drawEdge(B,B,"B \leq B");
+drawEdge(C,C,"C \leq C");
+drawEdge(D,D,"D \leq D");

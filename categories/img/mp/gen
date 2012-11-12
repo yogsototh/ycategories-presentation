@@ -65,7 +65,7 @@ for fpfic in $listfic; do
     [[ -e $old ]] && diff $tmp $old >/dev/null && { echo " identical"; continue }
 
     print -- "[$PWD]: mpost $tmp && convert -density 300 $tmp.1 $png"
-    mpost $tmp && \
+    mpost --tex=latex $tmp && \
         convert -colorspace rgb -density 600 $eps $png && \
         \cp -f $png $scriptdir && \
         \cp -f $tmp $old && \

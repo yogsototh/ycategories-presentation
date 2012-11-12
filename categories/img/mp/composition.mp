@@ -9,27 +9,27 @@ z4=(0.5gu,-.5gu);
 z5=(1.5gu,-.5gu);
 z6=(2.5gu,-.5gu);
 
-drawState(z0, btex $A$ etex);
-drawState(z1, btex $B$ etex);
+drawState(z0, "A");
+drawState(z1, "B");
 
 
-drawState(z2, btex $B$ etex);
-drawState(z3, btex $C$ etex);
+drawState(z2, "B");
+drawState(z3, "C");
 
-drawState(z4, btex $A$ etex);
-drawState(z5, btex $B$ etex);
-drawState(z6, btex $C$ etex);
+drawState(z4, "A");
+drawState(z5, "B");
+drawState(z6, "C");
 
 
 drawoptions(withcolor red);
-drawEdge(z0,z1, btex $f$ etex);
-drawEdge(z4,z5, btex $f$ etex);
+drawEdge(z0,z1, "f");
+drawEdge(z4,z5, "f");
 
 drawoptions(withcolor blue);
-drawEdge(z2,z3, btex $g$ etex);
-drawEdge(z5,z6, btex $g$ etex);
+drawEdge(z2,z3, "g");
+drawEdge(z5,z6, "g");
 
 
 drawoptions(withcolor yellow);
-drawEdgeWithAngle(z4,z6, btex $g\circ f$ etex, -30);
+drawEdgeAngle(z4,z6, "g\circ f", -30);
 

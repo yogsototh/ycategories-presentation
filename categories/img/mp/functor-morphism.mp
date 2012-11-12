@@ -4,35 +4,35 @@ z2=(.5gu,-.75gu);
 z3=z0 shifted (2gu,0);
 z4=z3 shifted (0,-.75gu);
 
-drawblock(z0,(xpart z1,ypart z2),btex $\mathcal{C}$ etex);
-drawblock(z3,z4,btex $\mathcal{D}=\mathbf{F}(\mathcal{C})$ etex);
+drawblock(z0,(xpart z1,ypart z2),"\mathcal{C}");
+drawblock(z3,z4,"\mathcal{D}=\mathbf{F}(\mathcal{C})");
 
-drawState(z0,btex $A$ etex);
-drawState(z1,btex $B$ etex);
-drawState(z2,btex $C$ etex);
+drawState(z0,"A");
+drawState(z1,"B");
+drawState(z2,"C");
 
-drawState(z4,btex $Y$ etex);
-drawState(z3,btex $X$ etex);
+drawState(z4,"Y");
+drawState(z3,"X");
 
 
 drawoptions(withcolor green withpen pencircle scaled 1);
-drawEdge(z2,z2,btex $id_C$ etex);
+drawEdge(z2,z2,"id_C");
 
 
 drawoptions(withcolor magenta withpen pencircle scaled 1);
-drawarrow edgeTwoAngles(z1,z2,-90,180);
-drawarrow edgeTwoAngles(z0,z2,-90,0);
-drawarrow edgeTwoAngles(z3,z4,-35,35+180);
+drawarrow edgeFull(z1,z2,-90,180);
+drawarrow edgeFull(z0,z2,-90,0);
+drawarrow edgeFull(z3,z4,-35,35+180);
 
 drawoptions(withcolor blue withpen pencircle scaled 1);
-drawEdge(z0,z0,btex $id_A$ etex);
-drawEdge(z1,z1,btex $id_B$ etex);
+drawEdge(z0,z0,"id_A");
+drawEdge(z1,z1,"id_B");
 drawarrow edgeAngle(z0,z1,35);
 drawarrow edgeAngle(z1,z0,-145);
-drawEdge(z3,z3,btex $id_X$ etex);
+drawEdge(z3,z3,"id_X");
 
 drawoptions(withcolor green withpen pencircle scaled 1);
-drawEdge(z4,z4,btex $id_Y$ etex);
+drawEdge(z4,z4,"id_Y");
 
 % drawarrow edgeAngle(z0,z3,45);
 % drawarrow edge(z1,z3);
@@ -64,11 +64,11 @@ drawarrow edgeAngle(ic,iy,0);
 path f,g,h,i;
 f:= edgeAngle(z0,z1,35);
 g:= edgeAngle(z1,z0,-145);
-h:= edgeTwoAngles(z1,z2,-90,180);
-i:= edgeTwoAngles(z0,z2,-90,0);
+h:= edgeFull(z1,z2,-90,180);
+i:= edgeFull(z0,z2,-90,0);
 
 path k;
-k:= edgeTwoAngles(z3,z4,-35,35+180);
+k:= edgeFull(z3,z4,-35,35+180);
 
 pair mf,mg,mh,mi,mk;
 mf := midpoint(f);

@@ -43,6 +43,7 @@ vardef shorten(expr p,d) =
     q
 enddef;
 
+% Return a rounded box around top left and bottom right point.
 vardef block(expr tl,br) =
     path p;
     numeric d,shift;
@@ -64,13 +65,20 @@ vardef block(expr tl,br) =
     p
 enddef;
 
+% b being the path of the block
+vardef blockLabelPosition(expr b)=
+    pos := point 0.5 of b;
+    pos
+enddef;
+
+% draw a block with the right math-mode tex label on top of it
 def drawblock(expr topleftpoint, bottomrightpoint, l)=
     path b;
     b:=block(topleftpoint,bottomrightpoint);
     pair pos;
-    pos := point 0.5 of b;
+    pos := blockLabelPosition(b);
     draw b withcolor base01;
-    label.top(l,pos);
+    label.top(TEX("$"&l&"$"),pos);
 enddef;
 
 % -- Generic private functions
@@ -79,19 +87,16 @@ enddef;
 % out angle from A is inan
 % in angle to B is outan
 % nodesize is the size of the node
-vardef _edgeFullParam(expr posA,posB,inan,outan,nodesize) =
+vardef edgeFull(expr posA,posB,inan,outan) =
     path sub;
-    if (posA = posB):
-        sub := loop(posA);
-    else:
-        path s; s := posA {dir inan} .. {dir outan} posB ;
-        sub := shorten(s,nodesize);
-    fi
+    path s;
+    s := posA {dir inan} .. {dir outan} posB ;
+    sub := shorten(s,nodesize);
     sub
 enddef;
 
 % return a picture of the label l for edge e
-vardef _edgelabel(expr e,l) =
+vardef edgeLabel(expr e,l) =
     picture ret;
     pair mid;
     mid := midpoint(e);
@@ -99,13 +104,13 @@ vardef _edgelabel(expr e,l) =
     an := angle (direction 1/2length(e) of e);
     picture lab;
     pair height,width;
-    lab:=thelabel(l,origin);
-    height:=(0,ypart (ulcorner l - llcorner l));
-    width:=(ypart (urcorner l - ulcorner l),0);
+    lab:=thelabel(TEX("$"&l&"$"),origin);
+    height:=(0,ypart (ulcorner lab - llcorner lab));
+    width:=(xpart (urcorner lab - ulcorner lab),0);
     if (an>-35) and (an<35):
         ret:=lab shifted height rotated an shifted mid;
     elseif (an>145) or (an<-145):
-        ret:=thelabel(l,origin) shifted height rotated (an+180) shifted mid;
+        ret:=lab shifted height rotated (an+180) shifted mid;
     elseif (an>75) and (an<120):
         ret:=lab shifted mid shifted -width;
     elseif (an>-120) and (an<-75):
@@ -116,36 +121,24 @@ vardef _edgelabel(expr e,l) =
     ret
 enddef;
 
-% draw an edge
-def _drawEdgeFullParam(expr posA,posB,l,inan,outan,nodesize) =
-    path sub;
-    picture lab;
-    sub := _edgeFullParam(posA,posB,inan,outan,nodesize);
-    drawarrow sub;
-    draw _edgelabel(sub,l);
-enddef;
 
 
 % --- LABELED GRAPHS ---
 % return the edge between points A and B.
 % out angle from A is inan
 vardef edgeAngle(expr posA,posB,an) =
-    path sub;
-    sub := _edgeFullParam(posA,posB,an,-an,nodesize);
-    sub
+    path res;
+    res := edgeFull(posA,posB,an,-an);
+    res
 enddef;
 
-% return the edge between points A and B.
-% out angle from A is an in angle to B is bn
-vardef edgeTwoAngles(expr posA,posB,an,bn) =
-    path sub;
-    sub := _edgeFullParam(posA,posB,an,bn,nodesize);
-    sub
-enddef;
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                              %%
+%%           LOOPS              %%
+%%                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % return a loop
-vardef loop(expr a) =
-    pair b; b:=a shifted (0,nodesize);
+vardef loopFull(expr a,b,an) =
     pair ba,ea;
     path circ,p,s;
     p:=a{1,1}..b..{1,-1}cycle;
@@ -153,104 +146,120 @@ vardef loop(expr a) =
     ba = circ intersectionpoint (subpath (0,1) of p);
     ea = circ intersectionpoint (subpath (1,2) of p);
     s:= ba{1,1}..b..{1,-1}ea;
-    s
+    s rotated an
+enddef;
+
+vardef loopPoint(expr a,b) =
+    loopFull(a,b,0)
+enddef;
+
+vardef loopAngle(expr a,an) =
+    loopFull(a,a shifted (0,nodesize),an)
+enddef;
+
+vardef loop(expr a) =
+    loopFull(a,a shifted (0,nodesize),0)
 enddef;
 
 % return the direct edge between A and B
 vardef edge(expr posA,posB) =
+    numeric an;
+    path sub;
     if (posA = posB):
         sub := loop(posA);
     else:
-        numeric an;
         an := angle(posB-posA);
-        path sub;
-        sub := _edgeFullParam(posA,posB,an,an,nodesize);
+        sub := edgeFull(posA,posB,an,an);
     fi
     sub
 enddef;
 
-% --- UNLABELED GRAPHS ---
-% return the edge between points A and B.
-% out angle from A is inan
-vardef nl_edgeAngle(expr posA,posB,an) =
-    path sub;
-    sub := _edgeFullParam(posA,posB,an,-an,6);
-    sub
+def drawLoopPoint(expr a,b,l) =
+    path s;
+    s:=loopPoint(a,b);
+    drawarrow s;
+    label.top(TEX("$"&l&"$"),midpoint(s));
 enddef;
-% return the direct edge between A and B
-vardef nl_edge(expr posA,posB) =
-    numeric an;
-    an := angle(posB-posA);
-    path sub;
-    sub := _edgeFullParam(posA,posB,an,an,6);
-    sub
-enddef;
-
-vardef largeloop(expr a,b) =
-    pair ba,ea;
-    path circ,p,s;
-    p:=a{1,1}..b..{1,-1}cycle;
-    circ:= fullcircle scaled nodesize shifted a;
-    ba = circ intersectionpoint (subpath (0,1) of p);
-    ea = circ intersectionpoint (subpath (1,2) of p);
-    s:= ba{1,1}..b..{1,-1}ea;
-    s
-enddef;
-
-def drawloop(expr a,b,l) =
-    drawarrow largeloop(a,b);
-    label.top(l,b);
-enddef;
-
 def drawLoop(expr a,l) =
     path s;
     s:=loop(a);
     drawarrow s;
-    label.top(l,midpoint(s));
+    label.top(TEX("$"&l&"$"),midpoint(s));
 enddef;
 
 def drawstate(expr pos) =
     draw pos withpen pencircle scaled 4bp;
 enddef;
 
-def drawedgeWithDoubleAngle(expr posA,posB,l,inan,outan) =
-    _drawEdgeFullParam(posA,posB,l,inan,outan,6);
-enddef;
-
-def drawedgeangle(expr posA,posB,l,an) =
-    _drawEdgeFullParam(posA,posB,l,an,-an,6);
-enddef;
-def drawedge(expr posA,posB,l) =
-    numeric an;
-    an=angle(posB-posA);
-    _drawEdgeFullParam(posA,posB,l,an,an,6);
-enddef;
-
+% draw some state with some label insize
 def drawState(expr pos,l) =
-    label(l,pos);
+    % Draw the circle
     draw fullcircle scaled u shifted pos;
+
+    % Draw the label with the right size
+    picture lab,reslab;
+    numeric height,width;
+    numeric size;
+    lab=thelabel(TEX("$"&l&"$"),pos);
+    height:=ypart (ulcorner lab - llcorner lab);
+    width :=xpart (urcorner lab - ulcorner lab);
+    size := sqrt(height*height + width*width);
+    if size>u:
+        reslab:=lab scaled (u/size);
+    else:
+        reslab:=lab;
+    fi
+    draw reslab;
 enddef;
 
-def drawEdgeWithDoubleAngle(expr posA,posB,l,inan,outan) =
-    _drawEdgeFullParam(posA,posB,l,inan,outan,nodesize);
+% draw an edge
+def drawEdgeFull(expr posA,posB,l,inan,outan) =
+    path sub;
+    sub := edgeFull(posA,posB,inan,outan);
+    drawarrow sub;
+    draw edgeLabel(sub,l);
 enddef;
-def drawEdgeWithAngle(expr posA,posB,l,an) =
-    drawEdgeWithDoubleAngle(posA,posB,l,an,-an);
+
+def drawEdgeAngle(expr posA,posB,l,inan) =
+    path sub;
+    sub := edgeAngle(posA,posB,inan);
+    drawarrow sub;
+    draw edgeLabel(sub,l);
 enddef;
+
 def drawEdge(expr posA,posB,l) =
-    numeric an;
-    if (posA = posB):
-        an := 0;
-    else:
-        an=angle(posB-posA);
-    fi
-    drawEdgeWithDoubleAngle(posA,posB,l,an,an);
+    path sub;
+    sub := edge(posA,posB);
+    drawarrow sub;
+    draw edgeLabel(sub,l);
 enddef;
 
 prologues:=3;
+
 verbatimtex
 %&latex
 \documentclass{minimal}
 \begin{document}
 etex
 
+% TEX macro is short enough to be copied
+string preverbatimtex_, postverbatimtex_;
+
+vardef TEXPRE text s =  preverbatimtex_ := s; enddef;
+
+vardef TEXPOST text s =  postverbatimtex_ := s; enddef;
+
+vardef TEX primary s =
+  if known preverbatimtex_:
+    write "verbatimtex "&preverbatimtex_&" etex" to "mptextmp.mp";
+  fi
+  write "btex "&s&" etex" to "mptextmp.mp";
+  if known postverbatimtex_:
+    write "verbatimtex "&postverbatimtex_&" etex" to "mptextmp.mp";
+  fi
+  write EOF to "mptextmp.mp";
+  scantokens "input mptextmp"
+enddef;
+
+TEXPRE("\documentclass{minimal}\begin{document}");
+TEXPOST("\end{document}");

@@ -4,12 +4,12 @@ B=A shifted (.7gu,1/2gu);
 C=A shifted (.7gu,-1/2gu);
 D=C shifted (.7gu,0);
 
-drawState(A, btex $A$ etex);
-drawState(B, btex $B$ etex);
-drawState(C, btex $C$ etex);
-drawState(D, btex $D$ etex);
+drawState(A, "A");
+drawState(B, "B");
+drawState(C, "C");
+drawState(D, "D");
 
-drawEdge(A,A,btex $id_A$ etex);
-drawEdge(B,B,btex $id_B$ etex);
-drawEdge(C,C,btex $id_C$ etex);
-drawEdge(D,D,btex $id_D$ etex);
+drawEdge(A,A,"id_A");
+drawEdge(B,B,"id_B");
+drawEdge(C,C,"id_C");
+drawEdge(D,D,"id_D");
