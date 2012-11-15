@@ -25,7 +25,14 @@ green        :=(0.52156862745098  ,0.6              ,0.0);
 %%%%%%%%%%%%%%%%%%%%
 u:=.5cm; % unity
 gu:=5u;  % distance between states
-nodesize := 1.2u; %size of a node
+nodesize := u + .1cm; %size of a node
+
+def resize(expr nu)=
+    u:=nu;
+    gu:=5u;  % distance between states
+    nodesize := u; %size of a node
+    nodespace := u+.1cm; %size of a node
+enddef;
 
 % return the middle of a path
 vardef midpoint(expr p)=
@@ -91,7 +98,7 @@ vardef edgeFull(expr posA,posB,inan,outan) =
     path sub;
     path s;
     s := posA {dir inan} .. {dir outan} posB ;
-    sub := shorten(s,nodesize);
+    sub := shorten(s,nodespace);
     sub
 enddef;
 
@@ -138,16 +145,22 @@ enddef;
 %%           LOOPS              %%
 %%                              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+vardef dist(expr a,b)=
+    numeric width,height,res;
+    width:=xpart b - xpart a;
+    height:=ypart b - ypart a;
+    res:=sqrt(width*width + height*height);
+enddef;
 % return a loop
 vardef loopFull(expr a,b,an) =
     pair ba,ea;
     path circ,p,s;
     p:=a{1,1}..b..{1,-1}cycle;
-    circ:= fullcircle scaled nodesize shifted a;
+    circ:= fullcircle scaled nodespace shifted a;
     ba = circ intersectionpoint (subpath (0,1) of p);
     ea = circ intersectionpoint (subpath (1,2) of p);
     s:= ba{1,1}..b..{1,-1}ea;
-    s rotated an
+    s shifted -a rotated an shifted a
 enddef;
 
 vardef loopPoint(expr a,b) =
@@ -195,21 +208,23 @@ enddef;
 % draw some state with some label insize
 def drawState(expr pos,l) =
     % Draw the circle
-    draw fullcircle scaled u shifted pos;
+    draw fullcircle scaled nodesize shifted pos;
 
     % Draw the label with the right size
     picture lab,reslab;
     numeric height,width;
     numeric size;
-    lab=thelabel(TEX("$"&l&"$"),pos);
+    lab=thelabel(TEX("$"&l&"$"),origin);
     height:=ypart (ulcorner lab - llcorner lab);
     width :=xpart (urcorner lab - ulcorner lab);
     size := sqrt(height*height + width*width);
-    if size>u:
-        reslab:=lab scaled (u/size);
+    if size>.9nodesize:
+        reslab:=lab scaled (.9nodesize/size) shifted pos;
     else:
-        reslab:=lab;
+        reslab:=lab shifted pos;
     fi
+    % help for debug to draw boundaries
+    % draw ulcorner reslab -- urcorner reslab -- lrcorner reslab -- llcorner reslab -- cycle;
     draw reslab;
 enddef;
 
