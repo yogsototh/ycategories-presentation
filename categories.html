@@ -109,17 +109,14 @@
 <img src="categories/img/egyptian-hieroglyphics.jpg" alt="Egyptian Fractions"/>
 <img src="categories/img/negative-numbers.jpg" alt="Negative Numbers (Chinese)"/>
 </div>
-<ul>
-<li>Rational (Weight/Distance/Time): \(\frac{p}{q}\)
-</li>
-<li>Negative (Debts): ..., -2, -1, ? , 1, 2, ...
-</li>
-<li>Irrational (Geometry): 500 BC, Pythogoras killed Hippasus for \(\sqrt{2}\)</li>
-<li>Complex (Algebra): \(\mathbb{C}\) ; 100 AD, then 16th century</li>
-<li>\(0\): nothing become a number!</li>
-</ul>
-<p><b>More "things" can be understood as numbers</b></p>
-<p><b>More "operator" to manipulate numbers</b></p>
+<ul><li> Weight/Distance/Time ⇒ <em>Rational</em> \(\frac{p}{q}\)
+</li><li> Debts ⇒ <em>Negative</em> \(..., -2, -1, ? , 1, 2, ...\)
+</li><li> Geometry ⇒ <em>Irrational<sup style="vertical-align:middle">*</sup></em>
+</li><li> Algebra ⇒ <em>Complex</em>
+</li><li> \(0\) ⇒ "Nothing" become a number
+</li></ul>
+<p><span class="and" style="visibility:hidden"><span class="and">&amp;</span></span> More <strong>things</strong> can be understood as numbers<br/>
+<span class="and"><span class="and">&amp;</span></span> More <strong>operator</strong> to manipulate them.</p>
 </section>
 <section class="slide">
 <h2>Numbers ⇒ Sets</h2>
@@ -152,70 +149,6 @@
 </table>
 <p><span class="and" style="visibility:hidden"><span class="and">&amp;</span></span> More <strong>general</strong>: more things are sets.<br/>
     <span class="and"><span class="and">&amp;</span></span> More <strong>precise</strong>: clear distinction between concepts.</p>
-</section>
-<section class="slide">
-<h2>Programming <span class="and"><span class="and">&amp;</span></span> Abstraction</h2>
-
-<h3>Impure programming</h3>
-<ul>
-    <li>Encouraged by imperative paradigms.
-    </li><li>Actions <span class="and"><span class="and">&amp;</span></span> mutable objects.
-    </li><li>Time is <em>very</em> important.
-    </li><li>Falling dominos: synchronization is a challenge.
-    </li>
-</ul>
-<p>Natural Abstraction: pointers, variables, loop, Objects, Classes...</p>
-</section>
-<section class="slide">
-<h2>Untyped Pure Programming</h2>
-
-  <ul><li>  Time is irrelevant by default.
- </li><li> Mostly static pipe-like construction.
- </li><li> All pipes are round:
-     <ul><li> Y = λf.(λx.f (x x)) (λx.f (x x))
-    </li><li> Y g = g (Y g)
-   </li></ul>
-</li></ul>
-
-<p>Natural abstraction: higher level functions <span class="and"><span class="and">&amp;</span></span> equations</p>
-</section>
-<section class="slide">
-<h2>Strongly Typed Pure Programming</h2>
-<ul>
-<li>Add specific forms on pipes.</li>
-<li>Pipe can contains other pipes.</li>
-</ul>
-<p>Natural abstraction: Polymorphic higher level functions.</p>
-</section>
-<section class="slide">
-<h2>Polymorphism: <code>mappend</code></h2>
-
-<h3><code>(<>) = `mappend`</code></h3>
-<pre class="haskell"><code>"abc" <>  "def" = "abcdef"
-("abc","xyz") <> ("ABC","XYZ") = ("abcABC","xyzXYZ")</code></pre>
-</section>
-<section class="slide">
-<h2>Polymorphism: <code>(>>=)</code></h2>
-
-<p>Example: <span class="red"><code>(>>=)</code></span> with <code>[a]</code> and <code>Maybe a</code></p>
-<pre class="haskell"><code>data Maybe a = Just a | Nothing</code></pre>
-
-<pre class="haskell"><code>-- Maybe : Maybe Int >>= Int -> Maybe (Int -> Int) >>= (Int -> Int) -> Maybe Int
-(Just 2) <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Just 4
- Nothing <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Nothing
-
--- Lists: [a] : [Int] >>= Int -> [Int -> Int] >>= (Int -> Int) -> [Int]
-[1,2] <span class="red">&gt;&gt;=</span> \x -> [(+10),(+20)] <span class="red">&gt;&gt;=</span> \f -> [f x] = [11,21,12,22]
-   [] <span class="red">&gt;&gt;=</span> \x -> [(+10),(+20)] <span class="red">&gt;&gt;=</span> \f -> [f x] = []</code></pre>
-</section>
-<section class="slide">
-<h2>Programming Paradigms</h2>
-<table>
-    <tr><td>Impure</td><td>Choose the data structure, find an algorithm.</td></tr>
-    <tr><td>Untyped Pure</td><td>Choose the data structure, find an equation.</td></tr>
-    <tr><td>Typed Pure</td><td>Choose the Types and their laws, find the right operator</td></tr>
-</table>
-
 </section>
 <section class="slide">
 <h2>Sets ⇒? <span class="yellow">Categories</span></h2>
@@ -255,7 +188,7 @@
 </section>
 <section class="slide">
 <h2><span class="yellow">/.*/</span> ⇒? Category Theory</h2>
-<p>Extend <span class="and"><span class="and">&amp;</span></span> Merge different scientific fields</p>
+<p>Gate between different scientific fields</p>
 <ul>
 <li>Topology</li>
 <li>Quantum Physics</li>
@@ -265,6 +198,87 @@
 <p><span class="and" style="visibility:hidden"><span class="and">&amp;</span></span> More <strong>general</strong>: more things are Categories.<br/>
     <span class="and"><span class="and">&amp;</span></span> More <strong>precise</strong>: better distinction between concepts.</p>
 <p>Young field: <b>1942–45</b>, Samuel Eilenberg <span class="and"><span class="and">&amp;</span></span> Saunders Mac Lane
+</section>
+<section class="slide">
+<h2>Programming <span class="and"><span class="and">&amp;</span></span> Abstraction</h2>
+
+<h3>Impure programming</h3>
+<ul>
+    <li>Encouraged by imperative paradigms.
+    </li><li>Actions <span class="and"><span class="and">&amp;</span></span> mutable objects.
+    </li><li>Time is <em>very</em> important: ex. linked list push
+    </li><li>Synchronizing things is a challenge.
+    </li>
+</ul>
+<p>Natural Abstractions: pointers, variables, loop, Objects, Classes...</p>
+<p>Representation: a data structure changing other time.</p>
+</section>
+<section class="slide">
+<h2>Untyped Pure Programming</h2>
+
+<ul><li> Time is irrelevant by default.
+</li><li> Mostly static constructions like pipes.
+</li><li> All pipes are round ⇒ all error at runtime
+     <ul><li> (+ ("foo" 27) 32)
+    </li><li> Y = λf.(λx.f (x x)) (λx.f (x x))
+    </li><li> Y g = g (Y g)
+    </li></ul>
+</li></ul>
+
+<p>Natural abstraction: higher level functions <span class="and"><span class="and">&amp;</span></span> equations</p>
+</section>
+<section class="slide">
+<h2>Strongly Typed Pure Programming</h2>
+<ul><li>Add specific forms on pipes.
+     <ul><li> <code class="red">4 + ["foo",27]</code> forbidden
+    </li><li> <code class="red">["foo",27]</code> forbidden
+    </li></ul>
+</li><li>Pipe can contains other pipes.
+    <ul><li>  <code>data Maybe a = Just a | Nothing</code>
+    </li><li> <code>[Just 32,Nothing,Just 12] :: [Maybe Integer]</code>
+    </li></ul>
+</li></ul>
+<p>Natural abstraction: Polymorphic higher level functions.</p>
+</section>
+<section class="slide">
+<h2>Polymorphism: <code>mappend</code></h2>
+
+<h3><code>(<>) = `mappend`</code></h3>
+<pre class="haskell"><code>"abc" <>  "def" = "abcdef"
+("abc","xyz") <> ("ABC","XYZ") = ("abcABC","xyzXYZ")
+3 <> 4 = ERROR which law? + or *
+-- Monoid (N,+)
+type Sum = Sum {getSum :: a}
+(<>+) = getSum (Sum x <> Sum y)
+3 <>+ 4 = 7
+-- Monoid (N,*)
+type Product = Product {getProduct :: a}
+(<>*) = getProduct (Product x <> Product y)
+3 <>* 4 = 12</code></pre>
+
+</section>
+<section class="slide">
+<h2>Polymorphism: <code>(>>=)</code></h2>
+
+<p>Example: <span class="red"><code>(>>=)</code></span> with <code>[a]</code> and <code>Maybe a</code></p>
+<pre class="haskell"><code>data Maybe a = Just a | Nothing</code></pre>
+
+<pre class="haskell"><code>-- Maybe : Maybe Int >>= Int -> Maybe (Int -> Int) >>= (Int -> Int) -> Maybe Int
+(Just 2) <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Just 4
+ Nothing <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Nothing
+
+-- Lists: [a] : [Int] >>= Int -> [Int -> Int] >>= (Int -> Int) -> [Int]
+[1,2] <span class="red">&gt;&gt;=</span> \x -> [(+10),(+20)] <span class="red">&gt;&gt;=</span> \f -> [f x] = [11,21,12,22]
+   [] <span class="red">&gt;&gt;=</span> \x -> [(+10),(+20)] <span class="red">&gt;&gt;=</span> \f -> [f x] = []</code></pre>
+</section>
+<section class="slide">
+<h2>Programming Paradigms</h2>
+<table>
+    <tr><td>Impure</td><td>Choose the data structure, find an algorithm.</td></tr>
+    <tr><td>Untyped Pure</td><td>Choose the data structure, find an equation.</td></tr>
+    <tr><td>Typed Pure</td><td>Choose the Types and their laws, find the right operator</td></tr>
+</table>
+
 </section>
 <section class="slide">
 <h2>Type Theory ⇒ Categories</h2>
@@ -435,6 +449,7 @@
 <h2>Smaller Examples</h2>
 
 <h3>Strings</h3>
+<img class="right" style="max-width:17%" src="categories/img/mp/strings.png" alt="Monoids are one object categories"/>
 <ul>
     <li> \(\ob{Str}\) is a singleton </li>
     <li> \(\hom{Str}\) each string </li>
@@ -449,9 +464,18 @@
 <h2>Finite Example?</h2>
 
 <h3>Graph</h3>
+<figure class="right" style="max-width:40%" >
+<img src="categories/img/mp/graph-category.png" alt="Each graph is a category"/>
+<figcaption style="text-align:left"><ul><li>\(\ob{G}={X,Y,Z}\),
+    </li><li>\(\hom{G}=\{ε,α,β,γ,αβ,βγ,...\}\)<br/>
+    \(\phantom{\hom{G}}=(βγ?)?(αβγ)^*(αβ?)?\),
+    </li><li>\(αβ∘γ=αβγ\)
+</li></ul>
+</figcaption>
+</figure>
 <ul>
-    <li> \(\ob{Str}\) are vertices</li>
-    <li> \(\hom{Str}\) each path</li>
+    <li> \(\ob{G}\) are vertices</li>
+    <li> \(\hom{G}\) each path</li>
     <li> ∘ is path concatenation</li>
 </ul>
 </section>
@@ -554,10 +578,14 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 
 In \(\Hask\) a functor should transform Haskell types and functions.
 
-<pre class="nohighlight"><code>
-       F
-Hask =====> F Hask
-</code></pre>
+F :: * -> *
+
+       Int ===> F Int
+Int -> Int ===> F (Int -> Int)
+       [a] ===> F [a]
+       F a ===> F (F a)
+
+Int -> Int ---(+)---> Int ====> F (Int -> Int) ---- fmap (+) ----> F Int
 
 If F Hask included in Hask. F is said to be an endofunctor.
 
