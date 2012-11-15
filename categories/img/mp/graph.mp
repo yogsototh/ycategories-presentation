@@ -125,10 +125,11 @@ enddef;
 
 % --- LABELED GRAPHS ---
 % return the edge between points A and B.
-% out angle from A is inan
+% out angle from A is an + angle from A to B
 vardef edgeAngle(expr posA,posB,an) =
     path res;
-    res := edgeFull(posA,posB,an,-an);
+    d := angle(posB-posA);
+    res := edgeFull(posA,posB,d+an,d-an);
     res
 enddef;
 

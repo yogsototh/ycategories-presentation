@@ -28,7 +28,7 @@ drawoptions(withcolor blue withpen pencircle scaled 1);
 drawEdge(z0,z0,"id_A");
 drawEdge(z1,z1,"id_B");
 drawarrow edgeAngle(z0,z1,35);
-drawarrow edgeAngle(z1,z0,-145);
+drawarrow edgeAngle(z1,z0,35);
 drawEdge(z3,z3,"id_X");
 
 drawoptions(withcolor green withpen pencircle scaled 1);
@@ -63,7 +63,7 @@ drawarrow edgeAngle(ic,iy,0);
 
 path f,g,h,i;
 f:= edgeAngle(z0,z1,35);
-g:= edgeAngle(z1,z0,-145);
+g:= edgeAngle(z1,z0,35);
 h:= edgeFull(z1,z2,-90,180);
 i:= edgeFull(z0,z2,-90,0);
 

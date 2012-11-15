@@ -11,7 +11,7 @@ drawEdge(z0,z0,"id_A");
 drawEdge(z1,z1,"id_B");
 drawEdge(z2,z2,"id_C");
 drawarrow edgeAngle(z0,z1,35);
-drawarrow edgeAngle(z1,z0,-145);
+drawarrow edgeAngle(z1,z0,35);
 drawarrow edgeFull(z1,z2,-90,180);
 drawarrow edgeFull(z0,z2,-90,0);
 

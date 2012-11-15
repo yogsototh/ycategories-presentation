@@ -12,7 +12,7 @@ drawState(D, "D");
 drawEdge(B,A,"A \leq B");
 drawEdge(C,A,"A \leq C");
 drawEdge(D,C,"C \leq D");
-drawEdgeAngle(D,A,"A \leq D", -135);
+drawEdgeAngle(D,A,"A \leq D", 35);
 
 drawEdge(A,A,"A \leq A");
 drawEdge(B,B,"B \leq B");

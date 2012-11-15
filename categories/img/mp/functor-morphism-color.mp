@@ -30,7 +30,7 @@ drawoptions(withcolor blue );
 drawEdge(z0,z0,"id_A");
 drawEdge(z1,z1,"id_B");
 drawarrow edgeAngle(z0,z1,35);
-drawarrow edgeAngle(z1,z0,-145);
+drawarrow edgeAngle(z1,z0,35);
 drawEdge(z3,z3,"id_X");
 
 drawoptions(withcolor green );

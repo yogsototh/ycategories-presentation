@@ -6,7 +6,7 @@ nodesize:=6bp;
 
 drawarrow edge(z0,z1);
 drawarrow edge(z1,z2);
-drawarrow edgeAngle(z0,z2,50);
+drawarrow edgeAngle(z0,z2,35);
 ahlength:=.3nodesize;
 drawarrow edge(z0,z0);
 drawarrow edge(z1,z1);
