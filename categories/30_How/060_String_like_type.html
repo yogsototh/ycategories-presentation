@@ -1,0 +1,19 @@
+<h2>String like type</h2>
+
+<pre class="haskell"><code>
+data F a = Cons Char a | Nil
+-- examples :
+--  Cons 'c' 32 :: F Int
+--  Cons 'c' (\x -> x*x) :: F (Int -> Int)
+--  Cons 'c' (Cons 'a' (\x -> x*x)) :: F (F (Int -> Int))
+--  Cons 'c' (Cons 'c' Nil) :: F (F (F))
+-- note String is the fixed point of F: F(F(F(...)))
+instance Functor F where
+    fmap :: (a -> b) -> [a] -> [b]
+    fmap f (Cons c x) = Cons c (f x)
+    fmap f Nil = Nil
+
+fmap (+1) (Cons 'c' 3)      == Cons 'c' 4
+fmap (+1) Nil               == Nil
+fmap head (Cons 'c' [1,2,3])== Cons 'c' 1
+</code></pre>

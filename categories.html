@@ -563,6 +563,8 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 
 <p>Category \(\Hask\):</p>
 
+<img class="right" style="max-width:30%" src="categories/img/mp/hask.png" alt="Haskell Category Representation"/>
+
 <ul><li>
 \(ob(\Hask) = \) Haskell types
 </li><li>
@@ -574,47 +576,78 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 <p>Forget glitches because of <code>undefined</code>.</p>
 </section>
 <section class="slide">
-<h2>Haskell Endofunctors</h2>
+<h2>Haskell Functors</h2>
 
-In \(\Hask\) a functor should transform Haskell types and functions.
+<ul><li>Haskell Functors are from Hask to Hask; \(F:\C→\C\) are called <em>endofunctors</em>.
+</li><li>Haskell Functors are <b>Object</b> of Hask.
+</li></ul>
 
-F :: * -> *
-
-       Int ===> F Int
-Int -> Int ===> F (Int -> Int)
-       [a] ===> F [a]
-       F a ===> F (F a)
-
-Int -> Int ---(+)---> Int ====> F (Int -> Int) ---- fmap (+) ----> F Int
-
-If F Hask included in Hask. F is said to be an endofunctor.
-
-<pre class="nohighlight"><code>
-Hask loop F Hask
-
-Int ===> F Int
-a -> b ====> F (a -> b)
-...
-</code></pre>
-
-In Haskell type of type * -> * works naturally on types.
+<ul><li>Notation:
+<ul><li>F &lt;type&gt; → &lt;type&gt; denoted <code>F :: * -&gt; *</code>
+    </li><li>F &lt;function&gt; → &lt;function&gt;<span class="red">✗</span>
+    </li><li><code>fmap: &lt;function&gt; → &lt;function&gt;</code><span class="green">✓</span> choose F with polymorphism.
+    </li></ul>
+</li><li>Properties <code>fmap</code> must obey for F to be a real functor:
+    <ul><li><code>fmap id = id</code> and <code>fmap f.g = fmap f . fmap g</code>
+    </li></ul>
+</li></ul>
+</section>
+<section class="slide">
+<h2>Haskell Functors Example: Maybe</h2>
 
 <pre class="haskell"><code>
-data Maybe a = Just a | Nothing -- For example
-x :: Maybe Int
-x = Just 10
-y :: Maybe Int
-y = Nothing
-z :: Maybe ([a] -> a)
-z = Just head
+data Maybe a = Just a | Nothing
+instance Functor Maybe where
+    fmap :: (a -> b) -> (Maybe a -> Maybe b)
+    fmap f (Just a) = f a
+    fmap f Nothing = Nothing
 
-data F a = Cons Char a | Nil -- For example
-toto,titi,tata :: F Int
-toto = Cons 'c' 10
-titi = Nil
-tata :: F ([a] -> a)
-tata = Cons 'a' head
+fmap (+1) (Just 1) == 2
+fmap (+1) Nothing  == Nothing
+fmap head (Just [1,2,3]) == Just 1
 </code></pre>
+</section>
+<section class="slide">
+<h2>Haskell Functors Example: List</h2>
+
+<pre class="haskell"><code>
+instance Functor ([]) where
+    fmap :: (a -> b) -> [a] -> [b]
+    fmap = map
+
+fmap (+1) [1,2,3]           == [2,3,4]
+fmap (+1) []                == []
+fmap head [[1,2,3],[4,5,6]] == [1,4]
+</code></pre>
+</section>
+<section class="slide">
+<h2>String like type</h2>
+
+<pre class="haskell"><code>
+data F a = Cons Char a | Nil
+-- examples :
+--  Cons 'c' 32 :: F Int
+--  Cons 'c' (\x -> x*x) :: F (Int -> Int)
+--  Cons 'c' (Cons 'a' (\x -> x*x)) :: F (F (Int -> Int))
+--  Cons 'c' (Cons 'c' Nil) :: F (F (F))
+-- note String is the fixed point of F: F(F(F(...)))
+instance Functor F where
+    fmap :: (a -> b) -> [a] -> [b]
+    fmap f (Cons c x) = Cons c (f x)
+    fmap f Nil = Nil
+
+fmap (+1) (Cons 'c' 3)      == Cons 'c' 4
+fmap (+1) Nil               == Nil
+fmap head (Cons 'c' [1,2,3])== Cons 'c' 1
+</code></pre>
+</section>
+<section class="slide">
+<h2>Functor as boxes</h2>
+
+<p>Haskell functor can be seen as boxes containing all Haskell types and functions.
+Haskell types is fractal:</p>
+
+<img src="categories/img/mp/hask-endofunctor.png" alt="Haskell functor representation"/>
 </section>
 <!-- End slides. -->
 

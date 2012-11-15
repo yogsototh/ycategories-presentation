@@ -1,0 +1,15 @@
+<h2>Haskell Functors</h2>
+
+<ul><li>Haskell Functors are from Hask to Hask; \(F:\C→\C\) are called <em>endofunctors</em>.
+</li><li>Haskell Functors are <b>Object</b> of Hask.
+</li></ul>
+
+<ul><li>Notation:
+<ul><li>F &lt;type&gt; → &lt;type&gt; denoted <code>F :: * -&gt; *</code>
+    </li><li>F &lt;function&gt; → &lt;function&gt;<span class="red">✗</span>
+    </li><li><code>fmap: &lt;function&gt; → &lt;function&gt;</code><span class="green">✓</span> choose F with polymorphism.
+    </li></ul>
+</li><li>Properties <code>fmap</code> must obey for F to be a real functor:
+    <ul><li><code>fmap id = id</code> and <code>fmap f.g = fmap f . fmap g</code>
+    </li></ul>
+</li></ul>
