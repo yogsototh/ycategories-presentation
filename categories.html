@@ -46,6 +46,7 @@
 \(\newcommand{\Rng}{\mathbf{Rng}}\)
 \(\newcommand{\ML}{\mathbf{ML}}\)
 \(\newcommand{\Hask}{\mathbf{Hask}}\)
+\(\newcommand{\Cat}{\mathbf{Cat}}\)
 </div>
 
 
@@ -543,6 +544,21 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 <img src="categories/img/mp/functor-morphism-color.png" alt="Functor"/>
 </section>
 <section class="slide">
+<h2>Endofunctors</h2>
+
+<p>A endofunctor for \(\C\) is a functor \(F:\C→\C\).</p>
+<img src="categories/img/mp/endofunctor.png" alt="Endofunctor"/>
+</section>
+<section class="slide">
+<h2>Category of Categories</h2>
+
+<p>Categories and functors form a category: \(\Cat\)</p>
+<ul><li>\(\ob{\Cat}\) are categories
+</li><li>\(\hom{\Cat}\) are functors
+</li><li>∘ is functor composition
+</li></ul>
+</section>
+<section class="slide">
 <h2>Plan</h2>
 <ul style="font-size: 2em; font-weight:bold">
     <li>Why?</li>
@@ -576,20 +592,16 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 <p>Forget glitches because of <code>undefined</code>.</p>
 </section>
 <section class="slide">
-<h2>Haskell Functors</h2>
+<h2>Haskell Functor vs \(\Hask\) Functor</h2>
 
-<ul><li>Haskell Functors are from Hask to Hask; \(F:\C→\C\) are called <em>endofunctors</em>.
-</li><li>Haskell Functors are <b>Object</b> of Hask.
-</li></ul>
+<p>Functor for Haskell language is a type <code>F</code> which belong to the type class <code>Functor</code></p>
+<p>It must therefore implement an <code>fmap</code> function.
 
-<ul><li>Notation:
-<ul><li>F &lt;type&gt; → &lt;type&gt; denoted <code>F :: * -&gt; *</code>
-    </li><li>F &lt;function&gt; → &lt;function&gt;<span class="red">✗</span>
-    </li><li><code>fmap: &lt;function&gt; → &lt;function&gt;</code><span class="green">✓</span> choose F with polymorphism.
-    </li></ul>
-</li><li>Properties <code>fmap</code> must obey for F to be a real functor:
-    <ul><li><code>fmap id = id</code> and <code>fmap f.g = fmap f . fmap g</code>
-    </li></ul>
+<p>The couple <code>(F,fmap)</code> is then a real functor in the categorical sense for \(\Hask\) if</p>
+
+<p>for any <code>x :: F a</code>:</p>
+<ul><li><code>fmap id x = x</code>
+</li><li><code>fmap (f.g) x= (fmap f . fmap g) x</code>
 </li></ul>
 </section>
 <section class="slide">
@@ -648,6 +660,15 @@ fmap head (Cons 'c' [1,2,3])== Cons 'c' 1
 Haskell types is fractal:</p>
 
 <img src="categories/img/mp/hask-endofunctor.png" alt="Haskell functor representation"/>
+</section>
+<section class="slide">
+<h2>Haskell Functor properties</h2>
+
+<p>Haskell Functors are:</p>
+
+<ul><li><em>endofunctors</em> ; \(F:\C→\C\) here \(\C = \Hask\),
+</li><li>a couple <b>(Object,Morphism)</b> of Hask.
+</li></ul>
 </section>
 <!-- End slides. -->
 

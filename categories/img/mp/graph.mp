@@ -25,7 +25,8 @@ green        :=(0.52156862745098  ,0.6              ,0.0);
 %%%%%%%%%%%%%%%%%%%%
 u:=.5cm; % unity
 gu:=5u;  % distance between states
-nodesize := u + .1cm; %size of a node
+nodesize := u; %size of a node
+nodespace := u+.1cm; %size of a node
 
 def resize(expr nu)=
     u:=nu;
