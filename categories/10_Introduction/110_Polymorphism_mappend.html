@@ -1,15 +1,16 @@
-<h2>Polymorphism: <code>mappend</code></h2>
+<h2>Polymorphism: <code>mappend (<>)</code></h2>
 
-<h3><code>(<>) = `mappend`</code></h3>
-<pre class="haskell"><code>"abc" <>  "def" = "abcdef"
-("abc","xyz") <> ("ABC","XYZ") = ("abcABC","xyzXYZ")
-3 <> 4 = ERROR which law? + or *
+<pre class="haskell"><code>"abc" <>  "def" = "abcdef"                   -- String
+("ab","xy") <> ("AB","XY") = ("abAB","xyXY") -- (String,String)
+
+3 <> 4 ⇒ ERROR which law? + or * -- Int
+-- Use a type to remove ambiguity
+type Sum = Sum {getSum :: a} -- Just a named box
 -- Monoid (N,+)
-type Sum = Sum {getSum :: a}
 (<>+) = getSum (Sum x <> Sum y)
 3 <>+ 4 = 7
+
 -- Monoid (N,*)
-type Product = Product {getProduct :: a}
 (<>*) = getProduct (Product x <> Product y)
 3 <>* 4 = 12</code></pre>
 

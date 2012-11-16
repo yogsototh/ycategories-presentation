@@ -189,7 +189,7 @@
 </section>
 <section class="slide">
 <h2><span class="yellow">/.*/</span> ⇒? Category Theory</h2>
-<p>Gate between different scientific fields</p>
+<p>Categories package entire mathematical theories.</p>
 <ul>
 <li>Topology</li>
 <li>Quantum Physics</li>
@@ -219,7 +219,7 @@
 
 <ul><li> Time is irrelevant by default.
 </li><li> Mostly static constructions like pipes.
-</li><li> All pipes are round ⇒ all error at runtime
+</li><li> All pipes can be plugged ⇒ all error at runtime
      <ul><li> (+ ("foo" 27) 32)
     </li><li> Y = λf.(λx.f (x x)) (λx.f (x x))
     </li><li> Y g = g (Y g)
@@ -229,12 +229,12 @@
 <p>Natural abstraction: higher level functions <span class="and"><span class="and">&amp;</span></span> equations</p>
 </section>
 <section class="slide">
-<h2>Strongly Typed Pure Programming</h2>
-<ul><li>Add specific forms on pipes.
+<h2>Typed Pure Programming</h2>
+<ul><li>Add shapes to pipes:
      <ul><li> <code class="red">4 + ["foo",27]</code> forbidden
     </li><li> <code class="red">["foo",27]</code> forbidden
     </li></ul>
-</li><li>Pipe can contains other pipes.
+</li><li>Polymorphic (elastic) shapes:
     <ul><li>  <code>data Maybe a = Just a | Nothing</code>
     </li><li> <code>[Just 32,Nothing,Just 12] :: [Maybe Integer]</code>
     </li></ul>
@@ -242,18 +242,19 @@
 <p>Natural abstraction: Polymorphic higher level functions.</p>
 </section>
 <section class="slide">
-<h2>Polymorphism: <code>mappend</code></h2>
+<h2>Polymorphism: <code>mappend (<>)</code></h2>
 
-<h3><code>(<>) = `mappend`</code></h3>
-<pre class="haskell"><code>"abc" <>  "def" = "abcdef"
-("abc","xyz") <> ("ABC","XYZ") = ("abcABC","xyzXYZ")
-3 <> 4 = ERROR which law? + or *
+<pre class="haskell"><code>"abc" <>  "def" = "abcdef"                   -- String
+("ab","xy") <> ("AB","XY") = ("abAB","xyXY") -- (String,String)
+
+3 <> 4 ⇒ ERROR which law? + or * -- Int
+-- Use a type to remove ambiguity
+type Sum = Sum {getSum :: a} -- Just a named box
 -- Monoid (N,+)
-type Sum = Sum {getSum :: a}
 (<>+) = getSum (Sum x <> Sum y)
 3 <>+ 4 = 7
+
 -- Monoid (N,*)
-type Product = Product {getProduct :: a}
 (<>*) = getProduct (Product x <> Product y)
 3 <>* 4 = 12</code></pre>
 
@@ -264,11 +265,11 @@ type Product = Product {getProduct :: a}
 <p>Example: <span class="red"><code>(>>=)</code></span> with <code>[a]</code> and <code>Maybe a</code></p>
 <pre class="haskell"><code>data Maybe a = Just a | Nothing</code></pre>
 
-<pre class="haskell"><code>-- Maybe : Maybe Int >>= Int -> Maybe (Int -> Int) >>= (Int -> Int) -> Maybe Int
+<pre class="haskell"><code>-- Maybe Int >>= Int -> Maybe (Int -> Int) >>= (Int -> Int) -> Maybe Int
 (Just 2) <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Just 4
  Nothing <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Nothing
 
--- Lists: [a] : [Int] >>= Int -> [Int -> Int] >>= (Int -> Int) -> [Int]
+-- [Int] >>= Int -> [Int -> Int] >>= (Int -> Int) -> [Int]
 [1,2] <span class="red">&gt;&gt;=</span> \x -> [(+10),(+20)] <span class="red">&gt;&gt;=</span> \f -> [f x] = [11,21,12,22]
    [] <span class="red">&gt;&gt;=</span> \x -> [(+10),(+20)] <span class="red">&gt;&gt;=</span> \f -> [f x] = []</code></pre>
 </section>
@@ -419,9 +420,8 @@ type Product = Product {getProduct :: a}
 </figure>
 </section>
 <section class="slide">
-<h2>Categories Everywhere?</h2>
+<h2>Category \(\Set\)</h2>
 
-<h3>\(\Set\)</h3>
 <ul>
     <li> \(\ob{\Set}\) are sets</li>
     <li> \(\hom{\Set}\) are functions</li>
@@ -443,6 +443,7 @@ type Product = Product {getProduct :: a}
     <li>\(\Grp\): (groups, group morphisms,∘)</li>
     <li>\(\Rng\): (rings, ring morphisms,∘)</li>
     <li>\( \ML\): (types, terms, \(λg. λf. λx. g f x\) )</li>
+    <li>\( \Hask\): (Haskell types, functions, <code>(.)</code> )</li>
     <li>...</li>
 </ul>
 </section>
@@ -467,18 +468,17 @@ type Product = Product {getProduct :: a}
 <h3>Graph</h3>
 <figure class="right" style="max-width:40%" >
 <img src="categories/img/mp/graph-category.png" alt="Each graph is a category"/>
-<figcaption style="text-align:left"><ul><li>\(\ob{G}={X,Y,Z}\),
-    </li><li>\(\hom{G}=\{ε,α,β,γ,αβ,βγ,...\}\)<br/>
-    \(\phantom{\hom{G}}=(βγ?)?(αβγ)^*(αβ?)?\),
-    </li><li>\(αβ∘γ=αβγ\)
-</li></ul>
-</figcaption>
 </figure>
 <ul>
     <li> \(\ob{G}\) are vertices</li>
     <li> \(\hom{G}\) each path</li>
     <li> ∘ is path concatenation</li>
 </ul>
+<ul><li>\(\ob{G}=\{X,Y,Z\}\),
+    </li><li>\(\hom{G}=\{ε,α,β,γ,αβ,βγ,...\}\)<br/>
+    \(\phantom{\hom{G}}=(β?γ)?(αβγ)^*(αβ?)?\),
+    </li><li>\(αβ∘γ=αβγ\)
+</li></ul>
 </section>
 <section class="slide">
 <h2>Degenerated Categories</h2>
@@ -496,7 +496,7 @@ type Product = Product {getProduct :: a}
 <img src="categories/img/mp/numbers.png" alt="Each number as a category"/>
 </section>
 <section class="slide">
-<h2>Degenerated Categories</h2>
+<h2>Degenerated Categories: Preorders</h2>
 
 <h3>Preorders</h3>
 <p>each preorder \((P,≤): \ob{P}={P},\hom{x,y}=\{{x≤y}\} ⇔ x≤y,f_{y,z} \circ f_{x,y} = f_{x,z} \)</p>
@@ -510,6 +510,18 @@ type Product = Product {getProduct :: a}
 <h3>Any Set</h3>
 <p>Any set \(E: \ob{E}=E, \hom{x,y}=\{x\} ⇔  x=y \)</p>
 <p><em>Only identities ; not so interesting</em></p>
+</section>
+<section class="slide">
+<h2>Categorical Property</h2>
+
+<p>Any property which can be expressed in term of category, objects, morphism and composition</p>
+
+<ul><li> <em>isomorphism</em>: \(f:A→B\) s.t. ∃g:B→A, \(g∘f=id_A\) <span class="and">&amp;</span> \(f∘g=id_B\)
+</li><li> <em>Initial</em>: \(Z\in\ob{C}\) s.t. \(∀Y∈\ob{C}, \#\hom{Z,Y}=1\)
+</li><li> <em>Dual</em>: reverse direction of arrows of \(\C\)
+</li><li> <em>Functor</em>: structure preserving mapping between categories
+</li><li> ...
+</li></ul>
 </section>
 <section class="slide">
 <h2>Functor</h2>
@@ -546,7 +558,7 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 <section class="slide">
 <h2>Endofunctors</h2>
 
-<p>A endofunctor for \(\C\) is a functor \(F:\C→\C\).</p>
+<p>An <em>endofunctor</em> for \(\C\) is a functor \(F:\C→\C\).</p>
 <img src="categories/img/mp/endofunctor.png" alt="Endofunctor"/>
 </section>
 <section class="slide">
@@ -582,9 +594,9 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 <img class="right" style="max-width:30%" src="categories/img/mp/hask.png" alt="Haskell Category Representation"/>
 
 <ul><li>
-\(ob(\Hask) = \) Haskell types
+\(\ob{\Hask} = \) Haskell types
 </li><li>
-\(hom(\Hask) = \) Haskell functions
+\(\hom{\Hask} = \) Haskell functions
 </li><li>
 ∘ = <code>(.)</code> Haskell function composition
 </li></ul>
@@ -607,8 +619,7 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 <section class="slide">
 <h2>Haskell Functors Example: Maybe</h2>
 
-<pre class="haskell"><code>
-data Maybe a = Just a | Nothing
+<pre class="haskell"><code>data Maybe a = Just a | Nothing
 instance Functor Maybe where
     fmap :: (a -> b) -> (Maybe a -> Maybe b)
     fmap f (Just a) = f a
@@ -616,8 +627,7 @@ instance Functor Maybe where
 
 fmap (+1) (Just 1) == 2
 fmap (+1) Nothing  == Nothing
-fmap head (Just [1,2,3]) == Just 1
-</code></pre>
+fmap head (Just [1,2,3]) == Just 1</code></pre>
 </section>
 <section class="slide">
 <h2>Haskell Functors Example: List</h2>
@@ -654,12 +664,11 @@ fmap head (Cons 'c' [1,2,3])== Cons 'c' 1
 </code></pre>
 </section>
 <section class="slide">
-<h2>Functor as boxes</h2>
+<h2>Haskell Functor intuition</h2>
 
-<p>Haskell functor can be seen as boxes containing all Haskell types and functions.
-Haskell types is fractal:</p>
+<p>Put normal function inside Box-like types</p>
 
-<img src="categories/img/mp/hask-endofunctor.png" alt="Haskell functor representation"/>
+<img src="categories/img/mp/boxfunctor.png" alt="Haskell Functor as a box play"/>
 </section>
 <section class="slide">
 <h2>Haskell Functor properties</h2>
@@ -669,6 +678,14 @@ Haskell types is fractal:</p>
 <ul><li><em>endofunctors</em> ; \(F:\C→\C\) here \(\C = \Hask\),
 </li><li>a couple <b>(Object,Morphism)</b> of Hask.
 </li></ul>
+</section>
+<section class="slide">
+<h2>Functor as boxes</h2>
+
+<p>Haskell functor can be seen as boxes containing all Haskell types and functions.
+Haskell types is fractal:</p>
+
+<img src="categories/img/mp/hask-endofunctor.png" alt="Haskell functor representation"/>
 </section>
 <!-- End slides. -->
 

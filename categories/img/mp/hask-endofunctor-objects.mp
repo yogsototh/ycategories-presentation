@@ -64,7 +64,7 @@ drawarrow edgeAngle(list,flist,25) dashed evenly;
 drawState(list,"\mathtt{[a]}");
 drawState(flist,"\mathtt{F\ [a]}");
 
-drawoptions(withcolor orange withpen pencircle scaled 1);
+drawoptions(withcolor magenta withpen pencircle scaled 1);
 drawarrow edgeAngle(bool,fbool,-25) dashed evenly;
 drawState(bool,"\mathtt{Bool}");
 drawState(fbool,"\mathtt{F\ Bool}");
