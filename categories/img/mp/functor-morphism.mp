@@ -53,6 +53,7 @@ ix := midpoint( lx );
 iy := midpoint( ly );
 
 nodesize:= .5u;
+nodespace:= .5u;
 drawoptions(withcolor blue dashed evenly withpen pencircle scaled 1);
 
 drawarrow edgeAngle(ia,ix,35);
@@ -77,11 +78,10 @@ mh := midpoint(h);
 mi := midpoint(i);
 mk := midpoint(k);
 
-nodesize:= .5u;
 
 drawoptions(withcolor blue dashed evenly withpen pencircle scaled 1);
-drawarrow edgeAngle(mf,ix,35);
+drawarrow edgeAngle(mf,ix,40);
 drawarrow edgeAngle(mg,ix,-15);
 drawoptions(withcolor magenta dashed evenly withpen pencircle scaled 1);
-drawarrow edgeAngle(mi,mk,15);
+drawarrow edgeAngle(mi,mk,30);
 drawarrow edgeAngle(mh,mk,15);

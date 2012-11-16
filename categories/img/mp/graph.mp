@@ -37,13 +37,14 @@ enddef;
 
 % return the middle of a path
 vardef midpoint(expr p)=
-    pair r;
+    save r; pair r;
     r:=point 1/2length(p) of p;
     r
 enddef;
 
 % shorten a path of length d at the beginning and the end
 vardef shorten(expr p,d) =
+    save q,bcirc,ecirc;
     path q,bcirc,ecirc;
     bcirc := fullcircle scaled d shifted point 0 of p;
     ecirc := fullcircle scaled d shifted point length(p) of p;
@@ -53,6 +54,10 @@ enddef;
 
 % Return a rounded box around top left and bottom right point.
 vardef block(expr tl,br) =
+    save p;
+    save d,shift;
+    save topleft,bottomright;
+    save tll,tlt,trt,trr,brr,brb,blb,bll;
     path p;
     numeric d,shift;
     d := 1/3u;
@@ -75,12 +80,15 @@ enddef;
 
 % b being the path of the block
 vardef blockLabelPosition(expr b)=
+    save pos;
+    pair pos;
     pos := point 0.5 of b;
     pos
 enddef;
 
 % draw a block with the right math-mode tex label on top of it
 def drawblock(expr topleftpoint, bottomrightpoint, l)=
+    save b,pos;
     path b;
     b:=block(topleftpoint,bottomrightpoint);
     pair pos;
@@ -96,8 +104,8 @@ enddef;
 % in angle to B is outan
 % nodesize is the size of the node
 vardef edgeFull(expr posA,posB,inan,outan) =
-    path sub;
-    path s;
+    save sub,s;
+    path sub,s;
     s := posA {dir inan} .. {dir outan} posB ;
     sub := shorten(s,nodespace);
     sub
@@ -105,6 +113,7 @@ enddef;
 
 % return a picture of the label l for edge e
 vardef edgeLabel(expr e,l) =
+    save ret,mid,an,lab,height,width;
     picture ret;
     pair mid;
     mid := midpoint(e);
@@ -135,7 +144,9 @@ enddef;
 % return the edge between points A and B.
 % out angle from A is an + angle from A to B
 vardef edgeAngle(expr posA,posB,an) =
+    save res,d;
     path res;
+    numeric d;
     d := angle(posB-posA);
     res := edgeFull(posA,posB,d+an,d-an);
     res
@@ -147,6 +158,7 @@ enddef;
 %%                              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 vardef dist(expr a,b)=
+    save width,height,res;
     numeric width,height,res;
     width:=xpart b - xpart a;
     height:=ypart b - ypart a;
@@ -154,6 +166,8 @@ vardef dist(expr a,b)=
 enddef;
 % return a loop
 vardef loopFull(expr a,b,an) =
+    save ba,ea;
+    save circ,p,s;
     pair ba,ea;
     path circ,p,s;
     p:=a{1,1}..b..{1,-1}cycle;
@@ -178,6 +192,8 @@ enddef;
 
 % return the direct edge between A and B
 vardef edge(expr posA,posB) =
+    save an;
+    save sub;
     numeric an;
     path sub;
     if (posA = posB):
@@ -190,16 +206,22 @@ vardef edge(expr posA,posB) =
 enddef;
 
 def drawLoopPoint(expr a,b,l) =
+    begingroup;
+    save s;
     path s;
     s:=loopPoint(a,b);
     drawarrow s;
     label.top(TEX("$"&l&"$"),midpoint(s));
+    endgroup;
 enddef;
 def drawLoop(expr a,l) =
+    begingroup;
+    save s;
     path s;
     s:=loop(a);
     drawarrow s;
     label.top(TEX("$"&l&"$"),midpoint(s));
+    endgroup;
 enddef;
 
 def drawstate(expr pos) =
@@ -208,6 +230,10 @@ enddef;
 
 % draw some state with some label insize
 def drawState(expr pos,l) =
+    begingroup;
+    save lab,reslab;
+    save height,width;
+    save size;
     % Draw the circle
     draw fullcircle scaled nodesize shifted pos;
 
@@ -227,28 +253,59 @@ def drawState(expr pos,l) =
     % help for debug to draw boundaries
     % draw ulcorner reslab -- urcorner reslab -- lrcorner reslab -- llcorner reslab -- cycle;
     draw reslab;
+    endgroup;
 enddef;
 
 % draw an edge
 def drawEdgeFull(expr posA,posB,l,inan,outan) =
+    begingroup;
+    save sub;
     path sub;
     sub := edgeFull(posA,posB,inan,outan);
     drawarrow sub;
     draw edgeLabel(sub,l);
+    endgroup;
 enddef;
 
 def drawEdgeAngle(expr posA,posB,l,inan) =
+    begingroup;
+    save sub;
     path sub;
     sub := edgeAngle(posA,posB,inan);
     drawarrow sub;
     draw edgeLabel(sub,l);
+    endgroup;
 enddef;
 
 def drawEdge(expr posA,posB,l) =
+    begingroup;
+    save sub;
     path sub;
     sub := edge(posA,posB);
     drawarrow sub;
     draw edgeLabel(sub,l);
+    endgroup;
+enddef;
+
+vardef box(expr posA) =
+    save b,size;
+    path b;
+    numeric size;
+    size:=2nodesize;
+    b := unitsquare scaled size shifted posA shifted (-.5size,-.5size);
+    b
+enddef;
+
+def drawbox(expr posA,l) =
+    begingroup;
+    save b,pos;
+    path b;
+    pair pos;
+    b:=box(posA);
+    draw b;
+    pos=point 3 of b;
+    label.lrt(TEX("$"&l&"$"),pos);
+    endgroup;
 enddef;
 
 prologues:=3;

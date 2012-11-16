@@ -1,7 +1,8 @@
 pair A,B,C,D,E,F;
 A:=(0,0); B:=(0,u); C:=(0,2u);
 D:=(0,3u); E:=(0,4u); F:=(0,6u);
-
+nodesize:=4bp;
+nodespace:=6bp;
 drawLoopPoint(A,B,"''");
 drawLoopPoint(A,C,"a");
 drawLoopPoint(A,D,"b");
