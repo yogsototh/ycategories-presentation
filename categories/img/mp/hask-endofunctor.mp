@@ -26,12 +26,12 @@ fbool=   bool shifted decal;
 flist=   list shifted decal;
 
 
-drawLoopPoint(fint,fint shifted (0,1.6u),"\mathtt{sqrt}");
-drawEdge(fint,fint,"\mathtt{id}");
-drawEdgeAngle(fint,fbool,"\mathtt{odd}",-30);
-drawEdgeAngle(fint,fbool,"\mathtt{even}",30);
-drawEdge(fintlist,fintlist,"\mathtt{tail}");
-drawEdge(intlist,int,"\mathtt{head}");
+drawLoopPoint(fint,fint shifted (0,1.9u),"\scriptstyle\mathtt{fmap\ sqrt}");
+drawEdge(fint,fint,"\scriptstyle\mathtt{fmap\ id}");
+drawEdgeAngle(fint,fbool,"\scriptstyle\mathtt{fmap\ odd}",-30);
+drawEdgeAngle(fint,fbool,"\scriptstyle\mathtt{fmap\ even}",30);
+drawEdge(fintlist,fintlist,"\scriptstyle\mathtt{fmap\ tail}");
+drawEdge(fintlist,fint,"\scriptstyle\mathtt{fmap\ head}");
 
 drawblock(fint,fbool,"\mathtt{F}");
 
