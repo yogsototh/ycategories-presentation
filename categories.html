@@ -687,6 +687,34 @@ Haskell types is fractal:</p>
 
 <img src="categories/img/mp/hask-endofunctor.png" alt="Haskell functor representation"/>
 </section>
+<section class="slide">
+<h2 id="non-haskell-hasks-functors">&quot;Non Haskell&quot; Hask's Functors</h2>
+<p>A simple basic example is the \(id_\Hask\) functor. It simply cannot be expressed as a couple (<code>F</code>,<code>fmap</code>) where</p>
+<ul>
+<li><code>F::* -&gt; *</code></li>
+<li><code>fmap :: (a -&gt; b) -&gt; (F a) -&gt; (F b)</code></li>
+</ul>
+<p>Also other degenerated examples:</p>
+<ul>
+<li>F(<code>T</code>)=<code>Int</code></li>
+<li>F(<code>f</code>)=<code>\x-&gt;0</code></li>
+</ul>
+</section>
+<section class="slide">
+<h2 id="also-functor-inside-hask">Also Functor inside \(\Hask\)</h2>
+<p><code>length</code> can be seen as a Functor from the category <code>[a]</code> to <code>Int</code>. More precisely:</p>
+<ul>
+<li>\(\ob{\mathtt{[a]}}=\{∙\}\)</li>
+<li>\(\hom{\mathtt{[a]}}=\mathtt{[a]}\)</li>
+<li>\(∘=\mathtt{(++)}\)</li>
+</ul>
+<p><span class="and">&amp;</span></p>
+<ul>
+<li>\(\ob{\mathtt{Int}}=\{∙\}\)</li>
+<li>\(\hom{\mathtt{Int}}=\mathtt{Int}\)</li>
+<li>\(∘=\mathtt{(+)}\)</li>
+</ul>
+</section>
 <!-- End slides. -->
 
 

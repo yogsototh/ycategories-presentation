@@ -14,7 +14,7 @@ for rep in ??_*(/); do
     cd $rep
     i=10
     for fic in *.html; do
-        title=$( <$fic grep h2 | sed 's/<[^>]*>//g;s/[^a-zA-Z]/_/g;s/__*/_/g;s/^_//;s/_$//')
+        title=$( <$fic grep h2 | sed 's/<[^>]*>//g;s/&[^;]*;//g;s/[^a-zA-Z]/_/g;s/__*/_/g;s/^_//;s/_$//;')
         if ((i<100)); then
             num="0$i"
         else
@@ -28,6 +28,9 @@ for rep in ??_*(/); do
                 continue
             }
         mv $fic $newfic
+        mdfic=${fic:r}.md
+        newmdfic=${newfic:r}.md
+        [[ -e $mdfic ]] && mv $mdfic $newmdfic
     done
     cd $scriptdir
 done
