@@ -34,6 +34,7 @@
 
 <div style="display:none">
 \(\newcommand{\F}{\mathbf{F}}\)
+\(\newcommand{\E}{\mathbf{E}}\)
 \(\newcommand{\C}{\mathcal{C}}\)
 \(\newcommand{\D}{\mathcal{D}}\)
 \(\newcommand{\id}{\mathrm{id}}\)
@@ -47,6 +48,7 @@
 \(\newcommand{\ML}{\mathbf{ML}}\)
 \(\newcommand{\Hask}{\mathbf{Hask}}\)
 \(\newcommand{\Cat}{\mathbf{Cat}}\)
+\(\newcommand{\fmap}{\mathtt{fmap}}\)
 </div>
 
 
@@ -688,6 +690,22 @@ Haskell types is fractal:</p>
 <img src="categories/img/mp/hask-endofunctor.png" alt="Haskell functor representation"/>
 </section>
 <section class="slide">
+<h2>Functor as boxes</h2>
+
+<p>Haskell functor can be seen as boxes containing all Haskell types and functions.
+Haskell types is fractal:</p>
+
+<img src="categories/img/mp/hask-endofunctor-objects.png" alt="Haskell functor representation"/>
+</section>
+<section class="slide">
+<h2>Functor as boxes</h2>
+
+<p>Haskell functor can be seen as boxes containing all Haskell types and functions.
+Haskell types is fractal:</p>
+
+<img src="categories/img/mp/hask-endofunctor-morphisms.png" alt="Haskell functor representation"/>
+</section>
+<section class="slide">
 <h2 id="non-haskell-hasks-functors">&quot;Non Haskell&quot; Hask's Functors</h2>
 <p>A simple basic example is the \(id_\Hask\) functor. It simply cannot be expressed as a couple (<code>F</code>,<code>fmap</code>) where</p>
 <ul>
@@ -697,23 +715,47 @@ Haskell types is fractal:</p>
 <p>Also other degenerated examples:</p>
 <ul>
 <li>F(<code>T</code>)=<code>Int</code></li>
-<li>F(<code>f</code>)=<code>\x-&gt;0</code></li>
+<li>F(<code>f</code>)=<code>\_-&gt;0</code></li>
 </ul>
 </section>
 <section class="slide">
 <h2 id="also-functor-inside-hask">Also Functor inside \(\Hask\)</h2>
 <p><code>length</code> can be seen as a Functor from the category <code>[a]</code> to <code>Int</code>. More precisely:</p>
-<ul>
+<ul class="left">
 <li>\(\ob{\mathtt{[a]}}=\{∙\}\)</li>
 <li>\(\hom{\mathtt{[a]}}=\mathtt{[a]}\)</li>
 <li>\(∘=\mathtt{(++)}\)</li>
 </ul>
-<p><span class="and">&amp;</span></p>
-<ul>
+<p class="left" style="margin:2em 3em">⇒</p>
+<ul class="left">
 <li>\(\ob{\mathtt{Int}}=\{∙\}\)</li>
 <li>\(\hom{\mathtt{Int}}=\mathtt{Int}\)</li>
 <li>\(∘=\mathtt{(+)}\)</li>
 </ul>
+<div class="flush"></div>
+<ul><li>id: <code>length [] = 0</code>
+</li><li>comp: <code>length (l ++ l') = (length l) + (length l')</code>
+</li></ul>
+</section>
+<section class="slide">
+<h2 id="category-of-endofunctors">Category of Endofunctors</h2>
+<p>All endofunctors of \(\C\) form the category \(\E_\C\) of endofunctors of \(\C\).</p>
+<ul>
+<li>\(\ob{\E_\C}\): endofunctors of \(\C\) ; \(F:\C→\C\)</li>
+<li>\(\hom{\E_\C}\): natural transformations ; \(η:F→G\) s.t.
+<ul>
+<li>η function \( \ob{\C} → \hom{\C}, f:X→Y, η(Y)∘F(f)=G(f)∘η(X) \)</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide">
+<h2 id="monads">Monads</h2>
+<blockquote>
+<p>A Monad is just a monoid in the category of endofunctors, what's the problem?</p>
+</blockquote>
+<blockquote>
+<p>All told, a monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.</p>
+</blockquote>
 </section>
 <!-- End slides. -->
 
