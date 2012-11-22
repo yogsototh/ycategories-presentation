@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="extensions/navigation/deck.navigation.css">
 	<link rel="stylesheet" href="extensions/status/deck.status.css">
 	<link rel="stylesheet" href="extensions/hash/deck.hash.css">
-	<link rel="stylesheet" href="extensions/scale/deck.scale.css">
+    <link rel="stylesheet" href="extensions/scale/deck.scale.css">
 
 	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
 
@@ -25,10 +25,8 @@
     <!-- <link rel="stylesheet" href="themes/style/web-2.0.css"> -->
     <link rel="stylesheet" href="themes/style/y/main.css" />
     <link rel="stylesheet" href="themes/style/y/solarized.css" />
-
 	<!-- Required Modernizr file -->
 	<script src="modernizr.custom.js"></script>
-
 </head>
 <body class="deck-container">
 
@@ -50,7 +48,6 @@
 \(\newcommand{\Cat}{\mathbf{Cat}}\)
 \(\newcommand{\fmap}{\mathtt{fmap}}\)
 </div>
-
 
 <!-- Begin slides. Just make elements with a class of slide. -->
 
@@ -95,7 +92,7 @@
         <figcaption>Aboriginal Tally System</figcaption>
     </figure>
     <div>
-        <div class="left" style="left-margin: 1em">amelioration ⇒</div>
+        <div class="left" style="margin: 2em 1em">amelioration ⇒</div>
         <figure class="left">
             <img src="categories/img/first-real-numbers.png" style="height:5em" alt="Mesopotamian Numbers"/>
             <figcaption>Mesopotamian base 60 system</figcaption>
@@ -119,7 +116,7 @@
 </li><li> \(0\) ⇒ "Nothing" become a number
 </li></ul>
 <p><span class="and" style="visibility:hidden"><span class="and">&amp;</span></span> More <strong>things</strong> can be understood as numbers<br/>
-<span class="and"><span class="and">&amp;</span></span> More <strong>operator</strong> to manipulate them.</p>
+<span class="and"><span class="and">&amp;</span></span> More <strong>ways</strong> to manipulate them.</p>
 </section>
 <section class="slide">
 <h2>Numbers ⇒ Sets</h2>
@@ -164,33 +161,35 @@
 <tr>
     <td>\(\mathbb{N}\): \((+,0)\)</td>
     <td>Semigroups</td>
-    <td>?</td>
+    <td></td>
 </tr>
 <tr>
     <td>\(\mathbb{Z}\): \((+,0,\times,1)\)</td>
     <td>Rings</td>
-    <td>?</td>
+    <td></td>
 </tr>
 <tr>
     <td>\(\mathbb{Q}\)</td>
     <td>Fields</td>
-    <td>?</td>
+    <td></td>
 </tr>
 <tr>
     <td>\(\mathbb{R}\)</td>
     <td>Complete Fields (<em class="base01">topology</em>)</td>
-    <td>?</td>
+    <td></td>
 </tr>
 <tr>
     <td>\(\mathbb{C}\)</td>
     <td>Algebræ</td>
-    <td>?</td>
+    <td></td>
 </tr>
-<tr><td></td><td>Modules,Vector Spaces, Monoids, ...</td><td>?</td></tr>
+<tr><td></td><td>Modules,Vector Spaces, Monoids, ...</td><td></td></tr>
 </table>
+<p><span class="and" style="visibility:hidden"><span class="and">&amp;</span></span> More <strong>general</strong>: more things are <span class="yellow">categories</span>.<br/>
+<span class="and"><span class="and">&amp;</span></span> More <strong>abstract</strong>: generalization for free; replace = by <span class="yellow">≅</span>.</p>
 </section>
 <section class="slide">
-<h2><span class="yellow">/.*/</span> ⇒? Category Theory</h2>
+<h2>Category Theory</h2>
 <p>Categories package entire mathematical theories.</p>
 <ul>
 <li>Topology</li>
@@ -608,8 +607,10 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 <section class="slide">
 <h2>Haskell Functor vs \(\Hask\) Functor</h2>
 
-<p>Functor for Haskell language is a type <code>F</code> which belong to the type class <code>Functor</code></p>
-<p>It must therefore implement an <code>fmap</code> function.
+<p>Functor for Haskell language is a type <code>F :: * -> *</code> which belong to the type class <code>Functor</code></p>
+<p>It must implement <code>fmap :: (a -> b) -> (F a -> F b)</code>.
+
+<p><code>F</code>: \(\ob{\Hask}→\ob{\Hask}\) and <code>fmap</code>: \(\hom{\Hask}→\hom{\Hask}\)
 
 <p>The couple <code>(F,fmap)</code> is then a real functor in the categorical sense for \(\Hask\) if</p>
 
@@ -668,7 +669,7 @@ fmap head (Cons 'c' [1,2,3])== Cons 'c' 1
 <section class="slide">
 <h2>Haskell Functor intuition</h2>
 
-<p>Put normal function inside Box-like types</p>
+<p>Put normal function inside a container. Ex: list, trees...<p>
 
 <img src="categories/img/mp/boxfunctor.png" alt="Haskell Functor as a box play"/>
 </section>
@@ -712,7 +713,7 @@ Haskell types is fractal:</p>
 <li><code>F::* -&gt; *</code></li>
 <li><code>fmap :: (a -&gt; b) -&gt; (F a) -&gt; (F b)</code></li>
 </ul>
-<p>Also other degenerated examples:</p>
+<p>Another example:</p>
 <ul>
 <li>F(<code>T</code>)=<code>Int</code></li>
 <li>F(<code>f</code>)=<code>\_-&gt;0</code></li>
@@ -739,12 +740,14 @@ Haskell types is fractal:</p>
 </section>
 <section class="slide">
 <h2 id="category-of-endofunctors">Category of Endofunctors</h2>
+<img src="categories/img/mp/natural-transformation.png" alt="Natural transformation commutative diagram" class="right"/>
 <p>All endofunctors of \(\C\) form the category \(\E_\C\) of endofunctors of \(\C\).</p>
 <ul>
 <li>\(\ob{\E_\C}\): endofunctors of \(\C\) ; \(F:\C→\C\)</li>
-<li>\(\hom{\E_\C}\): natural transformations ; \(η:F→G\) s.t.
+<li>\(\hom{\E_\C}\): natural transformations
 <ul>
-<li>η function \( \ob{\C} → \hom{\C}, f:X→Y, η(Y)∘F(f)=G(f)∘η(X) \)</li>
+<li>η familly \(η_X\in\hom{\C}\) for \(X\in\ob{\C}\) s.t.</li>
+<li>ex: for Haskell functors: <code>F a -&gt; G a</code> are the natural transformations.</li>
 </ul></li>
 </ul>
 </section>
@@ -756,6 +759,114 @@ Haskell types is fractal:</p>
 <blockquote>
 <p>All told, a monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.</p>
 </blockquote>
+</section>
+<section class="slide">
+<h2 id="monads-are-just-monoids-14">Monads are just monoids (1/4)</h2>
+<p>A monoid is a triplet \((E,∙,e)\) s.t.</p>
+<ul>
+<li>\(E\) a set</li>
+<li>\(∙:E×E→E\)</li>
+<li>\(e:1→E\)</li>
+</ul>
+<p>Satisfying</p>
+<ul>
+<li>\(x∙(y∙z) = (x∙y)∙z, ∀x,y,z∈E\)</li>
+<li>\(e∙x = x = x∙e, ∀x∈E\)</li>
+</ul>
+</section>
+<section class="slide">
+<h2 id="monads-are-just-monoids-24">Monads are just Monoids (2/4)</h2>
+<p>A Monad is a triplet \((M,μ,η)\) s.t.</p>
+<ul>
+<li>\(M\) an <span class="yellow">Endofunctor</span></li>
+<li>\(⊙:M×M→M\) a nat. trans. (× is functor composition)</li>
+<li>\(η:I→M\) a nat. trans. (\(I\) identity functor)</li>
+</ul>
+<p>Satisfying</p>
+<ul>
+<li>\(M ⊙ (M ⊙ M)) = (M ⊙ M) ⊙ M\)</li>
+<li>\(η ⊙ M = M = M ⊙ η\)</li>
+</ul>
+</section>
+<section class="slide">
+<h2 id="monads-are-just-monoids-34">Monads are just Monoids (3/4)</h2>
+<p>Example: <code>Maybe</code> is a functor</p>
+<ul>
+<li>\(M\) an <span class="yellow">Endofunctor</span></li>
+<li>\(⊙:M×M→M\) a nat. trans. (× is functor composition)</li>
+<li>\(η:I→M\) a nat. trans. (\(I\) identity functor)</li>
+</ul>
+<pre class="haskell"><code>-- In Haskell ⊙ is "join" in "Control.Monad"
+join :: Maybe (Maybe a) -> Maybe a
+join (Just (Just x)) = Just x
+join _               = Nothing
+
+-- In Haskell the "return" function (unfortunate name)
+η :: a -> Maybe a
+η x = Just x</code></pre>
+
+
+</section>
+<section class="slide">
+<h2 id="monads-are-just-monoids-44">Monads are just Monoids (4/4)</h2>
+<p>Example: <code>Maybe</code> is a functor (<code>join</code> is ⊙)</p>
+<ul>
+<li>\(M ⊙ (M ⊙ M)) = (M ⊙ M) ⊙ M\)</li>
+<li>\(η ⊙ M = M = M ⊙ η\)</li>
+</ul>
+<pre class="nohighlight small"><code>join (Just (join (Just (Just x)))) = join (join (Just (Just (Just x))))
+join (Just (join (Just Nothing))) = join (join (Just (Just Nothing)))
+join (Just (join Nothing)) = join (join (Just Nothing))
+join Nothing = join (join Nothing)
+
+join (η (Just x)) =  Just x = Just (η x)
+join (η  Nothing) = Nothing = Nothing</code></pre>
+
+<p>And <code>(Maybe,join,η)</code> is a monad.</p>
+</section>
+<section class="slide">
+<h2 id="monads-generalize-composition">Monads generalize composition</h2>
+<p>Example with lists:</p>
+<pre class="haskell"><code>f=\x->[x]        ⇒ f 1 = [1]    ⇒ (f.f) 1 = [[1]]
+g=\x->[x+1]      ⇒ g 1 = [2]    ⇒ (g.g) 1 = ERROR [2]+1
+h=\x->[x+1,x*10] ⇒ h 1 = [2,10] ⇒ (h.h) 1 = ERROR [2,10]+1</code></pre>
+
+<p>How to fix that? <code>x &gt;&gt;= f = join (fmap f x)</code> (<code>join</code> is ⊙)</p>
+<pre class="haskell"><code>f=\x->[x]        ⇒ f 1 = [1]    ⇒ f 1 >>= f = [1]
+g=\x->[x+1]      ⇒ g 1 = [2]    ⇒ g 1 >>= g = [3]
+h=\x->[x+1,x*10] ⇒ h 1 = [2,10] ⇒ h 1 >>= h = [3,20,11,100]</code></pre>
+
+
+</section>
+<section class="slide">
+<h2 id="monads-utility">Monads utility</h2>
+<p>A monad can also hide computation details (ex: a common parameter).</p>
+<p><code>DrawScene</code> to <code><span class="yellow">State Screen</span> DrawScene</code> ; still <b>pure</b>.</p>
+<pre class="haskell left small" style="width:40%"><code>main = drawImage (width,height)
+
+drawImage :: Screen -&gt; DrawScene
+drawImage <span class="orange">screen</span> =
+    drawPoint p <span class="orange">screen</span>
+    drawCircle c <span class="orange">screen</span>
+    drawRectangle r <span class="orange">screen</span>
+
+drawPoint point <span class="orange">screen</span> = ...
+drawCircle circle <span class="orange">screen</span> = ...
+drawRectangle rectangle <span class="orange">screen</span> = ...</code></pre>
+<pre class="haskell right small" style="width:45%"><code>main = do
+    <span class="orange">put (Screen 1024 768)</span>
+    drawImage
+
+drawImage :: State Screen DrawScene
+drawImage = do
+    drawPoint p
+    drawCircle c
+    drawRectangle r
+
+drawPoint :: Point -&gt; State Screen DrawScene
+drawPoint p = do
+    <span class="orange">Screensize width height &lt;- get</span>
+    ...</code></pre>
 </section>
 <!-- End slides. -->
 

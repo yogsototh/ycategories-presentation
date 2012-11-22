@@ -1,7 +1,9 @@
 <h2>Haskell Functor vs \(\Hask\) Functor</h2>
 
-<p>Functor for Haskell language is a type <code>F</code> which belong to the type class <code>Functor</code></p>
-<p>It must therefore implement an <code>fmap</code> function.
+<p>Functor for Haskell language is a type <code>F :: * -> *</code> which belong to the type class <code>Functor</code></p>
+<p>It must implement <code>fmap :: (a -> b) -> (F a -> F b)</code>.
+
+<p><code>F</code>: \(\ob{\Hask}→\ob{\Hask}\) and <code>fmap</code>: \(\hom{\Hask}→\hom{\Hask}\)
 
 <p>The couple <code>(F,fmap)</code> is then a real functor in the categorical sense for \(\Hask\) if</p>
 

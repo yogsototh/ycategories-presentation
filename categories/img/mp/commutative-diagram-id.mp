@@ -13,11 +13,11 @@ drawEdge(z0,z1,"id_A");
 drawEdge(z1,z2,"f");
 ab:=edge(z0,z2);
 drawarrow ab;
-label.lft("f",midpoint(ab));
+label.lft(btex $f$ etex,midpoint(ab));
 
 drawEdge(z2,z3,"id_B");
 
 ac:=edge(z1,z3);
 drawarrow ac;
-label.rt("f",midpoint(ac));
+label.rt(btex $f$ etex,midpoint(ac));
 

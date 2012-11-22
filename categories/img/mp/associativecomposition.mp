@@ -11,12 +11,12 @@ drawState(z3,"D");
 drawEdge(z1,z2,"g");
 
 drawoptions(withcolor blue);
-drawEdgeAngle(z0,z2,"g\circ f",30);
+drawEdgeAngle(z0,z2,"g\circ f",35);
 drawEdge(z2,z3,"h");
 
 drawoptions(withcolor green);
 drawEdge(z0,z1,"f");
-drawEdgeAngle(z1,z3,"h\circ g",-30);
+drawEdgeAngle(z1,z3,"h\circ g",-35);
 
 drawoptions(withcolor yellow);
-drawEdgeAngle(z0,z3,"(h\circ g)\circ f = h\circ (g\circ f)",45);
+drawEdgeAngle(z0,z3,"(h\circ g)\circ f = h\circ (g\circ f)",50);
