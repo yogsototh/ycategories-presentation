@@ -1,12 +1,16 @@
-What can Category Theory do for us?
------------------------------------
+Category Theory for programming?
+--------------------------------
+
+<img class="right" src="categories/img/buddha.png" alt="buddha"/>
 
 - Ability to see problem differently
-- Ability to abstract at the right level
-- Reduce bugs by separating concepts
+- Make generalisation easier
+- Help code organisation
+- Reduce bugs by clarifying concepts
 
-What did they already done?
+Example In Haskell:
 
-- Functors, Applicative Functor, Monads, Arrows
-- Generalize `fold`
-- ...
+- Functors
+- Monads
+- `fold` generalisation
+- Applicative Functors, Arrows, ...

@@ -1,5 +1,5 @@
-Category Theory
----------------
+Category Theory: High level
+---------------------------
 
 - Central position in contemporary mathematics/computer science/physics.
 - General mathematical theory of structures and of systems of structures.
