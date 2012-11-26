@@ -84,6 +84,19 @@
 </ul>
 </section>
 <section class="slide">
+<h2 id="category-theory">Category Theory</h2>
+<ul>
+<li>Central position in contemporary mathematics/computer science/physics.</li>
+<li>General mathematical theory of structures and of systems of structures.</li>
+<li>Still evolving, developing, expanding and multiplying.</li>
+<li>At minimum, powerful language, or conceptual framework.</li>
+<li>Object of philosophical study and a potentially powerful formal tool.</li>
+<li>Alternative to set theory as a foundation for mathematics.</li>
+<li>Raises many issues about mathematical ontology and epistemology.</li>
+<li>It thus affords philosophers and logicians much to use and reflect upon.</li>
+</ul>
+</section>
+<section class="slide">
 <h2 id="about-this-presentation">About this presentation</h2>
 <ul>
 <li>A lot of slides, but short with pictures,</li>
@@ -483,6 +496,7 @@ type Product = Product {getProduct :: a} -- Just a named box
     <li>\(\Vec\): (Vectorial spaces, linear functions,∘)</li>
     <li>\(\Grp\): (groups, group morphisms,∘)</li>
     <li>\(\Rng\): (rings, ring morphisms,∘)</li>
+    <li>Any deductive system <i>T</i>: (formulæ, proofs, proof concatenation)</li>
     <li>\( \Hask\): (Haskell types, functions, <code>(.)</code> )</li>
     <li>...</li>
 </ul>
@@ -895,10 +909,11 @@ join (η  Nothing) = Nothing = Nothing</code></pre>
 g=\x->[x+1]      ⇒ g 1 = [2]    ⇒ (g.g) 1 = ERROR [2]+1
 h=\x->[x+1,x*10] ⇒ h 1 = [2,10] ⇒ (h.h) 1 = ERROR [2,10]+1</code></pre>
 
-<p>How to fix that? <code>f =&lt;&lt; x = join (fmap f x)</code> <span class="small">(<code>join</code> is ⊙, <code>(&gt;&gt;=)=flip (=&lt;&lt;)</code>)</span></p>
-<pre class="haskell"><code>f=\x->[x]        ⇒ f 1 = [1]    ⇒ f =<< f 1 = [1]
-g=\x->[x+1]      ⇒ g 1 = [2]    ⇒ g =<< g 1 = [3]
-h=\x->[x+1,x*10] ⇒ h 1 = [2,10] ⇒ h =<< h 1 = [3,20,11,100]</code></pre>
+<p>How to fix that? Kleisli composition</p>
+<p><code>f &lt;=&lt; g = \x -&gt; join ((fmap f) (g x))</code></p>
+<pre class="haskell"><code>f=\x->[x]        ⇒ f 1 = [1]    ⇒ (f <=< f) 1 = [1]
+g=\x->[x+1]      ⇒ g 1 = [2]    ⇒ (g <=< g) 1 = [3]
+h=\x->[x+1,x*10] ⇒ h 1 = [2,10] ⇒ (h <=< h) 1 = [3,20,11,100]</code></pre>
 
 
 </section>

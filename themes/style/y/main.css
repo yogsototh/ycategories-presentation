@@ -868,7 +868,7 @@
     .deck-container #social:hover {
       opacity: 1; }
   .deck-container .popularblock {
-    width: 30.333%;
+    width: 30.3333%;
     margin: 0 1.5%;
     float: left; }
     .deck-container .popularblock figure {
@@ -903,6 +903,7 @@
 .deck-container {
   color: #839496;
   background-color: #002b36;
+  text-shadow: 0 1px 5px #001122;
   box-shadow: 0 0 50px black inset; }
   .deck-container h1 {
     font-size: 3em; }
