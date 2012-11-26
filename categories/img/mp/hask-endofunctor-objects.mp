@@ -14,7 +14,7 @@ drawEdge(int,int,"\mathtt{id}");
 drawEdgeAngle(int,bool,"\mathtt{odd}",-30);
 drawEdgeAngle(int,bool,"\mathtt{even}",30);
 drawEdge(intlist,intlist,"\mathtt{tail}");
-drawEdge(intlist,int,"\mathtt{head}");
+drawEdge(intlist,int,"\mathtt{length}");
 
 pair decal;
 pair fint,fbool,ffunc,fintlist,flist;
@@ -30,7 +30,7 @@ drawEdge(fint,fint,"\scriptstyle\mathtt{fmap\ id}");
 drawEdgeAngle(fint,fbool,"\scriptstyle\mathtt{fmap\ odd}",-30);
 drawEdgeAngle(fint,fbool,"\scriptstyle\mathtt{fmap\ even}",30);
 drawEdge(fintlist,fintlist,"\scriptstyle\mathtt{fmap\ tail}");
-drawEdge(fintlist,fint,"\scriptstyle\mathtt{fmap\ head}");
+drawEdge(fintlist,fint,"\scriptstyle\mathtt{fmap\ length}");
 
 
 drawblock(fint,fbool,"\mathtt{F}");

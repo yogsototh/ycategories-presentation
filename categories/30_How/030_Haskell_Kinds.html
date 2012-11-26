@@ -1,0 +1,9 @@
+<h2 id="haskell-kinds">Haskell Kinds</h2>
+<p>In Haskell some types can take type variable. Typically: <code>[a]</code>.</p>
+<pre><code>data Tree a = Node a [Tree a]
+data CTree a b = CNode a [b]</code></pre>
+<p>Types have <em>kind</em>; The kind is to type what type is to function. Kind are the &quot;type&quot; for some types (so meta).</p>
+<pre><code>Int, Char :: *
+[], Maybe, Tree :: * -&gt; *
+CTree :: * -&gt; * -&gt; *
+[Int], Maybe Char, Tree [Int] :: *</code></pre>

@@ -73,6 +73,7 @@
 <ul style="font-size: 2em; font-weight:bold">
     <li><span class="yellow">Why?
 <ul class="base01" style="border-left: 2px solid; padding-left: 1em; font-size: .6em; float: right; font-weight: bold; margin: 0 0 0 1em">
+    <li>About this presentation</li>
     <li>Math <span class="and"><span class="and">&amp;</span></span> Abstraction</li>
     <li>Programming <span class="and"><span class="and">&amp;</span></span> Abstraction</li>
     <li>Categories <span class="and"><span class="and">&amp;</span></span> Abstraction</li>
@@ -83,8 +84,41 @@
 </ul>
 </section>
 <section class="slide">
+<h2 id="about-this-presentation">About this presentation</h2>
+<ul>
+<li>A lot of slides, but short with pictures,</li>
+<li>General Ideas → Definitions → Examples using Haskell,</li>
+<li>About very fundamental Math, but I'll try not to digress.</li>
+</ul>
+</section>
+<section class="slide">
+<h2 id="category-theory-goal">Category Theory Goal?</h2>
+<p>Many different approach about Category Theory:</p>
+<ul>
+<li><a href="http://math.ucr.edu/home/baez/rosetta.pdf">Homogeneous vocabulary and notations</a></li>
+<li><a href="http://math.ucr.edu/home/baez/rosetta.pdf">Bridge between disciplines</a></li>
+<li><a href="http://www.math.harvard.edu/~mazur/preprints/when_is_one.pdf">Better definition of equality</a></li>
+<li><a href="www.math.harvard.edu/~mazur/preprints/when_is_one.pdf">Generalization by default</a></li>
+<li>Better math foundations</li>
+</ul>
+</section>
+<section class="slide">
+<h2 id="what-can-category-theory-do-for-us">What can Category Theory do for us?</h2>
+<ul>
+<li>Ability to see problem differently</li>
+<li>Ability to abstract at the right level</li>
+<li>Reduce bugs by separating concepts</li>
+</ul>
+<p>What did they already done?</p>
+<ul>
+<li>Functors, Applicative Functor, Monads, Arrows</li>
+<li>Generalize <code>fold</code></li>
+<li>...</li>
+</ul>
+</section>
+<section class="slide">
 <h2>Abstraction</h2>
-<p>A common concept you see often in multiple instances.</p>
+<p>A common concept you see in multiple instances.</p>
 <div>
     <p>Numbers: 1,2,3,...  <em class="small">3400 BC, real numbers 760 BC</em></p>
     <figure class="left">
@@ -186,7 +220,9 @@
 <tr><td></td><td>Modules,Vector Spaces, Monoids, ...</td><td></td></tr>
 </table>
 <p><span class="and" style="visibility:hidden"><span class="and">&amp;</span></span> More <strong>general</strong>: more things are <span class="yellow">categories</span>.<br/>
-<span class="and"><span class="and">&amp;</span></span> More <strong>abstract</strong>: generalization for free; replace = by <span class="yellow">≅</span>.</p>
+<span class="and"><span class="and">&amp;</span></span> More <strong>abstract</strong>: generalization for free; replace = by <span class="yellow">≅</span>.<br/>
+<span class="and"><span class="and">&amp;</span></span> Homogeneous <strong>vocabulary</strong>.
+</p>
 </section>
 <section class="slide">
 <h2>Category Theory</h2>
@@ -245,28 +281,31 @@
 <section class="slide">
 <h2>Polymorphism: <code>mappend (<>)</code></h2>
 
-<pre class="haskell"><code>"abc" <>  "def" = "abcdef"                   -- String
-("ab","xy") <> ("AB","XY") = ("abAB","xyXY") -- (String,String)
+<pre class="small haskell"><code>   "abcdef" <span class="red"><></span>  "ABCDEF"   = "abcdefABCDEF"  -- String
+("ab","xy") <span class="red"><></span> ("AB","XY") = ("abAB","xyXY") -- (String,String)
 
-3 <> 4 ⇒ ERROR which law? + or * -- Int
+3 <span class="red"><></span> 4 ⇒ ERROR which law? + or * -- Int
+
 -- Use a type to remove ambiguity
 type Sum = Sum {getSum :: a} -- Just a named box
--- Monoid (N,+)
-(<>+) = getSum (Sum x <> Sum y)
+-- Monoid (Int,+,0)
+(<>+) = getSum (Sum x <span class="red"><></span> Sum y)
 3 <>+ 4 = 7
 
--- Monoid (N,*)
-(<>*) = getProduct (Product x <> Product y)
+-- Monoid (Int,*,0)
+type Product = Product {getProduct :: a} -- Just a named box
+(<>*) = getProduct (Product x <span class="red"><></span> Product y)
 3 <>* 4 = 12</code></pre>
 
+<p>Note: with Monoids (M,⊙,e); <code>foldl ⊙ e ms = foldr ⊙ e ms</code></p>
 </section>
 <section class="slide">
 <h2>Polymorphism: <code>(>>=)</code></h2>
 
 <p>Example: <span class="red"><code>(>>=)</code></span> with <code>[a]</code> and <code>Maybe a</code></p>
-<pre class="haskell"><code>data Maybe a = Just a | Nothing</code></pre>
+<pre class="small haskell"><code>data Maybe a = Just a | Nothing</code></pre>
 
-<pre class="haskell"><code>-- Maybe Int >>= Int -> Maybe (Int -> Int) >>= (Int -> Int) -> Maybe Int
+<pre class="small haskell"><code>-- Maybe Int >>= Int -> Maybe (Int -> Int) >>= (Int -> Int) -> Maybe Int
 (Just 2) <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Just 4
  Nothing <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Nothing
 
@@ -350,7 +389,7 @@ type Sum = Sum {getSum :: a} -- Just a named box
 </section>
 <section class="slide">
 <h2>Category laws: neutral element</h2>
-<p>for all \(X\), there is an \(\id_X\), s.t. for all \(f:A→B\):</p>
+<p>for each object \(X\), there is an \(\id_X\), s.t. for all \(f:A→B\):</p>
 <img src="categories/img/mp/identity.png" alt="identity"/>
 </section>
 <section class="slide">
@@ -381,6 +420,7 @@ type Sum = Sum {getSum :: a} -- Just a named box
 </section>
 <section class="slide">
 <h2>Can this be a category?</h2>
+<p>\(\ob{\C},\hom{\C}\) fixed, is there a valid ∘?</p>
 <figure class="left">
     <img src="categories/img/mp/cat-example1.png" alt="Category example 1"/>
     <figcaption class="slide">
@@ -443,7 +483,6 @@ type Sum = Sum {getSum :: a} -- Just a named box
     <li>\(\Vec\): (Vectorial spaces, linear functions,∘)</li>
     <li>\(\Grp\): (groups, group morphisms,∘)</li>
     <li>\(\Rng\): (rings, ring morphisms,∘)</li>
-    <li>\( \ML\): (types, terms, \(λg. λf. λx. g f x\) )</li>
     <li>\( \Hask\): (Haskell types, functions, <code>(.)</code> )</li>
     <li>...</li>
 </ul>
@@ -486,7 +525,7 @@ type Sum = Sum {getSum :: a} -- Just a named box
 
 <img class="right" style="max-width:17%" src="categories/img/mp/monoid.png" alt="Monoids are one object categories"/>
 <h3>Monoids</h3>
-<p>each Monoid \((M,e,◎): \ob{M}=\{∙\},\hom{M}=M,\circ = ◎\)</p>
+<p>each Monoid \((M,e,⊙): \ob{M}=\{∙\},\hom{M}=M,\circ = ⊙\)</p>
 <p>one object</p>
 <p>Examples: <code>(Integer,0,+)</code>, <code>(Integer,1,*)</code>, <code>(Strings,"",++)</code>, <code>(Lists,[],++)</code>, ...
 </section>
@@ -605,16 +644,41 @@ A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
 <p>Forget glitches because of <code>undefined</code>.</p>
 </section>
 <section class="slide">
+<h2 id="haskell-kinds">Haskell Kinds</h2>
+<p>In Haskell some types can take type variable. Typically: <code>[a]</code>.</p>
+<pre><code>data Tree a = Node a [Tree a]
+data CTree a b = CNode a [b]</code></pre>
+<p>Types have <em>kind</em>; The kind is to type what type is to function. Kind are the &quot;type&quot; for some types (so meta).</p>
+<pre><code>Int, Char :: *
+[], Maybe, Tree :: * -&gt; *
+CTree :: * -&gt; * -&gt; *
+[Int], Maybe Char, Tree [Int] :: *</code></pre>
+</section>
+<section class="slide">
+<h2 id="haskell-types">Haskell Types</h2>
+<p>We can make function that can work for <em>all</em> type parameter. Such function can only work with the <em>topology</em> induced by the type. We know such function won't work <em>on</em> the elements.</p>
+<p>Sometimes, the type determine a lot about the function:</p>
+<pre class="haskell"><code>fst :: (a,b) -> a -- Only one choice
+snd :: (a,b) -> b -- Only one choice
+f :: a -> [a]     -- Many choices
+-- Possibilities: f x=[], or [x], or [x,x] or [x,...,x]
+
+? :: [a] -> [a] -- Many choices
+-- can only duplicate/remove/reorder elements
+-- for example: the type of addOne isn't [a] -> [a]
+addOne l = map (+1) l</code></pre>
+
+
+</section>
+<section class="slide">
 <h2>Haskell Functor vs \(\Hask\) Functor</h2>
 
-<p>Functor for Haskell language is a type <code>F :: * -> *</code> which belong to the type class <code>Functor</code></p>
-<p>It must implement <code>fmap :: (a -> b) -> (F a -> F b)</code>.
+<p>Functor for Haskell language is a type <code>F :: * -> *</code> which belong to the type class <code>Functor</code>.<br/>
+It must implement <code>fmap :: (a -> b) -> (F a -> F b)</code>.
 
-<p><code>F</code>: \(\ob{\Hask}→\ob{\Hask}\) and <code>fmap</code>: \(\hom{\Hask}→\hom{\Hask}\)
+<p><span style="visibility:hidden"><span class="and">&amp;</span></span> <code>F</code>: \(\ob{\Hask}→\ob{\Hask}\)<br/> <span class="and">&amp;</span> <code>fmap</code>: \(\hom{\Hask}→\hom{\Hask}\)
 
-<p>The couple <code>(F,fmap)</code> is then a real functor in the categorical sense for \(\Hask\) if</p>
-
-<p>for any <code>x :: F a</code>:</p>
+<p>The couple <code>(F,fmap)</code> is a functor in the categorical sense for \(\Hask\) if for any <code>x :: F a</code>:</p>
 <ul><li><code>fmap id x = x</code>
 </li><li><code>fmap (f.g) x= (fmap f . fmap g) x</code>
 </li></ul>
@@ -679,7 +743,7 @@ fmap head (Cons 'c' [1,2,3])== Cons 'c' 1
 <p>Haskell Functors are:</p>
 
 <ul><li><em>endofunctors</em> ; \(F:\C→\C\) here \(\C = \Hask\),
-</li><li>a couple <b>(Object,Morphism)</b> of Hask.
+</li><li>a couple <b>(Object,Morphism)</b> in \(\Hask\).
 </li></ul>
 </section>
 <section class="slide">
@@ -776,7 +840,7 @@ Haskell types is fractal:</p>
 </section>
 <section class="slide">
 <h2 id="monads-are-just-monoids-24">Monads are just Monoids (2/4)</h2>
-<p>A Monad is a triplet \((M,μ,η)\) s.t.</p>
+<p>A Monad is a triplet \((M,⊙,η)\) s.t.</p>
 <ul>
 <li>\(M\) an <span class="yellow">Endofunctor</span></li>
 <li>\(⊙:M×M→M\) a nat. trans. (× is functor composition)</li>
@@ -831,10 +895,10 @@ join (η  Nothing) = Nothing = Nothing</code></pre>
 g=\x->[x+1]      ⇒ g 1 = [2]    ⇒ (g.g) 1 = ERROR [2]+1
 h=\x->[x+1,x*10] ⇒ h 1 = [2,10] ⇒ (h.h) 1 = ERROR [2,10]+1</code></pre>
 
-<p>How to fix that? <code>x &gt;&gt;= f = join (fmap f x)</code> (<code>join</code> is ⊙)</p>
-<pre class="haskell"><code>f=\x->[x]        ⇒ f 1 = [1]    ⇒ f 1 >>= f = [1]
-g=\x->[x+1]      ⇒ g 1 = [2]    ⇒ g 1 >>= g = [3]
-h=\x->[x+1,x*10] ⇒ h 1 = [2,10] ⇒ h 1 >>= h = [3,20,11,100]</code></pre>
+<p>How to fix that? <code>f =&lt;&lt; x = join (fmap f x)</code> <span class="small">(<code>join</code> is ⊙, <code>(&gt;&gt;=)=flip (=&lt;&lt;)</code>)</span></p>
+<pre class="haskell"><code>f=\x->[x]        ⇒ f 1 = [1]    ⇒ f =<< f 1 = [1]
+g=\x->[x+1]      ⇒ g 1 = [2]    ⇒ g =<< g 1 = [3]
+h=\x->[x+1,x*10] ⇒ h 1 = [2,10] ⇒ h =<< h 1 = [3,20,11,100]</code></pre>
 
 
 </section>

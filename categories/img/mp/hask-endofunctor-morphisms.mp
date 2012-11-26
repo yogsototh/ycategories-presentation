@@ -40,8 +40,8 @@ drawEdge(intlist,intlist,"\mathtt{tail}");
 drawEdge(fintlist,fintlist,"\scriptstyle\mathtt{fmap\ tail}");
 
 drawoptions(withcolor blue withpen pencircle scaled 1);
-drawEdge(intlist,int,"\mathtt{head}");
-drawEdge(fintlist,fint,"\scriptstyle\mathtt{fmap\ head}");
+drawEdge(intlist,int,"\mathtt{length}");
+drawEdge(fintlist,fint,"\scriptstyle\mathtt{fmap\ length}");
 
 drawoptions(withcolor base1);
 drawState(int,"\mathtt{Int}");
@@ -67,21 +67,21 @@ label.top(btex $\mathtt{F\ F}$ etex, blockLabelPosition(b)) scaled .5 shifted ff
 draw b scaled .25 shifted ff;
 label.top(btex $\mathtt{F\ F\ F}$ etex, blockLabelPosition(b)) scaled .25 shifted ff;
 
-pair psqrt,pid,phead,podd,peven,ptail;
-pair pfsqrt,pfid,pfhead,pfodd,pfeven,pftail;
+pair psqrt,pid,plength,podd,peven,ptail;
+pair pfsqrt,pfid,pflength,pfodd,pfeven,pftail;
 
 psqrt := midpoint(loopPoint(int,int shifted (0,1.6u)));
 pid   := midpoint(edge(int,int));
 podd  := midpoint(edgeAngle(int,bool,-30));
 peven := midpoint(edgeAngle(int,bool,30));
 ptail := midpoint(edge(intlist,intlist));
-phead := midpoint(edge(intlist,int));
+plength := midpoint(edge(intlist,int));
 pfsqrt := midpoint(loopPoint(fint,fint shifted (0,1.9u)));
 pfid   := midpoint(edge(fint,fint));
 pfodd  := midpoint(edgeAngle(fint,fbool,-30));
 pfeven := midpoint(edgeAngle(fint,fbool,30));
 pftail := midpoint(edge(fintlist,fintlist));
-pfhead := midpoint(edge(fintlist,fint));
+pflength := midpoint(edge(fintlist,fint));
 
 nodespace := 6bp;
 drawoptions(withcolor yellow withpen pencircle scaled 1);
@@ -91,7 +91,7 @@ drawoptions(withcolor green withpen pencircle scaled 1);
 drawarrow edgeAngle(pid,pfid,20) dashed evenly;
 
 drawoptions(withcolor blue withpen pencircle scaled 1);
-drawarrow edgeAngle(phead,pfhead,-20) dashed evenly;
+drawarrow edgeAngle(plength,pflength,-20) dashed evenly;
 
 drawoptions(withcolor red withpen pencircle scaled 1);
 drawarrow edgeAngle(podd,pfodd,0) dashed evenly;

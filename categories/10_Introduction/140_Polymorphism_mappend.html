@@ -1,0 +1,19 @@
+<h2>Polymorphism: <code>mappend (<>)</code></h2>
+
+<pre class="small haskell"><code>   "abcdef" <span class="red"><></span>  "ABCDEF"   = "abcdefABCDEF"  -- String
+("ab","xy") <span class="red"><></span> ("AB","XY") = ("abAB","xyXY") -- (String,String)
+
+3 <span class="red"><></span> 4 ⇒ ERROR which law? + or * -- Int
+
+-- Use a type to remove ambiguity
+type Sum = Sum {getSum :: a} -- Just a named box
+-- Monoid (Int,+,0)
+(<>+) = getSum (Sum x <span class="red"><></span> Sum y)
+3 <>+ 4 = 7
+
+-- Monoid (Int,*,0)
+type Product = Product {getProduct :: a} -- Just a named box
+(<>*) = getProduct (Product x <span class="red"><></span> Product y)
+3 <>* 4 = 12</code></pre>
+
+<p>Note: with Monoids (M,⊙,e); <code>foldl ⊙ e ms = foldr ⊙ e ms</code></p>

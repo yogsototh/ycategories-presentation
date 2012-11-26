@@ -19,4 +19,4 @@ drawEdge(int,int,"\mathtt{id}");
 drawEdgeAngle(int,bool,"\mathtt{odd}",-30);
 drawEdgeAngle(int,bool,"\mathtt{even}",30);
 drawEdge(intlist,intlist,"\mathtt{tail}");
-drawEdge(intlist,int,"\mathtt{head}");
+drawEdge(intlist,int,"\mathtt{length}");

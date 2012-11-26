@@ -1,7 +1,7 @@
 Monads are just Monoids (2/4)
 -----------------------------
 
-A Monad is a triplet \\((M,μ,η)\\) s.t.
+A Monad is a triplet \\((M,⊙,η)\\) s.t.
 
 - \\(M\\) an <span class="yellow">Endofunctor</span>
 - \\(⊙:M×M→M\\) a nat. trans. (× is functor composition)
