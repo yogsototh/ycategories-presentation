@@ -900,6 +900,13 @@
 @media only screen and (max-width: 640px) {
   .deck-container {
     font-size: 1.5em; } }
+#MathJax_Message {
+  font-size: 0.4em !important;
+  font-shadow: none !important;
+  background: none !important;
+  border: none !important;
+  color: #586e75 !important; }
+
 .deck-container {
   color: #839496;
   background-color: #002b36;
