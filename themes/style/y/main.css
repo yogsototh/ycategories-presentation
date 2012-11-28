@@ -907,6 +907,9 @@
   border: none !important;
   color: #586e75 !important; }
 
+body.deck-container {
+  overflow-y: hidden; }
+
 .deck-container {
   color: #839496;
   background-color: #002b36;
