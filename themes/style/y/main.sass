@@ -222,7 +222,7 @@ $secondTextColor: $base1
     font-style: italic
     font-weight: normal
     font-size: .9em
-    color: $base01
+    opacity: .67
   i, em
     +italic
   b, strong, h1, h2, h3, h4, h5, h6
@@ -332,8 +332,10 @@ $secondTextColor: $base1
     margin-bottom: 1.2em
 
   blockquote
-    +innerblock
-    +highlight
+    font-style: italic
+    padding: 0 1em
+    border-left: solid 10px $base01
+    color: $base1
     ul
       padding-left: 1.5em
 
@@ -1002,7 +1004,6 @@ $secondTextColor: $base1
     font-family: Palatino
 
   sup
-    vertical-align: top
     font-size: .7em
 
   .article .corps a:after
@@ -1145,6 +1146,8 @@ body.deck-container
   box-shadow: 0 0 50px #000 inset
   h1
     font-size: 3em
+    line-height: 1.2em
+    margin-top: 1em
   h2
     font-size: 1.5em
   h3,h4

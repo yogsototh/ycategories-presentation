@@ -75,7 +75,7 @@
     font-style: italic;
     font-weight: normal;
     font-size: 0.9em;
-    color: #586e75; }
+    opacity: 0.67; }
   .deck-container i, .deck-container em {
     font-style: italic; }
   .deck-container b, .deck-container strong, .deck-container h1, .deck-container h2, .deck-container h3, .deck-container h4, .deck-container h5, .deck-container h6 {
@@ -169,22 +169,10 @@
   .deck-container p {
     margin-bottom: 1.2em; }
   .deck-container blockquote {
-    border: solid 1px #586e75;
-    border-radius: 2px;
-    box-shadow: 0 0 4px #073642 inset;
-    background-color: #002934;
     font-style: italic;
-    padding: 0.5em 1em;
+    padding: 0 1em;
+    border-left: solid 10px #586e75;
     color: #93a1a1; }
-    .deck-container blockquote a:hover {
-      color: #93a1a1; }
-    .deck-container blockquote i, .deck-container blockquote em {
-      font-weight: normal;
-      font-style: normal;
-      color: #93a1a1; }
-    .deck-container blockquote strong, .deck-container blockquote b {
-      font-weight: bold;
-      color: #93a1a1; }
     .deck-container blockquote ul {
       padding-left: 1.5em; }
   .deck-container abbr,
@@ -786,7 +774,6 @@
   .deck-container .pala {
     font-family: Palatino; }
   .deck-container sup {
-    vertical-align: top;
     font-size: 0.7em; }
   .deck-container .article .corps a:after {
     content: "†";
@@ -916,7 +903,9 @@ body.deck-container {
   text-shadow: 0 1px 5px #001122;
   box-shadow: 0 0 50px black inset; }
   .deck-container h1 {
-    font-size: 3em; }
+    font-size: 3em;
+    line-height: 1.2em;
+    margin-top: 1em; }
   .deck-container h2 {
     font-size: 1.5em; }
   .deck-container h3, .deck-container h4 {
