@@ -27,8 +27,23 @@
     <link rel="stylesheet" href="themes/style/y/solarized.css" />
 	<!-- Required Modernizr file -->
 	<script src="modernizr.custom.js"></script>
+    <script>
+        function gofullscreen(){
+            var body=document.getElementById('body');
+            try {
+                body.requestFullScreen();
+            } catch(err) {
+                try {
+                    body.webkitRequestFullScreen();
+                } catch(err) {
+                    body.mozRequestFullScreen();
+                }
+            }
+            return false;
+        }
+    </script>
 </head>
-<body class="deck-container">
+<body id="body" class="deck-container" style="width: 99%">
 
 <div style="display:none">
 \(\newcommand{\F}{\mathbf{F}}\)
