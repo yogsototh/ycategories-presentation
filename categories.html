@@ -27,8 +27,23 @@
     <link rel="stylesheet" href="themes/style/y/solarized.css" />
 	<!-- Required Modernizr file -->
 	<script src="modernizr.custom.js"></script>
+    <script>
+        function gofullscreen(){
+            var body=document.getElementById('body');
+            try {
+                body.requestFullScreen();
+            } catch(err) {
+                try {
+                    body.webkitRequestFullScreen();
+                } catch(err) {
+                    body.mozRequestFullScreen();
+                }
+            }
+            return false;
+        }
+    </script>
 </head>
-<body class="deck-container">
+<body id="body" class="deck-container" style="width: 99%">
 
 <div style="display:none">
 \(\newcommand{\F}{\mathbf{F}}\)
@@ -52,21 +67,22 @@
 <!-- Begin slides. Just make elements with a class of slide. -->
 
 <section class="slide">
-<h1>Category Theory <span class="and">&amp;</span> Programming
-    <div><author style="font-size: .4em"><em class="base01">by</em> Yann Esposito
-        <div style="font-size:.5em">
-            <twitter>
-                <a href="http://twitter.com/yogsototh">@yogsototh</a>,
-            </twitter>
-            <googleplus>
-                <a href="https://plus.google.com/117858550730178181663">+yogsototh</a>
-            </googleplus>
-        </div>
-    </author></div>
-    <div class="base01" style="font-size: .25em; font-weight: 400; font-variant:italic">
-        HTML presentation: use arrows, space to navigate.
-    </div>
-</h1>
+<div style="text-align:center; position:absolute; top: 2em;">
+<h1 style="position: relative;">Category Theory <span class="and">&amp;</span> Programming</h1>
+<author><em class="base01">by</em> Yann Esposito</author>
+<div style="font-size:.5em">
+    <twitter>
+        <a href="http://twitter.com/yogsototh">@yogsototh</a>,
+     </twitter>
+     <googleplus>
+        <a href="https://plus.google.com/117858550730178181663">+yogsototh</a>
+     </googleplus>
+</div>
+<div class="base01" style="font-size: .5em; font-weight: 400; font-variant:italic">
+    <div class="button" style="margin: .5em auto;border: solid 2px; padding: 5px; width: 8em"  onclick="javascript:gofullscreen();">ENTER FULLSCREEN</div>
+    HTML presentation: use arrows, space to navigate.
+</div>
+</div>
 </section>
 <section class="slide">
 <h2>Plan</h2>
