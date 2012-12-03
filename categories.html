@@ -43,7 +43,7 @@
         }
     </script>
 </head>
-<body id="body" class="deck-container" style="width: 99%">
+<body id="body" class="deck-container">
 
 <div style="display:none">
 \(\newcommand{\F}{\mathbf{F}}\)
@@ -89,7 +89,7 @@
 <ul style="font-size: 2em; font-weight:bold">
     <li><span class="yellow">Why?
 <ul class="base01" style="border-left: 2px solid; padding-left: 1em; font-size: .6em; float: right; font-weight: bold; margin: 0 0 0 1em">
-    <li>General overview</li>
+    <li class="yellow">General overview</li>
     <li>Math <span class="and">&amp;</span> Abstraction</li>
     <li>Programming <span class="and">&amp;</span> Abstraction</li>
     <li>Categories <span class="and">&amp;</span> Abstraction</li>
@@ -141,6 +141,21 @@
 </ul>
 </section>
 <section class="slide">
+<h2>Plan</h2>
+<ul style="font-size: 2em; font-weight:bold">
+    <li><span class="yellow">Why?
+<ul class="base01" style="border-left: 2px solid; padding-left: 1em; font-size: .6em; float: right; font-weight: bold; margin: 0 0 0 1em">
+    <li>General overview</li>
+    <li class="yellow">Math <span class="and">&amp;</span> Abstraction</li>
+    <li>Programming <span class="and">&amp;</span> Abstraction</li>
+    <li>Categories <span class="and">&amp;</span> Abstraction</li>
+</ul>
+    </li>
+    <li>What?</li>
+    <li>How?</li>
+</ul>
+</section>
+<section class="slide">
 <h2>Math Abstraction</h2>
 <p>A common concept you see in multiple instances.</p>
 <div>
@@ -178,6 +193,7 @@
 </section>
 <section class="slide">
 <h2>Numbers ⇒ Sets</h2>
+<blockquote><strong>Formalism</strong>: A <em>theory</em> is some strings (the axioms), some string manipulation rules, and all strings created by applying these rules to the axioms.</blockquote>
 <table>
 <tr>
     <th>Numbers</th>
@@ -250,16 +266,33 @@
 </section>
 <section class="slide">
 <h2>Category Theory</h2>
-<p>Categories package entire mathematical theories.</p>
+<p>Categories package entire mathematical theories.<br/>
+Theory=(Axioms,<span style="visibility:hidden">Strings</span>Rules,<span style="visibility:hidden">Stri</span>Theorems)<br/> 
+<span style="visibility:hidden">Theory=</span>(Strings,Strings → Strings, Strings)
+</p>
+
 <ul>
 <li>Topology</li>
 <li>Quantum Physics</li>
 <li>Logic</li>
-<li><b>Programming</b></li>
+<li><b>Computer Science</b></li>
 </ul>
-<p><span style="visibility:hidden"><span class="and">&amp;</span></span> More <strong>general</strong>: more things are Categories.<br/>
-    <span class="and">&amp;</span> More <strong>precise</strong>: better distinction between concepts.</p>
-<p>Young field: <b>1942–45</b>, Samuel Eilenberg <span class="and">&amp;</span> Saunders Mac Lane
+<p>Recent field: <b>1942–45</b>, Samuel Eilenberg <span class="and">&amp;</span> Saunders Mac Lane
+</section>
+<section class="slide">
+<h2>Plan</h2>
+<ul style="font-size: 2em; font-weight:bold">
+    <li><span class="yellow">Why?
+<ul class="base01" style="border-left: 2px solid; padding-left: 1em; font-size: .6em; float: right; font-weight: bold; margin: 0 0 0 1em">
+    <li>General overview</li>
+    <li>Math <span class="and">&amp;</span> Abstraction</li>
+    <li class="yellow">Programming <span class="and">&amp;</span> Abstraction</li>
+    <li>Categories <span class="and">&amp;</span> Abstraction</li>
+</ul>
+    </li>
+    <li>What?</li>
+    <li>How?</li>
+</ul>
 </section>
 <section class="slide">
 <h2>Programming <span class="and">&amp;</span> Abstraction</h2>
@@ -268,12 +301,14 @@
 <ul>
     <li>Encouraged by imperative paradigms.
     </li><li>Actions <span class="and">&amp;</span> mutable objects.
-    </li><li>Time is <em>very</em> important: ex. linked list push
+    </li><li>Time is <em>very</em> important<sup>*</sup>.
     </li><li>Synchronizing things is a challenge.
     </li>
 </ul>
 <p class="yellow">Natural Abstractions: pointers, variables, loop, Objects, Classes...</p>
 <p>Representation: a data structure changing other time.</p>
+
+<p class="small">*: Push an element to a linked list for example</p>
 </section>
 <section class="slide">
 <h2>Untyped Pure Programming</h2>
@@ -281,13 +316,21 @@
 <ul><li> Time is irrelevant by default.
 </li><li> Mostly static constructions like pipes.
 </li><li> All pipes can be plugged ⇒ all error at runtime
-     <ul><li> (+ ("foo" 27) 32)
+     <ul><li> (+ 37 "foo")
     </li><li> Y = λf.(λx.f (x x)) (λx.f (x x))
     </li><li> Y g = g (Y g)
     </li></ul>
 </li></ul>
 
 <p class="yellow">Natural abstraction: higher level functions <span class="and">&amp;</span> equations</p>
+</section>
+<section class="slide">
+<h2>Untyped Pure Programming</h2>
+
+
+<p style="text-align:center"><code>(+ 42 "foo")</code></p>
+
+<img src="categories/img/mp/pipe.png" />
 </section>
 <section class="slide">
 <h2>Typed Pure Programming</h2>

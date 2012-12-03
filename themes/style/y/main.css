@@ -33,6 +33,10 @@
   font-weight: normal;
   font-style: normal; }
 
+body.deck-container {
+  width: 100%;
+  padding: 0; }
+
 .deck-container {
   font-family: "ComputerModernSansSerif", Helvetica, sans-serif;
   /* Header Numbering */ }
@@ -171,8 +175,10 @@
   .deck-container blockquote {
     font-style: italic;
     padding: 0 1em;
-    border-left: solid 10px #586e75;
-    color: #93a1a1; }
+    border-left: solid 10px #586e75; }
+    .deck-container blockquote em {
+      font-style: normal;
+      color: #93a1a1; }
     .deck-container blockquote ul {
       padding-left: 1.5em; }
   .deck-container abbr,
@@ -806,7 +812,11 @@
       margin-bottom: 1em; }
   .deck-container table {
     border: 1px solid #586e75;
-    width: 100%; }
+    width: 90%;
+    margin: 1.5em auto;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; }
   .deck-container table tr td {
     padding: 2px 0.5em; }
   .deck-container table tr:nth-child(odd) {
@@ -883,7 +893,7 @@
     font-size: 4em; } }
 @media only screen and (max-width: 1380px) {
   .deck-container {
-    font-size: 2em; } }
+    font-size: 2.5em; } }
 @media only screen and (max-width: 640px) {
   .deck-container {
     font-size: 1.5em; } }
@@ -920,6 +930,9 @@ body.deck-container {
     font-size: 0.5em; }
   .deck-container .deck-prev-link,
   .deck-container .deck-next-link {
+    position: absolute;
+    top: 90%;
+    bottom: 1em;
     background-color: #073642;
     color: #586e75; }
     .deck-container .deck-prev-link:visited,

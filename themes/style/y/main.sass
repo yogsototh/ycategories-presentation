@@ -180,6 +180,10 @@ $secondTextColor: $base1
     color: $base02
   color: $base0
 
+body.deck-container
+  width: 100%
+  padding: 0
+
 .deck-container
   .base03
     color: $base03
@@ -335,7 +339,9 @@ $secondTextColor: $base1
     font-style: italic
     padding: 0 1em
     border-left: solid 10px $base01
-    color: $base1
+    em
+      font-style: normal
+      color: $base1
     ul
       padding-left: 1.5em
 
@@ -1040,7 +1046,11 @@ $secondTextColor: $base1
 
   table
     border: 1px solid $borderColor
-    width: 100%
+    width: 90%
+    margin: 1.5em auto
+    box-sizing: border-box
+    -moz-box-sizing: border-box
+    -webkit-box-sizing: border-box
   table tr td
     padding: 2px .5em
   table tr
@@ -1124,7 +1134,7 @@ $secondTextColor: $base1
     font-size: 4em
 @media only screen and (max-width: 1380px)
   .deck-container
-    font-size: 2em
+    font-size: 2.5em
 @media only screen and (max-width: 640px)
   .deck-container
     font-size: 1.5em
@@ -1164,6 +1174,9 @@ body.deck-container
 
   .deck-prev-link,
   .deck-next-link
+    position: absolute
+    top: 90%
+    bottom: 1em
     &:visited
       color: $base01
     &:hover
