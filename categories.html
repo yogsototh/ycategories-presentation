@@ -92,7 +92,6 @@
     <li class="yellow">General overview</li>
     <li>Math <span class="and">&amp;</span> Abstraction</li>
     <li>Programming <span class="and">&amp;</span> Abstraction</li>
-    <li>Categories <span class="and">&amp;</span> Abstraction</li>
 </ul>
     </li>
     <li>What?</li>
@@ -317,7 +316,7 @@ Theory=(Axioms,<span style="visibility:hidden">Strings</span>Rules,<span style="
 </li><li> Mostly static constructions like pipes.
 </li><li> All pipes can be plugged ⇒ all error at runtime
      <ul><li> (+ 37 "foo")
-    </li><li> Y = λf.(λx.f (x x)) (λx.f (x x))
+     </li><li> Y = λf.(λx.f (x x)) (λx.f (<span class="yellow">x x</span>))
     </li><li> Y g = g (Y g)
     </li></ul>
 </li></ul>
@@ -391,19 +390,11 @@ type Product = Product {getProduct :: a} -- Just a named box
 
 </section>
 <section class="slide">
-<h2>Type Theory ⇒ Categories</h2>
-
-<ul>
-    <li>Type theory helped to remove paradoxes in Set Theory.</li>
-    <li>Prevent relations between different kind of objects.</li>
-    <li>Used in computer science</li>
-</ul>
-
-<ul>
-    <li>typed λ-calculus ⇒ cartesian closed categories</li>
-    <li>untyped λ-calculus ⇒ C-monoids (subclass of categories)</li>
-    <li>Martin-Löf type theories ⇒ locally cartesian closed categories</li>
-</ul>
+<h2>Type Theory <span class="and">&amp;</span> Categories</h2>
+<table><tr><td>typed λ-calculus            </td><td> cartesian closed categories
+</td></tr><tr><td>untyped λ-calculus         </td><td> C-monoids (subclass of categories)
+</td></tr><tr><td>Martin-Löf type theories   </td><td> locally cartesian closed categories
+</td></tr><tr><td></table>
 </section>
 <section class="slide">
 <h2>Plan</h2>
@@ -895,16 +886,16 @@ Haskell types is fractal:</p>
 </section>
 <section class="slide">
 <h2 id="monads-are-just-monoids-14">Monads are just monoids (1/4)</h2>
-<p>A monoid is a triplet \((E,∙,e)\) s.t.</p>
+<p>A monoid is a triplet \((M,⊙,e)\) s.t.</p>
 <ul>
-<li>\(E\) a set</li>
-<li>\(∙:E×E→E\)</li>
-<li>\(e:1→E\)</li>
+<li>\(M\) a set</li>
+<li>\(⊙:E×E→M\)</li>
+<li>\(e:1→M\)</li>
 </ul>
 <p>Satisfying</p>
 <ul>
-<li>\(x∙(y∙z) = (x∙y)∙z, ∀x,y,z∈E\)</li>
-<li>\(e∙x = x = x∙e, ∀x∈E\)</li>
+<li>\(x⊙(y⊙z) = (x⊙y)⊙z, ∀x,y,z∈M\)</li>
+<li>\(e⊙x = x = x⊙e, ∀x∈M\)</li>
 </ul>
 </section>
 <section class="slide">
