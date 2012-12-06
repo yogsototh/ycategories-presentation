@@ -68,10 +68,22 @@ body.deck-container {
     color: #6c71c4; }
   .deck-container .blue {
     color: #268bd2; }
+  .deck-container .backblue {
+    padding: 0 0.1em;
+    border: solid 2px;
+    border-radius: 2px;
+    border-color: #268bd2;
+    background-color: rgba(38, 139, 210, 0.2); }
   .deck-container .cyan {
     color: #2aa198; }
   .deck-container .green {
     color: #859900; }
+  .deck-container .backgreen {
+    padding: 0 0.1em;
+    border: solid 2px;
+    border-radius: 2px;
+    border-color: #859900;
+    background-color: rgba(133, 153, 0, 0.2); }
   .deck-container div {
     font-family: "ComputerModernSansSerif", Helvetica, sans-serif; }
   .deck-container .and {
@@ -132,12 +144,14 @@ body.deck-container {
     content: "- "; }
   .deck-container ol, .deck-container ul {
     padding-left: 0;
-    margin-left: 0; }
+    margin-left: 1.5ex;
+    text-indent: -1.5ex; }
   .deck-container .toc ol li, .deck-container .toc ul li {
     margin: 0.5em 0; }
   .deck-container ol li ul, .deck-container ol li ol, .deck-container ul li ol, .deck-container ul li ul {
     margin: 0.5em 1.5em;
-    list-style: none; }
+    list-style: none;
+    line-height: 1.5em; }
   .deck-container body, .deck-container h1, .deck-container h2, .deck-container h3, .deck-container h4, .deck-container #entete, .deck-container .tagname {
     text-rendering: optimizelegibility;
     line-height: 1.5em;
@@ -259,6 +273,8 @@ body.deck-container {
     margin-top: 0; }
   .deck-container .small {
     font-size: 0.8em; }
+  .deck-container .smaller {
+    font-size: 0.6em; }
   .deck-container .sc {
     text-transform: uppercase;
     font-size: 0.8em; }
@@ -468,10 +484,9 @@ body.deck-container {
       margin-bottom: 0; }
   .deck-container img, .deck-container .likeimg {
     max-width: 80%;
-    border: 2px solid #586e75;
-    background-color: #073642;
-    padding: 0.5em;
-    box-shadow: 0 0 10px #002b36 inset;
+    border: 2px solid #073642;
+    padding: 0.3em;
+    box-shadow: 0 0 0.5em black inset;
     border-radius: 0.5em;
     text-align: center; }
   .deck-container a:hover img {

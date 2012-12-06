@@ -5,7 +5,7 @@ We can make function that can work for _all_ type parameter.
 Such function can only work with the _topology_ induced by the type.
 We know such function won't work _on_ the elements.
 
-Sometimes, the type determine a lot about the function:
+Sometimes, the type determine a lot about the function<sup>★</sup>:
 
 <pre class="haskell"><code>fst :: (a,b) -> a -- Only one choice
 snd :: (a,b) -> b -- Only one choice
@@ -13,6 +13,9 @@ f :: a -> [a]     -- Many choices
 -- Possibilities: f x=[], or [x], or [x,x] or [x,...,x]
 
 ? :: [a] -> [a] -- Many choices
--- can only duplicate/remove/reorder elements
+-- can only rearrange: duplicate/remove/reorder elements
 -- for example: the type of addOne isn't [a] -> [a]
-addOne l = map (+1) l</code></pre>
+addOne l = map <span class="red">(+1)</span> l
+-- The (+1) force a to be a Num.</code></pre>
+
+<p><span class="small base01">★:<a href="http://ttic.uchicago.edu/~dreyer/course/papers/wadler.pdf">Theorems for free!, Philip Wadler, 1989</a></span>

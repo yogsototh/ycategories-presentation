@@ -1,12 +1,12 @@
 <h2 id="monads-are-just-monoids-24">Monads are just Monoids (2/4)</h2>
 <p>A Monad is a triplet \((M,⊙,η)\) s.t.</p>
 <ul>
-<li>\(M\) an <span class="yellow">Endofunctor</span></li>
-<li>\(⊙:M×M→M\) a nat. trans. (× is functor composition)</li>
-<li>\(η:I→M\) a nat. trans. (\(I\) identity functor)</li>
+<li>\(M\) an <span class="yellow">Endofunctor</span> (to type <code>a</code> associate <code>M a</code>)</li>
+<li>\(⊙:M×M→M\) a <span class="yellow">nat. trans.</span> (i.e. <code>⊙::M (M a) → M a</code>)</li>
+<li>\(η:I→M\) a <span class="yellow">nat. trans.</span> (\(I\) identity functor ; <code>η::a → M a</code>)</li>
 </ul>
 <p>Satisfying</p>
 <ul>
-<li>\(M ⊙ (M ⊙ M)) = (M ⊙ M) ⊙ M\)</li>
+<li>\(M ⊙ (M ⊙ M) = (M ⊙ M) ⊙ M\)</li>
 <li>\(η ⊙ M = M = M ⊙ η\)</li>
 </ul>

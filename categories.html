@@ -87,329 +87,93 @@
 <section class="slide">
 <h2>Plan</h2>
 <ul style="font-size: 2em; font-weight:bold">
-    <li><span class="yellow">Why?
-<ul class="base01" style="border-left: 2px solid; padding-left: 1em; font-size: .6em; float: right; font-weight: bold; margin: 0 0 0 1em">
-    <li class="yellow">General overview</li>
-    <li>Math <span class="and">&amp;</span> Abstraction</li>
-    <li>Programming <span class="and">&amp;</span> Abstraction</li>
-    <li>Categories <span class="and">&amp;</span> Abstraction</li>
-</ul>
-    </li>
-    <li>What?</li>
-    <li>How?</li>
+    <li><span class="yellow">General overview</li>
+    <li>Definitions</li>
+    <li>Applications</li>
 </ul>
 </section>
 <section class="slide">
-<h2>Abstraction</h2>
-
-<p>Category Theory is all about <span class="yellow">Abstraction</span></p>
-
-<img src="categories/img/mp/abstraction.png" alt="3=?"/>
-<img src="categories/img/mindblown.gif" alt="head explode" style="width: 40%; margin-top: 1em;padding: 1px; box-shadow: 0 0 5em #A88; border: none"/>
-
-</section>
-<section class="slide">
-<h2 id="difficulties">Difficulties</h2>
-<p>Certainly one of the more abstract branches of math</p>
-<p>Many different starting point:</p>
-<ul>
-<li>New math foundation</li>
-<li>Bridge between disciplines</li>
-<li>Philosophical Study object</li>
-<li>Tool box <span style="display:inline-box;margin-left:7em">← our focus for part 2 <span class="and">&amp;</span> 3</span></li>
-</ul>
-<p>Said with a programmer vocabulary</p>
-<blockquote>
-<p>Category Theory can be seen as a new language/framework for Math</p>
-</blockquote>
-</section>
-<section class="slide">
-<h2 id="category-theory-for-programming">Category Theory for programming?</h2>
-<img class="right" src="categories/img/buddha.gif" alt="buddha"/>
-<ul>
-<li>Ability to see problem differently</li>
-<li>Make generalisation easier</li>
-<li>Help code organisation</li>
-<li>Reduce bugs by clarifying concepts</li>
-</ul>
-<p>Example In Haskell:</p>
-<ul>
-<li>Functors</li>
-<li>Monads</li>
-<li><code>fold</code> generalisation</li>
-<li>Applicative Functors, Arrows, ...</li>
-</ul>
-</section>
-<section class="slide">
-<h2>Plan</h2>
-<ul style="font-size: 2em; font-weight:bold">
-    <li><span class="yellow">Why?
-<ul class="base01" style="border-left: 2px solid; padding-left: 1em; font-size: .6em; float: right; font-weight: bold; margin: 0 0 0 1em">
-    <li>General overview</li>
-    <li class="yellow">Math <span class="and">&amp;</span> Abstraction</li>
-    <li>Programming <span class="and">&amp;</span> Abstraction</li>
-    <li>Categories <span class="and">&amp;</span> Abstraction</li>
-</ul>
-    </li>
-    <li>What?</li>
-    <li>How?</li>
-</ul>
-</section>
-<section class="slide">
-<h2>Math Abstraction</h2>
-<p>A common concept you see in multiple instances.</p>
-<div>
-    <p>Numbers: 1,2,3,...  <em class="small">3400 BC, real numbers 760 BC</em></p>
-    <figure class="left">
-        <img src="categories/img/tally-count.png" style="height:5em;width:12em" alt="Aboriginal Tally System"/>
-        <figcaption>Aboriginal Tally System</figcaption>
-    </figure>
-    <div>
-        <div class="left" style="margin: 2em 1em">amelioration ⇒</div>
-        <figure class="left">
-            <img src="categories/img/first-real-numbers.png" style="height:5em" alt="Mesopotamian Numbers"/>
-            <figcaption>Mesopotamian base 60 system</figcaption>
-        </figure>
-    </div>
-    <div class="flush"></div>
-    <div>
-        Operators: <b>=, &lt;, &gt;, +, ×, ...</b>
-    </div>
-</section>
-<section class="slide">
-<h2>Generalization</h2>
-<div class="right">
-<img src="categories/img/egyptian-hieroglyphics.jpg" alt="Egyptian Fractions"/>
-<img src="categories/img/negative-numbers.jpg" alt="Negative Numbers (Chinese)"/>
+<h2 id="general-overview">General Overview</h2>
+<div style="float:right; width: 20%">
+<img src="categories/img/eilenberg.gif" alt="Samuel Eilenberg"/> <img src="categories/img/maclaine.jpg" alt="Saunders Mac Lane"/>
 </div>
-<ul><li> Weight/Distance/Time ⇒ <em>Rational</em> \(\frac{p}{q}\)
-</li><li> Debts ⇒ <em>Negative</em> \(..., -2, -1, ? , 1, 2, ...\)
-</li><li> Geometry ⇒ <em>Irrational<sup style="vertical-align:middle">*</sup></em>
-</li><li> Algebra ⇒ <em>Complex</em>
-</li><li> \(0\) ⇒ "Nothing" become a number
-</li></ul>
-<p><span style="visibility:hidden"><span class="and">&amp;</span></span> More <strong>things</strong> can be understood as numbers<br/>
-<span class="and">&amp;</span> More <strong>ways</strong> to manipulate them.</p>
-</section>
-<section class="slide">
-<h2>Numbers ⇒ Sets</h2>
-<blockquote><strong>Formalism</strong>: A <em>theory</em> is some strings (the axioms), some string manipulation rules, and all strings created by applying these rules to the axioms.</blockquote>
-<table>
-<tr>
-    <th>Numbers</th>
-    <th>Set Theory (∞)/Abstract Algebra/Topology</th>
-</tr>
-<tr>
-    <td>\(\mathbb{N}\): \((+,0)\)</td>
-    <td>Semigroups</td>
-</tr>
-<tr>
-    <td>\(\mathbb{Z}\): \((+,0,\times,1)\)</td>
-    <td>Rings</td>
-</tr>
-<tr>
-    <td>\(\mathbb{Q}\)</td>
-    <td>Fields</td>
-</tr>
-<tr>
-    <td>\(\mathbb{R}\)</td>
-    <td>Complete Fields (<em class="base01">topology</em>)</td>
-</tr>
-<tr>
-    <td>\(\mathbb{C}\)</td>
-    <td>Algebræ</td>
-</tr>
-<tr><td></td><td>Modules,Vector Spaces, Monoids, ...</td></tr>
-</table>
-<p><span style="visibility:hidden"><span class="and">&amp;</span></span> More <strong>general</strong>: more things are sets.<br/>
-    <span class="and">&amp;</span> More <strong>precise</strong>: clear distinction between concepts.</p>
-</section>
-<section class="slide">
-<h2>Sets ⇒? <span class="yellow">Categories</span></h2>
-<table>
-<tr>
-    <th>Numbers</th>
-    <th>Sets</th>
-    <th>Categories</th>
-</tr>
-<tr>
-    <td>\(\mathbb{N}\): \((+,0)\)</td>
-    <td>Semigroups</td>
-    <td></td>
-</tr>
-<tr>
-    <td>\(\mathbb{Z}\): \((+,0,\times,1)\)</td>
-    <td>Rings</td>
-    <td></td>
-</tr>
-<tr>
-    <td>\(\mathbb{Q}\)</td>
-    <td>Fields</td>
-    <td></td>
-</tr>
-<tr>
-    <td>\(\mathbb{R}\)</td>
-    <td>Complete Fields (<em class="base01">topology</em>)</td>
-    <td></td>
-</tr>
-<tr>
-    <td>\(\mathbb{C}\)</td>
-    <td>Algebræ</td>
-    <td></td>
-</tr>
-<tr><td></td><td>Modules,Vector Spaces, Monoids, ...</td><td></td></tr>
-</table>
-<p><span style="visibility:hidden"><span class="and">&amp;</span></span> More <strong>general</strong>: more things are <span class="yellow">categories</span>.<br/>
-<span class="and">&amp;</span> More <strong>abstract</strong>: generalization for free; replace = by <span class="yellow">≅</span>.<br/>
-<span class="and">&amp;</span> Homogeneous <strong>vocabulary</strong>.
-</p>
-</section>
-<section class="slide">
-<h2>Category Theory</h2>
-<p>Categories package entire mathematical theories.<br/>
-Theory=(Axioms,<span style="visibility:hidden">Strings</span>Rules,<span style="visibility:hidden">Stri</span>Theorems)<br/> 
-<span style="visibility:hidden">Theory=</span>(Strings,Strings → Strings, Strings)
+
+<p><em>Recent Math Field</em><br />1942-45, Samuel Eilenberg <span class="and">&amp;</span> Saunders Mac Lane</p>
+<p>Certainly one of the more abstract branches of math</p>
+<ul>
+<li><em>New math foundation</em><br /> formalism abstraction, package entire theory<sup>★</sup></li>
+<li><em>Bridge between disciplines</em><br /> Physics, Quantum Physics, Topology, Logic, Computer Science<sup>☆</sup></li>
+</ul>
+<p>From a Programmer perspective:</p>
+<blockquote>
+<p>Category Theory is a new language/framework for Math</p>
+</blockquote>
+<p  class="smaller base01" style="border-top: solid 1px">
+★: <a href="http://www.math.harvard.edu/~mazur/preprints/when_is_one.pd">When is one thing equal to some other thing?, Barry Mazur, 2007</a><br/> ☆: <a href="http://math.ucr.edu/home/baez/rosetta.pdf">Physics, Topology, Logic and Computation: A Rosetta Stone, John C. Baez, Mike Stay, 2009</a>
 </p>
 
-<ul>
-<li>Topology</li>
-<li>Quantum Physics</li>
-<li>Logic</li>
-<li><b>Computer Science</b></li>
-</ul>
-<p>Recent field: <b>1942–45</b>, Samuel Eilenberg <span class="and">&amp;</span> Saunders Mac Lane
+
 </section>
 <section class="slide">
-<h2>Plan</h2>
-<ul style="font-size: 2em; font-weight:bold">
-    <li><span class="yellow">Why?
-<ul class="base01" style="border-left: 2px solid; padding-left: 1em; font-size: .6em; float: right; font-weight: bold; margin: 0 0 0 1em">
-    <li>General overview</li>
-    <li>Math <span class="and">&amp;</span> Abstraction</li>
-    <li class="yellow">Programming <span class="and">&amp;</span> Abstraction</li>
-    <li>Categories <span class="and">&amp;</span> Abstraction</li>
-</ul>
-    </li>
-    <li>What?</li>
-    <li>How?</li>
-</ul>
+<h2 id="math-programming-relation">Math Programming relation</h2>
+<img class="right" src="categories/img/buddha.gif" alt="Buddha Fractal"/>
+<p>Programming <em><span class="yellow">is</span></em> doing Math</p>
+<p>Not convinced?<br />Certainly a <em>vocabulary</em> problem.</p>
+<p>One of the goal of Category Theory is to create a <em>homogeneous vocabulary</em> between different disciplines.</p>
 </section>
 <section class="slide">
-<h2>Programming <span class="and">&amp;</span> Abstraction</h2>
-
-<h3>Impure programming</h3>
-<ul>
-    <li>Encouraged by imperative paradigms.
-    </li><li>Actions <span class="and">&amp;</span> mutable objects.
-    </li><li>Time is <em>very</em> important<sup>*</sup>.
-    </li><li>Synchronizing things is a challenge.
-    </li>
-</ul>
-<p class="yellow">Natural Abstractions: pointers, variables, loop, Objects, Classes...</p>
-<p>Representation: a data structure changing other time.</p>
-
-<p class="small">*: Push an element to a linked list for example</p>
-</section>
-<section class="slide">
-<h2>Untyped Pure Programming</h2>
-
-<ul><li> Time is irrelevant by default.
-</li><li> Mostly static constructions like pipes.
-</li><li> All pipes can be plugged ⇒ all error at runtime
-     <ul><li> (+ 37 "foo")
-    </li><li> Y = λf.(λx.f (x x)) (λx.f (x x))
-    </li><li> Y g = g (Y g)
-    </li></ul>
-</li></ul>
-
-<p class="yellow">Natural abstraction: higher level functions <span class="and">&amp;</span> equations</p>
-</section>
-<section class="slide">
-<h2>Untyped Pure Programming</h2>
-
-
-<p style="text-align:center"><code>(+ 42 "foo")</code></p>
-
-<img src="categories/img/mp/pipe.png" />
-</section>
-<section class="slide">
-<h2>Typed Pure Programming</h2>
-<ul><li>Add shapes to pipes:
-     <ul><li> <code class="red">4 + ["foo",27]</code> forbidden
-    </li><li> <code class="red">["foo",27]</code> forbidden
-    </li></ul>
-</li><li>Polymorphic (elastic) shapes:
-    <ul><li>  <code>data Maybe a = Just a | Nothing</code>
-    </li><li> <code>[Just 32,Nothing,Just 12] :: [Maybe Integer]</code>
-    </li></ul>
-</li></ul>
-<p class="yellow">Natural abstraction: Polymorphic higher level functions.</p>
-</section>
-<section class="slide">
-<h2>Polymorphism: <code>mappend (<>)</code></h2>
-
-<pre class="small haskell"><code>   "abcdef" <span class="red"><></span>  "ABCDEF"   = "abcdefABCDEF"  -- String
-("ab","xy") <span class="red"><></span> ("AB","XY") = ("abAB","xyXY") -- (String,String)
-
-3 <span class="red"><></span> 4 ⇒ ERROR which law? + or * -- Int
-
--- Use a type to remove ambiguity
-type Sum = Sum {getSum :: a} -- Just a named box
--- Monoid (Int,+,0)
-(<>+) = getSum (Sum x <span class="red"><></span> Sum y)
-3 <>+ 4 = 7
-
--- Monoid (Int,*,0)
-type Product = Product {getProduct :: a} -- Just a named box
-(<>*) = getProduct (Product x <span class="red"><></span> Product y)
-3 <>* 4 = 12</code></pre>
-
-<p>Note: with Monoids (M,⊙,e); <code>foldl ⊙ e ms = foldr ⊙ e ms</code></p>
-<p>\(m_1 ⊙ (m_2 ⊙ (\cdots (m_n ⊙ e)\cdots )) = (\cdots (m_1 ⊙ m_2) ⊙ \cdots) m_n ⊙ e \)</p>
-</section>
-<section class="slide">
-<h2>Polymorphism: <code>(>>=)</code></h2>
-
-<p>Example: <span class="red"><code>(>>=)</code></span> with <code>[a]</code> and <code>Maybe a</code></p>
-<pre class="small haskell"><code>data Maybe a = Just a | Nothing</code></pre>
-
-<pre class="small haskell"><code>-- Maybe Int >>= Int -> Maybe (Int -> Int) >>= (Int -> Int) -> Maybe Int
-(Just 2) <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Just 4
- Nothing <span class="red">&gt;&gt;=</span> \x -> (Just (\z->z*z)) <span class="red">&gt;&gt;=</span> \f -> Just (f x) = Nothing
-
--- [Int] >>= Int -> [Int -> Int] >>= (Int -> Int) -> [Int]
-[1,2] <span class="red">&gt;&gt;=</span> \x -> [(+10),(+20)] <span class="red">&gt;&gt;=</span> \f -> [f x] = [11,21,12,22]
-   [] <span class="red">&gt;&gt;=</span> \x -> [(+10),(+20)] <span class="red">&gt;&gt;=</span> \f -> [f x] = []</code></pre>
-</section>
-<section class="slide">
-<h2>Programming Paradigms</h2>
-<table>
-    <tr><td>Impure</td><td>Choose the data structure, find an algorithm.</td></tr>
-    <tr><td>Untyped Pure</td><td>Choose the data structure, find an equation.</td></tr>
-    <tr><td>Typed Pure</td><td>Choose the Types and their laws, find the right operator</td></tr>
+<h2 id="vocabulary">Vocabulary</h2>
+<img class="right" src="categories/img/mindblown.gif" alt="mind blown"/>
+<p>Math vocabulary used in this presentation:</p>
+<blockquote>
+<p>Category, Morphism, Associativity, Preorder, Functor, Endofunctor, Categorial property, Commutative diagram, Isomorph, Initial, Dual, Monoid, Natural transformation, Monad, κατα-morphism, ...</p>
+</blockquote>
+<img class="right" src="categories/img/readingcat.jpg" alt="lolcat"/>
+<table style="width:70%">
+<tr><th>
+Mathematician
+</th><th>
+Programmer
+</th></tr>
+<tr><td>
+Morphism
+</td><td>
+Arrow
+</td></tr>
+<tr><td>
+Monoid
+</td><td>
+String-like
+</td></tr>
+<tr><td>
+Preorder
+</td><td>
+Acyclic graph
+</td></tr>
+<tr><td>
+Isomorph
+</td><td>
+The same
+</td></tr>
+<tr><td>
+Natural transformation
+</td><td>
+rearrangement function
+</td></tr>
+<tr><td>
+Funny Category
+</td><td>
+LOLCat
+</td></tr>
 </table>
 
-</section>
-<section class="slide">
-<h2>Type Theory ⇒ Categories</h2>
 
-<ul>
-    <li>Type theory helped to remove paradoxes in Set Theory.</li>
-    <li>Prevent relations between different kind of objects.</li>
-    <li>Used in computer science</li>
-</ul>
-
-<ul>
-    <li>typed λ-calculus ⇒ cartesian closed categories</li>
-    <li>untyped λ-calculus ⇒ C-monoids (subclass of categories)</li>
-    <li>Martin-Löf type theories ⇒ locally cartesian closed categories</li>
-</ul>
 </section>
 <section class="slide">
 <h2>Plan</h2>
 <ul style="font-size: 2em; font-weight: bold">
-    <li>Why?</li>
-    <li> <span class="yellow">What?</span>
+    <li>General overview</li>
+    <li> <span class="yellow">Definitions</span>
 <ul class="base01" style="border-left: 2px solid; padding-left: 1em; font-size: .6em; float: right; font-weight: bold; margin: 0 0 0 1em">
     <li>Category</li>
     <li>Intuition</li>
@@ -418,7 +182,7 @@ type Product = Product {getProduct :: a} -- Just a named box
     <li>Examples</li>
 </ul>
     </li>
-    <li>How?</li>
+    <li>Applications</li>
 </ul>
 </section>
 <section class="slide">
@@ -446,18 +210,22 @@ type Product = Product {getProduct :: a} -- Just a named box
 
 <img src="categories/img/mp/morphisms.png" alt="morphisms"/>
 
-<p>\(\hom{A,B}\) is a collection</p>
+<p>\(A\) and \(B\) objects of \(\C\)<br/>
+\(\hom{A,B}\) is a collection of morphisms<br/>
+\(f:A→B\) denote the fact \(f\) belongs to \(\hom{A,B}\)</p>
+<p>\(\hom{\C}\) the collection of all morphisms of \(\C\)</p>
 </section>
 <section class="slide">
 <h2>Category: Composition</h2>
-<p>Composition (∘): \(f:A→B, g:B→C\)
+<p>Composition (∘): associate to each couple \(f:A→B, g:B→C\)
     $$g∘f:A\rightarrow C$$
 </p>
 <img src="categories/img/mp/composition.png" alt="composition"/>
 </section>
 <section class="slide">
 <h2>Category laws: neutral element</h2>
-<p>for each object \(X\), there is an \(\id_X\), s.t. for all \(f:A→B\):</p>
+<p>for each object \(X\), there is an \(\id_X:X→X\),<br/>
+such that for each \(f:A→B\):</p>
 <img src="categories/img/mp/identity.png" alt="identity"/>
 </section>
 <section class="slide">
@@ -532,15 +300,15 @@ type Product = Product {getProduct :: a} -- Just a named box
 <h2>Category \(\Set\)</h2>
 
 <ul>
-    <li> \(\ob{\Set}\) are sets</li>
-    <li> \(\hom{\Set}\) are functions</li>
+	<li> \(\ob{\Set}\) are <em>all</em> the sets</li>
+    <li> \(\hom{E,F}\) are <em>all</em> functions from \(E\) to \(F\)</li>
     <li> ∘ is functions composition </li>
 </ul>
 
 <ul class="slide">
     <li>\(\ob{\Set}\) is a proper class ; not a set</li>
     <li>\(\hom{E,F}\) is a set</li>
-    <li>\(\Set\) is a <em>locally small category</em></li>
+	<li>\(\Set\) is then a <em>locally <b>small</b> category</em></li>
 </ul>
 </section>
 <section class="slide">
@@ -551,7 +319,7 @@ type Product = Product {getProduct :: a} -- Just a named box
     <li>\(\Vec\): (Vectorial spaces, linear functions,∘)</li>
     <li>\(\Grp\): (groups, group morphisms,∘)</li>
     <li>\(\Rng\): (rings, ring morphisms,∘)</li>
-    <li>Any deductive system <i>T</i>: (formulæ, proofs, proof concatenation)</li>
+    <li>Any deductive system <i>T</i>: (theorems, proofs, proof concatenation)</li>
     <li>\( \Hask\): (Haskell types, functions, <code>(.)</code> )</li>
     <li>...</li>
 </ul>
@@ -590,45 +358,60 @@ type Product = Product {getProduct :: a} -- Just a named box
 </li></ul>
 </section>
 <section class="slide">
-<h2>Degenerated Categories</h2>
-
-<img class="right" style="max-width:17%" src="categories/img/mp/monoid.png" alt="Monoids are one object categories"/>
-<h3>Monoids</h3>
-<p>each Monoid \((M,e,⊙): \ob{M}=\{∙\},\hom{M}=M,\circ = ⊙\)</p>
-<p>one object</p>
-<p>Examples: <code>(Integer,0,+)</code>, <code>(Integer,1,*)</code>, <code>(Strings,"",++)</code>, <code>(Lists,[],++)</code>, ...
-</section>
-<section class="slide">
 <h2>Number construction</h2>
 
 <h3>Each Numbers as a whole category</h3>
 <img src="categories/img/mp/numbers.png" alt="Each number as a category"/>
 </section>
 <section class="slide">
+<h2>Degenerated Categories: Monoids</h2>
+
+<img class="right" style="max-width:17%" src="categories/img/mp/monoid.png" alt="Monoids are one object categories"/>
+<p>Each Monoid \((M,e,⊙): \ob{M}=\{∙\},\hom{M}=M,\circ = ⊙\)</p>
+<p class="yellow">Only one object.</p>
+<p>Examples:</p>
+<ul><li><code>(Integer,0,+)</code>,
+</li><li><code>(Integer,1,*)</code>,
+</li><li><code>(Strings,"",++)</code>,
+</li><li>for each <code>a</code>, <code>([a],[],++)</code>
+</li><li>Couple of monoids \((M×N, (0_M,0_N), (⊙_M,⊙_N))\)
+</li></ul>
+</section>
+<section class="slide">
 <h2>Degenerated Categories: Preorders</h2>
 
-<h3>Preorders</h3>
-<p>each preorder \((P,≤): \ob{P}={P},\hom{x,y}=\{{x≤y}\} ⇔ x≤y,f_{y,z} \circ f_{x,y} = f_{x,z} \)</p>
-<em>At most one morphism between two objects.</em>
+<p>each preorder \((P,≤)\):</p>
+
+<ul><li>\(\ob{P}={P}\),
+</li><li>\(\hom{x,y}=\{x≤y\} ⇔ x≤y\),
+</li><li>\((y≤z) \circ (x≤y) = (x≤z) \)
+</li></ul>
+
+<p><em>At most one morphism between two objects.</em></p>
+
 <img src="categories/img/mp/preorder.png" alt="preorder category"/>
 </section>
 <section class="slide">
-<h2>Degenerated Categories</h2>
+<h2>Degenerated Categories: Discrete Categories</h2>
 
 <img class="right" src="categories/img/mp/set.png" alt="Any set can be a category"/>
 <h3>Any Set</h3>
 <p>Any set \(E: \ob{E}=E, \hom{x,y}=\{x\} ⇔  x=y \)</p>
-<p><em>Only identities ; not so interesting</em></p>
+<p class="yellow">Only identities</p>
 </section>
 <section class="slide">
-<h2>Categorical Property</h2>
+<h2 class="base1">Categorical Property</h2>
 
-<p>Any property which can be expressed in term of category, objects, morphism and composition</p>
+<p class="base1">Any property which can be expressed in term of category, objects, morphism and composition.</p>
 
-<ul><li> <em>isomorphism</em>: \(f:A→B\) s.t. ∃g:B→A, \(g∘f=id_A\) <span class="and">&amp;</span> \(f∘g=id_B\)
-</li><li> <em>Initial</em>: \(Z\in\ob{C}\) s.t. \(∀Y∈\ob{C}, \#\hom{Z,Y}=1\)
-</li><li> <em>Dual</em>: reverse direction of arrows of \(\C\)
-</li><li> <em>Functor</em>: structure preserving mapping between categories
+<ul><li> <em class="yellow">isomorphism</em>: \(f:A→B\) which can be "undone" <em>i.e.</em>
+	<br/> \(∃g:B→A\), \(g∘f=id_A\) <span class="and">&amp;</span> \(f∘g=id_B\)
+	<br/> in this case, \(A\) <span class="and">&amp;</span> \(B\) are <em class="yellow">isomorphic</em>.
+</li><li> <em class="yellow">Dual</em>: \(\D\) is \(\C\) with reversed morphisms.
+</li><li> <em class="yellow">Initial</em>: \(Z\in\ob{\C}\) s.t. \(∀Y∈\ob{\C}, \#\hom{Z,Y}=1\)
+	<br/> Unique ("up to isormophism")
+</li><li> <em class="yellow">Terminal</em>: \(T\in\ob{\C}\) s.t. \(T\) is initial in the dual of \(\C\)
+</li><li> <em class="yellow">Functor</em>: structure preserving mapping between categories
 </li><li> ...
 </li></ul>
 </section>
@@ -637,14 +420,14 @@ type Product = Product {getProduct :: a} -- Just a named box
 
 <p> A functor is a mapping between two categories.
 Let \(\C\) and \(\D\) be two categories.
-A <em>functor</em> \(\F\) from \(\C\) to \(\D\):</p>
+A <em>functor</em> <span class="yellow">\(\F\)</span> from <span class="blue">\(\C\)</span> to <span class="green">\(\D\)</span>:</p>
 <ul>
-    <li> Associate objects: \(A\in\ob{\C}\) to \(\F(A) \in\ob{\D}\) </li>
-    <li> Associate morphisms: \(f:A\to B\) to \(\F(f) : \F(A) \to \F(B)\)
+	<li> Associate objects: <span class="backblue">\(A\in\ob{\C}\)</span> to <span class="backgreen">\(\F(A)\in\ob{\D}\)</span> </li>
+	<li> Associate morphisms: <span class="backblue">\(f:A\to B\)</span> to <span class="backgreen">\(\F(f) : \F(A) \to \F(B)\)</span>
         such that
         <ul>
-            <li>\( \F (\id_X) = \id_{\F(X)} \),</li>
-            <li>\( \F (g \circ_\C f) = \F(g) \circ_\D \F(f) \)</li>
+			<li>\( \F (\)<span class="backblue blue">\(\id_X\)</span>\()= \)<span class="backgreen"><span class="green">\(\id\)</span>\(\vphantom{\id}_{\F(}\)<span class="blue">\(\vphantom{\id}_X\)</span>\(\vphantom{\id}_{)} \)</span>,</li>
+			<li>\( \F (\)<span class="backblue blue">\(g∘f\)</span>\()= \)<span class="backgreen">\( \F(\)<span class="blue">\(g\)</span>\() \)<span class="green">\(\circ\)</span>\( \F(\)<span class="blue">\(f\)</span>\() \)</span></li>
         </ul>
     </li>
 </ul>
@@ -726,18 +509,20 @@ CTree :: * -&gt; * -&gt; *
 <section class="slide">
 <h2 id="haskell-types">Haskell Types</h2>
 <p>We can make function that can work for <em>all</em> type parameter. Such function can only work with the <em>topology</em> induced by the type. We know such function won't work <em>on</em> the elements.</p>
-<p>Sometimes, the type determine a lot about the function:</p>
+<p>Sometimes, the type determine a lot about the function<sup>★</sup>:</p>
 <pre class="haskell"><code>fst :: (a,b) -> a -- Only one choice
 snd :: (a,b) -> b -- Only one choice
 f :: a -> [a]     -- Many choices
 -- Possibilities: f x=[], or [x], or [x,x] or [x,...,x]
 
 ? :: [a] -> [a] -- Many choices
--- can only duplicate/remove/reorder elements
+-- can only rearrange: duplicate/remove/reorder elements
 -- for example: the type of addOne isn't [a] -> [a]
-addOne l = map (+1) l</code></pre>
+addOne l = map <span class="red">(+1)</span> l
+-- The (+1) force a to be a Num.</code></pre>
 
-
+<p>
+<p><span class="small base01">★:<a href="http://ttic.uchicago.edu/~dreyer/course/papers/wadler.pdf">Theorems for free!, Philip Wadler, 1989</a></span></p>
 </section>
 <section class="slide">
 <h2>Haskell Functor vs \(\Hask\) Functor</h2>
@@ -779,25 +564,16 @@ fmap head [[1,2,3],[4,5,6]] == [1,4]
 </code></pre>
 </section>
 <section class="slide">
-<h2>String like type</h2>
-
-<pre class="haskell"><code>
-data F a = Cons Char a | Nil
--- examples :
---  Cons 'c' 32 :: F Int
---  Cons 'c' (\x -> x*x) :: F (Int -> Int)
---  Cons 'c' (Cons 'a' (\x -> x*x)) :: F (F (Int -> Int))
---  Cons 'c' (Cons 'c' Nil) :: F (F (F))
--- note String is the fixed point of F: F(F(F(...)))
-instance Functor F where
-    fmap :: (a -> b) -> [a] -> [b]
-    fmap f (Cons c x) = Cons c (f x)
-    fmap f Nil = Nil
-
-fmap (+1) (Cons 'c' 3)      == Cons 'c' 4
-fmap (+1) Nil               == Nil
-fmap head (Cons 'c' [1,2,3])== Cons 'c' 1
-</code></pre>
+<h2 id="haskell-functors-for-the-programmer">Haskell Functors for the programmer</h2>
+<p><code>Functor</code> is a type class used for types that can be mapped over.</p>
+<ul>
+<li>Containers: <code>[]</code>, Trees, Map, HashMap...</li>
+<li>Smart containers:
+<ul>
+<li><code>Maybe a</code>: help to handle absence of <code>a</code>.<br />Ex: <code>safeDiv x 0 ⇒ Nothing</code></li>
+<li><code>Either String a</code>: help to handle errors<br />Ex: <code>reportDiv x 0 ⇒ Left &quot;Division by 0!&quot;</code></li>
+</ul></li>
+</ul>
 </section>
 <section class="slide">
 <h2>Haskell Functor intuition</h2>
@@ -873,14 +649,14 @@ Haskell types is fractal:</p>
 </section>
 <section class="slide">
 <h2 id="category-of-endofunctors">Category of Endofunctors</h2>
-<img src="categories/img/mp/natural-transformation.png" alt="Natural transformation commutative diagram" class="right"/>
 <p>All endofunctors of \(\C\) form the category \(\E_\C\) of endofunctors of \(\C\).</p>
+<img src="categories/img/mp/natural-transformation.png" alt="Natural transformation commutative diagram" class="right"/>
 <ul>
 <li>\(\ob{\E_\C}\): endofunctors of \(\C\) ; \(F:\C→\C\)</li>
 <li>\(\hom{\E_\C}\): natural transformations
 <ul>
 <li>η familly \(η_X\in\hom{\C}\) for \(X\in\ob{\C}\) s.t.</li>
-<li>ex: for Haskell functors: <code>F a -&gt; G a</code> are the natural transformations.</li>
+<li>for Haskell functors: <code>F a -&gt; G a</code> are the natural transformations.<br />List to Trees, Tree to List, Tree to Maybe...<br />Rearragement functions only.</li>
 </ul></li>
 </ul>
 </section>
@@ -889,6 +665,7 @@ Haskell types is fractal:</p>
 <blockquote>
 <p>A Monad is just a monoid in the category of endofunctors, what's the problem?</p>
 </blockquote>
+<p>The real sentence was:</p>
 <blockquote>
 <p>All told, a monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.</p>
 </blockquote>
@@ -911,13 +688,13 @@ Haskell types is fractal:</p>
 <h2 id="monads-are-just-monoids-24">Monads are just Monoids (2/4)</h2>
 <p>A Monad is a triplet \((M,⊙,η)\) s.t.</p>
 <ul>
-<li>\(M\) an <span class="yellow">Endofunctor</span></li>
-<li>\(⊙:M×M→M\) a nat. trans. (× is functor composition)</li>
-<li>\(η:I→M\) a nat. trans. (\(I\) identity functor)</li>
+<li>\(M\) an <span class="yellow">Endofunctor</span> (to type <code>a</code> associate <code>M a</code>)</li>
+<li>\(⊙:M×M→M\) a <span class="yellow">nat. trans.</span> (i.e. <code>⊙::M (M a) → M a</code>)</li>
+<li>\(η:I→M\) a <span class="yellow">nat. trans.</span> (\(I\) identity functor ; <code>η::a → M a</code>)</li>
 </ul>
 <p>Satisfying</p>
 <ul>
-<li>\(M ⊙ (M ⊙ M)) = (M ⊙ M) ⊙ M\)</li>
+<li>\(M ⊙ (M ⊙ M) = (M ⊙ M) ⊙ M\)</li>
 <li>\(η ⊙ M = M = M ⊙ η\)</li>
 </ul>
 </section>
@@ -948,9 +725,9 @@ join _               = Nothing
 <li>\(η ⊙ M = M = M ⊙ η\)</li>
 </ul>
 <pre class="nohighlight small"><code>join (Just (join (Just (Just x)))) = join (join (Just (Just (Just x))))
-join (Just (join (Just Nothing))) = join (join (Just (Just Nothing)))
-join (Just (join Nothing)) = join (join (Just Nothing))
-join Nothing = join (join Nothing)
+ join (Just (join (Just Nothing))) = join (join (Just (Just Nothing)))
+        join (Just (join Nothing)) = join (join (Just Nothing))
+                      join Nothing = join (join Nothing)
 
 join (η (Just x)) =  Just x = Just (η x)
 join (η  Nothing) = Nothing = Nothing</code></pre>
@@ -976,7 +753,7 @@ h=\x->[x+1,x*10] ⇒ h 1 = [2,10] ⇒ (h <=< h) 1 = [3,20,11,100]</code></pre>
 <h2 id="monads-utility">Monads utility</h2>
 <p>A monad can also hide computation details (ex: a common parameter).</p>
 <p><code>DrawScene</code> to <code><span class="yellow">State Screen</span> DrawScene</code> ; still <b>pure</b>.</p>
-<pre class="haskell left small" style="width:40%"><code>main = drawImage (width,height)
+<pre class="haskell left smaller" style="width:40%"><code>main = drawImage (width,height)
 
 drawImage :: Screen -&gt; DrawScene
 drawImage <span class="orange">screen</span> =
@@ -987,7 +764,7 @@ drawImage <span class="orange">screen</span> =
 drawPoint point <span class="orange">screen</span> = ...
 drawCircle circle <span class="orange">screen</span> = ...
 drawRectangle rectangle <span class="orange">screen</span> = ...</code></pre>
-<pre class="haskell right small" style="width:45%"><code>main = do
+<pre class="haskell right smaller" style="width:45%"><code>main = do
     <span class="orange">put (Screen 1024 768)</span>
     drawImage
 
@@ -999,7 +776,7 @@ drawImage = do
 
 drawPoint :: Point -&gt; State Screen DrawScene
 drawPoint p = do
-    <span class="orange">Screensize width height &lt;- get</span>
+    <span class="orange">Screen width height &lt;- get</span>
     ...</code></pre>
 </section>
 <!-- End slides. -->

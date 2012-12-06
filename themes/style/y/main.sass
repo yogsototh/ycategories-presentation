@@ -179,6 +179,10 @@ $secondTextColor: $base1
   background:
     color: $base02
   color: $base0
+=back
+  padding: 0 .1em
+  border: solid 2px
+  border-radius: 2px
 
 body.deck-container
   width: 100%
@@ -213,10 +217,18 @@ body.deck-container
     color: $violet
   .blue
     color: $blue
+  .backblue
+    +back
+    border-color: $blue
+    background-color: rgba(38,139,210,.2)
   .cyan
     color: $cyan
   .green
     color: $green
+  .backgreen
+    +back
+    border-color: $green
+    background-color: rgba(133,153,0,.2)
 
   font-family: "ComputerModernSansSerif",Helvetica,sans-serif
   div
@@ -287,13 +299,15 @@ body.deck-container
 
   ol,ul
     padding-left: 0
-    margin-left: 0
+    margin-left: 1.5ex
+    text-indent: -1.5ex
   .toc
     ol li, ul li
       margin: .5em 0
   ol li ul, ol li ol, ul li ol, ul li ul
     margin: .5em 1.5em
     list-style: none
+    line-height: 1.5em
 
 
   body, h1, h2, h3, h4, #entete, .tagname
@@ -398,6 +412,8 @@ body.deck-container
   // -- TYPOGRAPHY --
   .small
     font-size: 0.8em
+  .smaller
+    font-size: 0.6em
 
   .sc
     +sc
@@ -626,10 +642,9 @@ body.deck-container
 
   img,.likeimg
     max-width: 80%
-    border: 2px solid $borderColor
-    background-color: $imageBackgroundColor
-    padding: 0.5em
-    box-shadow: 0 0 10px $base03 inset
+    border: 2px solid $base02
+    padding: 0.3em
+    box-shadow: 0 0 .5em #000 inset
     border-radius: 0.5em
     text-align: center
   a:hover img
