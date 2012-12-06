@@ -1,12 +1,12 @@
 <h2 id="monads-are-just-monoids-14">Monads are just monoids (1/4)</h2>
-<p>A monoid is a triplet \((M,⊙,e)\) s.t.</p>
+<p>A monoid is a triplet \((E,∙,e)\) s.t.</p>
 <ul>
-<li>\(M\) a set</li>
-<li>\(⊙:E×E→M\)</li>
-<li>\(e:1→M\)</li>
+<li>\(E\) a set</li>
+<li>\(∙:E×E→E\)</li>
+<li>\(e:1→E\)</li>
 </ul>
 <p>Satisfying</p>
 <ul>
-<li>\(x⊙(y⊙z) = (x⊙y)⊙z, ∀x,y,z∈M\)</li>
-<li>\(e⊙x = x = x⊙e, ∀x∈M\)</li>
+<li>\(x∙(y∙z) = (x∙y)∙z, ∀x,y,z∈E\)</li>
+<li>\(e∙x = x = x∙e, ∀x∈E\)</li>
 </ul>

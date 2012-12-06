@@ -1,13 +1,13 @@
 Monads are just monoids (1/4)
 -----------------------------
 
-A monoid is a triplet \\((M,⊙,e)\\) s.t.
+A monoid is a triplet \\((E,∙,e)\\) s.t.
 
-- \\(M\\) a set
-- \\(⊙:E×E→M\\)
-- \\(e:1→M\\)
+- \\(E\\) a set
+- \\(∙:E×E→E\\)
+- \\(e:1→E\\)
 
 Satisfying
 
-- \\(x⊙(y⊙z) = (x⊙y)⊙z, ∀x,y,z∈M\\)
-- \\(e⊙x = x = x⊙e, ∀x∈M\\)
+- \\(x∙(y∙z) = (x∙y)∙z, ∀x,y,z∈E\\)
+- \\(e∙x = x = x∙e, ∀x∈E\\)
