@@ -179,6 +179,10 @@ $secondTextColor: $base1
   background:
     color: $base02
   color: $base0
+=back
+  padding: 0 .1em
+  border: solid 2px
+  border-radius: 2px
 
 body.deck-container
   width: 100%
@@ -214,16 +218,16 @@ body.deck-container
   .blue
     color: $blue
   .backblue
-    border: solid 2px $blue
-    border-radius: 2px
+    +back
+    border-color: $blue
     background-color: rgba(38,139,210,.2)
   .cyan
     color: $cyan
   .green
     color: $green
   .backgreen
-    border: solid 2px $green
-    border-radius: 2px
+    +back
+    border-color: $green
     background-color: rgba(133,153,0,.2)
 
   font-family: "ComputerModernSansSerif",Helvetica,sans-serif
@@ -303,6 +307,7 @@ body.deck-container
   ol li ul, ol li ol, ul li ol, ul li ul
     margin: .5em 1.5em
     list-style: none
+    line-height: 1.5em
 
 
   body, h1, h2, h3, h4, #entete, .tagname

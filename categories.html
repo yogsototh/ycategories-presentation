@@ -126,7 +126,7 @@
 <img class="right" src="categories/img/mindblown.gif" alt="mind blown"/>
 <p>Math vocabulary used in this presentation:</p>
 <blockquote>
-<p>Category, Morphism, Associativity, Preorder, Functor, Endofunctor, Categorial property, Commutative diagram, Isomorph, Initial, Dual, Monoid Natural transformation, Monad, κατα-morphism, ...</p>
+<p>Category, Morphism, Associativity, Preorder, Functor, Endofunctor, Categorial property, Commutative diagram, Isomorph, Initial, Dual, Monoid, Natural transformation, Monad, κατα-morphism, ...</p>
 </blockquote>
 <img class="right" src="categories/img/readingcat.jpg" alt="lolcat"/>
 <table style="width:70%">
@@ -358,19 +358,24 @@ such that for each \(f:A→B\):</p>
 </li></ul>
 </section>
 <section class="slide">
-<h2>Degenerated Categories</h2>
-
-<img class="right" style="max-width:17%" src="categories/img/mp/monoid.png" alt="Monoids are one object categories"/>
-<h3>Monoids</h3>
-<p>each Monoid \((M,e,⊙): \ob{M}=\{∙\},\hom{M}=M,\circ = ⊙\)</p>
-<p>one object</p>
-<p>Examples: <code>(Integer,0,+)</code>, <code>(Integer,1,*)</code>, <code>(Strings,"",++)</code>, <code>(Lists,[],++)</code>, ...
-</section>
-<section class="slide">
 <h2>Number construction</h2>
 
 <h3>Each Numbers as a whole category</h3>
 <img src="categories/img/mp/numbers.png" alt="Each number as a category"/>
+</section>
+<section class="slide">
+<h2>Degenerated Categories: Monoids</h2>
+
+<img class="right" style="max-width:17%" src="categories/img/mp/monoid.png" alt="Monoids are one object categories"/>
+<p>Each Monoid \((M,e,⊙): \ob{M}=\{∙\},\hom{M}=M,\circ = ⊙\)</p>
+<p class="yellow">Only one object.</p>
+<p>Examples:</p>
+<ul><li><code>(Integer,0,+)</code>,
+</li><li><code>(Integer,1,*)</code>,
+</li><li><code>(Strings,"",++)</code>,
+</li><li>for each <code>a</code>, <code>([a],[],++)</code>
+</li><li>Couple of monoids \((M×N, (0_M,0_N), (⊙_M,⊙_N))\)
+</li></ul>
 </section>
 <section class="slide">
 <h2>Degenerated Categories: Preorders</h2>
@@ -387,22 +392,22 @@ such that for each \(f:A→B\):</p>
 <img src="categories/img/mp/preorder.png" alt="preorder category"/>
 </section>
 <section class="slide">
-<h2>Degenerated Categories</h2>
+<h2>Degenerated Categories: Discrete Categories</h2>
 
 <img class="right" src="categories/img/mp/set.png" alt="Any set can be a category"/>
 <h3>Any Set</h3>
 <p>Any set \(E: \ob{E}=E, \hom{x,y}=\{x\} ⇔  x=y \)</p>
-<p><em>Only identities ; not so interesting</em></p>
+<p class="yellow">Only identities</p>
 </section>
 <section class="slide">
-<h2>Categorical Property</h2>
+<h2 class="base1">Categorical Property</h2>
 
-<p>Any property which can be expressed in term of category, objects, morphism and composition</p>
+<p class="base1">Any property which can be expressed in term of category, objects, morphism and composition.</p>
 
-<ul><li> <em class="yellow">isomorphism</em>: \(f:A→B\) which can be "undone" <em class="yellow">i.e.</em>
+<ul><li> <em class="yellow">isomorphism</em>: \(f:A→B\) which can be "undone" <em>i.e.</em>
 	<br/> \(∃g:B→A\), \(g∘f=id_A\) <span class="and">&amp;</span> \(f∘g=id_B\)
 	<br/> in this case, \(A\) <span class="and">&amp;</span> \(B\) are <em class="yellow">isomorphic</em>.
-</li><li> <em class="yellow">Dual</em>: reverse direction of arrows of \(\C\)
+</li><li> <em class="yellow">Dual</em>: \(\D\) is \(\C\) with reversed morphisms.
 </li><li> <em class="yellow">Initial</em>: \(Z\in\ob{\C}\) s.t. \(∀Y∈\ob{\C}, \#\hom{Z,Y}=1\)
 	<br/> Unique ("up to isormophism")
 </li><li> <em class="yellow">Terminal</em>: \(T\in\ob{\C}\) s.t. \(T\) is initial in the dual of \(\C\)
@@ -421,8 +426,8 @@ A <em>functor</em> <span class="yellow">\(\F\)</span> from <span class="blue">\(
 	<li> Associate morphisms: <span class="backblue">\(f:A\to B\)</span> to <span class="backgreen">\(\F(f) : \F(A) \to \F(B)\)</span>
         such that
         <ul>
-			<li>\( \F (\)<span class="backblue blue">\(\id_X\)</span>\() = \)<span class="backgreen"><span class="green">\(\id\)</span>\(\vphantom{\id}_{\F(}\)<span class="blue">\(\vphantom{\id}_X\)</span>\(\vphantom{\id}_{)} \)</span>,</li>
-			<li>\( \F (\)<span class="backblue blue">\(g∘f\)</span>\() = \)<span class="backgreen">\( \F(\)<span class="blue">\(g\)</span>\() \)<span class="green">\(\circ\)</span>\( \F(\)<span class="blue">\(f\)</span>\() \)</span></li>
+			<li>\( \F (\)<span class="backblue blue">\(\id_X\)</span>\()= \)<span class="backgreen"><span class="green">\(\id\)</span>\(\vphantom{\id}_{\F(}\)<span class="blue">\(\vphantom{\id}_X\)</span>\(\vphantom{\id}_{)} \)</span>,</li>
+			<li>\( \F (\)<span class="backblue blue">\(g∘f\)</span>\()= \)<span class="backgreen">\( \F(\)<span class="blue">\(g\)</span>\() \)<span class="green">\(\circ\)</span>\( \F(\)<span class="blue">\(f\)</span>\() \)</span></li>
         </ul>
     </li>
 </ul>
@@ -559,25 +564,16 @@ fmap head [[1,2,3],[4,5,6]] == [1,4]
 </code></pre>
 </section>
 <section class="slide">
-<h2>String like type</h2>
-
-<pre class="haskell"><code>
-data F a = Cons Char a | Nil
--- examples :
---  Cons 'c' 32 :: F Int
---  Cons 'c' (\x -> x*x) :: F (Int -> Int)
---  Cons 'c' (Cons 'a' (\x -> x*x)) :: F (F (Int -> Int))
---  Cons 'c' (Cons 'c' Nil) :: F (F (F))
--- note String is the fixed point of F: F(F(F(...)))
-instance Functor F where
-    fmap :: (a -> b) -> [a] -> [b]
-    fmap f (Cons c x) = Cons c (f x)
-    fmap f Nil = Nil
-
-fmap (+1) (Cons 'c' 3)      == Cons 'c' 4
-fmap (+1) Nil               == Nil
-fmap head (Cons 'c' [1,2,3])== Cons 'c' 1
-</code></pre>
+<h2 id="haskell-functors-for-the-programmer">Haskell Functors for the programmer</h2>
+<p><code>Functor</code> is a type class used for types that can be mapped over.</p>
+<ul>
+<li>Containers: <code>[]</code>, Trees, Map, HashMap...</li>
+<li>Smart containers:
+<ul>
+<li><code>Maybe a</code>: help to handle absence of <code>a</code>.<br />Ex: <code>safeDiv x 0 ⇒ Nothing</code></li>
+<li><code>Either String a</code>: help to handle errors<br />Ex: <code>reportDiv x 0 ⇒ Left &quot;Division by 0!&quot;</code></li>
+</ul></li>
+</ul>
 </section>
 <section class="slide">
 <h2>Haskell Functor intuition</h2>
@@ -653,14 +649,14 @@ Haskell types is fractal:</p>
 </section>
 <section class="slide">
 <h2 id="category-of-endofunctors">Category of Endofunctors</h2>
-<img src="categories/img/mp/natural-transformation.png" alt="Natural transformation commutative diagram" class="right"/>
 <p>All endofunctors of \(\C\) form the category \(\E_\C\) of endofunctors of \(\C\).</p>
+<img src="categories/img/mp/natural-transformation.png" alt="Natural transformation commutative diagram" class="right"/>
 <ul>
 <li>\(\ob{\E_\C}\): endofunctors of \(\C\) ; \(F:\C→\C\)</li>
 <li>\(\hom{\E_\C}\): natural transformations
 <ul>
 <li>η familly \(η_X\in\hom{\C}\) for \(X\in\ob{\C}\) s.t.</li>
-<li>ex: for Haskell functors: <code>F a -&gt; G a</code> are the natural transformations.</li>
+<li>for Haskell functors: <code>F a -&gt; G a</code> are the natural transformations.<br />List to Trees, Tree to List, Tree to Maybe...<br />Rearragement functions only.</li>
 </ul></li>
 </ul>
 </section>
@@ -669,6 +665,7 @@ Haskell types is fractal:</p>
 <blockquote>
 <p>A Monad is just a monoid in the category of endofunctors, what's the problem?</p>
 </blockquote>
+<p>The real sentence was:</p>
 <blockquote>
 <p>All told, a monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.</p>
 </blockquote>
@@ -691,13 +688,13 @@ Haskell types is fractal:</p>
 <h2 id="monads-are-just-monoids-24">Monads are just Monoids (2/4)</h2>
 <p>A Monad is a triplet \((M,⊙,η)\) s.t.</p>
 <ul>
-<li>\(M\) an <span class="yellow">Endofunctor</span></li>
-<li>\(⊙:M×M→M\) a nat. trans. (× is functor composition)</li>
-<li>\(η:I→M\) a nat. trans. (\(I\) identity functor)</li>
+<li>\(M\) an <span class="yellow">Endofunctor</span> (to type <code>a</code> associate <code>M a</code>)</li>
+<li>\(⊙:M×M→M\) a <span class="yellow">nat. trans.</span> (i.e. <code>⊙::M (M a) → M a</code>)</li>
+<li>\(η:I→M\) a <span class="yellow">nat. trans.</span> (\(I\) identity functor ; <code>η::a → M a</code>)</li>
 </ul>
 <p>Satisfying</p>
 <ul>
-<li>\(M ⊙ (M ⊙ M)) = (M ⊙ M) ⊙ M\)</li>
+<li>\(M ⊙ (M ⊙ M) = (M ⊙ M) ⊙ M\)</li>
 <li>\(η ⊙ M = M = M ⊙ η\)</li>
 </ul>
 </section>
@@ -728,9 +725,9 @@ join _               = Nothing
 <li>\(η ⊙ M = M = M ⊙ η\)</li>
 </ul>
 <pre class="nohighlight small"><code>join (Just (join (Just (Just x)))) = join (join (Just (Just (Just x))))
-join (Just (join (Just Nothing))) = join (join (Just (Just Nothing)))
-join (Just (join Nothing)) = join (join (Just Nothing))
-join Nothing = join (join Nothing)
+ join (Just (join (Just Nothing))) = join (join (Just (Just Nothing)))
+        join (Just (join Nothing)) = join (join (Just Nothing))
+                      join Nothing = join (join Nothing)
 
 join (η (Just x)) =  Just x = Just (η x)
 join (η  Nothing) = Nothing = Nothing</code></pre>
@@ -756,7 +753,7 @@ h=\x->[x+1,x*10] ⇒ h 1 = [2,10] ⇒ (h <=< h) 1 = [3,20,11,100]</code></pre>
 <h2 id="monads-utility">Monads utility</h2>
 <p>A monad can also hide computation details (ex: a common parameter).</p>
 <p><code>DrawScene</code> to <code><span class="yellow">State Screen</span> DrawScene</code> ; still <b>pure</b>.</p>
-<pre class="haskell left small" style="width:40%"><code>main = drawImage (width,height)
+<pre class="haskell left smaller" style="width:40%"><code>main = drawImage (width,height)
 
 drawImage :: Screen -&gt; DrawScene
 drawImage <span class="orange">screen</span> =
@@ -767,7 +764,7 @@ drawImage <span class="orange">screen</span> =
 drawPoint point <span class="orange">screen</span> = ...
 drawCircle circle <span class="orange">screen</span> = ...
 drawRectangle rectangle <span class="orange">screen</span> = ...</code></pre>
-<pre class="haskell right small" style="width:45%"><code>main = do
+<pre class="haskell right smaller" style="width:45%"><code>main = do
     <span class="orange">put (Screen 1024 768)</span>
     drawImage
 
@@ -779,7 +776,7 @@ drawImage = do
 
 drawPoint :: Point -&gt; State Screen DrawScene
 drawPoint p = do
-    <span class="orange">Screensize width height &lt;- get</span>
+    <span class="orange">Screen width height &lt;- get</span>
     ...</code></pre>
 </section>
 <!-- End slides. -->
