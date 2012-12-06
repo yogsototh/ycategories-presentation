@@ -68,10 +68,18 @@ body.deck-container {
     color: #6c71c4; }
   .deck-container .blue {
     color: #268bd2; }
+  .deck-container .backblue {
+    border: solid 2px #268bd2;
+    border-radius: 2px;
+    background-color: rgba(38, 139, 210, 0.2); }
   .deck-container .cyan {
     color: #2aa198; }
   .deck-container .green {
     color: #859900; }
+  .deck-container .backgreen {
+    border: solid 2px #859900;
+    border-radius: 2px;
+    background-color: rgba(133, 153, 0, 0.2); }
   .deck-container div {
     font-family: "ComputerModernSansSerif", Helvetica, sans-serif; }
   .deck-container .and {
@@ -260,6 +268,8 @@ body.deck-container {
     margin-top: 0; }
   .deck-container .small {
     font-size: 0.8em; }
+  .deck-container .smaller {
+    font-size: 0.6em; }
   .deck-container .sc {
     text-transform: uppercase;
     font-size: 0.8em; }
@@ -469,10 +479,9 @@ body.deck-container {
       margin-bottom: 0; }
   .deck-container img, .deck-container .likeimg {
     max-width: 80%;
-    border: 2px solid #586e75;
-    background-color: #073642;
-    padding: 0.5em;
-    box-shadow: 0 0 10px #002b36 inset;
+    border: 2px solid #073642;
+    padding: 0.3em;
+    box-shadow: 0 0 0.5em black inset;
     border-radius: 0.5em;
     text-align: center; }
   .deck-container a:hover img {

@@ -213,10 +213,18 @@ body.deck-container
     color: $violet
   .blue
     color: $blue
+  .backblue
+    border: solid 2px $blue
+    border-radius: 2px
+    background-color: rgba(38,139,210,.2)
   .cyan
     color: $cyan
   .green
     color: $green
+  .backgreen
+    border: solid 2px $green
+    border-radius: 2px
+    background-color: rgba(133,153,0,.2)
 
   font-family: "ComputerModernSansSerif",Helvetica,sans-serif
   div
@@ -399,6 +407,8 @@ body.deck-container
   // -- TYPOGRAPHY --
   .small
     font-size: 0.8em
+  .smaller
+    font-size: 0.6em
 
   .sc
     +sc
@@ -627,10 +637,9 @@ body.deck-container
 
   img,.likeimg
     max-width: 80%
-    border: 2px solid $borderColor
-    background-color: $imageBackgroundColor
-    padding: 0.5em
-    box-shadow: 0 0 10px $base03 inset
+    border: 2px solid $base02
+    padding: 0.3em
+    box-shadow: 0 0 .5em #000 inset
     border-radius: 0.5em
     text-align: center
   a:hover img

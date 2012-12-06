@@ -94,16 +94,25 @@
 </section>
 <section class="slide">
 <h2 id="general-overview">General Overview</h2>
-<p>Recent Math Field ; 1942-45, Samuel Eilenberg <span class="and">&amp;</span> Saunders Mac Lane</p>
+<div style="float:right; width: 20%">
+<img src="categories/img/eilenberg.gif" alt="Samuel Eilenberg"/> <img src="categories/img/maclaine.jpg" alt="Saunders Mac Lane"/>
+</div>
+
+<p><em>Recent Math Field</em><br />1942-45, Samuel Eilenberg <span class="and">&amp;</span> Saunders Mac Lane</p>
 <p>Certainly one of the more abstract branches of math</p>
 <ul>
-<li>New math foundation<br /> formalism abstraction, package entire theory</li>
-<li>Bridge between disciplines<br /> Physics, Quantum Physics, Topology, Logic, Computer Science</li>
+<li><em>New math foundation</em><br /> formalism abstraction, package entire theory<sup>★</sup></li>
+<li><em>Bridge between disciplines</em><br /> Physics, Quantum Physics, Topology, Logic, Computer Science<sup>☆</sup></li>
 </ul>
 <p>From a Programmer perspective:</p>
 <blockquote>
 <p>Category Theory is a new language/framework for Math</p>
 </blockquote>
+<p  class="smaller base01" style="border-top: solid 1px">
+★: <a href="http://www.math.harvard.edu/~mazur/preprints/when_is_one.pd">When is one thing equal to some other thing?, Barry Mazur, 2007</a><br/> ☆: <a href="http://math.ucr.edu/home/baez/rosetta.pdf">Physics, Topology, Logic and Computation: A Rosetta Stone, John C. Baez, Mike Stay, 2009</a>
+</p>
+
+
 </section>
 <section class="slide">
 <h2 id="math-programming-relation">Math Programming relation</h2>
@@ -117,9 +126,48 @@
 <img class="right" src="categories/img/mindblown.gif" alt="mind blown"/>
 <p>Math vocabulary used in this presentation:</p>
 <blockquote>
-<p>Category, Morphism, Associativity, Preorder, Functor, Endofunctor, Categorial property, Commutative diagram, Isomorph, Initial, Dual, Monoid Natural transformation, Monad, κατα-morphism,</p>
+<p>Category, Morphism, Associativity, Preorder, Functor, Endofunctor, Categorial property, Commutative diagram, Isomorph, Initial, Dual, Monoid Natural transformation, Monad, κατα-morphism, ...</p>
 </blockquote>
-<p>Most will be translated for the programmer.</p>
+<img class="right" src="categories/img/readingcat.jpg" alt="lolcat"/>
+<table style="width:70%">
+<tr><th>
+Mathematician
+</th><th>
+Programmer
+</th></tr>
+<tr><td>
+Morphism
+</td><td>
+Arrow
+</td></tr>
+<tr><td>
+Monoid
+</td><td>
+String-like
+</td></tr>
+<tr><td>
+Preorder
+</td><td>
+Acyclic graph
+</td></tr>
+<tr><td>
+Isomorph
+</td><td>
+The same
+</td></tr>
+<tr><td>
+Natural transformation
+</td><td>
+rearrangement function
+</td></tr>
+<tr><td>
+Funny Category
+</td><td>
+LOLCat
+</td></tr>
+</table>
+
+
 </section>
 <section class="slide">
 <h2>Plan</h2>
@@ -327,9 +375,15 @@ such that for each \(f:A→B\):</p>
 <section class="slide">
 <h2>Degenerated Categories: Preorders</h2>
 
-<h3>Preorders</h3>
-<p>each preorder \((P,≤): \ob{P}={P},\hom{x,y}=\{{x≤y}\} ⇔ x≤y,f_{y,z} \circ f_{x,y} = f_{x,z} \)</p>
-<em>At most one morphism between two objects.</em>
+<p>each preorder \((P,≤)\):</p>
+
+<ul><li>\(\ob{P}={P}\),
+</li><li>\(\hom{x,y}=\{x≤y\} ⇔ x≤y\),
+</li><li>\((y≤z) \circ (x≤y) = (x≤z) \)
+</li></ul>
+
+<p><em>At most one morphism between two objects.</em></p>
+
 <img src="categories/img/mp/preorder.png" alt="preorder category"/>
 </section>
 <section class="slide">
@@ -345,10 +399,14 @@ such that for each \(f:A→B\):</p>
 
 <p>Any property which can be expressed in term of category, objects, morphism and composition</p>
 
-<ul><li> <em>isomorphism</em>: \(f:A→B\) s.t. ∃g:B→A, \(g∘f=id_A\) <span class="and">&amp;</span> \(f∘g=id_B\)
-</li><li> <em>Initial</em>: \(Z\in\ob{C}\) s.t. \(∀Y∈\ob{C}, \#\hom{Z,Y}=1\)
-</li><li> <em>Dual</em>: reverse direction of arrows of \(\C\)
-</li><li> <em>Functor</em>: structure preserving mapping between categories
+<ul><li> <em class="yellow">isomorphism</em>: \(f:A→B\) which can be "undone" <em class="yellow">i.e.</em>
+	<br/> \(∃g:B→A\), \(g∘f=id_A\) <span class="and">&amp;</span> \(f∘g=id_B\)
+	<br/> in this case, \(A\) <span class="and">&amp;</span> \(B\) are <em class="yellow">isomorphic</em>.
+</li><li> <em class="yellow">Dual</em>: reverse direction of arrows of \(\C\)
+</li><li> <em class="yellow">Initial</em>: \(Z\in\ob{\C}\) s.t. \(∀Y∈\ob{\C}, \#\hom{Z,Y}=1\)
+	<br/> Unique ("up to isormophism")
+</li><li> <em class="yellow">Terminal</em>: \(T\in\ob{\C}\) s.t. \(T\) is initial in the dual of \(\C\)
+</li><li> <em class="yellow">Functor</em>: structure preserving mapping between categories
 </li><li> ...
 </li></ul>
 </section>
@@ -357,14 +415,14 @@ such that for each \(f:A→B\):</p>
 
 <p> A functor is a mapping between two categories.
 Let \(\C\) and \(\D\) be two categories.
-A <em>functor</em> <span class="yellow">\(\F\)</span> from \(\C\) to \(\D\):</p>
+A <em>functor</em> <span class="yellow">\(\F\)</span> from <span class="blue">\(\C\)</span> to <span class="green">\(\D\)</span>:</p>
 <ul>
-    <li> Associate objects: \(A\in\ob{\C}\) to <span class="yellow">\(\F(A)\)</span>\( \in\ob{\D}\) </li>
-    <li> Associate morphisms: \(f:A\to B\) to <span class="yellow">\(\F(f) : \F(A) \to \F(B)\)</span>
+	<li> Associate objects: <span class="backblue">\(A\in\ob{\C}\)</span> to <span class="backgreen">\(\F(A)\in\ob{\D}\)</span> </li>
+	<li> Associate morphisms: <span class="backblue">\(f:A\to B\)</span> to <span class="backgreen">\(\F(f) : \F(A) \to \F(B)\)</span>
         such that
         <ul>
-            <li>\( \F (\id_X) = \id_{\F(X)} \),</li>
-            <li>\( \F (g \circ_\C f) = \F(g) \circ_\D \F(f) \)</li>
+			<li>\( \F (\)<span class="backblue blue">\(\id_X\)</span>\() = \)<span class="backgreen"><span class="green">\(\id\)</span>\(\vphantom{\id}_{\F(}\)<span class="blue">\(\vphantom{\id}_X\)</span>\(\vphantom{\id}_{)} \)</span>,</li>
+			<li>\( \F (\)<span class="backblue blue">\(g∘f\)</span>\() = \)<span class="backgreen">\( \F(\)<span class="blue">\(g\)</span>\() \)<span class="green">\(\circ\)</span>\( \F(\)<span class="blue">\(f\)</span>\() \)</span></li>
         </ul>
     </li>
 </ul>
@@ -446,18 +504,20 @@ CTree :: * -&gt; * -&gt; *
 <section class="slide">
 <h2 id="haskell-types">Haskell Types</h2>
 <p>We can make function that can work for <em>all</em> type parameter. Such function can only work with the <em>topology</em> induced by the type. We know such function won't work <em>on</em> the elements.</p>
-<p>Sometimes, the type determine a lot about the function:</p>
+<p>Sometimes, the type determine a lot about the function<sup>★</sup>:</p>
 <pre class="haskell"><code>fst :: (a,b) -> a -- Only one choice
 snd :: (a,b) -> b -- Only one choice
 f :: a -> [a]     -- Many choices
 -- Possibilities: f x=[], or [x], or [x,x] or [x,...,x]
 
 ? :: [a] -> [a] -- Many choices
--- can only duplicate/remove/reorder elements
+-- can only rearrange: duplicate/remove/reorder elements
 -- for example: the type of addOne isn't [a] -> [a]
-addOne l = map (+1) l</code></pre>
+addOne l = map <span class="red">(+1)</span> l
+-- The (+1) force a to be a Num.</code></pre>
 
-
+<p>
+<p><span class="small base01">★:<a href="http://ttic.uchicago.edu/~dreyer/course/papers/wadler.pdf">Theorems for free!, Philip Wadler, 1989</a></span></p>
 </section>
 <section class="slide">
 <h2>Haskell Functor vs \(\Hask\) Functor</h2>

@@ -15,11 +15,20 @@ Math vocabulary used in this presentation:
 > Isomorph,
 > Initial,
 > Dual,
-> Monoid
+> Monoid,
 > Natural transformation,
 > Monad,
 > κατα-morphism,
+> ...
 
-<img class="right" src="categories/img/cute.gif" alt="mind blown"/>
+<img class="right" src="categories/img/readingcat.jpg" alt="lolcat"/>
 
-Most will be translated for the programmer.
+<table style="width:70%">
+<tr><th>Mathematician</th><th>Programmer</th></tr>
+<tr><td>Morphism</td><td>Arrow</td></tr>
+<tr><td>Monoid</td><td>String-like</td></tr>
+<tr><td>Preorder</td><td>Acyclic graph</td></tr>
+<tr><td>Isomorph</td><td>The same</td></tr>
+<tr><td>Natural transformation</td><td>rearrangement function</td></tr>
+<tr><td>Funny Category</td><td>LOLCat</td></tr>
+</table>
