@@ -1,0 +1,19 @@
+Another Nat. Trans. Example
+---------------------------
+
+<pre><code class="haskell">
+toMaybe :: [a] -> Maybe a
+toMaybe [] = Nothing
+toMaybe (x:xs) = Just x</pre></code>
+
+
+`toMaybe` is a natural transformation.
+It is also a morphism from `[]` to `Maybe` in the Category of \\(\Hask\\) endofunctors.
+
+<img style="float:left;width:50%" src="categories/img/mp/nattrans-maybe-list.png" alt="natural transformation commutative diagram"/>
+<figure style="float:right;width:40%">
+<img src="categories/img/mp/maybe-list-endofunctor-morphism.png" alt="natural transformation commutative diagram"/>
+<figcaption>There is no isomorphism.<br/>
+Hint: List with more than one element.
+</figcaption>
+</figure>
