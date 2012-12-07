@@ -1,0 +1,10 @@
+<h2 id="nat.-trans.-composition-generalization">Nat. Trans. &amp; Composition generalization</h2>
+<p>The Problem; example with lists:</p>
+<pre class="haskell"><code>f x = [x]       ⇒ f 1 = [1]    ⇒ (f.f) 1 = [[1]] ✗
+g x = [x+1]     ⇒ g 1 = [2]   ⇒ (g.g) 1 = ✗ ERROR [2]+1
+h x = [x+1,x*3] ⇒ h 1 = [2,3] ⇒ (h.h) 1 = ✗ ERROR [2,3]+1</code></pre>
+
+<p>How to fix that? We want to construct an operator which is able to compose:</p>
+<p><code>f :: a -&gt; F b</code> &amp; <code>f :: b -&gt; F c</code>.</p>
+<p>More specifically we want to create an operator ◎ of type</p>
+<p><code>◎ :: (b -&gt; F c) -&gt; (a -&gt; F b) -&gt; (a -&gt; F c)</code></p>

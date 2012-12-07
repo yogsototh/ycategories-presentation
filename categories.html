@@ -725,14 +725,60 @@ mToList Just x  = [x]</pre>
 
 </section>
 <section class="slide">
+<h2 id="nat.-trans.-composition-generalization">Nat. Trans. <span class="and">&amp;</span> Composition generalization</h2>
+<p>The Problem; example with lists:</p>
+<pre class="haskell"><code>f x = [x]       ⇒ f 1 = [1]    ⇒ (f.f) 1 = [[1]] ✗
+g x = [x+1]     ⇒ g 1 = [2]   ⇒ (g.g) 1 = ✗ ERROR [2]+1
+h x = [x+1,x*3] ⇒ h 1 = [2,3] ⇒ (h.h) 1 = ✗ ERROR [2,3]+1</code></pre>
+
+<p>How to fix that? We want to construct an operator which is able to compose:</p>
+<p><code>f :: a -&gt; F b</code> <span class="and">&amp;</span> <code>f :: b -&gt; F c</code>.</p>
+<p>More specifically we want to create an operator ◎ of type</p>
+<p><code>◎ :: (b -&gt; F c) -&gt; (a -&gt; F b) -&gt; (a -&gt; F c)</code></p>
+</section>
+<section class="slide">
+<h2 id="nat.-trans.-composition-generalization">Nat. Trans. <span class="and">&amp;</span> Composition generalization</h2>
+<p>Goal, find: <code>◎ :: (b -&gt; F c) -&gt; (a -&gt; F b) -&gt; (a -&gt; F c)</code></p>
+<p>Let's go slowly ; <code>f :: a -&gt; F b</code>, <code>g :: b -&gt; F c</code>:</p>
+<ul>
+<li><code>(g ◎ f) x</code> ???</li>
+<li>First apply <code>f</code> to <code>x</code> ⇒ <code>f x :: F b</code></li>
+<li>Then how to apply <code>g</code> properly to an element of type <code>F b</code>?</li>
+<li>Use <code>fmap :: (b -&gt; c) -&gt; (F b -&gt; F c)</code>!</li>
+<li><code>(fmap g) :: F b -&gt; F (F c)</code></li>
+<li><code>(fmap g) (f x) :: F (F c)</code> it almost WORKS!</li>
+<li>We lack an important component, <code>join :: F (F c) -&gt; F c</code></li>
+<li><code>(g ◎ f) x = join ((fmap g) (f x))</code> ☺ (in Haskell <code>&lt;=&lt;</code>, Klesli arrow).</li>
+</ul>
+</section>
+<section class="slide">
+<h2 id="nat.-trans.-composition-generalization">Nat. Trans. <span class="and">&amp;</span> Composition generalization</h2>
+<p>Of course, we want ◎ to work like a composition. Then it should have a neutral element and be associative.</p>
+<ul>
+<li>(h ◎ g) ◎ f = h ◎ (g ◎ f)</li>
+<li>η ◎ f = f = f ◎ η</li>
+</ul>
+<p>Considering the first rule and the definition of ◎ it follows that:</p>
+<ul>
+<li><code>join (join (F (F (F a)))) = join (F (join (F (F a))))</code></li>
+<li>abusing notations for <code>join</code> it is equivalent to<br /> (F ⊙ F) ⊙ F = F ⊙ (F ⊙ F)</li>
+</ul>
+<p>The second rule fix the type of <code>η :: a -&gt; F a</code>.</p>
+</section>
+<section class="slide">
 <h2 id="monads">Monads</h2>
-<blockquote>
-<p>A Monad is just a monoid in the category of endofunctors, what's the problem?</p>
-</blockquote>
-<p>The real sentence was:</p>
-<blockquote>
-<p>All told, a monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.</p>
-</blockquote>
+<p>We re-invented the <strong class="yellow">Monads</strong>!</p>
+<p>A monad is a triplet <code>(M,join,η)</code> where</p>
+<ul>
+<li>\(M\) an <span class="yellow">Endofunctor</span> (to type <code>a</code> associate <code>M a</code>)</li>
+<li>\(⊙:M×M→M\) a <span class="yellow">nat. trans.</span> (i.e. <code>⊙::M (M a) → M a</code>)</li>
+<li>\(η:I→M\) a <span class="yellow">nat. trans.</span> (\(I\) identity functor ; <code>η::a → M a</code>)</li>
+</ul>
+<p>Satisfying</p>
+<ul>
+<li>\(M ⊙ (M ⊙ M) = (M ⊙ M) ⊙ M\)</li>
+<li>\(η ⊙ M = M = M ⊙ η\)</li>
+</ul>
 </section>
 <section class="slide">
 <h2 id="monads-are-just-monoids-14">Monads are just monoids (1/4)</h2>
@@ -749,18 +795,14 @@ mToList Just x  = [x]</pre>
 </ul>
 </section>
 <section class="slide">
-<h2 id="monads-are-just-monoids-24">Monads are just Monoids (2/4)</h2>
-<p>A Monad is a triplet \((M,⊙,η)\) s.t.</p>
-<ul>
-<li>\(M\) an <span class="yellow">Endofunctor</span> (to type <code>a</code> associate <code>M a</code>)</li>
-<li>\(⊙:M×M→M\) a <span class="yellow">nat. trans.</span> (i.e. <code>⊙::M (M a) → M a</code>)</li>
-<li>\(η:I→M\) a <span class="yellow">nat. trans.</span> (\(I\) identity functor ; <code>η::a → M a</code>)</li>
-</ul>
-<p>Satisfying</p>
-<ul>
-<li>\(M ⊙ (M ⊙ M) = (M ⊙ M) ⊙ M\)</li>
-<li>\(η ⊙ M = M = M ⊙ η\)</li>
-</ul>
+<h2 id="monads">Monads</h2>
+<blockquote>
+<p>A Monad is just a monoid in the category of endofunctors, what's the problem?</p>
+</blockquote>
+<p>The real sentence was:</p>
+<blockquote>
+<p>All told, a monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.</p>
+</blockquote>
 </section>
 <section class="slide">
 <h2 id="monads-are-just-monoids-34">Monads are just Monoids (3/4)</h2>
@@ -785,7 +827,7 @@ join _               = Nothing
 <h2 id="monads-are-just-monoids-44">Monads are just Monoids (4/4)</h2>
 <p>Example: <code>Maybe</code> is a functor (<code>join</code> is ⊙)</p>
 <ul>
-<li>\(M ⊙ (M ⊙ M)) = (M ⊙ M) ⊙ M\)</li>
+<li>\(M ⊙ (M ⊙ M) = (M ⊙ M) ⊙ M\)</li>
 <li>\(η ⊙ M = M = M ⊙ η\)</li>
 </ul>
 <pre class="nohighlight small"><code>join (Just (join (Just (Just x)))) = join (join (Just (Just (Just x))))

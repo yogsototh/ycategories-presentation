@@ -1,7 +1,9 @@
-Monads are just Monoids (2/4)
------------------------------
+Monads
+------
 
-A Monad is a triplet \\((M,⊙,η)\\) s.t.
+We re-invented the <strong class="yellow">Monads</strong>!
+
+A monad is a triplet `(M,join,η)` where
 
 - \\(M\\) an <span class="yellow">Endofunctor</span> (to type `a` associate `M a`)
 - \\(⊙:M×M→M\\) a <span class="yellow">nat. trans.</span> (i.e. `⊙::M (M a) → M a`)

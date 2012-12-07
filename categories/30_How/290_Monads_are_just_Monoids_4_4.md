@@ -1,9 +1,11 @@
-<h2 id="monads-are-just-monoids-44">Monads are just Monoids (4/4)</h2>
-<p>Example: <code>Maybe</code> is a functor (<code>join</code> is ⊙)</p>
-<ul>
-<li>\(M ⊙ (M ⊙ M)) = (M ⊙ M) ⊙ M\)</li>
-<li>\(η ⊙ M = M = M ⊙ η\)</li>
-</ul>
+Monads are just Monoids (4/4)
+-----------------------------
+
+Example: `Maybe` is a functor (`join` is ⊙)
+
+- \\(M ⊙ (M ⊙ M) = (M ⊙ M) ⊙ M\\)
+- \\(η ⊙ M = M = M ⊙ η\\)
+
 <pre class="nohighlight small"><code>join (Just (join (Just (Just x)))) = join (join (Just (Just (Just x))))
  join (Just (join (Just Nothing))) = join (join (Just (Just Nothing)))
         join (Just (join Nothing)) = join (join (Just Nothing))
@@ -12,4 +14,4 @@
 join (η (Just x)) =  Just x = Just (η x)
 join (η  Nothing) = Nothing = Nothing</code></pre>
 
-<p>And <code>(Maybe,join,η)</code> is a monad.</p>
+And `(Maybe,join,η)` is a monad.
