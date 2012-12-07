@@ -1,5 +1,5 @@
-Another Nat. Trans. Example
----------------------------
+Natural Transformation Examples (3/3)
+-------------------------------------
 
 <pre><code class="haskell">
 toMaybe :: [a] -> Maybe a   ;   mToList :: Maybe a -> [a]

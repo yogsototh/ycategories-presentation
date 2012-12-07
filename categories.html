@@ -630,7 +630,7 @@ Haskell types is fractal:</p>
 </section>
 <section class="slide">
 <h2 id="also-functor-inside-hask">Also Functor inside \(\Hask\)</h2>
-<p><code>length</code> can be seen as a Functor from the category <code>[a]</code> to <code>Int</code>. More precisely:</p>
+<p><code>length</code> can be seen as a Functor from the category <code>[a]</code> to the cateogry <code>Int</code>:</p>
 <ul class="left">
 <li>\(\ob{\mathtt{[a]}}=\{∙\}\)</li>
 <li>\(\hom{\mathtt{[a]}}=\mathtt{[a]}\)</li>
@@ -656,14 +656,13 @@ Haskell types is fractal:</p>
 <li>\(\hom{\E_\C}\): natural transformations
 <ul>
 <li>η familly \(η_X\in\hom{\C}\) for \(X\in\ob{\C}\) s.t.</li>
-<li>for Haskell functors: <code>F a -&gt; G a</code> are the natural transformations.<br />List to Trees, Tree to List, Tree to Maybe...<br />Rearragement functions only.</li>
+<li>for Haskell functors: <code>F a -&gt; G a</code>.<br />Rearragement functions only.</li>
 </ul></li>
 </ul>
 </section>
 <section class="slide">
-<h2 id="natural-transformation-examples">Natural Transformation Examples</h2>
+<h2 id="natural-transformation-examples-13">Natural Transformation Examples (1/3)</h2>
 <pre><code class="haskell">data Tree a = Empty | Node a [Tree a]
-              deriving (Show)
 toTree :: [a] -> Tree a
 toTree [] = Empty
 toTree (x:xs) = Node x [toTree xs]</pre>
@@ -677,9 +676,8 @@ toTree (x:xs) = Node x [toTree xs]</pre>
 
 </section>
 <section class="slide">
-<h2 id="natural-transformation-examples">Natural Transformation Examples</h2>
+<h2 id="natural-transformation-examples-23">Natural Transformation Examples (2/3)</h2>
 <pre><code class="haskell">data Tree a = Empty | Node a [Tree a]
-              deriving (Show)
 toList :: Tree a -> [a]
 toList Empty = []
 toList (Node x l) = [x] ++ concat (map toList l)</pre>
@@ -687,13 +685,13 @@ toList (Node x l) = [x] ++ concat (map toList l)</pre>
 <p><code>toList</code> is a natural transformation. It is also a morphism from <code>Tree</code> to <code>[]</code> in the Category of \(\) endofunctors.</p>
 <img style="float:left;width:50%" src="categories/img/mp/nattrans-tree-list.png" alt="natural transformation commutative diagram"/>
 <figure style="float:right;width:40%">
-<img src="categories/img/mp/tree-list-endofunctor-morphism.png" alt="natural transformation commutative diagram"/> <figcaption><code>toList.toTree=id</code> <span class="and">&amp;</span> <code>toTree.toList=id</code>.<br/> Therefore <code>[]</code> <span class="and">&amp;</span> <code>Tree</code> are <span class="yellow">isomorph</span>. </figcaption>
+<img src="categories/img/mp/tree-list-endofunctor-morphism.png" alt="natural transformation commutative diagram"/> <figcaption><code>toList . toTree = id</code> <span class="and">&amp;</span><br/> <code>toTree . toList = id</code> <span style="visibility:hidden"><span class="and">&amp;</span></span><br/> therefore <code>[]</code> <span class="and">&amp;</span> <code>Tree</code> are <span class="yellow">isomorph</span>. </figcaption>
 </figure>
 
 
 </section>
 <section class="slide">
-<h2 id="another-nat.-trans.-example">Another Nat. Trans. Example</h2>
+<h2 id="natural-transformation-examples-33">Natural Transformation Examples (3/3)</h2>
 <pre><code class="haskell">
 toMaybe :: [a] -> Maybe a   ;   mToList :: Maybe a -> [a]
 toMaybe [] = Nothing        ;   mToList Nothing = []
@@ -704,21 +702,6 @@ toMaybe (x:xs) = Just x     ;   mToList Just x  = [x]
 <img style="float:left;width:50%" src="categories/img/mp/nattrans-list-maybe.png" alt="natural transformation commutative diagram"/>
 <figure style="float:right;width:40%">
 <img src="categories/img/mp/list-maybe-endofunctor-morphism.png" alt="natural transformation commutative diagram"/> <figcaption>There is <span class="red">no isomorphism</span>.<br/> Hint: <code>Bool</code> lists longer than 1. </figcaption>
-</figure>
-
-
-</section>
-<section class="slide">
-<h2 id="another-nat.-trans.-example">Another Nat. Trans. Example</h2>
-<pre><code class="haskell">
-toMaybe :: [a] -> Maybe a
-toMaybe [] = Nothing
-toMaybe (x:xs) = Just x</pre>
-</code>
-<p><code>toMaybe</code> is a natural transformation. It is also a morphism from <code>[]</code> to <code>Maybe</code> in the Category of \(\) endofunctors.</p>
-<img style="float:left;width:50%" src="categories/img/mp/nattrans-maybe-list.png" alt="natural transformation commutative diagram"/>
-<figure style="float:right;width:40%">
-<img src="categories/img/mp/maybe-list-endofunctor-morphism.png" alt="natural transformation commutative diagram"/> <figcaption>There is no isomorphism.<br/> Hint: List with more than one element. </figcaption>
 </figure>
 
 

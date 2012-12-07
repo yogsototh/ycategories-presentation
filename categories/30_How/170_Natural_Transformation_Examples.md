@@ -1,8 +1,7 @@
-Natural Transformation Examples
--------------------------------
+Natural Transformation Examples (1/3)
+------------------------------------
 
 <pre><code class="haskell">data Tree a = Empty | Node a [Tree a]
-              deriving (Show)
 toTree :: [a] -> Tree a
 toTree [] = Empty
 toTree (x:xs) = Node x [toTree xs]</pre></code>

@@ -838,14 +838,16 @@ body.deck-container {
     background-color: #073642; }
   .deck-container table tr:nth-child(even) {
     background-color: #002b36; }
-  .deck-container p pre code, .deck-container ul li pre code, .deck-container ol li pre code {
-    background: none;
-    border: none;
-    padding: 0; }
-  .deck-container p code, .deck-container ul li code, .deck-container ol li code {
-    background: #053440;
-    border: solid 1px #586e75;
-    padding: 2px; }
+  .deck-container p, .deck-container ul li, .deck-container ol li {
+    line-height: 1.5em; }
+    .deck-container p pre code, .deck-container ul li pre code, .deck-container ol li pre code {
+      background: none;
+      border: none;
+      padding: 0; }
+    .deck-container p code, .deck-container ul li code, .deck-container ol li code {
+      background: #053440;
+      border: solid 1px #586e75;
+      padding: 2px; }
   .deck-container ul.sameline {
     list-style: none; }
     .deck-container ul.sameline li {
