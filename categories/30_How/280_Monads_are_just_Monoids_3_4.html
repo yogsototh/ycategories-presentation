@@ -1,17 +1,16 @@
-<h2 id="monads-are-just-monoids-34">Monads are just Monoids (3/4)</h2>
-<p>Example: <code>Maybe</code> is a functor</p>
+<h2 id="list-monad">List Monad</h2>
+<p>Example: <code>List</code> is a functor</p>
 <ul>
-<li>\(M\) an <span class="yellow">Endofunctor</span></li>
-<li>\(⊙:M×M→M\) a nat. trans. (× is functor composition)</li>
-<li>\(η:I→M\) a nat. trans. (\(I\) identity functor)</li>
+<li>\([]\) an <span class="yellow">Endofunctor</span></li>
+<li>\(⊙:M×M→M\) a nat. trans. (<code>join :: M (M a) -&gt; M a</code>)</li>
+<li>\(η:I→M\) a nat. trans.</li>
 </ul>
 <pre class="haskell"><code>-- In Haskell ⊙ is "join" in "Control.Monad"
-join :: Maybe (Maybe a) -> Maybe a
-join (Just (Just x)) = Just x
-join _               = Nothing
+join :: [[a]] -> [a]
+join = concat
 
 -- In Haskell the "return" function (unfortunate name)
-η :: a -> Maybe a
-η x = Just x</code></pre>
+η :: a -> [a]
+η x = [x]</code></pre>
 
 

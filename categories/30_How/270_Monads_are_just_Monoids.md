@@ -1,5 +1,5 @@
-Monads
-------
+Monads are just Monoids
+-----------------------
 
 > A Monad is just a monoid in the category of endofunctors, what's the problem?
 

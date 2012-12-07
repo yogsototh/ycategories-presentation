@@ -1,7 +1,7 @@
-Monads are just monoids (1/4)
------------------------------
+Compare with Monoid
+-------------------
 
-A monoid is a triplet \\((E,∙,e)\\) s.t.
+A Monoid is a triplet \\((E,∙,e)\\) s.t.
 
 - \\(E\\) a set
 - \\(∙:E×E→E\\)

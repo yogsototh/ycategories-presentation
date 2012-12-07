@@ -18,6 +18,7 @@ Math vocabulary used in this presentation:
 > Monoid,
 > Natural transformation,
 > Monad,
+> Klesli arrows,
 > κατα-morphism,
 > ...
 

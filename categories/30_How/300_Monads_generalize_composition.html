@@ -1,13 +1,8 @@
-<h2 id="monads-generalize-composition">Monads generalize composition</h2>
-<p>Example with lists:</p>
-<pre class="haskell"><code>f=\x->[x]        ⇒ f 1 = [1]    ⇒ (f.f) 1 = [[1]]
-g=\x->[x+1]      ⇒ g 1 = [2]    ⇒ (g.g) 1 = ERROR [2]+1
-h=\x->[x+1,x*10] ⇒ h 1 = [2,10] ⇒ (h.h) 1 = ERROR [2,10]+1</code></pre>
-
-<p>How to fix that? Kleisli composition</p>
-<p><code>f &lt;=&lt; g = \x -&gt; join ((fmap f) (g x))</code></p>
-<pre class="haskell"><code>f=\x->[x]        ⇒ f 1 = [1]    ⇒ (f <=< f) 1 = [1]
-g=\x->[x+1]      ⇒ g 1 = [2]    ⇒ (g <=< g) 1 = [3]
-h=\x->[x+1,x*10] ⇒ h 1 = [2,10] ⇒ (h <=< h) 1 = [3,20,11,100]</code></pre>
+<h2 id="klesli-arrows">Klesli arrows</h2>
+<p>Now the composition works as expected. In Haskell ◎ is <code>&lt;=&lt;</code> in <code>Control.Monad</code>.</p>
+<p><code>g &lt;=&lt; f = \x -&gt; join ((fmap g) (f x))</code></p>
+<pre class="haskell"><code>f x = [x]       ⇒ f 1 = [1]   ⇒ (f <=< f) 1 = [1] ✓
+g x = [x+1]     ⇒ g 1 = [2]   ⇒ (g <=< g) 1 = [3] ✓
+h x = [x+1,x*3] ⇒ h 1 = [2,3] ⇒ (h <=< h) 1 = [3,6,4,9] ✓</code></pre>
 
 

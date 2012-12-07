@@ -7,9 +7,9 @@ mToList Just x  = [x]</pre></code>
 
 
 `toMaybe` is a natural transformation.
-It is also a morphism from `[]` to `Maybe` in the Category of \\(\Hask\\) endofunctors.
+It is also a morphism from `[]` to `Maybe` in the Category of \\(\\Hask\\) endofunctors.
 
-<img style="float:left;width:50%" src="categories/img/mp/nattrans-maybe-list.png" alt="natural transformation commutative diagram"/>
+<img style="float:left;width:40%" src="categories/img/mp/nattrans-maybe-list.png" alt="natural transformation commutative diagram"/>
 <figure style="float:right;width:40%">
 <img src="categories/img/mp/maybe-list-endofunctor-morphsm.png" alt="relation between [] and Maybe"/>
 <figcaption>There is <span class="red">no isomorphism</span>.<br/>

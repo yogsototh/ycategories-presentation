@@ -1,17 +1,14 @@
-Monads are just Monoids (4/4)
------------------------------
+List Monad
+----------
 
-Example: `Maybe` is a functor (`join` is ⊙)
+Example: `List` is a functor (`join` is ⊙)
 
 - \\(M ⊙ (M ⊙ M) = (M ⊙ M) ⊙ M\\)
 - \\(η ⊙ M = M = M ⊙ η\\)
 
-<pre class="nohighlight small"><code>join (Just (join (Just (Just x)))) = join (join (Just (Just (Just x))))
- join (Just (join (Just Nothing))) = join (join (Just (Just Nothing)))
-        join (Just (join Nothing)) = join (join (Just Nothing))
-                      join Nothing = join (join Nothing)
+<pre class="nohighlight small"><code>
+join [ join [[x,y,...,z]] ] = join [[x,y,...,z]]
+							= join (join [[[x,y,...,z]]])
+join (η [x]) = [x] = join [η x]</code></pre>
 
-join (η (Just x)) =  Just x = Just (η x)
-join (η  Nothing) = Nothing = Nothing</code></pre>
-
-And `(Maybe,join,η)` is a monad.
+Therefore `([],join,η)` is a monad.
