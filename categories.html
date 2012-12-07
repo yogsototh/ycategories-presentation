@@ -648,20 +648,26 @@ Haskell types is fractal:</p>
 </li></ul>
 </section>
 <section class="slide">
-<h2 id="category-of-endofunctors">Category of Endofunctors</h2>
-<p>All endofunctors of \(\C\) form the category \(\E_\C\) of endofunctors of \(\C\).</p>
-<img src="categories/img/mp/natural-transformation.png" alt="Natural transformation commutative diagram" class="right"/>
-<ul>
-<li>\(\ob{\E_\C}\): endofunctors of \(\C\) ; \(F:\C→\C\)</li>
-<li>\(\hom{\E_\C}\): natural transformations
-<ul>
-<li>η familly \(η_X\in\hom{\C}\) for \(X\in\ob{\C}\) s.t.</li>
-<li>for Haskell functors: <code>F a -&gt; G a</code>.<br />Rearragement functions only.</li>
-</ul></li>
-</ul>
+<h2 id="category-of-hask-endofunctors">Category of \(\Hask\) Endofunctors</h2>
+<img src="categories/img/mp/cat-hask-endofunctor.png" alt="Category of Hask endofunctors" />
 </section>
 <section class="slide">
-<h2 id="natural-transformation-examples-13">Natural Transformation Examples (1/3)</h2>
+<h2 id="category-of-functors">Category of Functors</h2>
+<p>If \(\C\) is <em>small</em> (\(\hom{\C}\) is a set). All functors from \(\C\) to some category \(\D\) form the category \(\mathrm{Func}(\C,\D)\).</p>
+<img src="categories/img/mp/natural-transformation.png" alt="Natural transformation commutative diagram" class="right"/>
+<ul>
+<li>\(\ob{\mathrm{Func}(\C,\D)}\): Functors \(F:\C→\D\)</li>
+<li>\(\hom{\mathrm{Func}(\C,\D)}\): <em>natural transformations</em>
+<ul>
+<li>η familly \(η_X\in\hom{\D}\) for \(X\in\ob{\C}\) s.t.</li>
+<li>ex: between Haskel functors; <code>F a -&gt; G a</code><br />Rearragement functions only.</li>
+</ul></li>
+<li>∘: Functor composition</li>
+</ul>
+<p>\(\mathrm{Func}(\C,\C)\) is the category of endofunctors of \(\C\).</p>
+</section>
+<section class="slide">
+<h2 id="natural-transformation-examples-14">Natural Transformation Examples (1/4)</h2>
 <pre><code class="haskell">data Tree a = Empty | Node a [Tree a]
 toTree :: [a] -> Tree a
 toTree [] = Empty
@@ -676,7 +682,7 @@ toTree (x:xs) = Node x [toTree xs]</pre>
 
 </section>
 <section class="slide">
-<h2 id="natural-transformation-examples-23">Natural Transformation Examples (2/3)</h2>
+<h2 id="natural-transformation-examples-24">Natural Transformation Examples (2/4)</h2>
 <pre><code class="haskell">data Tree a = Empty | Node a [Tree a]
 toList :: Tree a -> [a]
 toList Empty = []
@@ -691,17 +697,29 @@ toList (Node x l) = [x] ++ concat (map toList l)</pre>
 
 </section>
 <section class="slide">
-<h2 id="natural-transformation-examples-33">Natural Transformation Examples (3/3)</h2>
-<pre><code class="haskell">
-toMaybe :: [a] -> Maybe a   ;   mToList :: Maybe a -> [a]
-toMaybe [] = Nothing        ;   mToList Nothing = []
-toMaybe (x:xs) = Just x     ;   mToList Just x  = [x]
-</pre>
+<h2 id="natural-transformation-examples-34">Natural Transformation Examples (3/4)</h2>
+<pre><code class="haskell">toMaybe :: [a] -> Maybe a
+toMaybe [] = Nothing
+toMaybe (x:xs) = Just x</pre>
 </code>
 <p><code>toMaybe</code> is a natural transformation. It is also a morphism from <code>[]</code> to <code>Maybe</code> in the Category of \(\) endofunctors.</p>
 <img style="float:left;width:50%" src="categories/img/mp/nattrans-list-maybe.png" alt="natural transformation commutative diagram"/>
 <figure style="float:right;width:40%">
-<img src="categories/img/mp/list-maybe-endofunctor-morphism.png" alt="natural transformation commutative diagram"/> <figcaption>There is <span class="red">no isomorphism</span>.<br/> Hint: <code>Bool</code> lists longer than 1. </figcaption>
+<img src="categories/img/mp/list-maybe-endofunctor-morphism.png" alt="natural transformation commutative diagram"/>
+</figure>
+
+
+</section>
+<section class="slide">
+<h2 id="natural-transformation-examples-44">Natural Transformation Examples (4/4)</h2>
+<pre><code class="haskell">mToList :: Maybe a -> [a]
+mToList Nothing = []
+mToList Just x  = [x]</pre>
+</code>
+<p><code>toMaybe</code> is a natural transformation. It is also a morphism from <code>[]</code> to <code>Maybe</code> in the Category of \(\) endofunctors.</p>
+<img style="float:left;width:50%" src="categories/img/mp/nattrans-maybe-list.png" alt="natural transformation commutative diagram"/>
+<figure style="float:right;width:40%">
+<img src="categories/img/mp/maybe-list-endofunctor-morphsm.png" alt="relation between [] and Maybe"/> <figcaption>There is <span class="red">no isomorphism</span>.<br/> Hint: <code>Bool</code> lists longer than 1. </figcaption>
 </figure>
 
 

@@ -1,13 +1,16 @@
-<h2 id="natural-transformation-examples-13">Natural Transformation Examples (1/3)</h2>
+Natural Transformation Examples (1/4)
+------------------------------------
+
 <pre><code class="haskell">data Tree a = Empty | Node a [Tree a]
 toTree :: [a] -> Tree a
 toTree [] = Empty
-toTree (x:xs) = Node x [toTree xs]</pre>
-</code>
-<p><code>toTree</code> is a natural transformation. It is also a morphism from <code>[]</code> to <code>Tree</code> in the Category of \(\) endofunctors.</p>
+toTree (x:xs) = Node x [toTree xs]</pre></code>
+
+
+`toTree` is a natural transformation.
+It is also a morphism from `[]` to `Tree` in the Category of \\(\Hask\\) endofunctors.
+
 <img style="float:left;width:50%" src="categories/img/mp/nattrans-list-tree.png" alt="natural transformation commutative diagram"/>
 <figure style="float:right;width:40%">
 <img src="categories/img/mp/list-tree-endofunctor-morphism.png" alt="natural transformation commutative diagram"/>
 </figure>
-
-

@@ -11,10 +11,11 @@ label(btex $\mathtt{Maybe\ b}$ etex,z3 shifted (u,0));
 
 drawEdge(z0,z1,"\mathtt{fmap_{[]}\ f}");
 drawEdge(z2,z3,"\mathtt{fmap_{Maybe}\ f}");
-ab:=edge(z0,z2);
-drawarrow ab;
-label.lft(btex $\mathtt{toMaybe}$ etex,midpoint(ab));
 
-ac:=edge(z1,z3);
-drawarrow ac;
-label.rt(btex $\mathtt{toMaybe}$ etex,midpoint(ac));
+path abb,acb;
+abb:=edge(z2 shifted (.2u,0),z0 shifted (.2u,0));
+acb:=edge(z3 shifted (-.2u,0),z1 shifted (-.2u,0));
+drawarrow abb;
+drawarrow acb;
+label.rt(btex $\mathtt{mToList}$ etex,midpoint(abb));
+label.lft(btex $\mathtt{mToList}$ etex,midpoint(acb));

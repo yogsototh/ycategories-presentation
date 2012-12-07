@@ -1,4 +1,4 @@
-Natural Transformation Examples (2/3)
+Natural Transformation Examples (2/4)
 ------------------------------------
 
 <pre><code class="haskell">data Tree a = Empty | Node a [Tree a]

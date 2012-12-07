@@ -64,9 +64,15 @@ for fpfic in $listfic; do
       | sed 's/green/s_green/g' > $tmp
     [[ -e $old ]] && diff $tmp $old >/dev/null && { echo " identical"; continue }
 
-    print -- "[$PWD]: mpost $tmp && convert -density 300 $tmp.1 $png"
+	dpi=$(grep '% DPI' $tmp | awk '{print $3}')
+	[[ $dpi = "" ]] && dpi=600
+
+	print
+	print "[DPI]: $dpi"
+
+    print -- "[$PWD]: mpost $tmp && convert -density $dpi $tmp.1 $png"
     mpost --tex=latex $tmp && \
-		convert -colorspace rgb -density 600 $eps '(' +clone -background black -shadow 90x4+0+1 ')' +swap -background none -layers merge +repage $png && \
+		convert -colorspace rgb -density $dpi $eps '(' +clone -background black -shadow 90x4+0+1 ')' +swap -background none -layers merge +repage $png && \
         \cp -f $png $scriptdir && \
         \cp -f $tmp $old && \
         echo "updated"
