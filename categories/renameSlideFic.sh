@@ -9,7 +9,7 @@ fi
 
 cd $scriptdir
 
-for rep in ??_*(/); do
+for rep in **/{??,???}_*(N/); do
     print "renaming html of $rep"
     cd $rep
     i=10
