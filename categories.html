@@ -472,7 +472,6 @@ A <em>functor</em> <span class="yellow">\(\F\)</span> from <span class="blue">\(
             <li>\(\Hask\) category
             </li><li> Functors
             </li><li> Monads
-            </li><li> Arrows
             </li><li> κατα-morphisms
             </li></ul>
     </li>
@@ -769,6 +768,16 @@ h x = [x+1,x*3] ⇒ h 1 = [2,3] ⇒ (h.h) 1 = ERROR [2,3]+1 ✗ </code></pre>
 <p>The second rule fix the type of <code>η :: a -&gt; F a</code>.</p>
 </section>
 <section class="slide">
+<h2 id="klesli-arrows">Klesli arrows</h2>
+<p>Now the composition works as expected. In Haskell ◎ is <code>&lt;=&lt;</code> in <code>Control.Monad</code>.</p>
+<p><code>g &lt;=&lt; f = \x -&gt; join ((fmap g) (f x))</code></p>
+<pre class="haskell"><code>f x = [x]       ⇒ f 1 = [1]   ⇒ (f <=< f) 1 = [1] ✓
+g x = [x+1]     ⇒ g 1 = [2]   ⇒ (g <=< g) 1 = [3] ✓
+h x = [x+1,x*3] ⇒ h 1 = [2,3] ⇒ (h <=< h) 1 = [3,6,4,9] ✓</code></pre>
+
+
+</section>
+<section class="slide">
 <h2 id="monads">Monads</h2>
 <p>We re-invented the <strong class="yellow">Monads</strong>!</p>
 <p>A monad is a triplet <code>(M,⊙,η)</code> where</p>
@@ -796,16 +805,6 @@ h x = [x+1,x*3] ⇒ h 1 = [2,3] ⇒ (h.h) 1 = ERROR [2,3]+1 ✗ </code></pre>
 <li>\(x∙(y∙z) = (x∙y)∙z, ∀x,y,z∈E\)</li>
 <li>\(e∙x = x = x∙e, ∀x∈E\)</li>
 </ul>
-</section>
-<section class="slide">
-<h2 id="monads-are-just-monoids">Monads are just Monoids</h2>
-<blockquote>
-<p>A Monad is just a monoid in the category of endofunctors, what's the problem?</p>
-</blockquote>
-<p>The real sentence was:</p>
-<blockquote>
-<p>All told, a monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.</p>
-</blockquote>
 </section>
 <section class="slide">
 <h2 id="list-monad">List Monad</h2>
@@ -840,14 +839,14 @@ join (η [x]) = [x] = join [η x]</code></pre>
 <p>Therefore <code>([],join,η)</code> is a monad.</p>
 </section>
 <section class="slide">
-<h2 id="klesli-arrows">Klesli arrows</h2>
-<p>Now the composition works as expected. In Haskell ◎ is <code>&lt;=&lt;</code> in <code>Control.Monad</code>.</p>
-<p><code>g &lt;=&lt; f = \x -&gt; join ((fmap g) (f x))</code></p>
-<pre class="haskell"><code>f x = [x]       ⇒ f 1 = [1]   ⇒ (f <=< f) 1 = [1] ✓
-g x = [x+1]     ⇒ g 1 = [2]   ⇒ (g <=< g) 1 = [3] ✓
-h x = [x+1,x*3] ⇒ h 1 = [2,3] ⇒ (h <=< h) 1 = [3,6,4,9] ✓</code></pre>
-
-
+<h2 id="monads-are-just-monoids">Monads are just Monoids</h2>
+<blockquote>
+<p>A Monad is just a monoid in the category of endofunctors, what's the problem?</p>
+</blockquote>
+<p>The real sentence was:</p>
+<blockquote>
+<p>All told, a monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.</p>
+</blockquote>
 </section>
 <section class="slide">
 <h2 id="monads-utility">Monads utility</h2>
@@ -878,6 +877,22 @@ drawPoint :: Point -&gt; State Screen DrawScene
 drawPoint p = do
     <span class="orange">Screen width height &lt;- get</span>
     ...</code></pre>
+</section>
+<section class="slide">
+<h2 id="fold"><code>fold</code></h2>
+<figure style="width:80%;max-width:80%; margin:0 auto">
+<img src="categories/img/tower_folded.gif" alt="fold" style="width:80%;max-width:80%"/> <figcaption><code>fold</code></figcaption>
+</figure>
+
+
+</section>
+<section class="slide">
+<h2 id="κατα-morphism">κατα-morphism</h2>
+<figure style="width:80%;max-width:80%; margin:0 auto">
+<img src="categories/img/earth_catamorphed.gif" alt="catamorphism" style="width:80%;max-width:80%"/> <figcaption><code>κατα-morphism</code></figcaption>
+</figure>
+
+
 </section>
 <!-- End slides. -->
 
