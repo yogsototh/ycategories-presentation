@@ -13,7 +13,7 @@ for rep in **/{??,???}_*(N/); do
     print "renaming html of $rep"
     cd $rep
     i=10
-    for fic in *.html; do
+	for fic in *.html(.N); do
         title=$( <$fic grep h2 | sed 's/<[^>]*>//g;s/&[^;]*;//g;s/[^a-zA-Z0-9]/_/g;s/__*/_/g;s/^_//;s/_$//;')
         if ((i<100)); then
             num="0$i"
