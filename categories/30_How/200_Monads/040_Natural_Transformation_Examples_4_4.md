@@ -1,7 +1,7 @@
 Natural Transformation Examples (4/4)
 -------------------------------------
 
-<pre><code class="haskell">mToList :: Maybe a -> [a]
+<pre><code class="haskell small">mToList :: Maybe a -> [a]
 mToList Nothing = []
 mToList Just x  = [x]</pre></code>
 

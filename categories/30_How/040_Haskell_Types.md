@@ -1,10 +1,6 @@
 Haskell Types
 -------------
 
-We can make function that can work for _all_ type parameter.
-Such function can only work with the _topology_ induced by the type.
-We know such function won't work _on_ the elements.
-
 Sometimes, the type determine a lot about the function<sup>★</sup>:
 
 <pre class="haskell"><code>fst :: (a,b) -> a -- Only one choice

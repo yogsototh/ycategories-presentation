@@ -1,7 +1,7 @@
 Natural Transformation Examples (3/4)
 -------------------------------------
 
-<pre><code class="haskell">toMaybe :: [a] -> Maybe a
+<pre><code class="haskell small">toMaybe :: [a] -> Maybe a
 toMaybe [] = Nothing
 toMaybe (x:xs) = Just x</pre></code>
 

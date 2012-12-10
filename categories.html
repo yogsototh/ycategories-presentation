@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="extensions/navigation/deck.navigation.css">
 	<link rel="stylesheet" href="extensions/status/deck.status.css">
 	<link rel="stylesheet" href="extensions/hash/deck.hash.css">
-    <link rel="stylesheet" href="extensions/scale/deck.scale.css">
+  <!--  <link rel="stylesheet" href="extensions/scale/deck.scale.css"> -->
 
 	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
 
@@ -134,7 +134,7 @@
 <section class="slide">
 <h2 id="programmer-translation">Programmer Translation</h2>
 <img class="right" src="categories/img/readingcat.jpg" alt="lolcat"/>
-<table style="width:70%">
+<table style="width:60%">
 <tr><th>
 Mathematician
 </th><th>
@@ -374,23 +374,19 @@ such that for each \(f:A→B\):</p>
 <p>Each Monoid \((M,e,⊙): \ob{M}=\{∙\},\hom{M}=M,\circ = ⊙\)</p>
 <p class="yellow">Only one object.</p>
 <p>Examples:</p>
-<ul><li><code>(Integer,0,+)</code>,
-</li><li><code>(Integer,1,*)</code>,
-</li><li><code>(Strings,"",++)</code>,
-</li><li>for each <code>a</code>, <code>([a],[],++)</code>
+<ul><li><code>(Integer,0,+)</code>, <code>(Integer,1,*)</code>,
+</li><li><code>(Strings,"",++)</code>, for each <code>a</code>, <code>([a],[],++)</code>
 </li></ul>
 </section>
 <section class="slide">
-<h2>Degenerated Categories: Preorders</h2>
-
-<p>each preorder \((P,≤)\):</p>
+<h2>Degenerated Categories: Preorders \((P,≤)\)</h2>
 
 <ul><li>\(\ob{P}={P}\),
 </li><li>\(\hom{x,y}=\{x≤y\} ⇔ x≤y\),
 </li><li>\((y≤z) \circ (x≤y) = (x≤z) \)
 </li></ul>
 
-<p><em>At most one morphism between two objects.</em></p>
+<p><em class="yellow">At most one morphism between two objects.</em></p>
 
 <img src="categories/img/mp/preorder.png" alt="preorder category"/>
 </section>
@@ -403,20 +399,22 @@ such that for each \(f:A→B\):</p>
 <p class="yellow">Only identities</p>
 </section>
 <section class="slide">
-<h2 class="base1">Categorical Property</h2>
+<h2 class="base1">Categorical Properties</h2>
 
 <p class="base1">Any property which can be expressed in term of category, objects, morphism and composition.</p>
 
-<ul><li> <em class="yellow">isomorphism</em>: \(f:A→B\) which can be "undone" <em>i.e.</em>
-	<br/> \(∃g:B→A\), \(g∘f=id_A\) <span class="and">&amp;</span> \(f∘g=id_B\)
-	<br/> in this case, \(A\) <span class="and">&amp;</span> \(B\) are <em class="yellow">isomorphic</em>.
-</li><li> <em class="yellow">Dual</em>: \(\D\) is \(\C\) with reversed morphisms.
+<ul><li> <em class="yellow">Dual</em>: \(\D\) is \(\C\) with reversed morphisms.
 </li><li> <em class="yellow">Initial</em>: \(Z\in\ob{\C}\) s.t. \(∀Y∈\ob{\C}, \#\hom{Z,Y}=1\)
 	<br/> Unique ("up to isormophism")
 </li><li> <em class="yellow">Terminal</em>: \(T\in\ob{\C}\) s.t. \(T\) is initial in the dual of \(\C\)
 </li><li> <em class="yellow">Functor</em>: structure preserving mapping between categories
 </li><li> ...
 </li></ul>
+</section>
+<section class="slide">
+<h2 id="isomorph">Isomorph</h2>
+<p><em class="yellow">isomorphism</em>: (f:A→B) which can be &quot;undone&quot; <em>i.e.</em><br />\(∃g:B→A\), \(g∘f=id_A\) <span class="and">&amp;</span> \(f∘g=id_B\)<br />in this case, \(A\) <span class="and">&amp;</span> \(B\) are <em class="yellow">isomorphic</em>.</p>
+<p>In Category Theory, <span class="yellow">=</span> is generally <span class="yellow">≌</span>. For example in commutative diagrams.</p>
 </section>
 <section class="slide">
 <h2>Functor</h2>
@@ -438,17 +436,17 @@ A <em>functor</em> <span class="yellow">\(\F\)</span> from <span class="blue">\(
 <section class="slide">
 <h2>Functor Example (ob → ob)</h2>
 
-<img src="categories/img/mp/functor.png" alt="Functor"/>
+<img width="70%" src="categories/img/mp/functor.png" alt="Functor"/>
 </section>
 <section class="slide">
 <h2>Functor Example (hom → hom)</h2>
 
-<img src="categories/img/mp/functor-morphism.png" alt="Functor"/>
+<img width="70%" src="categories/img/mp/functor-morphism.png" alt="Functor"/>
 </section>
 <section class="slide">
 <h2>Functor Example</h2>
 
-<img src="categories/img/mp/functor-morphism-color.png" alt="Functor"/>
+<img width="70%" src="categories/img/mp/functor-morphism-color.png" alt="Functor"/>
 </section>
 <section class="slide">
 <h2>Endofunctors</h2>
@@ -500,18 +498,14 @@ A <em>functor</em> <span class="yellow">\(\F\)</span> from <span class="blue">\(
 <section class="slide">
 <h2 id="haskell-kinds">Haskell Kinds</h2>
 <p>In Haskell some types can take type variable(s). Typically: <code>[a]</code>.</p>
-<pre><code>data Tree a = Node a [Tree a]
-data CTree a b = CNode a [b]</code></pre>
-<p>Types have <em>kind</em>; The kind is to type what type is to function. Kind are the types for types (so meta).</p>
+<p>Types have <em>kinds</em>; The kind is to type what type is to function. Kind are the types for types (so meta).</p>
 <pre><code>Int, Char :: *
-[], Maybe, Tree :: * -&gt; *
-CTree :: * -&gt; * -&gt; *
-[Int], Maybe Char, Tree [Int] :: *
-CTree [Int] :: * -&gt; *</code></pre>
+[], Maybe :: * -&gt; *
+(,) :: * -&gt; * -&gt; *
+[Int], Maybe Char, Maybe [Int] :: *</code></pre>
 </section>
 <section class="slide">
 <h2 id="haskell-types">Haskell Types</h2>
-<p>We can make function that can work for <em>all</em> type parameter. Such function can only work with the <em>topology</em> induced by the type. We know such function won't work <em>on</em> the elements.</p>
 <p>Sometimes, the type determine a lot about the function<sup>★</sup>:</p>
 <pre class="haskell"><code>fst :: (a,b) -> a -- Only one choice
 snd :: (a,b) -> b -- Only one choice
@@ -530,12 +524,12 @@ addOne l = map <span class="red">(+1)</span> l
 <section class="slide">
 <h2>Haskell Functor vs \(\Hask\) Functor</h2>
 
-<p>Functor for Haskell language is a type <code>F :: * -> *</code> which belong to the type class <code>Functor</code>.<br/>
-It must implement <code>fmap :: (a -> b) -> (F a -> F b)</code>.
+<p>A Haskell Functor is a type <code>F :: * -> *</code> which belong to the type class <code>Functor</code> ; thus instantiate
+<code>fmap :: (a -> b) -> (F a -> F b)</code>.
 
 <p><span style="visibility:hidden"><span class="and">&amp;</span></span> <code>F</code>: \(\ob{\Hask}→\ob{\Hask}\)<br/> <span class="and">&amp;</span> <code>fmap</code>: \(\hom{\Hask}→\hom{\Hask}\)
 
-<p>The couple <code>(F,fmap)</code> is a functor in the categorical sense for \(\Hask\) if for any <code>x :: F a</code>:</p>
+<p>The couple <code>(F,fmap)</code> is a \(\Hask\) endofunctor if for any <code>x :: F a</code>:</p>
 <ul><li><code>fmap id x = x</code>
 </li><li><code>fmap (f.g) x= (fmap f . fmap g) x</code>
 </li></ul>
@@ -556,22 +550,20 @@ fmap head (Just [1,2,3]) == Just 1</code></pre>
 <section class="slide">
 <h2>Haskell Functors Example: List</h2>
 
-<pre class="haskell"><code>
-instance Functor ([]) where
+<pre class="haskell"><code>instance Functor ([]) where
     fmap :: (a -> b) -> [a] -> [b]
     fmap = map
 
 fmap (+1) [1,2,3]           == [2,3,4]
 fmap (+1) []                == []
-fmap head [[1,2,3],[4,5,6]] == [1,4]
-</code></pre>
+fmap head [[1,2,3],[4,5,6]] == [1,4]</code></pre>
 </section>
 <section class="slide">
 <h2 id="haskell-functors-for-the-programmer">Haskell Functors for the programmer</h2>
 <p><code>Functor</code> is a type class used for types that can be mapped over.</p>
 <ul>
 <li>Containers: <code>[]</code>, Trees, Map, HashMap...</li>
-<li>Smart containers:
+<li>&quot;Feature Type&quot;:
 <ul>
 <li><code>Maybe a</code>: help to handle absence of <code>a</code>.<br />Ex: <code>safeDiv x 0 ⇒ Nothing</code></li>
 <li><code>Either String a</code>: help to handle errors<br />Ex: <code>reportDiv x 0 ⇒ Left &quot;Division by 0!&quot;</code></li>
@@ -633,7 +625,7 @@ Haskell types is fractal:</p>
 </section>
 <section class="slide">
 <h2 id="also-functor-inside-hask">Also Functor inside \(\Hask\)</h2>
-<p>\(\mathtt{[a]}∈\ob{\Hask}\)</code> but is also a complete category. The same can be said for <code>Int</code>.</p>
+<p>\(\mathtt{[a]}∈\ob{\Hask}\)</code> but is also a category. Idem for <code>Int</code>.</p>
 <p><code>length</code> is a Functor from the category <code>[a]</code> to the cateogry <code>Int</code>:</p>
 <ul class="left" style="max-width:40%">
 <li>\(\ob{\mathtt{[a]}}=\{∙\}\)</li>
@@ -653,26 +645,27 @@ Haskell types is fractal:</p>
 </section>
 <section class="slide">
 <h2 id="category-of-hask-endofunctors">Category of \(\Hask\) Endofunctors</h2>
-<img src="categories/img/mp/cat-hask-endofunctor.png" alt="Category of Hask endofunctors" />
+<img width="70%" src="categories/img/mp/cat-hask-endofunctor.png" alt="Category of Hask endofunctors" />
 </section>
 <section class="slide">
 <h2 id="category-of-functors">Category of Functors</h2>
 <p>If \(\C\) is <em>small</em> (\(\hom{\C}\) is a set). All functors from \(\C\) to some category \(\D\) form the category \(\mathrm{Func}(\C,\D)\).</p>
-<img src="categories/img/mp/natural-transformation.png" alt="Natural transformation commutative diagram" class="right"/>
 <ul>
 <li>\(\ob{\mathrm{Func}(\C,\D)}\): Functors \(F:\C→\D\)</li>
-<li>\(\hom{\mathrm{Func}(\C,\D)}\): <em>natural transformations</em>
-<ul>
-<li>η familly \(η_X\in\hom{\D}\) for \(X\in\ob{\C}\) s.t.</li>
-<li>ex: between Haskel functors; <code>F a -&gt; G a</code><br />Rearragement functions only.</li>
-</ul></li>
+<li>\(\hom{\mathrm{Func}(\C,\D)}\): <em>natural transformations</em></li>
 <li>∘: Functor composition</li>
 </ul>
 <p>\(\mathrm{Func}(\C,\C)\) is the category of endofunctors of \(\C\).</p>
 </section>
 <section class="slide">
+<h2 id="natural-transformations">Natural Transformations</h2>
+<p>Let \(F\) and \(G\) be two functors from \(\C\) to \(\D\).</p>
+<p><img src="categories/img/mp/natural-transformation.png" alt="Natural transformation commutative diagram" class="right"/> <em>A natural transformation:</em> familly η ; \(η_X\in\hom{\D}\) for \(X\in\ob{\C}\) s.t.</p>
+<p>ex: between Haskell functors; <code>F a -&gt; G a</code><br />Rearragement functions only.</p>
+</section>
+<section class="slide">
 <h2 id="natural-transformation-examples-14">Natural Transformation Examples (1/4)</h2>
-<pre><code class="haskell">data Tree a = Empty | Node a [Tree a]
+<pre><code class="haskell small">data Tree a = Empty | Node a [Tree a]
 toTree :: [a] -> Tree a
 toTree [] = Empty
 toTree (x:xs) = Node x [toTree xs]</pre>
@@ -687,7 +680,7 @@ toTree (x:xs) = Node x [toTree xs]</pre>
 </section>
 <section class="slide">
 <h2 id="natural-transformation-examples-24">Natural Transformation Examples (2/4)</h2>
-<pre><code class="haskell">data Tree a = Empty | Node a [Tree a]
+<pre><code class="haskell small">data Tree a = Empty | Node a [Tree a]
 toList :: Tree a -> [a]
 toList Empty = []
 toList (Node x l) = [x] ++ concat (map toList l)</pre>
@@ -702,7 +695,7 @@ toList (Node x l) = [x] ++ concat (map toList l)</pre>
 </section>
 <section class="slide">
 <h2 id="natural-transformation-examples-34">Natural Transformation Examples (3/4)</h2>
-<pre><code class="haskell">toMaybe :: [a] -> Maybe a
+<pre><code class="haskell small">toMaybe :: [a] -> Maybe a
 toMaybe [] = Nothing
 toMaybe (x:xs) = Just x</pre>
 </code>
@@ -716,7 +709,7 @@ toMaybe (x:xs) = Just x</pre>
 </section>
 <section class="slide">
 <h2 id="natural-transformation-examples-44">Natural Transformation Examples (4/4)</h2>
-<pre><code class="haskell">mToList :: Maybe a -> [a]
+<pre><code class="haskell small">mToList :: Maybe a -> [a]
 mToList Nothing = []
 mToList Just x  = [x]</pre>
 </code>
@@ -997,7 +990,7 @@ depth = cata phi where
 <script src="extensions/goto/deck.goto.js"></script>
 <script src="extensions/status/deck.status.js"></script>
 <script src="extensions/navigation/deck.navigation.js"></script>
-<script src="extensions/scale/deck.scale.js"></script>
+<!-- <script src="extensions/scale/deck.scale.js"></script> -->
 
 <!-- Initialize the deck. You can put this in an external file if desired. -->
 <script>

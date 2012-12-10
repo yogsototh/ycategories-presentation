@@ -1,7 +1,7 @@
 Natural Transformation Examples (2/4)
 ------------------------------------
 
-<pre><code class="haskell">data Tree a = Empty | Node a [Tree a]
+<pre><code class="haskell small">data Tree a = Empty | Node a [Tree a]
 toList :: Tree a -> [a]
 toList Empty = []
 toList (Node x l) = [x] ++ concat (map toList l)</pre></code>

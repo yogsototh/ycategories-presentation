@@ -1,5 +1,5 @@
 <h2 id="natural-transformation-examples-14">Natural Transformation Examples (1/4)</h2>
-<pre><code class="haskell">data Tree a = Empty | Node a [Tree a]
+<pre><code class="haskell small">data Tree a = Empty | Node a [Tree a]
 toTree :: [a] -> Tree a
 toTree [] = Empty
 toTree (x:xs) = Node x [toTree xs]</pre>

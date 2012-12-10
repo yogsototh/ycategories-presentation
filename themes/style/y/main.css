@@ -915,8 +915,20 @@ body.deck-container {
   .deck-container {
     font-size: 3.5em; } }
 @media only screen and (max-width: 1380px) {
+  body {
+    width: 760px !important;
+    min-width: 760px !important;
+    max-width: 760px !important;
+    height: 500px !important;
+    min-height: 500px !important;
+    max-height: 500px !important;
+    padding: 0 20px !important;
+    margin: 0 auto;
+    box-shadow: 0 0 3px white;
+    height: 50%; }
+
   .deck-container {
-    font-size: 2.5em; } }
+    font-size: 24px; } }
 @media only screen and (max-width: 640px) {
   .deck-container {
     font-size: 1.5em; } }
@@ -930,11 +942,13 @@ body.deck-container {
 body.deck-container {
   overflow-y: hidden; }
 
+html {
+  box-shadow: 0 0 50px black inset; }
+
 .deck-container {
   color: #839496;
   background-color: #002b36;
-  text-shadow: 0 1px 5px #001122;
-  box-shadow: 0 0 50px black inset; }
+  text-shadow: 0 1px 5px #001122; }
   .deck-container h1 {
     font-size: 3em;
     line-height: 1.2em;
