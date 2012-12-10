@@ -1,7 +1,7 @@
 General Overview
 ----------------
 
-<div style="float:right; width: 20%">
+<div style="float:right; width: 18%">
 <img src="categories/img/eilenberg.gif" alt="Samuel Eilenberg"/>
 <img src="categories/img/maclaine.jpg" alt="Saunders Mac Lane"/>
 </div>

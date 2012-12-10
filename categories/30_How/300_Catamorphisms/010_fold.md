@@ -1,4 +1,4 @@
 `fold`
 ------
 
-<img src="categories/img/tower_folded.gif" alt="fold" style="width:60%;max-width:60%"/>
+<img src="categories/img/tower_folded.gif" alt="fold" style="width:50%;max-width:50%"/>

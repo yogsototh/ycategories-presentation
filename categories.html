@@ -94,7 +94,7 @@
 </section>
 <section class="slide">
 <h2 id="general-overview">General Overview</h2>
-<div style="float:right; width: 20%">
+<div style="float:right; width: 18%">
 <img src="categories/img/eilenberg.gif" alt="Samuel Eilenberg"/> <img src="categories/img/maclaine.jpg" alt="Saunders Mac Lane"/>
 </div>
 
@@ -262,7 +262,12 @@ such that for each \(f:A→B\):</p>
 <section class="slide">
 <h2>Question Time!</h2>
 
-<img width="60%" src="categories/img/batquestion.jpg"/>
+<figure style="width:70%; margin:0 auto">
+<img src="categories/img/batquestion.jpg" width="100%"/>
+<figcaption>
+<em>- French-only joke -</em>
+</figcaption>
+</figure>
 </section>
 <section class="slide">
 <h2>Can this be a category?</h2>
@@ -307,6 +312,16 @@ such that for each \(f:A→B\):</p>
 </figure>
 </section>
 <section class="slide">
+<h2>Categories Examples</h2>
+
+<figure style="width:70%; margin:0 auto">
+<img src="categories/img/basket_of_cats.jpg" alt="Basket of cats"/>
+<figcaption>
+<em>- Basket of Cats -</em>
+</figcaption>
+</figure>
+</section>
+<section class="slide">
 <h2>Category \(\Set\)</h2>
 
 <ul>
@@ -323,7 +338,7 @@ such that for each \(f:A→B\):</p>
 </section>
 <section class="slide">
 <h2>Categories Everywhere?</h2>
-
+<img class="right" src="categories/img/cats-everywhere.jpg" alt="Cats everywhere"/>
 <ul>
     <li>\(\Mon\): (monoids, monoid morphisms,∘)</li>
     <li>\(\Vec\): (Vectorial spaces, linear functions,∘)</li>
@@ -418,8 +433,8 @@ such that for each \(f:A→B\):</p>
 </section>
 <section class="slide">
 <h2 id="isomorph">Isomorph</h2>
-<p><em class="yellow">isomorphism</em>: (f:A→B) which can be &quot;undone&quot; <em>i.e.</em><br />\(∃g:B→A\), \(g∘f=id_A\) <span class="and">&amp;</span> \(f∘g=id_B\)<br />in this case, \(A\) <span class="and">&amp;</span> \(B\) are <em class="yellow">isomorphic</em>.</p>
-<p>In Category Theory, <span class="yellow">=</span> is generally <span class="yellow">≌</span>. For example in commutative diagrams.</p>
+<p><img class="right" alt="isomorph cats" src="categories/img/isomorph-cats.jpg" /> <em class="yellow">isomorphism</em>: \(f:A→B\) which can be &quot;undone&quot; <em>i.e.</em><br />\(∃g:B→A\), \(g∘f=id_A\) <span class="and">&amp;</span> \(f∘g=id_B\)<br />in this case, \(A\) <span class="and">&amp;</span> \(B\) are <em class="yellow">isomorphic</em>.</p>
+<p><span class="yellow">A≌B</span> means A and B are essentially the same.<br />In Category Theory, <span class="yellow">=</span> is in fact mostly <span class="yellow">≌</span>.<br />For example in commutative diagrams.</p>
 </section>
 <section class="slide">
 <h2>Functor</h2>
@@ -441,28 +456,28 @@ A <em>functor</em> <span class="yellow">\(\F\)</span> from <span class="blue">\(
 <section class="slide">
 <h2>Functor Example (ob → ob)</h2>
 
-<img width="70%" src="categories/img/mp/functor.png" alt="Functor"/>
+<img width="65%" src="categories/img/mp/functor.png" alt="Functor"/>
 </section>
 <section class="slide">
 <h2>Functor Example (hom → hom)</h2>
 
-<img width="70%" src="categories/img/mp/functor-morphism.png" alt="Functor"/>
+<img width="65%" src="categories/img/mp/functor-morphism.png" alt="Functor"/>
 </section>
 <section class="slide">
 <h2>Functor Example</h2>
 
-<img width="70%" src="categories/img/mp/functor-morphism-color.png" alt="Functor"/>
+<img width="65%" src="categories/img/mp/functor-morphism-color.png" alt="Functor"/>
 </section>
 <section class="slide">
 <h2>Endofunctors</h2>
 
 <p>An <em>endofunctor</em> for \(\C\) is a functor \(F:\C→\C\).</p>
-<img src="categories/img/mp/endofunctor.png" alt="Endofunctor"/>
+<img width="75%"  src="categories/img/mp/endofunctor.png" alt="Endofunctor"/>
 </section>
 <section class="slide">
 <h2>Category of Categories</h2>
 
-<img class="right" src="categories/img/fractalcat.jpg" />
+<img style="min-width:43%; width: 43%" class="right" src="categories/img/fractalcat.jpg" />
 
 <p>Categories and functors form a category: \(\Cat\)</p>
 <ul><li>\(\ob{\Cat}\) are categories
@@ -580,7 +595,7 @@ fmap head [[1,2,3],[4,5,6]] == [1,4]</code></pre>
 
 <p>Put normal function inside a container. Ex: list, trees...<p>
 
-<img src="categories/img/mp/boxfunctor.png" alt="Haskell Functor as a box play"/>
+<img width="70%" src="categories/img/mp/boxfunctor.png" alt="Haskell Functor as a box play"/>
 </section>
 <section class="slide">
 <h2>Haskell Functor properties</h2>
@@ -597,7 +612,7 @@ fmap head [[1,2,3],[4,5,6]] == [1,4]</code></pre>
 <p>Haskell functor can be seen as boxes containing all Haskell types and functions.
 Haskell types is fractal:</p>
 
-<img src="categories/img/mp/hask-endofunctor.png" alt="Haskell functor representation"/>
+<img width="70%" src="categories/img/mp/hask-endofunctor.png" alt="Haskell functor representation"/>
 </section>
 <section class="slide">
 <h2>Functor as boxes</h2>
@@ -605,7 +620,7 @@ Haskell types is fractal:</p>
 <p>Haskell functor can be seen as boxes containing all Haskell types and functions.
 Haskell types is fractal:</p>
 
-<img src="categories/img/mp/hask-endofunctor-objects.png" alt="Haskell functor representation"/>
+<img width="70%" src="categories/img/mp/hask-endofunctor-objects.png" alt="Haskell functor representation"/>
 </section>
 <section class="slide">
 <h2>Functor as boxes</h2>
@@ -613,7 +628,7 @@ Haskell types is fractal:</p>
 <p>Haskell functor can be seen as boxes containing all Haskell types and functions.
 Haskell types is fractal:</p>
 
-<img src="categories/img/mp/hask-endofunctor-morphisms.png" alt="Haskell functor representation"/>
+<img width="70%" src="categories/img/mp/hask-endofunctor-morphisms.png" alt="Haskell functor representation"/>
 </section>
 <section class="slide">
 <h2 id="non-haskell-hasks-functors">&quot;Non Haskell&quot; Hask's Functors</h2>
@@ -650,7 +665,7 @@ Haskell types is fractal:</p>
 </section>
 <section class="slide">
 <h2 id="category-of-hask-endofunctors">Category of \(\Hask\) Endofunctors</h2>
-<img width="70%" src="categories/img/mp/cat-hask-endofunctor.png" alt="Category of Hask endofunctors" />
+<img width="60%" src="categories/img/mp/cat-hask-endofunctor.png" alt="Category of Hask endofunctors" />
 </section>
 <section class="slide">
 <h2 id="category-of-functors">Category of Functors</h2>
@@ -882,7 +897,7 @@ drawPoint p = do
 </section>
 <section class="slide">
 <h2 id="fold"><code>fold</code></h2>
-<img src="categories/img/tower_folded.gif" alt="fold" style="width:60%;max-width:60%"/>
+<img src="categories/img/tower_folded.gif" alt="fold" style="width:50%;max-width:50%"/>
 </section>
 <section class="slide">
 <h2 id="κατα-morphism">κατα-morphism</h2>
