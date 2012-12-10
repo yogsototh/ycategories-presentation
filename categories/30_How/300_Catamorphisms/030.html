@@ -1,0 +1,16 @@
+<h2 id="κατα-morphism-fold-generalization">κατα-morphism: fold generalization</h2>
+<p>Typically, you need a recursive type (list, trees, ...)</p>
+<pre><code>Str = Cons Char Str
+
+1st: replace the recursive type by another type.
+StrChar a = Cons Char a
+Str&#39; a = Mu StrChar
+
+Str&#39; = InF { outF :: StrChar (Mu ListElement) }
+Str&#39; = InF { outF :: StrChar (Str&#39;) }</code></pre>
+<p>Clearly <code>Str'</code> is isomorph <code>String</code>.</p>
+<pre><code>type Algebra f a = f a -&gt; a
+data Mu f = InF { outF :: f (Mu f) }
+
+cata :: Functor f =&gt; Algebra f a -&gt; Mu f -&gt; a
+cata f = f . fmap (cata f) . outF</code></pre>

@@ -67,7 +67,7 @@
 <!-- Begin slides. Just make elements with a class of slide. -->
 
 <section class="slide">
-<div style="text-align:center; position:absolute; top: 2em;">
+<div style="text-align:center; position:absolute; top: 2em; font-size: .9em; width: 100%">
 <h1 style="position: relative;">Category Theory <span class="and">&amp;</span> Programming</h1>
 <author><em class="base01">by</em> Yann Esposito</author>
 <div style="font-size:.5em">
@@ -79,7 +79,7 @@
      </googleplus>
 </div>
 <div class="base01" style="font-size: .5em; font-weight: 400; font-variant:italic">
-    <div class="button" style="margin: .5em auto;border: solid 2px; padding: 5px; width: 8em"  onclick="javascript:gofullscreen();">ENTER FULLSCREEN</div>
+    <div class="button" style="margin: .5em auto;border: solid 2px; padding: 5px; width: 8em; border-radius: 1em; background:rgba(255,255,255,0.05);"  onclick="javascript:gofullscreen();">ENTER FULLSCREEN</div>
     HTML presentation: use arrows, space to navigate.
 </div>
 </div>
@@ -104,15 +104,17 @@
 <li><em>New math foundation</em><br /> formalism abstraction, package entire theory<sup>★</sup></li>
 <li><em>Bridge between disciplines</em><br /> Physics, Quantum Physics, Topology, Logic, Computer Science<sup>☆</sup></li>
 </ul>
-<p>From a Programmer perspective:</p>
-<blockquote>
-<p>Category Theory is a new language/framework for Math</p>
-</blockquote>
 <p  class="smaller base01" style="border-top: solid 1px">
 ★: <a href="http://www.math.harvard.edu/~mazur/preprints/when_is_one.pd">When is one thing equal to some other thing?, Barry Mazur, 2007</a><br/> ☆: <a href="http://math.ucr.edu/home/baez/rosetta.pdf">Physics, Topology, Logic and Computation: A Rosetta Stone, John C. Baez, Mike Stay, 2009</a>
 </p>
 
 
+</section>
+<section class="slide">
+<h2 id="from-a-programmer-perspective">From a Programmer perspective</h2>
+<blockquote>
+<p>Category Theory is a new language/framework for Math</p>
+</blockquote>
 </section>
 <section class="slide">
 <h2 id="math-programming-relation">Math Programming relation</h2>
@@ -128,6 +130,9 @@
 <blockquote>
 <p>Category, Morphism, Associativity, Preorder, Functor, Endofunctor, Categorial property, Commutative diagram, Isomorph, Initial, Dual, Monoid, Natural transformation, Monad, Klesli arrows, κατα-morphism, ...</p>
 </blockquote>
+</section>
+<section class="slide">
+<h2 id="programmer-translation">Programmer Translation</h2>
 <img class="right" src="categories/img/readingcat.jpg" alt="lolcat"/>
 <table style="width:70%">
 <tr><th>
@@ -352,8 +357,7 @@ such that for each \(f:A→B\):</p>
     <li> ∘ is path concatenation</li>
 </ul>
 <ul><li>\(\ob{G}=\{X,Y,Z\}\),
-    </li><li>\(\hom{G}=\{ε,α,β,γ,αβ,βγ,...\}\)<br/>
-    \(\phantom{\hom{G}}=(β?γ)?(αβγ)^*(αβ?)?\),
+    </li><li>\(\hom{G}=\{ε,α,β,γ,αβ,βγ,...\}\)
     </li><li>\(αβ∘γ=αβγ\)
 </li></ul>
 </section>
@@ -374,7 +378,6 @@ such that for each \(f:A→B\):</p>
 </li><li><code>(Integer,1,*)</code>,
 </li><li><code>(Strings,"",++)</code>,
 </li><li>for each <code>a</code>, <code>([a],[],++)</code>
-</li><li>Couple of monoids \((M×N, (0_M,0_N), (⊙_M,⊙_N))\)
 </li></ul>
 </section>
 <section class="slide">
@@ -893,6 +896,65 @@ drawPoint p = do
 </figure>
 
 
+</section>
+<section class="slide">
+<h2 id="κατα-morphism-fold-generalization">κατα-morphism: fold generalization</h2>
+<p>Typically, you need a recursive type (list, trees, ...)</p>
+<pre><code>Str = Cons Char Str
+
+1st: replace the recursive type by another type.
+StrChar a = Cons Char a
+Str&#39; a = Mu StrChar
+
+Str&#39; = InF { outF :: StrChar (Mu ListElement) }
+Str&#39; = InF { outF :: StrChar (Str&#39;) }</code></pre>
+<p>Clearly <code>Str'</code> is isomorph <code>String</code>.</p>
+<pre><code>type Algebra f a = f a -&gt; a
+data Mu f = InF { outF :: f (Mu f) }
+
+cata :: Functor f =&gt; Algebra f a -&gt; Mu f -&gt; a
+cata f = f . fmap (cata f) . outF</code></pre>
+</section>
+<section class="slide">
+<h2 id="κατα-morphism-example-with-strings">κατα-morphism: example with strings</h2>
+<pre><code>type Algebra f a = f a -&gt; a
+data Mu f = InF { outF :: f (Mu f) }
+
+cata :: Functor f =&gt; Algebra f a -&gt; Mu f -&gt; a
+cata f = f . fmap (cata f) . outF
+
+-- Example with natural fold on String
+data StrF x = Cons Char x | Nil
+type Str = Mu StrF
+instance Functor StrF where
+  fmap f (Cons a as) = Cons a (f as)
+  fmap _ Nil = Nil
+
+length&#39; :: Str -&gt; Int
+length&#39; = cata phi where
+  phi (Cons a b) = 1 + b
+  phi Nil = 0
+
+toMu :: [Char] -&gt; Str
+toMu (x:xs) = InF { outF = Cons x (toMu xs) }
+toMu [] = InF { outF = Nil }</code></pre>
+</section>
+<section class="slide">
+<h2 id="κατα-morphism-example-with-strings">κατα-morphism: example with strings</h2>
+<pre><code>type Algebra f a = f a -&gt; a
+data Mu f = InF { outF :: f (Mu f) }
+
+cata :: Functor f =&gt; Algebra f a -&gt; Mu f -&gt; a
+cata f = f . fmap (cata f) . outF
+
+type Tree = Mu TreeF
+data TreeF x = Node Int [x]
+
+instance Functor TreeF where
+  fmap f (Node e xs) = Node e (fmap f xs)
+
+depth = cata phi where
+  phi (Node x sons) = 1 + foldr max 0 sons</code></pre>
 </section>
 <!-- End slides. -->
 

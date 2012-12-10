@@ -16,9 +16,5 @@ Certainly one of the more abstract branches of math
 - _Bridge between disciplines_  
 	Physics, Quantum Physics, Topology, Logic, Computer Science<sup>☆</sup>
 
-From a Programmer perspective:
-
-> Category Theory is a new language/framework for Math
-
 <p  class="smaller base01" style="border-top: solid 1px">★: <a href="http://www.math.harvard.edu/~mazur/preprints/when_is_one.pd">When is one thing equal to some other thing?, Barry Mazur, 2007</a><br/>
 ☆: <a href="http://math.ucr.edu/home/baez/rosetta.pdf">Physics, Topology, Logic and Computation: A Rosetta Stone, John C. Baez, Mike Stay, 2009</a></p>
