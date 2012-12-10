@@ -1150,29 +1150,29 @@ body.deck-container
 .no-touch .deck-menu .slide:hover
   background: $base02
 
-@media only screen and (max-width: 3400px)
-  .deck-container
-    font-size: 3.5em
-@media only screen and (max-width: 1920px)
-  .deck-container
-    font-size: 3.5em
-@media only screen and (max-width: 1380px)
-  body
-    width: 760px !important
-    min-width: 760px !important
-    max-width: 760px !important
-    height: 500px !important
-    min-height: 500px !important
-    max-height: 500px !important
-    padding: 0 20px !important
-    margin: 0 auto
-    box-shadow: 0 0 3px #FFF
-    height: 50%
-  .deck-container
-    font-size: 24px
-@media only screen and (max-width: 640px)
-  .deck-container
-    font-size: 1.5em
+$padsize:20
+$maxwidth:800
+$width:760
+$height:500
+@for $fontsize from 12 through 90
+  $padsize:$fontsize*20/48
+  $maxwidth:$fontsize*1920/48
+  $width:$maxwidth - 2*$padsize
+  $height:$fontsize*1044/48
+  @media only screen and (min-width: #{$maxwidth}px)
+    body
+      width: #{$width}px       !important
+      min-width: #{$width}px   !important
+      max-width: #{$width}px   !important
+      height: #{$height}px     !important
+      min-height: #{$height}px !important
+      max-height: #{$height}px !important
+      padding: 0 #{$padsize}px !important
+      margin: 0 auto
+      box-shadow: 0 0 2px #FFF inset
+      height: 50%
+    .deck-container
+      font-size: #{$fontsize}px
 
 #MathJax_Message
   font-size: .4em !important
