@@ -1,13 +1,7 @@
 <h2 id="nat.-trans.-composition-generalization">Nat. Trans. &amp; Composition generalization</h2>
-<p>Goal, find: <code>◎ :: (b -&gt; F c) -&gt; (a -&gt; F b) -&gt; (a -&gt; F c)</code></p>
-<p>Let's go slowly ; <code>f :: a -&gt; F b</code>, <code>g :: b -&gt; F c</code>:</p>
+<p>Goal, find: <code>◎ :: (b -&gt; F c) -&gt; (a -&gt; F b) -&gt; (a -&gt; F c)</code><br /><code>f :: a -&gt; F b</code>, <code>g :: b -&gt; F c</code>:</p>
 <ul>
 <li><code>(g ◎ f) x</code> ???</li>
 <li>First apply <code>f</code> to <code>x</code> ⇒ <code>f x :: F b</code></li>
 <li>Then how to apply <code>g</code> properly to an element of type <code>F b</code>?</li>
-<li>Use <code>fmap :: (b -&gt; c) -&gt; (F b -&gt; F c)</code>!</li>
-<li><code>(fmap g) :: F b -&gt; F (F c)</code></li>
-<li><code>(fmap g) (f x) :: F (F c)</code> it almost WORKS!</li>
-<li>We lack an important component, <code>join :: F (F c) -&gt; F c</code></li>
-<li><code>(g ◎ f) x = join ((fmap g) (f x))</code> ☺ (in Haskell <code>&lt;=&lt;</code>, Klesli arrow).</li>
 </ul>

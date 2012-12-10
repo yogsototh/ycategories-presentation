@@ -1,5 +1,5 @@
-Klesli arrows
--------------
+Klesli composition
+------------------
 
 Now the composition works as expected. In Haskell ◎ is `<=<` in `Control.Monad`.
 

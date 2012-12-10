@@ -529,7 +529,7 @@ addOne l = map <span class="red">(+1)</span> l
 
 <p><span style="visibility:hidden"><span class="and">&amp;</span></span> <code>F</code>: \(\ob{\Hask}→\ob{\Hask}\)<br/> <span class="and">&amp;</span> <code>fmap</code>: \(\hom{\Hask}→\hom{\Hask}\)
 
-<p>The couple <code>(F,fmap)</code> is a \(\Hask\) endofunctor if for any <code>x :: F a</code>:</p>
+<p>The couple <code>(F,fmap)</code> is a \(\Hask\)'s functor if for any <code>x :: F a</code>:</p>
 <ul><li><code>fmap id x = x</code>
 </li><li><code>fmap (f.g) x= (fmap f . fmap g) x</code>
 </li></ul>
@@ -541,9 +541,8 @@ addOne l = map <span class="red">(+1)</span> l
 instance Functor Maybe where
     fmap :: (a -> b) -> (Maybe a -> Maybe b)
     fmap f (Just a) = Just (f a)
-    fmap f Nothing = Nothing
-
-fmap (+1) (Just 1) == Just 2
+    fmap f Nothing = Nothing</code></pre>
+<pre class="haskell"><code>fmap (+1) (Just 1) == Just 2
 fmap (+1) Nothing  == Nothing
 fmap head (Just [1,2,3]) == Just 1</code></pre>
 </section>
@@ -551,10 +550,9 @@ fmap head (Just [1,2,3]) == Just 1</code></pre>
 <h2>Haskell Functors Example: List</h2>
 
 <pre class="haskell"><code>instance Functor ([]) where
-    fmap :: (a -> b) -> [a] -> [b]
-    fmap = map
-
-fmap (+1) [1,2,3]           == [2,3,4]
+	fmap :: (a -> b) -> [a] -> [b]
+	fmap = map</pre></code>
+<pre class="haskell"><code>fmap (+1) [1,2,3]           == [2,3,4]
 fmap (+1) []                == []
 fmap head [[1,2,3],[4,5,6]] == [1,4]</code></pre>
 </section>
@@ -671,9 +669,9 @@ toTree [] = Empty
 toTree (x:xs) = Node x [toTree xs]</pre>
 </code>
 <p><code>toTree</code> is a natural transformation. It is also a morphism from <code>[]</code> to <code>Tree</code> in the Category of \(\Hask\) endofunctors.</p>
-<img style="float:left;width:40%" src="categories/img/mp/nattrans-list-tree.png" alt="natural transformation commutative diagram"/>
-<figure style="float:right;width:40%">
-<img src="categories/img/mp/list-tree-endofunctor-morphism.png" alt="natural transformation commutative diagram"/>
+<img style="float:left;width:30%" src="categories/img/mp/nattrans-list-tree.png" alt="natural transformation commutative diagram"/>
+<figure style="float:right;width:60%">
+<img style="width:40%" src="categories/img/mp/list-tree-endofunctor-morphism.png" alt="natural transformation commutative diagram"/>
 </figure>
 
 
@@ -686,9 +684,9 @@ toList Empty = []
 toList (Node x l) = [x] ++ concat (map toList l)</pre>
 </code>
 <p><code>toList</code> is a natural transformation. It is also a morphism from <code>Tree</code> to <code>[]</code> in the Category of \(\Hask\) endofunctors.</p>
-<img style="float:left;width:40%" src="categories/img/mp/nattrans-tree-list.png" alt="natural transformation commutative diagram"/>
-<figure style="float:right;width:40%">
-<img src="categories/img/mp/tree-list-endofunctor-morphism.png" alt="natural transformation commutative diagram"/> <figcaption><code>toList . toTree = id</code> <span class="and">&amp;</span><br/> <code>toTree . toList = id</code> <span style="visibility:hidden"><span class="and">&amp;</span></span><br/> therefore <code>[]</code> <span class="and">&amp;</span> <code>Tree</code> are <span class="yellow">isomorph</span>. </figcaption>
+<img style="float:left;width:30%" src="categories/img/mp/nattrans-tree-list.png" alt="natural transformation commutative diagram"/>
+<figure style="float:right;width:60%">
+<img style="width:40%" src="categories/img/mp/tree-list-endofunctor-morphism.png" alt="natural transformation commutative diagram"/> <figcaption><code>toList . toTree = id</code> <span class="and">&amp;</span> <code>toTree . toList = id</code> <span style="visibility:hidden"><span class="and">&amp;</span></span><br/> therefore <code>[]</code> <span class="and">&amp;</span> <code>Tree</code> are <span class="yellow">isomorph</span>. </figcaption>
 </figure>
 
 
@@ -700,9 +698,9 @@ toMaybe [] = Nothing
 toMaybe (x:xs) = Just x</pre>
 </code>
 <p><code>toMaybe</code> is a natural transformation. It is also a morphism from <code>[]</code> to <code>Maybe</code> in the Category of \(\Hask\) endofunctors.</p>
-<img style="float:left;width:40%" src="categories/img/mp/nattrans-list-maybe.png" alt="natural transformation commutative diagram"/>
-<figure style="float:right;width:40%">
-<img src="categories/img/mp/list-maybe-endofunctor-morphism.png" alt="natural transformation commutative diagram"/>
+<img style="float:left;width:30%" src="categories/img/mp/nattrans-list-maybe.png" alt="natural transformation commutative diagram"/>
+<figure style="float:right;width:60%">
+<img style="width:40%" src="categories/img/mp/list-maybe-endofunctor-morphism.png" alt="natural transformation commutative diagram"/>
 </figure>
 
 
@@ -714,9 +712,9 @@ mToList Nothing = []
 mToList Just x  = [x]</pre>
 </code>
 <p><code>toMaybe</code> is a natural transformation. It is also a morphism from <code>[]</code> to <code>Maybe</code> in the Category of \(\Hask\) endofunctors.</p>
-<img style="float:left;width:40%" src="categories/img/mp/nattrans-maybe-list.png" alt="natural transformation commutative diagram"/>
-<figure style="float:right;width:40%">
-<img src="categories/img/mp/maybe-list-endofunctor-morphsm.png" alt="relation between [] and Maybe"/> <figcaption>There is <span class="red">no isomorphism</span>.<br/> Hint: <code>Bool</code> lists longer than 1. </figcaption>
+<img style="float:left;width:30%" src="categories/img/mp/nattrans-maybe-list.png" alt="natural transformation commutative diagram"/>
+<figure style="float:right;width:60%">
+<img style="width:40%" src="categories/img/mp/maybe-list-endofunctor-morphsm.png" alt="relation between [] and Maybe"/> <figcaption>There is <span class="red">no isomorphism</span>.<br/> Hint: <code>Bool</code> lists longer than 1. </figcaption>
 </figure>
 
 
@@ -728,43 +726,47 @@ mToList Just x  = [x]</pre>
 g x = [x+1]     ⇒ g 1 = [2]   ⇒ (g.g) 1 = ERROR [2]+1 ✗
 h x = [x+1,x*3] ⇒ h 1 = [2,3] ⇒ (h.h) 1 = ERROR [2,3]+1 ✗ </code></pre>
 
+<p>The same problem with most <code>f :: a -&gt; F a</code> functions and functor <code>F</code>.</p>
+</section>
+<section class="slide">
+<h2 id="nat.-trans.-composition-generalization">Nat. Trans. <span class="and">&amp;</span> Composition generalization</h2>
 <p>How to fix that? We want to construct an operator which is able to compose:</p>
 <p><code>f :: a -&gt; F b</code> <span class="and">&amp;</span> <code>g :: b -&gt; F c</code>.</p>
 <p>More specifically we want to create an operator ◎ of type</p>
 <p><code>◎ :: (b -&gt; F c) -&gt; (a -&gt; F b) -&gt; (a -&gt; F c)</code></p>
-<p><span class="smaller">Note if F = I, ◎ = ∘.</span></p>
+<p>Note: if <code>F</code> = I, ◎ = ∘.</p>
 </section>
 <section class="slide">
 <h2 id="nat.-trans.-composition-generalization">Nat. Trans. <span class="and">&amp;</span> Composition generalization</h2>
-<p>Goal, find: <code>◎ :: (b -&gt; F c) -&gt; (a -&gt; F b) -&gt; (a -&gt; F c)</code></p>
-<p>Let's go slowly ; <code>f :: a -&gt; F b</code>, <code>g :: b -&gt; F c</code>:</p>
+<p>Goal, find: <code>◎ :: (b -&gt; F c) -&gt; (a -&gt; F b) -&gt; (a -&gt; F c)</code><br /><code>f :: a -&gt; F b</code>, <code>g :: b -&gt; F c</code>:</p>
 <ul>
 <li><code>(g ◎ f) x</code> ???</li>
 <li>First apply <code>f</code> to <code>x</code> ⇒ <code>f x :: F b</code></li>
 <li>Then how to apply <code>g</code> properly to an element of type <code>F b</code>?</li>
-<li>Use <code>fmap :: (b -&gt; c) -&gt; (F b -&gt; F c)</code>!</li>
-<li><code>(fmap g) :: F b -&gt; F (F c)</code></li>
-<li><code>(fmap g) (f x) :: F (F c)</code> it almost WORKS!</li>
-<li>We lack an important component, <code>join :: F (F c) -&gt; F c</code></li>
-<li><code>(g ◎ f) x = join ((fmap g) (f x))</code> ☺ (in Haskell <code>&lt;=&lt;</code>, Klesli arrow).</li>
 </ul>
 </section>
 <section class="slide">
 <h2 id="nat.-trans.-composition-generalization">Nat. Trans. <span class="and">&amp;</span> Composition generalization</h2>
-<p>Of course, we want ◎ to work like a composition. Then it should have a neutral element and be associative.</p>
+<p>Goal, find: <code>◎ :: (b -&gt; F c) -&gt; (a -&gt; F b) -&gt; (a -&gt; F c)</code><br /><code>f :: a -&gt; F b</code>, <code>g :: b -&gt; F c</code>, <span class="yellow"><code>f x :: F b</code></span>:</p>
 <ul>
-<li>(h ◎ g) ◎ f = h ◎ (g ◎ f)</li>
-<li>η ◎ f = f = f ◎ η</li>
+<li>Use <code>fmap :: (t -&gt; u) -&gt; (F t -&gt; F u)</code>!</li>
+<li><code>(fmap g) :: F b -&gt; F (F c)</code> ; (<code>t=b</code>, <code>u=F c</code>)</li>
+<li><code>(fmap g) (f x) :: F (F c)</code> it almost WORKS!</li>
+<li>We lack an important component, <code>join :: F (F c) -&gt; F c</code></li>
+<li><code>(g ◎ f) x = join ((fmap g) (f x))</code> ☺<br />◎ is the Kleisli composition; in Haskell: <code>&lt;=&lt;</code> (in <code>Control.Monad</code>).</li>
 </ul>
-<p>Considering the first rule and the definition of ◎ it follows that:</p>
-<ul>
-<li><code>join (join (F (F (F a)))) = join (F (join (F (F a))))</code></li>
-<li>abusing notations for <code>join</code> it is equivalent to<br /> (F ⊙ F) ⊙ F = F ⊙ (F ⊙ F)</li>
-</ul>
-<p>The second rule fix the type of <code>η :: a -&gt; F a</code>.</p>
 </section>
 <section class="slide">
-<h2 id="klesli-arrows">Klesli arrows</h2>
+<h2 id="nat.-trans.-composition-generalization">Nat. Trans. <span class="and">&amp;</span> Composition generalization</h2>
+<p>For ◎ to work like composition, we need join to hold the following properties:</p>
+<ul>
+<li><code>join (join (F (F (F a))))=join (F (join (F (F a))))</code></li>
+<li>abusing notations denoting <code>join</code> by ⊙; this is equivalent to<br /><span class="yellow"><code>(F ⊙ F) ⊙ F = F ⊙ (F ⊙ F)</code></span></li>
+<li>There exists <code>η :: a -&gt; F a</code> s.t.<br /><span class="yellow"><code>η⊙F=F=F⊙η</code></span></li>
+</ul>
+</section>
+<section class="slide">
+<h2 id="klesli-composition">Klesli composition</h2>
 <p>Now the composition works as expected. In Haskell ◎ is <code>&lt;=&lt;</code> in <code>Control.Monad</code>.</p>
 <p><code>g &lt;=&lt; f = \x -&gt; join ((fmap g) (f x))</code></p>
 <pre class="haskell"><code>f x = [x]       ⇒ f 1 = [1]   ⇒ (f <=< f) 1 = [1] ✓
@@ -774,12 +776,11 @@ h x = [x+1,x*3] ⇒ h 1 = [2,3] ⇒ (h <=< h) 1 = [3,6,4,9] ✓</code></pre>
 
 </section>
 <section class="slide">
-<h2 id="monads">Monads</h2>
-<p>We re-invented the <strong class="yellow">Monads</strong>!</p>
+<h2 id="we-reinvented-monads">We reinvented Monads!</h2>
 <p>A monad is a triplet <code>(M,⊙,η)</code> where</p>
 <ul>
 <li>\(M\) an <span class="yellow">Endofunctor</span> (to type <code>a</code> associate <code>M a</code>)</li>
-<li>\(⊙:M×M→M\) a <span class="yellow">nat. trans.</span> (i.e. <code>⊙::M (M a) → M a</code>)</li>
+<li>\(⊙:M×M→M\) a <span class="yellow">nat. trans.</span> (i.e. <code>⊙::M (M a) → M a</code> ; <code>join</code>)</li>
 <li>\(η:I→M\) a <span class="yellow">nat. trans.</span> (\(I\) identity functor ; <code>η::a → M a</code>)</li>
 </ul>
 <p>Satisfying</p>
@@ -803,10 +804,19 @@ h x = [x+1,x*3] ⇒ h 1 = [2,3] ⇒ (h <=< h) 1 = [3,6,4,9] ✓</code></pre>
 </ul>
 </section>
 <section class="slide">
-<h2 id="list-monad">List Monad</h2>
-<p>Example: <code>List</code> is a functor</p>
+<h2 id="monads-are-just-monoids">Monads are just Monoids</h2>
+<blockquote>
+<p>A Monad is just a monoid in the category of endofunctors, what's the problem?</p>
+</blockquote>
+<p>The real sentence was:</p>
+<blockquote>
+<p>All told, a monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.</p>
+</blockquote>
+</section>
+<section class="slide">
+<h2 id="example-list">Example: List</h2>
 <ul>
-<li>\([]\) an <span class="yellow">Endofunctor</span></li>
+<li><code>[] :: * -&gt; *</code> an <span class="yellow">Endofunctor</span></li>
 <li>\(⊙:M×M→M\) a nat. trans. (<code>join :: M (M a) -&gt; M a</code>)</li>
 <li>\(η:I→M\) a nat. trans.</li>
 </ul>
@@ -821,28 +831,17 @@ join = concat
 
 </section>
 <section class="slide">
-<h2 id="list-monad">List Monad</h2>
+<h2 id="example-list-law-verification">Example: List (law verification)</h2>
 <p>Example: <code>List</code> is a functor (<code>join</code> is ⊙)</p>
 <ul>
 <li>\(M ⊙ (M ⊙ M) = (M ⊙ M) ⊙ M\)</li>
 <li>\(η ⊙ M = M = M ⊙ η\)</li>
 </ul>
-<pre class="nohighlight small"><code>
-join [ join [[x,y,...,z]] ] = join [[x,y,...,z]]
+<pre class="nohighlight small"><code>join [ join [[x,y,...,z]] ] = join [[x,y,...,z]]
                             = join (join [[[x,y,...,z]]])
 join (η [x]) = [x] = join [η x]</code></pre>
 
 <p>Therefore <code>([],join,η)</code> is a monad.</p>
-</section>
-<section class="slide">
-<h2 id="monads-are-just-monoids">Monads are just Monoids</h2>
-<blockquote>
-<p>A Monad is just a monoid in the category of endofunctors, what's the problem?</p>
-</blockquote>
-<p>The real sentence was:</p>
-<blockquote>
-<p>All told, a monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.</p>
-</blockquote>
 </section>
 <section class="slide">
 <h2 id="monads-utility">Monads utility</h2>
@@ -876,19 +875,11 @@ drawPoint p = do
 </section>
 <section class="slide">
 <h2 id="fold"><code>fold</code></h2>
-<figure style="width:80%;max-width:80%; margin:0 auto">
-<img src="categories/img/tower_folded.gif" alt="fold" style="width:80%;max-width:80%"/> <figcaption><code>fold</code></figcaption>
-</figure>
-
-
+<img src="categories/img/tower_folded.gif" alt="fold" style="width:60%;max-width:60%"/>
 </section>
 <section class="slide">
 <h2 id="κατα-morphism">κατα-morphism</h2>
-<figure style="width:80%;max-width:80%; margin:0 auto">
-<img src="categories/img/earth_catamorphed.gif" alt="catamorphism" style="width:80%;max-width:80%"/> <figcaption><code>κατα-morphism</code></figcaption>
-</figure>
-
-
+<img src="categories/img/earth_catamorphed.gif" alt="catamorphism" style="width:90%;max-width:90%"/>
 </section>
 <section class="slide">
 <h2 id="κατα-morphism-fold-generalization">κατα-morphism: fold generalization</h2>

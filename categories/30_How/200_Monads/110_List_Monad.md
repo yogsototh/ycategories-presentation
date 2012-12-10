@@ -1,9 +1,7 @@
-List Monad
-----------
+Example: List
+-------------
 
-Example: `List` is a functor
-
-- \\([]\\) an <span class="yellow">Endofunctor</span>
+- `[] :: * -> *` an <span class="yellow">Endofunctor</span>
 - \\(⊙:M×M→M\\) a nat. trans. (`join :: M (M a) -> M a`)
 - \\(η:I→M\\)  a nat. trans.
 

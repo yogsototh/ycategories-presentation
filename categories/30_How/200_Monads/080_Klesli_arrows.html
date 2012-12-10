@@ -1,4 +1,4 @@
-<h2 id="klesli-arrows">Klesli arrows</h2>
+<h2 id="klesli-composition">Klesli composition</h2>
 <p>Now the composition works as expected. In Haskell ◎ is <code>&lt;=&lt;</code> in <code>Control.Monad</code>.</p>
 <p><code>g &lt;=&lt; f = \x -&gt; join ((fmap g) (f x))</code></p>
 <pre class="haskell"><code>f x = [x]       ⇒ f 1 = [1]   ⇒ (f <=< f) 1 = [1] ✓

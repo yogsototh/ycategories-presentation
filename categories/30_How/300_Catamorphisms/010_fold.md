@@ -1,7 +1,4 @@
 `fold`
 ------
 
-<figure style="width:80%;max-width:80%; margin:0 auto">
-<img src="categories/img/tower_folded.gif" alt="fold" style="width:80%;max-width:80%"/>
-<figcaption><code>fold</code></figcaption>
-</figure>
+<img src="categories/img/tower_folded.gif" alt="fold" style="width:60%;max-width:60%"/>
