@@ -1,4 +1,4 @@
-Nat. Trans. &amp; Composition generalization
+Necessary laws
 --------------------------------------------
 
 For ◎ to work like composition, we need join to hold the following properties:

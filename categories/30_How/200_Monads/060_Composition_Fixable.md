@@ -1,4 +1,4 @@
-Nat. Trans. &amp; Composition generalization
+Composition Fixable?
 --------------------------------------------
 
 How to fix that?  We want to construct an operator which is able to compose:
@@ -9,4 +9,4 @@ More specifically we want to create an operator ◎ of type
 
 `◎ :: (b -> F c) -> (a -> F b) -> (a -> F c)`
 
-Note: if `F` = I, ◎ = ∘.
+Note: if `F` = I, ◎ = `(.)`.

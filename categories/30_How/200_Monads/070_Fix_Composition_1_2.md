@@ -1,4 +1,4 @@
-Nat. Trans. &amp; Composition generalization
+Fix Composition (1/2)
 --------------------------------------------
 
 Goal, find: `◎ :: (b -> F c) -> (a -> F b) -> (a -> F c)`  

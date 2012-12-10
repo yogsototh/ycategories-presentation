@@ -260,16 +260,6 @@ such that for each \(f:A→B\):</p>
 </figure>
 </section>
 <section class="slide">
-<h2>Question Time!</h2>
-
-<figure style="width:70%; margin:0 auto">
-<img src="categories/img/batquestion.jpg" width="100%"/>
-<figcaption>
-<em>- French-only joke -</em>
-</figcaption>
-</figure>
-</section>
-<section class="slide">
 <h2>Can this be a category?</h2>
 <p>\(\ob{\C},\hom{\C}\) fixed, is there a valid ∘?</p>
 <figure class="left">
@@ -290,6 +280,16 @@ such that for each \(f:A→B\):</p>
     <figcaption class="slide">
     <span class="green">YES</span>
     </figcaption>
+</figure>
+</section>
+<section class="slide">
+<h2>Question Time!</h2>
+
+<figure style="width:70%; margin:0 auto">
+<img src="categories/img/batquestion.jpg" width="100%"/>
+<figcaption>
+<em>- French-only joke -</em>
+</figcaption>
 </figure>
 </section>
 <section class="slide">
@@ -742,7 +742,7 @@ mToList Just x  = [x]</pre>
 
 </section>
 <section class="slide">
-<h2 id="nat.-trans.-composition-generalization">Nat. Trans. <span class="and">&amp;</span> Composition generalization</h2>
+<h2 id="composition-problem">Composition problem</h2>
 <p>The Problem; example with lists:</p>
 <pre class="haskell"><code>f x = [x]       ⇒ f 1 = [1]   ⇒ (f.f) 1 = [[1]] ✗
 g x = [x+1]     ⇒ g 1 = [2]   ⇒ (g.g) 1 = ERROR [2]+1 ✗
@@ -751,15 +751,15 @@ h x = [x+1,x*3] ⇒ h 1 = [2,3] ⇒ (h.h) 1 = ERROR [2,3]+1 ✗ </code></pre>
 <p>The same problem with most <code>f :: a -&gt; F a</code> functions and functor <code>F</code>.</p>
 </section>
 <section class="slide">
-<h2 id="nat.-trans.-composition-generalization">Nat. Trans. <span class="and">&amp;</span> Composition generalization</h2>
+<h2 id="composition-fixable">Composition Fixable?</h2>
 <p>How to fix that? We want to construct an operator which is able to compose:</p>
 <p><code>f :: a -&gt; F b</code> <span class="and">&amp;</span> <code>g :: b -&gt; F c</code>.</p>
 <p>More specifically we want to create an operator ◎ of type</p>
 <p><code>◎ :: (b -&gt; F c) -&gt; (a -&gt; F b) -&gt; (a -&gt; F c)</code></p>
-<p>Note: if <code>F</code> = I, ◎ = ∘.</p>
+<p>Note: if <code>F</code> = I, ◎ = <code>(.)</code>.</p>
 </section>
 <section class="slide">
-<h2 id="nat.-trans.-composition-generalization">Nat. Trans. <span class="and">&amp;</span> Composition generalization</h2>
+<h2 id="fix-composition-12">Fix Composition (1/2)</h2>
 <p>Goal, find: <code>◎ :: (b -&gt; F c) -&gt; (a -&gt; F b) -&gt; (a -&gt; F c)</code><br /><code>f :: a -&gt; F b</code>, <code>g :: b -&gt; F c</code>:</p>
 <ul>
 <li><code>(g ◎ f) x</code> ???</li>
@@ -768,7 +768,7 @@ h x = [x+1,x*3] ⇒ h 1 = [2,3] ⇒ (h.h) 1 = ERROR [2,3]+1 ✗ </code></pre>
 </ul>
 </section>
 <section class="slide">
-<h2 id="nat.-trans.-composition-generalization">Nat. Trans. <span class="and">&amp;</span> Composition generalization</h2>
+<h2 id="fix-composition-22">Fix Composition (2/2)</h2>
 <p>Goal, find: <code>◎ :: (b -&gt; F c) -&gt; (a -&gt; F b) -&gt; (a -&gt; F c)</code><br /><code>f :: a -&gt; F b</code>, <code>g :: b -&gt; F c</code>, <span class="yellow"><code>f x :: F b</code></span>:</p>
 <ul>
 <li>Use <code>fmap :: (t -&gt; u) -&gt; (F t -&gt; F u)</code>!</li>
@@ -779,7 +779,7 @@ h x = [x+1,x*3] ⇒ h 1 = [2,3] ⇒ (h.h) 1 = ERROR [2,3]+1 ✗ </code></pre>
 </ul>
 </section>
 <section class="slide">
-<h2 id="nat.-trans.-composition-generalization">Nat. Trans. <span class="and">&amp;</span> Composition generalization</h2>
+<h2 id="necessary-laws">Necessary laws</h2>
 <p>For ◎ to work like composition, we need join to hold the following properties:</p>
 <ul>
 <li><code>join (join (F (F (F a))))=join (F (join (F (F a))))</code></li>
@@ -866,8 +866,8 @@ join (η [x]) = [x] = join [η x]</code></pre>
 <p>Therefore <code>([],join,η)</code> is a monad.</p>
 </section>
 <section class="slide">
-<h2 id="monads-utility">Monads utility</h2>
-<p>A monad can also hide computation details (ex: a common parameter).</p>
+<h2 id="monads-utility">Monads useful?</h2>
+<p>A <em>LOT</em> of monad tutorial on the net. Just one example; the State Monad</p>
 <p><code>DrawScene</code> to <code><span class="yellow">State Screen</span> DrawScene</code> ; still <b>pure</b>.</p>
 <pre class="haskell left smaller" style="width:40%"><code>main = drawImage (width,height)
 
@@ -905,62 +905,96 @@ drawPoint p = do
 </section>
 <section class="slide">
 <h2 id="κατα-morphism-fold-generalization">κατα-morphism: fold generalization</h2>
-<p>Typically, you need a recursive type (list, trees, ...)</p>
-<pre><code>Str = Cons Char Str
+<p><code>acc</code> type of the &quot;accumulator&quot;:<br /><code>fold :: (acc -&gt; a -&gt; acc) -&gt; acc -&gt; [a] -&gt; acc</code></p>
+<p>Idea: put the accumulated value inside the type.</p>
+<pre class="haskell"><code>-- Equivalent to fold (+1) 0 "cata"
+(Cons 'c' (Cons 'a' (Cons 't' (Cons 'a' Nil))))
+(Cons 'c' (Cons 'a' (Cons 't' (Cons 'a' <span style="border: solid 1px;">0</span>))))
+(Cons 'c' (Cons 'a' (Cons 't' <span style="border: solid 1px;">1</span>)))
+(Cons 'c' (Cons 'a' <span style="border: solid 1px;">2</span>))
+(Cons 'c' <span style="border: solid 1px;">3</span>)
+<span style="border: solid 1px;">4</span></code></pre>
 
-1st: replace the recursive type by another type.
-StrChar a = Cons Char a
-Str&#39; a = Mu StrChar
 
-Str&#39; = InF { outF :: StrChar (Mu ListElement) }
-Str&#39; = InF { outF :: StrChar (Str&#39;) }</code></pre>
-<p>Clearly <code>Str'</code> is isomorph <code>String</code>.</p>
-<pre><code>type Algebra f a = f a -&gt; a
+<p>But where are all the informations? <code>(+1)</code> and <code>0</code>?</p>
+</section>
+<section class="slide">
+<h2 id="κατα-morphism-missing-information">κατα-morphism: Missing Information</h2>
+<p>Where is the missing information?</p>
+<ul>
+<li>Functor operator <code>fmap</code></li>
+<li>Algebra representing the <code>(+1)</code> and also knowing the <code>0</code>.</li>
+</ul>
+<p>First example, make <code>length</code> on <code>[Char]</code></p>
+</section>
+<section class="slide">
+<h2 id="κατα-morphism-type-work">κατα-morphism: Type work</h2>
+<pre class="haskell"><code>
+data StrF a = Cons Char a | Nil
+data Str = StrF Str
+
+-- generalize the construction of Str to other datatype
+-- Mu :: type fixed point
+
 data Mu f = InF { outF :: f (Mu f) }
+data Str = Mu StrF
 
-cata :: Functor f =&gt; Algebra f a -&gt; Mu f -&gt; a
+-- Example
+foo=InF { outF = Cons 'f'
+        (InF { outF = Cons 'o'
+            (InF { outF = Cons 'o'
+                (InF { outF = Nil })})})}</code></pre>
+
+
+</section>
+<section class="slide">
+<h2 id="κατα-morphism-missing-information-retrieved">κατα-morphism: missing information retrieved</h2>
+<pre><code>type Algebra f a = f a -&gt; a
+instance Functor (StrF a) =
+    fmap f (Cons c x) = Cons c (f x)
+    fmap _ Nil = Nil</code></pre>
+<pre><code>cata :: Functor f =&gt; Algebra f a -&gt; Mu f -&gt; a
 cata f = f . fmap (cata f) . outF</code></pre>
 </section>
 <section class="slide">
-<h2 id="κατα-morphism-example-with-strings">κατα-morphism: example with strings</h2>
-<pre><code>type Algebra f a = f a -&gt; a
-data Mu f = InF { outF :: f (Mu f) }
-
-cata :: Functor f =&gt; Algebra f a -&gt; Mu f -&gt; a
-cata f = f . fmap (cata f) . outF
-
--- Example with natural fold on String
-data StrF x = Cons Char x | Nil
-type Str = Mu StrF
-instance Functor StrF where
-  fmap f (Cons a as) = Cons a (f as)
-  fmap _ Nil = Nil
+<h2 id="κατα-morphism-finally-length">κατα-morphism: Finally length</h2>
+<p>All needed information for making length.</p>
+<pre><code>instance Functor (StrF a) =
+    fmap f (Cons c x) = Cons c (f x)
+    fmap _ Nil = Nil
 
 length&#39; :: Str -&gt; Int
 length&#39; = cata phi where
-  phi (Cons a b) = 1 + b
-  phi Nil = 0
+    phi :: Algebra StrF Int -- StrF Int -&gt; Int
+    phi (Cons a b) = 1 + b
+    phi Nil = 0
 
-toMu :: [Char] -&gt; Str
-toMu (x:xs) = InF { outF = Cons x (toMu xs) }
-toMu [] = InF { outF = Nil }</code></pre>
+main = do
+    l &lt;- length&#39; $ stringToStr &quot;Toto&quot;
+    ...</code></pre>
 </section>
 <section class="slide">
-<h2 id="κατα-morphism-example-with-strings">κατα-morphism: example with strings</h2>
-<pre><code>type Algebra f a = f a -&gt; a
-data Mu f = InF { outF :: f (Mu f) }
-
-cata :: Functor f =&gt; Algebra f a -&gt; Mu f -&gt; a
-cata f = f . fmap (cata f) . outF
-
-type Tree = Mu TreeF
+<h2 id="κατα-morphism-extension-to-trees">κατα-morphism: extension to Trees</h2>
+<p>Once you get the trick, it is easy to extent to most Functor.</p>
+<pre><code>type Tree = Mu TreeF
 data TreeF x = Node Int [x]
 
 instance Functor TreeF where
   fmap f (Node e xs) = Node e (fmap f xs)
 
 depth = cata phi where
+  phi :: Algebra TreeF Int -- TreeF Int -&gt; Int
   phi (Node x sons) = 1 + foldr max 0 sons</code></pre>
+</section>
+<section class="slide">
+<h2 id="conclusion">Conclusion</h2>
+<p>Category Theory oriented Programming:</p>
+<ul>
+<li>Focus on the type and operators</li>
+<li>Extreme generalisation</li>
+<li>Better modularity</li>
+<li>Better control through properties of types</li>
+</ul>
 </section>
 <!-- End slides. -->
 

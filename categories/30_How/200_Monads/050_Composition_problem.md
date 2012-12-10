@@ -1,4 +1,4 @@
-Nat. Trans. &amp; Composition generalization
+Composition problem
 --------------------------------------------
 
 The Problem; example with lists:
