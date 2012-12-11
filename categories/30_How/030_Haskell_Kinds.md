@@ -11,6 +11,6 @@ Kind are the types for types (so meta).
 ~~~
 Int, Char :: *
 [], Maybe :: * -> *
-(,) :: * -> * -> *
+(,), (->) :: * -> * -> *
 [Int], Maybe Char, Maybe [Int] :: *
 ~~~

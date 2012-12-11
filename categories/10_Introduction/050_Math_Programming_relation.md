@@ -5,6 +5,8 @@ Math Programming relation
 
 Programming *<span class="yellow">is</span>* doing Math
 
+Strong relations between type theory and category theory.
+
 Not convinced?  
 Certainly a _vocabulary_ problem.
 

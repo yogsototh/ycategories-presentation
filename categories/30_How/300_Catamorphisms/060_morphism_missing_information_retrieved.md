@@ -1,15 +1,11 @@
 κατα-morphism: missing information retrieved
 --------------------------------------------
 
-~~~
-type Algebra f a = f a -> a
+<pre class="haskell"><code>type Algebra f a = f a -> a
 instance Functor (StrF a) =
 	fmap f (Cons c x) = Cons c (f x)
-	fmap _ Nil = Nil
-~~~
+	fmap _ Nil = Nil</code></pre>
 
-~~~
-cata :: Functor f => Algebra f a -> Mu f -> a
-cata f = f . fmap (cata f) . outF
-~~~
+<pre class="haskell"><code>cata :: Functor f => Algebra f a -> Mu f -> a
+cata f = f . fmap (cata f) . outF</code></pre>
 

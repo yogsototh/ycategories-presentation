@@ -1156,7 +1156,7 @@ $padsize:20
 $maxwidth:800
 $width:760
 $height:500
-@for $fontsize from 12 through 90
+@for $fontsize from 24 through 90
   $padsize:$fontsize*20/48
   $maxwidth:$fontsize*1920/48
   $width:$maxwidth - 2*$padsize
@@ -1171,10 +1171,20 @@ $height:500
       max-height: #{$height}px !important
       padding: 0 #{$padsize}px !important
       margin: 0 auto
-      box-shadow: 0 0 10px $base01 inset
       height: 50%
+      // box-shadow: 0 0 3px $base01 inset
     .deck-container
       font-size: #{$fontsize}px
+$fontsize: 24
+$padsize:$fontsize*20/48
+$maxwidth:$fontsize*1920/48
+$width:$maxwidth - 2*$padsize
+$height:$fontsize*1044/48
+@media only screen and (max-width: #{$maxwidth}px)
+  body
+    padding: 0 #{$padsize}px !important
+  .deck-container
+    font-size: #{$fontsize}px
 
 #MathJax_Message
   font-size: .4em !important
