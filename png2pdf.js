@@ -4,12 +4,12 @@ var webpage = require('webpage'),
 
 page.open('temp-output.html', function(status) {
 	page.viewportSize = {
-		width: 960,
-		height: 522
+		width: 1920,
+		height: 1044
 	};
 	page.paperSize = {
-		width: 960,
-		height: 522
+		width: 1920,
+		height: 1044
 	};
 	page.render('output.pdf');
 

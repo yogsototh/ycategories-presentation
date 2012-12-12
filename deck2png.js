@@ -15,8 +15,8 @@ page.onLoadFinished = function(status) {
 	}
 
 	page.viewportSize = {
-		width: 960,
-		height: 522
+		width: 1920,
+		height: 1044
 	};
 
 	slideCount = page.evaluate(function() {
@@ -24,8 +24,8 @@ page.onLoadFinished = function(status) {
 
 		$('html').removeClass('csstransitions cssreflections');
 		$('html, body').css({
-			'width': 960,
-			'height': 522,
+			'width': 1920,
+			'height': 1044,
 			'overflow': 'hidden'
 		});
 		$.deck('.slide');
